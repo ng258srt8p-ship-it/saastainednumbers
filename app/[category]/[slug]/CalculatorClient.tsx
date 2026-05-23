@@ -281,7 +281,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       faqSection={
         <div className="space-y-3">
           {config.content.faq.map((item, i) => (
-            <details key={i} className="group rounded-lg border border-gray-700 bg-[#1A2035]">
+            <details key={i} className="group rounded-lg border border-gray-700 bg-card-bg">
               <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-gray-200 hover:bg-gray-700/30">
                 {item.question}
                 <span className="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
@@ -309,7 +309,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
               <a
                 key={rc.slug}
                 href={`/${rc.category}/${rc.slug}`}
-                className="group rounded-xl border border-gray-700 bg-[#1A2035] p-4 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                className="group rounded-xl border border-gray-700 bg-card-bg p-4 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
               >
                 <h3 className="font-medium text-gray-200 group-hover:text-brand-400 transition-colors">
                   {rc.meta.title}

@@ -44,7 +44,7 @@ export default function Home() {
     <div className="flex flex-col flex-1">
       <section className="relative overflow-hidden px-4 py-24 sm:py-32">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#00848820,_transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#00838720,_transparent_50%)]" />
         <div className="relative mx-auto max-w-5xl text-center">
           <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             SaaS Calculators for{" "}

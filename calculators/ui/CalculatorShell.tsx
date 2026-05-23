@@ -36,7 +36,7 @@ export function CalculatorShell({
   stageSelector,
 }: CalculatorShellProps) {
   return (
-    <div className="bg-[#0B0F1A]">
+    <div className="bg-page-bg">
       <article className="mx-auto max-w-4xl px-4 py-8">
       {breadcrumbs && breadcrumbs.length > 0 && (
         <nav aria-label="Breadcrumb" className="mb-4">
@@ -69,7 +69,7 @@ export function CalculatorShell({
         {verifiedBadge}
       </header>
 
-      <div className="rounded-2xl border border-gray-800 bg-[#1A2035] p-6 shadow-sm">
+      <div className="rounded-2xl border border-gray-800 bg-card-bg p-6 shadow-sm">
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1">{children}</div>
           {embedButton && <div className="shrink-0">{embedButton}</div>}
