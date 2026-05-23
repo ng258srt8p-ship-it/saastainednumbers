@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "calculators": "Rechner",
+    "blog": "Blog",
+    "pricing": "Preise",
+    "dashboard": "Dashboard",
+    "account": "Konto",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren"
+  },
+  "calculator": {
+    "calculate": "Berechnen",
+    "reset": "Zurücksetzen",
+    "result": "Ergebnis",
+    "results": "Ergebnisse",
+    "input": "Eingabe",
+    "embed": "Einbetten",
+    "share": "Teilen",
+    "copyLink": "Link kopieren",
+    "copied": "Kopiert!",
+    "relatedCalculators": "Verwandte Rechner",
+    "requestCalculator": "Rechner anfragen",
+    "verified": "Verifiziert",
+    "source": "Quelle",
+    "privacy": "Ihre Daten verlassen nie Ihr Gerät. Wir speichern keine Berechnungen auf unseren Servern.",
+    "feedback": "War das hilfreich?"
+  },
+  "errors": {
+    "required": "Dieses Feld ist erforderlich",
+    "positive": "Der Wert muss positiv sein",
+    "number": "Bitte geben Sie eine gültige Zahl ein",
+    "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+  },
+  "common": {
+    "calculationsThisMonth": "Berechnungen diesen Monat",
+    "noAccount": "Kein Konto erforderlich",
+    "free": "Kostenlos",
+    "loading": "Wird geladen...",
+    "learnMore": "Mehr erfahren"
+  }
+}

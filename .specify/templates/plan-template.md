@@ -31,7 +31,23 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Verify against WebCalc Constitution (`.specify/memory/constitution.md`):
+
+- **Principle I (Config-Driven)**: Is every new calculator backed by a config schema and
+  a pure engine module? Is the engine decoupled from React/UI logic?
+- **Principle II (SEO-First)**: Does the feature include 500+ words unique content,
+  full JSON-LD schema (WebApp + BreadcrumbList + FAQPage), per-page OG images, and
+  proper internal linking?
+- **Principle III (Moat Through Distribution)**: Does the feature support embeddable
+  widgets? If it involves calculation logic, is there an API access path?
+- **Principle IV (Capital Efficiency)**: Does the feature add ongoing costs? If yes,
+  is it justified by projected revenue impact? Are there zero-cost alternatives?
+- **Principle V (Data-Driven)**: Are all quantitative claims sourced/verifiable? Are
+  the assumptions challenged with second-order analysis?
+- **Monetization**: Does this feature align with the four-tier revenue model? Which
+  tier does it support?
+- **Monetization**: Does this feature align with the four-tier revenue model (ads,
+  freemium, affiliate, API/embed)? Which tier(s) does it support?
 
 ## Project Structure
 
