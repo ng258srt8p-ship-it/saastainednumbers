@@ -40,11 +40,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/auth/signin",
   },
   callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.subscriptionTier = (user as Record<string, unknown>).subscriptionTier as string ?? "free";
+        token.isAdmin = (user as Record<string, unknown>).isAdmin as boolean ?? false;
+      }
+      return token;
+    },
     session({ session, token, user }) {
       if (session.user) {
-        const src = (user ?? token) as unknown as Record<string, unknown>;
-        session.user.id = src.id as string ?? session.user.email ?? "admin";
-        session.user.subscriptionTier = (src.subscriptionTier as string) === "pro" ? "pro" : (src.subscriptionTier as string ?? "free");
+        const src = token as Record<string, unknown>;
+        session.user.id = src.sub as string ?? session.user.email ?? "admin";
+        session.user.subscriptionTier = (src.subscriptionTier as string) === "pro" ? "pro" : "free";
       }
       return session;
     },

@@ -1,5 +1,6 @@
 import { auth, signIn } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { AdminSignInForm } from "@/components/AdminSignInForm";
 
 export default async function SignInPage() {
   const session = await auth();
@@ -61,19 +62,7 @@ export default async function SignInPage() {
           </div>
         </div>
 
-        <form
-          action={async () => {
-            "use server";
-            await signIn("admin", { username: "admin@saasifactory.com", password: "admin", redirectTo: "/" });
-          }}
-        >
-          <button
-            type="submit"
-            className="w-full rounded-lg border-2 border-dashed border-brand-300 bg-brand-50 px-5 py-2.5 text-sm font-medium text-brand-700 hover:bg-brand-100 transition-colors"
-          >
-            Sign in as Admin (dev only)
-          </button>
-        </form>
+        <AdminSignInForm />
       </div>
     </div>
   );
