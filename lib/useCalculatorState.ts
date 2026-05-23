@@ -3,7 +3,7 @@
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useCallback, useMemo } from "react";
 
-export function useCalculatorState(inputIds: string[]) {
+export function useCalculatorState(inputIds: string[], defaults?: Record<string, number>) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -13,10 +13,10 @@ export function useCalculatorState(inputIds: string[]) {
     for (const id of inputIds) {
       const raw = searchParams.get(id);
       const parsed = raw !== null ? Number.parseFloat(raw) : NaN;
-      result[id] = Number.isFinite(parsed) ? parsed : 0;
+      result[id] = Number.isFinite(parsed) ? parsed : (defaults?.[id] ?? 0);
     }
     return result;
-  }, [searchParams, inputIds]);
+  }, [searchParams, inputIds, defaults]);
 
   const setValue = useCallback(
     (id: string, value: number) => {

@@ -47,7 +47,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return token;
     },
-    session({ session, token, user }) {
+    session({ session, token }) {
       if (session.user) {
         const src = token as Record<string, unknown>;
         session.user.id = src.sub as string ?? session.user.email ?? "admin";

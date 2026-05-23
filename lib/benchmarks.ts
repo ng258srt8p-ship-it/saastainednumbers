@@ -113,12 +113,32 @@ const THRESHOLDS: Record<string, Record<Stage, Threshold>> = {
     "series-c": { healthy: 50, watch: 30 },
     growth: { healthy: 50, watch: 30 },
   },
+  "operating-margin": {
+    seed: { healthy: 15, watch: 5 },
+    "series-a": { healthy: 15, watch: 5 },
+    "series-b": { healthy: 20, watch: 10 },
+    "series-c": { healthy: 20, watch: 10 },
+    growth: { healthy: 20, watch: 10 },
+  },
+  "lead-conversion": {
+    seed: { healthy: 5, watch: 2 },
+    "series-a": { healthy: 8, watch: 4 },
+    "series-b": { healthy: 12, watch: 6 },
+    "series-c": { healthy: 15, watch: 10 },
+    growth: { healthy: 15, watch: 10 },
+  },
+  "revenue-per-employee": {
+    seed: { healthy: 100000, watch: 50000 },
+    "series-a": { healthy: 150000, watch: 80000 },
+    "series-b": { healthy: 200000, watch: 120000 },
+    "series-c": { healthy: 250000, watch: 150000 },
+    growth: { healthy: 300000, watch: 200000 },
+  },
 };
 
 export function getMetricKey(slug: string): string | null {
   const map: Record<string, string | null> = {
     "mrr-calculator": null,
-    "arr-calculator": null,
     "arpu-calculator": null,
     "acv-calculator": null,
     "mrr-growth-rate-calculator": "revenue-growth",
@@ -132,14 +152,14 @@ export function getMetricKey(slug: string): string | null {
     "payback-period-calculator": "cac-payback",
     "magic-number-calculator": "magic-number",
     "rule-of-40-calculator": "rule-of-40",
-    "burn-rate-calculator": null,
+    "burn-rate-calculator": "burn-multiple",
     "quick-ratio-calculator": "quick-ratio",
     "contribution-margin-calculator": null,
-    "operating-margin-calculator": null,
-    "revenue-per-employee-calculator": null,
+    "operating-margin-calculator": "operating-margin",
+    "revenue-per-employee-calculator": "revenue-per-employee",
     "net-cash-flow-calculator": null,
-    "lead-conversion-rate-calculator": null,
     "expansion-revenue-rate-calculator": null,
+    "lead-conversion-rate-calculator": "lead-conversion",
     "trial-to-paid-calculator": "trial-to-paid",
     "activation-rate-calculator": "activation-rate",
     "nps-calculator": "nps",
@@ -203,8 +223,7 @@ export function getBarColor(status: HealthStatus): string {
   }
 }
 
-export function getGradientPercent(metricKey: string, value: number): number {
-  const stage: Stage = "series-a";
+export function getGradientPercent(metricKey: string, value: number, stage: Stage = "series-a"): number {
   const thresholds = THRESHOLDS[metricKey]?.[stage];
   if (!thresholds) return 50;
 

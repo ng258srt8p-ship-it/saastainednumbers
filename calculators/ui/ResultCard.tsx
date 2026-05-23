@@ -74,7 +74,7 @@ export function ResultCard({ label, value, type, isPrimary, prefix, suffix, metr
         <div className="mt-2 h-1.5 w-full rounded-full bg-gray-100">
           <div
             className={`h-full rounded-full transition-all duration-500 ${getBarColor(health ?? "reference")}`}
-            style={{ width: `${getGradientPercent(metricKey, rawValue)}%` }}
+            style={{ width: `${getGradientPercent(metricKey, rawValue, stage)}%` }}
           />
         </div>
       )}

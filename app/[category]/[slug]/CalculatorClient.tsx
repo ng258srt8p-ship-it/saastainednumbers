@@ -159,7 +159,8 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
   const [embedOpen, setEmbedOpen] = useState(false);
   const [stage, setStage] = useState<Stage>("series-a");
   const inputIds = config.inputs.map((i) => i.id);
-  const { values, setValue, reset } = useCalculatorState(inputIds);
+  const defaults = Object.fromEntries(config.inputs.map((i) => [i.id, i.defaultValue]));
+  const { values, setValue, reset } = useCalculatorState(inputIds, defaults);
 
   const metricKey = getMetricKey(config.slug);
 
@@ -193,7 +194,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
     <CalculatorShell
       title={config.meta.title}
       description={config.meta.description}
-      stageSelector={
+      stageSelector={metricKey ? (
         <div className="flex items-center gap-1 rounded-lg border border-gray-700 bg-gray-900 p-0.5 text-xs">
           {(["seed", "series-a", "series-b", "series-c", "growth"] as Stage[]).map((s) => (
             <button
@@ -210,7 +211,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             </button>
           ))}
         </div>
-      }
+      ) : undefined}
       breadcrumbs={[
         { label: "Home", href: "/" },
         { label: config.category.charAt(0).toUpperCase() + config.category.slice(1), href: `/${config.category}` },
