@@ -5,6 +5,10 @@
   "observability": {
     "enabled": true
   },
+  "build": {
+    "command": "./build-static.sh",
+    "cwd": "."
+  },
   "assets": {
     "directory": "out"
   },
