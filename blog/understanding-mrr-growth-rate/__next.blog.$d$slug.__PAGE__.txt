@@ -1,0 +1,61 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/05rly53nb2cvw.js","/_next/static/chunks/0n4z.7yu76je-.js","/_next/static/chunks/15znj0lmf18oh.js"],""]
+7:I[6368,["/_next/static/chunks/05rly53nb2cvw.js","/_next/static/chunks/0n4z.7yu76je-.js","/_next/static/chunks/15znj0lmf18oh.js"],"AdSlot"]
+8:I[97367,["/_next/static/chunks/05rly53nb2cvw.js","/_next/static/chunks/0n4z.7yu76je-.js"],"OutletBoundary"]
+9:"$Sreact.suspense"
+3:T10a9,<p>Monthly Recurring Revenue (MRR) growth rate is the pulse of your SaaS business. It tells you whether you're accelerating, maintaining, or losing momentum  -  often before any other metric catches the signal.</p>
+
+<h2>What Is MRR Growth Rate?</h2>
+<p>MRR growth rate measures the percentage change in your monthly recurring revenue from one period to the next. It captures the combined effect of new customer acquisition, expansion revenue, churn, and contraction in a single number.</p>
+
+<p>The formula is simple: (Current Month MRR - Previous Month MRR) / Previous Month MRR × 100. You can use our <a href="/revenue/mrr-growth-rate-calculator">MRR growth rate calculator</a> to compute it instantly.</p>
+
+<h2>Why MRR Growth Rate Matters</h2>
+<p>MRR growth rate is the single best leading indicator of long-term success because it captures the net effect of everything happening in your business:</p>
+<ul>
+  <li><strong>New customer acquisition</strong>  -  how many new customers you're adding</li>
+  <li><strong>Expansion revenue</strong>  -  how well you're growing existing accounts</li>
+  <li><strong>Churn and contraction</strong>  -  how much revenue you're losing</li>
+  <li><strong>Pricing changes</strong>  -  whether your pricing strategy is working</li>
+</ul>
+
+<h2>What Good MRR Growth Looks Like</h2>
+<p>Growth rate expectations vary significantly by company stage. According to SaaS Capital's benchmark data, the median SaaS company grows approximately 20% year-over-year. But early-stage companies can  -  and should  -  grow much faster:</p>
+<ul>
+  <li><strong>Seed stage ($0-$1M ARR):</strong> 15-20% month-over-month growth</li>
+  <li><strong>Series A ($1M-$5M ARR):</strong> 10-15% month-over-month</li>
+  <li><strong>Growth stage ($5M-$20M ARR):</strong> 5-10% month-over-month</li>
+  <li><strong>Scale stage ($20M+ ARR):</strong> 2-5% month-over-month</li>
+</ul>
+
+<h2>How to Improve MRR Growth Rate</h2>
+<p>Improving MRR growth rate requires a systematic approach across three levers:</p>
+<h3>1. Accelerate New Customer Acquisition</h3>
+<p>Increase top-of-funnel volume through content marketing, paid acquisition, partnerships, and referral programs. Use our <a href="/growth-efficiency/lead-conversion-rate-calculator">lead conversion rate calculator</a> to measure your funnel efficiency.</p>
+<h3>2. Drive Expansion Revenue</h3>
+<p>Existing customers are your fastest path to growth. Implement usage-based pricing, build upgrade paths between tiers, and create a customer success motion focused on expansion. Measure your progress with our <a href="/revenue/expansion-revenue-rate-calculator">expansion revenue rate calculator</a>.</p>
+<h3>3. Reduce Churn</h3>
+<p>Every percentage point of churn reduction compounds your growth rate significantly. Improve onboarding, implement proactive customer success, and identify at-risk accounts early. Our <a href="/churn-retention/churn-calculator">churn calculator</a> helps you track this critical metric.</p>
+
+<h2>Common Pitfalls</h2>
+<p>When analyzing MRR growth rate, watch out for these common mistakes:</p>
+<ul>
+  <li><strong>Ignoring seasonality:</strong> Compare year-over-year, not just month-over-month</li>
+  <li><strong>Confusing logo growth with revenue growth:</strong> Adding low-value customers can hide churn problems</li>
+  <li><strong>Not segmenting:</strong> Growth rate varies dramatically by customer segment and product line</li>
+  <li><strong>Celebrating small numbers:</strong> Going from $100 to $200 MRR is 100% growth, but not meaningful</li>
+</ul>
+
+<h2>Track Alongside These Metrics</h2>
+<p>MRR growth rate doesn't exist in isolation. For a complete picture, track it alongside:</p>
+<ul>
+  <li><a href="/revenue/nrr-calculator">Net Revenue Retention (NRR)</a>  -  is growth coming from new or existing customers?</li>
+  <li><a href="/growth-efficiency/quick-ratio-calculator">Quick Ratio</a>  -  is your growth efficient?</li>
+  <li><a href="/unit-economics/payback-period-calculator">CAC Payback Period</a>  -  are you spending efficiently to acquire customers?</li>
+</ul>
+
+<p>Remember: sustainable growth beats unsustainable growth every time. Focus on building the systems and metrics that support long-term, compounding growth rather than short-term spikes.</p>0:{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Understanding MRR Growth Rate: The Ultimate Guide\",\"description\":\"MRR growth rate is the single most important leading indicator of SaaS success. Learn how to calculate it, interpret it, and improve it with actionable strategies.\",\"datePublished\":\"May 18, 2026\",\"url\":\"https://saastainednumbers.com/blog/understanding-mrr-growth-rate\",\"author\":{\"@type\":\"Organization\",\"name\":\"SaaStainedNumbers\"}}"}}],["$","div",null,{"className":"mx-auto max-w-3xl px-4 py-12","children":[["$","$L2",null,{"href":"/blog","className":"text-sm text-brand-600 hover:text-brand-700 mb-4 inline-block","children":"← Back to Blog"}],["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","time",null,{"className":"text-sm text-gray-400","children":"May 18, 2026"}],["$","h1",null,{"className":"font-heading text-3xl font-bold mt-1","children":"Understanding MRR Growth Rate: The Ultimate Guide"}],["$","p",null,{"className":"text-gray-600 mt-2","children":"MRR growth rate is the single most important leading indicator of SaaS success. Learn how to calculate it, interpret it, and improve it with actionable strategies."}]]}],["$","div",null,{"className":"prose prose-gray max-w-none","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}]]}]],["$L5"],"$L6"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"RMa7DiAUA9vc9Fwbk-yIV"}
+4:["$","div",null,{"className":"mt-8","children":["$","$L7",null,{"placement":"below-results"}]}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/15znj0lmf18oh.js","async":true}]
+6:["$","$L8",null,{"children":["$","$9",null,{"name":"Next.MetadataOutlet","children":"$@a"}]}]
+a:null

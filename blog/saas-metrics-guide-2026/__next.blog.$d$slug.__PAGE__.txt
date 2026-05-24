@@ -1,0 +1,67 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/05rly53nb2cvw.js","/_next/static/chunks/0n4z.7yu76je-.js","/_next/static/chunks/15znj0lmf18oh.js"],""]
+7:I[6368,["/_next/static/chunks/05rly53nb2cvw.js","/_next/static/chunks/0n4z.7yu76je-.js","/_next/static/chunks/15znj0lmf18oh.js"],"AdSlot"]
+8:I[97367,["/_next/static/chunks/05rly53nb2cvw.js","/_next/static/chunks/0n4z.7yu76je-.js"],"OutletBoundary"]
+9:"$Sreact.suspense"
+3:T190b,<p>If you run a SaaS business, you already know that traditional accounting metrics don't tell the full story. Recurring revenue behaves differently than one-time sales, and the metrics that matter most to investors, board members, and leadership teams are uniquely SaaS.</p>
+
+<p>This guide covers the 10 essential SaaS metrics every founder, operator, and investor should track in 2026. We'll explain what each metric measures, why it matters, how to calculate it, and what healthy benchmarks look like.</p>
+
+<h2>1. Monthly Recurring Revenue (MRR)</h2>
+<p>MRR is the lifeblood of any subscription business. It measures the predictable revenue generated from active subscribers each month, excluding one-time fees. MRR is the single most important metric because it reveals the health and trajectory of your business.</p>
+<p>To calculate MRR: multiply your number of paying customers by your average revenue per user. You can <a href="/revenue/mrr-calculator">use our MRR calculator</a> to compute it instantly.</p>
+<p><strong>Healthy benchmark:</strong> Growing 15-20% month-over-month for early-stage, 5-10% for growth-stage, and 2-5% for mature companies.</p>
+
+<h2>2. Customer Acquisition Cost (CAC)</h2>
+<p>CAC measures the total cost of acquiring a new customer, including sales and marketing expenses. It tells you whether your go-to-market engine is efficient and sustainable.</p>
+<p>Calculate CAC by dividing total sales and marketing costs by the number of new customers acquired. Our <a href="/growth-efficiency/cac-calculator">CAC calculator</a> makes this simple.</p>
+<p><strong>Healthy benchmark:</strong> $100-$500 for self-serve SMB, $1,000-$5,000 for mid-market, $10,000+ for enterprise. CAC should pay back within 12 months.</p>
+
+<h2>3. Customer Lifetime Value (LTV)</h2>
+<p>LTV predicts the total revenue you can expect from a single customer over their entire relationship with your business. It combines ARPU, gross margin, and churn rate into a single forward-looking number.</p>
+<p>Use our <a href="/revenue/ltv-calculator">LTV calculator</a> to compute customer lifetime value based on your ARPU, gross margin, and churn rate.</p>
+<p><strong>Healthy benchmark:</strong> LTV should be 3-5x CAC for a healthy business. Below 3x suggests unit economics need attention.</p>
+
+<h2>4. Churn Rate</h2>
+<p>Churn rate measures the percentage of customers who stop using your product during a given period. It's arguably the most critical retention metric because it directly impacts revenue and growth trajectory.</p>
+<p>Track both monthly and annual churn. Our <a href="/churn-retention/churn-calculator">churn calculator</a> handles both calculations automatically.</p>
+<p><strong>Healthy benchmark:</strong> 3-5% monthly for SMB, 1-2% for enterprise. Top-quartile companies achieve under 1% monthly churn.</p>
+
+<h2>5. Net Revenue Retention (NRR)</h2>
+<p>NRR measures revenue retention including expansion revenue from existing customers. An NRR above 100% means your existing customers are growing faster than churn is reducing revenue  -  the holy grail of SaaS.</p>
+<p>Calculate NRR by dividing ending MRR (excluding new customers) by starting MRR. Our <a href="/revenue/nrr-calculator">NRR calculator</a> computes this including expansions, churn, and contractions.</p>
+<p><strong>Healthy benchmark:</strong> 120%+ for top-quartile, 100-110% for healthy, below 100% needs attention.</p>
+
+<h2>6. Quick Ratio</h2>
+<p>The SaaS Quick Ratio measures growth efficiency by comparing revenue gained (new + expansion) against revenue lost (churn + contraction). A quick ratio above 4 means hyper-efficient growth.</p>
+<p>Use our <a href="/growth-efficiency/quick-ratio-calculator">quick ratio calculator</a> to measure your growth efficiency instantly.</p>
+<p><strong>Healthy benchmark:</strong> 4.0+ is excellent, 2.0-4.0 is good, below 2.0 needs attention.</p>
+
+<h2>7. Rule of 40</h2>
+<p>The Rule of 40 states that a healthy SaaS company's revenue growth rate plus profit margin should equal or exceed 40%. It's the single most popular metric used by investors to evaluate SaaS business health.</p>
+<p>Our <a href="/growth-efficiency/rule-of-40-calculator">Rule of 40 calculator</a> shows where your company stands.</p>
+<p><strong>Healthy benchmark:</strong> 40%+ is excellent, 30-40% is good, below 30% needs attention.</p>
+
+<h2>8. Burn Rate & Runway</h2>
+<p>Burn rate measures how quickly your company spends capital. Gross burn is total monthly expenses; net burn subtracts revenue. Runway tells you how many months until you run out of cash.</p>
+<p>Our <a href="/growth-efficiency/burn-rate-calculator">burn rate calculator</a> computes gross burn, net burn, and cash runway in seconds.</p>
+<p><strong>Healthy benchmark:</strong> 18-24 months of runway is ideal. Burn multiple (net burn / net new ARR) below 1.5x is excellent.</p>
+
+<h2>9. Magic Number</h2>
+<p>The Magic Number measures sales efficiency by comparing new ARR generated to sales and marketing spend. A magic number above 1.0 means your GTM engine is highly efficient.</p>
+<p>Calculate yours with our <a href="/growth-efficiency/magic-number-calculator">magic number calculator</a>.</p>
+<p><strong>Healthy benchmark:</strong> Above 1.0 is excellent, 0.75-1.0 is good, below 0.5 needs attention.</p>
+
+<h2>10. Payback Period</h2>
+<p>Payback period measures how long it takes to recover the cost of acquiring a customer through their gross-margin-adjusted revenue. Shorter payback means healthier unit economics.</p>
+<p>Use our <a href="/unit-economics/payback-period-calculator">payback period calculator</a> to see your payback timeline.</p>
+<p><strong>Healthy benchmark:</strong> Under 12 months is excellent, 12-24 months is acceptable, over 24 months needs attention.</p>
+
+<h2>Putting It All Together</h2>
+<p>The most successful SaaS companies don't track these metrics in isolation. They build a dashboard that connects them  -  understanding how changes in churn affect LTV, how LTV affects allowable CAC, and how CAC efficiency impacts burn rate and runway.</p>
+<p>Our <a href="/dashboard">SaaS Metrics Dashboard</a> lets you input your core numbers once and see all key metrics calculated at once, with links to explore each one in detail.</p>
+<p>Remember: the goal isn't just to track metrics  -  it's to use them to make better decisions about pricing, product investment, go-to-market strategy, and resource allocation.</p>0:{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"The Essential SaaS Metrics Guide for 2026\",\"description\":\"A comprehensive guide to the 10 SaaS metrics that matter most  -  from MRR and CAC to NRR and Rule of 40. Learn what to track, why it matters, and how to improve each metric.\",\"datePublished\":\"May 20, 2026\",\"url\":\"https://saastainednumbers.com/blog/saas-metrics-guide-2026\",\"author\":{\"@type\":\"Organization\",\"name\":\"SaaStainedNumbers\"}}"}}],["$","div",null,{"className":"mx-auto max-w-3xl px-4 py-12","children":[["$","$L2",null,{"href":"/blog","className":"text-sm text-brand-600 hover:text-brand-700 mb-4 inline-block","children":"← Back to Blog"}],["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","time",null,{"className":"text-sm text-gray-400","children":"May 20, 2026"}],["$","h1",null,{"className":"font-heading text-3xl font-bold mt-1","children":"The Essential SaaS Metrics Guide for 2026"}],["$","p",null,{"className":"text-gray-600 mt-2","children":"A comprehensive guide to the 10 SaaS metrics that matter most  -  from MRR and CAC to NRR and Rule of 40. Learn what to track, why it matters, and how to improve each metric."}]]}],["$","div",null,{"className":"prose prose-gray max-w-none","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}]]}]],["$L5"],"$L6"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"RMa7DiAUA9vc9Fwbk-yIV"}
+4:["$","div",null,{"className":"mt-8","children":["$","$L7",null,{"placement":"below-results"}]}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/15znj0lmf18oh.js","async":true}]
+6:["$","$L8",null,{"children":["$","$9",null,{"name":"Next.MetadataOutlet","children":"$@a"}]}]
+a:null
