@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Home",
+    "calculators": "Calculators",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "dashboard": "Dashboard",
+    "account": "Account",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "calculator": {
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "result": "Result",
+    "results": "Results",
+    "input": "Input",
+    "embed": "Embed",
+    "share": "Share",
+    "copyLink": "Copy Link",
+    "copied": "Copied!",
+    "relatedCalculators": "Related Calculators",
+    "requestCalculator": "Request a Calculator",
+    "verified": "Verified",
+    "source": "Source",
+    "privacy": "Your data never leaves your device. No calculations are stored on our servers.",
+    "feedback": "Was this helpful?"
+  },
+  "errors": {
+    "required": "This field is required",
+    "positive": "Value must be positive",
+    "number": "Please enter a valid number",
+    "generic": "Something went wrong. Please try again."
+  },
+  "common": {
+    "calculationsThisMonth": "calculations this month",
+    "noAccount": "No account required",
+    "free": "Free",
+    "loading": "Loading...",
+    "learnMore": "Learn more"
+  }
+}

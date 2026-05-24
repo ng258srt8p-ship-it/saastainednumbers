@@ -1,0 +1,52 @@
+"use client";
+
+export type DeltaMode = "absolute" | "percent" | "both";
+
+interface DeltaBadgeProps {
+  valueA: number;
+  valueB: number;
+  type: "currency" | "percentage" | "number" | "ratio" | "text";
+  mode: DeltaMode;
+}
+
+function formatValue(val: number, type: string): string {
+  switch (type) {
+    case "currency":
+      return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(val);
+    case "percentage":
+      return `${val.toFixed(1)}%`;
+    case "ratio":
+      return val.toFixed(2);
+    default:
+      return new Intl.NumberFormat("en-US").format(val);
+  }
+}
+
+export function DeltaBadge({ valueA, valueB, type, mode }: DeltaBadgeProps) {
+  if (type === "text") return null;
+
+  const diff = valueB - valueA;
+  const pct = valueA !== 0 ? (diff / valueA) * 100 : 0;
+  const isPositive = diff > 0;
+  const isNeutral = diff === 0;
+
+  const arrow = isNeutral ? "" : isPositive ? "▲" : "▼";
+  const colorClass = isNeutral
+    ? "text-gray-400 border-gray-300"
+    : isPositive
+      ? "text-green-600 border-green-200 bg-green-50"
+      : "text-red-600 border-red-200 bg-red-50";
+
+  return (
+    <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-semibold leading-tight ${colorClass}`}>
+      {!isNeutral && <span>{arrow}</span>}
+      {mode === "absolute" || mode === "both" ? (
+        <span>{isPositive ? "+" : ""}{formatValue(Math.abs(diff), type)}</span>
+      ) : null}
+      {mode === "both" && <span className="opacity-50">|</span>}
+      {mode === "percent" || mode === "both" ? (
+        <span>{isPositive ? "+" : ""}{pct.toFixed(1)}%</span>
+      ) : null}
+    </span>
+  );
+}
