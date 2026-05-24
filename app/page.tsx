@@ -169,7 +169,7 @@ export default function Home() {
 
       {/* § 03 · HOW IT WORKS */}
       <section className="px-4 py-20">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-6xl">
           <SectionLabel num={3} />
           <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900">
             Three steps. No friction.
