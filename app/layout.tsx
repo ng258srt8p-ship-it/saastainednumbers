@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://saastainednumbers.com"),
   icons: {
     icon: "/favicon.png",
-    apple: "/logo.png",
+    apple: "/logo.svg",
   },
   openGraph: {
     type: "website",
