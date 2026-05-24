@@ -74,15 +74,15 @@ export default function Home() {
           </div>
           <div className="mt-16 grid grid-cols-3 gap-8 border-t border-brand-800/50 pt-10">
             <div>
-              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl [text-shadow:0_0_40px_rgba(0,131,135,0.3)]">{totalCount}</p>
+              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">{totalCount}</p>
               <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">free calculators</p>
             </div>
             <div>
-              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl [text-shadow:0_0_40px_rgba(0,131,135,0.3)]">{categories.length}</p>
+              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">{categories.length}</p>
               <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">categories</p>
             </div>
             <div>
-              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl [text-shadow:0_0_40px_rgba(0,131,135,0.3)]">$0</p>
+              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">$0</p>
               <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">to start</p>
             </div>
           </div>

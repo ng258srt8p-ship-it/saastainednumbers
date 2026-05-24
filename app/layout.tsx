@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
+import Script from "next/script";
 import { AnalyticsClient } from "@/components/AnalyticsClient";
 import { Nav } from "@/components/Nav";
-import { AdScripts } from "@/components/AdScripts";
+import { adsConfig } from "@/lib/ads";
 import "./globals.css";
 
 const inter = Inter({
@@ -56,6 +57,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-gray-900 font-sans">
+        {adsConfig.enabled && (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${adsConfig.publisherId}`}
+            strategy="beforeInteractive"
+            crossOrigin="anonymous"
+          />
+        )}
         <AnalyticsClient />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" />
         <a
@@ -114,7 +123,6 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
-        <AdScripts />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
