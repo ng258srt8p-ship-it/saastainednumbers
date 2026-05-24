@@ -208,12 +208,12 @@ export default function Home() {
 
       {/* § 04 · BY THE NUMBERS */}
       <section className="bg-gray-50 px-4 py-20">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-6xl">
           <SectionLabel num={4} />
           <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900">
             The ledger
           </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900">{totalCount}</p>
               <p className="mt-1 text-sm text-gray-500">calculators in catalog</p>
