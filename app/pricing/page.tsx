@@ -7,7 +7,7 @@ const allFeatures = [
   "Unlimited embeds for your website",
   "URL sharing for collaboration",
   "Save calculations to your account",
-  "Multi-language support (6 languages)",
+  "English language support",
 ];
 
 export default function PricingPage() {

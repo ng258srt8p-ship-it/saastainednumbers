@@ -225,11 +225,6 @@ export default function Home() {
               <p className="text-xs text-gray-400 mt-1">industry-standard data</p>
             </div>
             <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-              <p className="font-numbers text-3xl font-bold text-gray-900">6</p>
-              <p className="mt-1 text-sm text-gray-500">languages supported</p>
-              <p className="text-xs text-gray-400 mt-1">EN · ES · DE · PT · FR · JA</p>
-            </div>
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <p className="font-numbers text-3xl font-bold text-gray-900">$0</p>
               <p className="mt-1 text-sm text-gray-500">always free</p>
               <p className="text-xs text-gray-400 mt-1">no paywalls, no tiers</p>

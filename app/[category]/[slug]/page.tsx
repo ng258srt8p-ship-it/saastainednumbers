@@ -2,6 +2,7 @@ import { getAllCalculators } from "@/lib/registry";
 import { getRelatedCalculators } from "@/lib/related-calculators";
 import { generateMetadata as seoMetadata } from "@/lib/seo";
 import { CalculatorClient } from "./CalculatorClient";
+import { AdSlot } from "@/components/AdSlot";
 import Link from "next/link";
 
 // Import calculator configs to register them in the registry
@@ -120,6 +121,8 @@ export default async function CalculatorPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([webApp, breadcrumb, ...(faq ? [faq] : [])]) }}
       />
       <CalculatorClient config={config} relatedCalculators={related} />
+      <AdSlot placement="below-results" slug={slug} />
+      <AdSlot placement="sticky-footer" slug={slug} />
     </>
   );
 }

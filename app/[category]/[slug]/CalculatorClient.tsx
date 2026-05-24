@@ -12,7 +12,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { EmbedModal } from "@/calculators/ui/EmbedModal";
 import { FeedbackWidget } from "@/calculators/ui/FeedbackWidget";
 import { VerifiedBadge } from "@/calculators/ui/VerifiedBadge";
-import { AdSlot } from "@/components/AdSlot";
 import { renderContent } from "@/lib/renderContent";
 import { analytics } from "@/lib/posthog";
 import { getMetricKey } from "@/lib/benchmarks";
@@ -403,7 +402,6 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         Disclaimer: Results are for informational purposes only and should not be considered financial advice.
         SaaStainedNumbers is not responsible for any decisions made based on these calculations.
       </p>
-      <AdSlot placement="below-results" slug={config.slug} />
       <EmbedModal
         slug={config.slug}
         title={config.meta.title}
@@ -411,7 +409,6 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         onClose={() => setEmbedOpen(false)}
       />
     </CalculatorShell>
-      <AdSlot placement="sticky-footer" slug={config.slug} />
     </>
   );
 }
