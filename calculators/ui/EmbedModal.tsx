@@ -13,12 +13,12 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
   const [copied, setCopied] = useState(false);
 
   const snippet = `<iframe
-  src="https://saasifactory.io/embed/${slug}"
+  src="https://saastainednumbers.com/embed/${slug}"
   width="100%"
   height="480"
   frameborder="0"
   style="border:none;max-width:600px;margin:0 auto;display:block"
-  title="Saasifactory - ${title}"
+  title="SaaStainedNumbers - ${title}"
 ></iframe>`;
 
   const handleCopy = useCallback(async () => {
@@ -61,7 +61,7 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
         </div>
 
         <p className="mt-4 text-xs text-gray-400">
-          The embedded calculator includes attribution to Saasifactory. No account required.
+          The embedded calculator includes attribution to SaaStainedNumbers. No account required.
         </p>
       </div>
     </div>

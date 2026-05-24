@@ -1,4 +1,4 @@
-# Quickstart: Calculator Suite — WebCalc MVP
+# Quickstart: Calculator Suite  -  WebCalc MVP
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ npm run generate
 npm run dev
 ```
 
-Visit `http://localhost:3000` — you should see the homepage with category
+Visit `http://localhost:3000`  -  you should see the homepage with category
 navigation and the interconnected dashboard.
 
 ## First Calculator Visit
@@ -99,6 +99,6 @@ written. Blog posts and embed outreach happen separately.
 ## Checking the Spec
 
 The full feature specification is at
-`specs/001-calculator-suite/spec.md` — it covers 7 user stories
+`specs/001-calculator-suite/spec.md`  -  it covers 7 user stories
 (P1-P4), 23 functional requirements, 12 success criteria, and
 7 edge cases.

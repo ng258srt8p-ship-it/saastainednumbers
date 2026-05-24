@@ -8,7 +8,6 @@ interface CalculatorItem {
   category: string;
   title: string;
   description: string;
-  premium?: boolean;
 }
 
 interface Props {
@@ -54,11 +53,6 @@ export function CalculatorSearch({ calculators, placeholder = "Search calculator
               className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-brand-50"
             >
               <span className="font-medium text-gray-900">{c.title}</span>
-              {c.premium && (
-                <span className="rounded-full bg-brand-100 px-2 py-0.5 text-xs font-medium text-brand-600">
-                  Pro
-                </span>
-              )}
             </Link>
           ))}
         </div>

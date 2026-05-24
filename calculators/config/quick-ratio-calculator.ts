@@ -6,7 +6,7 @@ const config = {
   category: "growth-efficiency",
   meta: {
     title: "Quick Ratio Calculator",
-    description: "Calculate your SaaS quick ratio to measure growth efficiency — the ratio of new + expansion MRR to churned + contraction MRR.",
+    description: "Calculate your SaaS quick ratio to measure growth efficiency  -  the ratio of new + expansion MRR to churned + contraction MRR.",
     keywords: ["quick ratio", "saas quick ratio", "growth efficiency", "mrr", "saas metrics"],
   },
   inputs: [
@@ -34,17 +34,16 @@ const config = {
     ],
     relatedCalculators: ["mrr-calculator", "nrr-calculator", "burn-rate-calculator"],
     faq: [
-      { question: "What is a good quick ratio for a SaaS company?", answer: "Above 4.0 is excellent, 2.0-4.0 is good, 1.0-2.0 needs attention. Below 1.0 means you're shrinking — you lose more revenue than you gain. The industry median is approximately 3.5." },
+      { question: "What is a good quick ratio for a SaaS company?", answer: "Above 4.0 is excellent, 2.0-4.0 is good, 1.0-2.0 needs attention. Below 1.0 means you're shrinking  -  you lose more revenue than you gain. The industry median is approximately 3.5." },
       { question: "How is quick ratio different from NRR?", answer: "NRR measures retention from existing customers including expansions. Quick Ratio adds new customer revenue to the numerator, measuring total growth vs total loss. Quick Ratio is a broader efficiency metric." },
       { question: "Why does a high quick ratio matter?", answer: "A high quick ratio means growth is efficient. Every dollar of lost revenue is replaced by $4+ of new revenue. This allows sustainable growth without excessive spending on acquisition." },
       { question: "Can the quick ratio be infinite?", answer: "Yes, if you have zero churn and contraction. In practice, no SaaS company achieves infinite quick ratio. A very high quick ratio (20+) usually means the company is very early stage with minimal churn." },
       { question: "How do I improve my quick ratio?", answer: "Two approaches: increase the numerator (faster new customer acquisition, more expansion revenue) or decrease the denominator (reduce churn, minimize downgrades). Fixing churn is typically more cost-effective." },
       { question: "Does quick ratio apply to all SaaS companies?", answer: "Yes, but interpretation varies by stage. Early-stage companies naturally have higher quick ratios because they have few customers to churn. Mature companies should maintain 2.0+." },
-      { question: "How often should I track quick ratio?", answer: "Monthly. Track the trend — a declining quick ratio over 3-6 months signals that churn is growing faster than new acquisition." },
+      { question: "How often should I track quick ratio?", answer: "Monthly. Track the trend  -  a declining quick ratio over 3-6 months signals that churn is growing faster than new acquisition." },
       { question: "What is the relationship between quick ratio and growth rate?", answer: "Higher quick ratios enable faster growth. If quick ratio is 4.0, you can grow 4x faster than if quick ratio is 1.0 given the same acquisition spending." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

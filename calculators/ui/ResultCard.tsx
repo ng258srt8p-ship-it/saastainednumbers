@@ -6,7 +6,7 @@ import { getHealthLabel, getHealthColor, getHealthStatus, getBarColor, getGradie
 interface ResultCardProps {
   label: string;
   value: string;
-  type: "currency" | "percentage" | "number" | "ratio";
+  type: "currency" | "percentage" | "number" | "ratio" | "text";
   isPrimary?: boolean;
   prefix?: string;
   suffix?: string;
@@ -31,6 +31,8 @@ function formatResult(value: string, type: string): string {
       return `${num.toFixed(1)}%`;
     case "ratio":
       return num.toFixed(2);
+    case "text":
+      return value;
     default:
       return new Intl.NumberFormat("en-US").format(num);
   }

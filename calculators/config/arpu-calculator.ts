@@ -31,8 +31,8 @@ const config = {
     relatedCalculators: ["mrr-calculator", "ltv-calculator", "cac-calculator"],
     faq: [
       { question: "What is a good ARPU for SaaS?", answer: "ARPU varies widely by industry. Enterprise SaaS averages $100-300/month, SMB SaaS averages $20-100/month. Track trends over time rather than absolute benchmarks." },
-      { question: "Should I calculate ARPU for all customers or segments?", answer: "Both. Overall ARPU gives a high-level view, but segmenting by plan tier or customer type reveals deeper insights about pricing effectiveness." },
-      { question: "How do I increase ARPU?", answer: "Increase prices, encourage plan upgrades, introduce usage-based pricing components, bundle complementary features, and improve your product to justify premium pricing." },
+      { question: "Should I calculate ARPU for all customers or segments?", answer: "Both. Overall ARPU gives a high-level view, but segmenting by plan tier or customer type reveals deeper insights about pricing effectiveness. [Baremetrics](https://baremetrics.com) and [ProfitWell](https://www.profitwell.com) provide segment-level ARPU tracking." },
+      { question: "How do I increase ARPU?", answer: "Increase prices, encourage plan upgrades, introduce usage-based pricing components, bundle complementary features, and improve your product to justify premium pricing. Analyze pricing and upgrade patterns with [ChartMogul](https://chartmogul.com)." },
       { question: "What is the difference between ARPU and ARR?", answer: "ARPU focuses on per-customer revenue. ARPU is a per-unit metric, while ARR is an aggregate annual run rate. ARPU helps you understand individual customer value." },
       { question: "How does churn affect ARPU?", answer: "If high-value customers churn at higher rates than low-value customers, overall ARPU declines. This is why segment-level ARPU tracking is important." },
       { question: "Can ARPU be misleading?", answer: "Yes. ARPU can increase even as overall revenue declines if low-value customers churn. Always track ARPU alongside total customer count and total MRR." },

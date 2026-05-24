@@ -6,7 +6,7 @@ const config = {
   category: "unit-economics",
   meta: {
     title: "CAC to LTV Ratio Calculator",
-    description: "Calculate your LTV to CAC ratio — the most important unit economics metric for SaaS businesses.",
+    description: "Calculate your LTV to CAC ratio  -  the most important unit economics metric for SaaS businesses.",
     keywords: ["ltv cac ratio", "unit economics", "saas metrics", "customer lifetime value", "acquisition cost"],
   },
   inputs: [
@@ -17,10 +17,10 @@ const config = {
     { id: "ratio", label: "LTV:CAC Ratio", type: "number" as const, isPrimary: true },
   ],
   content: {
-    intro: "The LTV:CAC ratio compares the total value a customer generates over their lifetime to the cost of acquiring them. It is the single most important unit economics metric for SaaS businesses. A ratio of 3:1 is the industry standard for a healthy business — meaning each customer generates three times what it costs to acquire them. Below 1:1 means you're spending more to acquire customers than they're worth. Above 5:1 suggests you may be under-investing in growth. This calculator gives you a quick health check on your unit economics.",
+    intro: "The LTV:CAC ratio compares the total value a customer generates over their lifetime to the cost of acquiring them. It is the single most important unit economics metric for SaaS businesses. A ratio of 3:1 is the industry standard for a healthy business  -  meaning each customer generates three times what it costs to acquire them. Below 1:1 means you're spending more to acquire customers than they're worth. Above 5:1 suggests you may be under-investing in growth. This calculator gives you a quick health check on your unit economics.",
     howToUse: "Enter your average Customer Lifetime Value (LTV) and Customer Acquisition Cost (CAC). The calculator will compute your LTV:CAC ratio. Use it to evaluate overall business health or compare different customer segments and channels.",
     formulaExplanation: "LTV:CAC Ratio = LTV ÷ CAC. Example: LTV = $3,000, CAC = $1,000. Ratio = $3,000 ÷ $1,000 = 3.0. A ratio of 3.0 means each customer generates 3x their acquisition cost in lifetime value. A ratio of 1.0 is break-even; above 3.0 is healthy.",
-    benchmarks: "Industry standard for SaaS is 3:1. Below 1:1 is unsustainable — you lose money on every customer. Above 5:1 may indicate under-investment in growth. According to SaaS Capital, the median private SaaS company has an LTV:CAC ratio of 3.2. Top-quartile companies achieve 5.0+ while still growing rapidly.",
+    benchmarks: "Industry standard for SaaS is 3:1. Below 1:1 is unsustainable  -  you lose money on every customer. Above 5:1 may indicate under-investment in growth. According to SaaS Capital, the median private SaaS company has an LTV:CAC ratio of 3.2. Top-quartile companies achieve 5.0+ while still growing rapidly.",
     benchmarkData: [
       { metric: "Excellent LTV:CAC", value: "5.0+", source: "SaaS Capital" },
       { metric: "Good LTV:CAC", value: "3.0 - 5.0", source: "Industry Standard" },
@@ -30,7 +30,7 @@ const config = {
     ],
     relatedCalculators: ["cac-calculator", "ltv-calculator", "payback-period-calculator"],
     faq: [
-      { question: "What is a good LTV:CAC ratio?", answer: "3:1 or higher is healthy. Below 1:1 means you lose money on each customer. Above 5:1 may signal under-investment — you could profitably spend more on acquisition to grow faster." },
+      { question: "What is a good LTV:CAC ratio?", answer: "3:1 or higher is healthy. Below 1:1 means you lose money on each customer. Above 5:1 may signal under-investment  -  you could profitably spend more on acquisition to grow faster." },
       { question: "How do I improve my LTV:CAC ratio?", answer: "Increase LTV through better retention, higher pricing, or expansion revenue. Reduce CAC through channel optimization or product-led growth. Both approaches improve the ratio." },
       { question: "Should I calculate LTV:CAC by channel?", answer: "Yes. Different channels have dramatically different ratios. Paid ads might have 2:1, while referrals might have 10:1. Channel-level analysis reveals where to invest." },
       { question: "What does a declining LTV:CAC ratio mean?", answer: "It means either LTV is decreasing (worse retention, lower pricing) or CAC is increasing (more expensive channels, sales inefficiency). Investigate the root cause." },
@@ -40,7 +40,6 @@ const config = {
       { question: "What is a healthy LTV:CAC for a new product?", answer: "Early-stage products often have ratios below 2:1 while finding product-market fit. The target should be reaching 3:1 within 12-18 months of launch." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

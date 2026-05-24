@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Calculator Suite — WebCalc MVP
+# Specification Quality Checklist: Calculator Suite  -  WebCalc MVP
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-05-21
@@ -31,7 +31,7 @@
 
 ## Notes
 
-- No [NEEDS CLARIFICATION] markers — all decisions documented in Assumptions based on research
+- No [NEEDS CLARIFICATION] markers  -  all decisions documented in Assumptions based on research
 - Spec covers all four revenue tiers (ads, freemium, affiliate via calculators, API/embed)
 - 7 user stories prioritized P1-P4, matching the Sprint cadence from v1.10 Executive Blueprint
-- All items pass — spec is ready for planning
+- All items pass  -  spec is ready for planning

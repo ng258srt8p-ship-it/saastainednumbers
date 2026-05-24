@@ -2,7 +2,7 @@
   Sync Impact Report
   ==================
   Version change: (template) → 1.0.0
-  Modified principles: All new — replaced 5 placeholder principles with WebCalc-specific principles
+  Modified principles: All new  -  replaced 5 placeholder principles with WebCalc-specific principles
   Added sections:
     - I. Configuration-Driven Product Architecture
     - II. SEO-First Content Architecture
@@ -17,7 +17,7 @@
     - .specify/templates/plan-template.md: ⚠ pending (Constitution Check gates need principle references)
     - .specify/templates/spec-template.md: ✅ no changes needed (generic enough)
     - .specify/templates/tasks-template.md: ✅ no changes needed (generic enough)
-  Follow-up TODOs: None — all placeholders resolved.
+  Follow-up TODOs: None  -  all placeholders resolved.
 -->
 
 # WebCalc Constitution
@@ -26,7 +26,7 @@
 
 ### I. Configuration-Driven Product Architecture
 
-Every calculator MUST be built from a shared configuration schema —
+Every calculator MUST be built from a shared configuration schema  - 
 not hand-coded as a bespoke page. The calculation engine MUST be
 pure domain logic (zero React/framework dependency), stored in
 `calculators/engine/`, and decoupled from the UI layer in
@@ -73,9 +73,9 @@ iframe snippet. The embed MUST:
 - Load in <500ms with minimal JS payload
 - Be responsive to container width (no fixed dimensions)
 - Include a "Powered by WebCalc" attribution link (for referral
-  traffic and brand exposure, NOT SEO link equity — iframes pass
+  traffic and brand exposure, NOT SEO link equity  -  iframes pass
   none)
-- Function without authentication (embeds are always free — they
+- Function without authentication (embeds are always free  -  they
   are a distribution channel, not a monetization channel)
 - Be embeddable on any site via iframe + postMessage API
 
@@ -115,7 +115,7 @@ Track weekly:
 - Sessions, RPM, ad blocker rate, freemium conversion rate
 - Keywords ranking, indexed pages, referring domains
 - Embed sites live, embed calculations served
-- Competitor activity (HustleCalcs, CalculatorCove, OnlineCalcAI)
+- Competitor activity (, CalculatorCove, OnlineCalcAI)
 
 Kill switch thresholds are non-negotiable: when triggered, the
 associated workstream is paused or pivoted within one sprint.
@@ -137,7 +137,7 @@ Mediavine Journey (months 12-18, 75% rev share, requires 1K
 sessions) → Full Mediavine (months 18-24, requires $5K/yr ad
 revenue, 80-100K sessions) → Raptive (month 24+).
 
-Freemium pricing MUST start at $7/mo and $15/mo (below HustleCalcs'
+Freemium pricing MUST start at $7/mo and $15/mo (below'
 $9-19 to account for our smaller calculator library), then increase
 to $9-15 as the calculator base reaches 40+.
 
@@ -145,19 +145,19 @@ to $9-15 as the calculator base reaches 40+.
 
 ### Sprint Cadence (from v1.10 Executive Blueprint)
 
-- **Sprint 1** (Weeks 1-4): Foundation — project scaffold, config
+- **Sprint 1** (Weeks 1-4): Foundation  -  project scaffold, config
   schema, dynamic route, 5 starter calculators, calculation
   engines, URL-driven state, Vercel deployment
-- **Sprint 2** (Weeks 4-8): Content & SEO — 15 more calculators,
+- **Sprint 2** (Weeks 4-8): Content & SEO  -  15 more calculators,
   500+ words per page, FAQ schema, blog setup, 4 foundation posts,
   XML sitemap, internal linking
-- **Sprint 3** (Weeks 8-12): Monetization — AdSense, freemium
+- **Sprint 3** (Weeks 8-12): Monetization  -  AdSense, freemium
   auth (NextAuth + Stripe), embed widget generator, PostHog
   analytics, 4 blog posts
-- **Sprint 4** (Weeks 12-24): Growth — 10 more calculators,
+- **Sprint 4** (Weeks 12-24): Growth  -  10 more calculators,
   2 blog posts/week, embed outreach, guest posting, directory
   listings, Product Hunt launch
-- **Sprints 5-8** (Months 6-12): Scale — 10 more calculators,
+- **Sprints 5-8** (Months 6-12): Scale  -  10 more calculators,
   weekly newsletter, Mediavine Journey, server-side ad injection,
   A/B test pricing, part-time writer
 
@@ -177,7 +177,7 @@ Every PR MUST pass before merge:
 1. Create config in `calculators/config/new-calc.ts`
 2. Create pure engine in `calculators/engine/new-calc.ts`
 3. Register in `lib/registry.ts`
-4. Run `npm run generate` — SSG builds all pages
+4. Run `npm run generate`  -  SSG builds all pages
 5. Automated checks: schema validation, broken link check, OG
    image generation
 6. Manual review: content uniqueness threshold, keyword targeting,
@@ -204,7 +204,7 @@ living document that evolves with the project.
 
 ### Versioning Policy
 
-- **MAJOR**: Backward-incompatible governance changes — principle
+- **MAJOR**: Backward-incompatible governance changes  -  principle
   removal, revenue model restructuring, technology stack
   replacement.
 - **MINOR**: New principle/section added, materially expanded

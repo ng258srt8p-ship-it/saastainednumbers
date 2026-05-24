@@ -6,7 +6,7 @@ const config = {
   category: "growth-efficiency",
   meta: {
     title: "Activation Rate Calculator",
-    description: "Calculate the percentage of new signups that reach activation — your product's 'aha moment' and key leading indicator of retention.",
+    description: "Calculate the percentage of new signups that reach activation  -  your product's 'aha moment' and key leading indicator of retention.",
     keywords: ["activation rate", "product activation", "aha moment", "user onboarding", "saas metrics"],
   },
   inputs: [
@@ -18,7 +18,7 @@ const config = {
     { id: "notActivated", label: "Users Not Activated", type: "number" as const, isPrimary: false },
   ],
   content: {
-    intro: "Activation Rate measures the percentage of new signups that reach a defined 'aha moment' — the point where a new user experiences your product's core value. It is the most important leading indicator of retention because users who activate are far more likely to become long-term customers. Unlike vanity metrics like signups, activation rate tells you whether your onboarding, product experience, and value proposition are actually working. Companies with strong onboarding consistently achieve activation rates above 50%, while poor onboarding can leave 70-80% of new users never experiencing core value. This calculator helps you measure and track your activation funnel.",
+    intro: "Activation Rate measures the percentage of new signups that reach a defined 'aha moment'  -  the point where a new user experiences your product's core value. It is the most important leading indicator of retention because users who activate are far more likely to become long-term customers. Unlike vanity metrics like signups, activation rate tells you whether your onboarding, product experience, and value proposition are actually working. Companies with strong onboarding consistently achieve activation rates above 50%, while poor onboarding can leave 70-80% of new users never experiencing core value. This calculator helps you measure and track your activation funnel.",
     howToUse: "Enter your total number of signups in a given period and the number of users who reached your defined activation milestone. The calculator will compute your activation rate. Track this metric weekly or monthly and segment by acquisition channel to identify which sources bring the most activatable users.",
     formulaExplanation: "Activation Rate = (Activated Users ÷ Total Signups) × 100. For example: 400 activated users out of 1,000 signups = 40% activation rate. Users Not Activated = Signups - Activated = 600 users who never experienced core value",
     benchmarks: "According to Reforge and industry benchmarks, top-quartile SaaS companies achieve 50-60% activation rates. Median activation rates range from 25-35%. Bottom-quartile companies see below 20%. B2B products typically have higher activation rates (40-60%) than B2C (20-40%) because of higher intent users.",
@@ -41,7 +41,6 @@ const config = {
       { question: "What happens after users activate?", answer: "Guide activated users to their next milestone: first value, first collaboration, first integration. Build habits through repeated value delivery. Activated users should then move to monetization." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

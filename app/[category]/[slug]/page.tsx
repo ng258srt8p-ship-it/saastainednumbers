@@ -44,11 +44,16 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug, category } = await params;
   const calculators = getAllCalculators();
   const config = calculators.find((c) => c.slug === slug);
   if (!config) return {};
-  return seoMetadata(config);
+  return {
+    ...seoMetadata(config),
+    alternates: {
+      canonical: `https://saastainednumbers.com/${category}/${slug}`,
+    },
+  };
 }
 
 export default async function CalculatorPage({ params }: PageProps) {
@@ -72,7 +77,17 @@ export default async function CalculatorPage({ params }: PageProps) {
 
   const related = getRelatedCalculators(slug, 4);
 
-  const jsonLd = {
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://saastainednumbers.com" },
+      { "@type": "ListItem", position: 2, name: config.category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()), item: `https://saastainednumbers.com/${config.category}` },
+      { "@type": "ListItem", position: 3, name: config.meta.title, item: `https://saastainednumbers.com/${config.category}/${config.slug}` },
+    ],
+  };
+
+  const webApp = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: config.meta.title,
@@ -81,18 +96,28 @@ export default async function CalculatorPage({ params }: PageProps) {
     operatingSystem: "Web",
     offers: {
       "@type": "Offer",
-      price: config.premium ? "9.00" : "0",
+      price: "0",
       priceCurrency: "USD",
       availability: "https://schema.org/OnlineOnly",
     },
-    url: `https://saasifactory.io/${config.category}/${config.slug}`,
+    url: `https://saastainednumbers.com/${config.category}/${config.slug}`,
   };
+
+  const faq = config.content.faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: config.content.faq.map((item: { question: string; answer: string }) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  } : null;
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([webApp, breadcrumb, ...(faq ? [faq] : [])]) }}
       />
       <CalculatorClient config={config} relatedCalculators={related} />
     </>

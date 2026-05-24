@@ -18,7 +18,7 @@ const config = {
     { id: "mrrChange", label: "Net MRR Change", type: "currency" as const, isPrimary: false },
   ],
   content: {
-    intro: "MRR Growth Rate is the most important leading indicator for SaaS companies. It measures the month-over-month change in your Monthly Recurring Revenue, capturing both the addition of new customers and the impact of churn, expansion, and contraction. MRR growth rate is the single best predictor of future company value — investors use it alongside the Rule of 40 to evaluate company health. Tracking MRR growth rate helps you understand whether your business is accelerating, decelerating, or stagnating, and it serves as the foundation for financial forecasting.",
+    intro: "MRR Growth Rate is the most important leading indicator for SaaS companies. It measures the month-over-month change in your Monthly Recurring Revenue, capturing both the addition of new customers and the impact of churn, expansion, and contraction. MRR growth rate is the single best predictor of future company value  -  investors use it alongside the Rule of 40 to evaluate company health. Tracking MRR growth rate helps you understand whether your business is accelerating, decelerating, or stagnating, and it serves as the foundation for financial forecasting.",
     howToUse: "Enter your previous month's MRR and current month's MRR. The calculator will compute your month-over-month growth rate and net change. Track this monthly to identify growth trends and evaluate the impact of growth initiatives.",
     formulaExplanation: "MRR Growth Rate = (Current MRR - Previous MRR) ÷ Previous MRR × 100. MRR Change = Current MRR - Previous MRR. Example: Previous = $80K, Current = $100K. Growth = ($100K - $80K) ÷ $80K × 100 = 25%. Change = +$20K",
     benchmarks: "According to KeyBanc Capital Markets 2025 SaaS Survey and Pacific Crest, top-quartile SaaS companies grow MRR 20-25% month-over-month in early stages. Median growth for Seed-stage companies is 15-20% MoM. At Series A, median growth drops to 10-15% MoM. At growth stage ($5M+ ARR), 5-10% MoM is strong. Companies growing below 5% MoM at scale risk stagnation.",
@@ -41,7 +41,6 @@ const config = {
       { question: "What is a healthy MRR growth rate for a mature company?", answer: "For companies with $10M+ ARR, 5-10% MoM (60-120% annually) is excellent. 3-5% MoM (36-60% annually) is good. Below 2-3% MoM suggests the company is approaching maturity." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

@@ -1,12 +1,26 @@
 import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
-
 export default async function MyCalculationsPage() {
-  const session = await auth();
-  if (!session?.user?.id) redirect("/auth/signin");
+  let session;
+  try { session = await auth(); } catch { session = null; }
+  if (!session?.user?.id) {
+    return (
+      <div className="mx-auto max-w-4xl px-4 py-12">
+        <h1 className="text-3xl font-bold mb-2">My Calculations</h1>
+        <p className="text-gray-600 mb-8">
+          Sign in to see your saved calculations.
+        </p>
+        <div className="rounded-xl border border-gray-200 bg-gray-50 p-12 text-center">
+          <p className="text-gray-600">Sign in is currently disabled.</p>
+          <Link href="/" className="mt-4 inline-block text-sm text-brand-600 hover:text-brand-700 underline">
+            Go to Home &rarr;
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const calculations = await prisma.calculationRecord.findMany({
     where: { userId: session.user.id },

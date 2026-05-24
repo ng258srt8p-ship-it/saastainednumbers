@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/blog";
+import { AdSlot } from "@/components/AdSlot";
 import Link from "next/link";
 
 export default function BlogPage() {
@@ -13,6 +14,10 @@ export default function BlogPage() {
         <p className="mt-2 text-gray-500">
           SaaS metrics insights, tutorials, and industry benchmarks.
         </p>
+      </div>
+
+      <div className="my-8">
+        <AdSlot placement="below-results" />
       </div>
 
       {featured && (

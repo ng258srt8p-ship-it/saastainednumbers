@@ -1,4 +1,4 @@
-# Implementation Plan: Calculator Suite — WebCalc MVP
+# Implementation Plan: Calculator Suite  -  WebCalc MVP
 
 **Branch**: `main` | **Date**: 2026-05-21 | **Spec**: [/specs/001-calculator-suite/spec.md](./spec.md)
 **Input**: Feature specification from [spec.md](./spec.md)
@@ -7,9 +7,9 @@
 
 ## Summary
 
-Build a SaaS & Business Operations Calculator Suite — 20 interconnected
+Build a SaaS & Business Operations Calculator Suite  -  20 interconnected
 calculators at MVP, scaling to 50+ over 12 months. Market-validated demand
-(HustleCalcs: 1.3M calculations/mo, 38% MoM growth; OnlineCalcAI: 65K
+(: 1.3M calculations/mo, 38% MoM growth; OnlineCalcAI: 65K
 sessions/mo, ~$10K/mo revenue). Key differentiators: embeddable widgets and
 API access (zero competitors offer either). Config-driven SSG architecture
 with full SEO content (500+ words + schema per page). Revenue from ads +
@@ -24,7 +24,7 @@ by month 20-24 with $12 domain + $29/mo tools investment.
 **Storage**: SQLite via Turso (edge-reads for calculator config) + PostgreSQL
   via Neon (user accounts, saved calculations)
 **Testing**: Vitest (unit + integration), Playwright (e2e), Lighthouse CI (perf)
-**Target Platform**: Web browser — desktop (primary) and mobile (responsive)
+**Target Platform**: Web browser  -  desktop (primary) and mobile (responsive)
 **Project Type**: web-service
 **Performance Goals**: LCP < 1.5s, FCP < 1s, TTI < 2s, Lighthouse ≥ 95,
   JS bundle ≤ 80KB gzipped per page
@@ -39,7 +39,7 @@ by month 20-24 with $12 domain + $29/mo tools investment.
 
 - **Principle I (Config-Driven)**: ✅ Spec requires 20+ calculators built from
   shared config (FR-023). Calculation engines must be pure logic decoupled from
-  UI. Embed and API both reuse the same engines — verified by design.
+  UI. Embed and API both reuse the same engines  -  verified by design.
 - **Principle II (SEO-First)**: ✅ Spec requires 500+ words content (SC-003),
   full schema markup (SC-004), per-calcula or OG images (FR-005), FAQ with
   schema (FR-006). Blog content baseline of 2 posts/week is documented in
@@ -54,10 +54,10 @@ by month 20-24 with $12 domain + $29/mo tools investment.
   Assumptions section. Revenue projections, RPM, conversion rates all sourced
   from v2.0/v2.1 competitor research and industry benchmarks (RevenueCat 2026,
   Backlinko 2026, OnlineCalcAI case study).
-- **Monetization**: ✅ Spec supports all four tiers — ads (US1-US2), freemium
+- **Monetization**: ✅ Spec supports all four tiers  -  ads (US1-US2), freemium
   (US5), affiliate (integrated into calculator results), API/embed (US4, US7).
 
-**Gate result: PASS** — no violations.
+**Gate result: PASS**  -  no violations.
 
 ## Project Structure
 
@@ -140,4 +140,4 @@ npm package for API/embed customers.
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-No violations — Constitution Check passed. Complexity tracking not required.
+No violations  -  Constitution Check passed. Complexity tracking not required.

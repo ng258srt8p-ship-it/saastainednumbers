@@ -18,7 +18,7 @@ const config = {
     { id: "lostLeads", label: "Leads Lost", type: "number" as const, isPrimary: false },
   ],
   content: {
-    intro: "Lead-to-Customer Conversion Rate measures how effectively your sales and marketing funnel turns leads into paying customers. It is a fundamental efficiency metric that directly impacts your CAC and growth trajectory. A low conversion rate means you're spending too much on leads that don't convert — wasting marketing budget and sales effort. Improving conversion rate by even 1 percentage point can dramatically reduce CAC and increase revenue. This metric should be tracked by lead source, sales rep, and product segment to identify what's working and where the funnel leaks.",
+    intro: "Lead-to-Customer Conversion Rate measures how effectively your sales and marketing funnel turns leads into paying customers. It is a fundamental efficiency metric that directly impacts your CAC and growth trajectory. A low conversion rate means you're spending too much on leads that don't convert  -  wasting marketing budget and sales effort. Improving conversion rate by even 1 percentage point can dramatically reduce CAC and increase revenue. This metric should be tracked by lead source, sales rep, and product segment to identify what's working and where the funnel leaks.",
     howToUse: "Enter your total number of leads (marketing qualified leads or sales accepted leads) and the number of new customers acquired in the same period. The calculator will compute your conversion rate and show how many leads were lost in the funnel.",
     formulaExplanation: "Conversion Rate = (New Customers ÷ Total Leads) × 100. For example: 100 new customers from 2,000 leads = 5% conversion rate. Leads Lost = 2,000 - 100 = 1,900 leads that did not convert.",
     benchmarks: "According to HubSpot 2025 Sales Benchmarks, median B2B lead-to-customer conversion rate is 2-5%. Top-quartile companies achieve 10%+. Outbound-driven funnels average 1-3%, while inbound/content-driven funnels average 3-7%. High-consideration enterprise sales average 1-2%.",
@@ -41,7 +41,6 @@ const config = {
       { question: "What is a healthy sales cycle length?", answer: "For SMB: 1-14 days. For mid-market: 30-90 days. For enterprise: 90-180+ days. Shorter cycles typically have higher conversion rates. Longer cycles need more touchpoints and nurturing." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

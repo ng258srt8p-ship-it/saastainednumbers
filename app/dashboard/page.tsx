@@ -6,7 +6,6 @@ import { calculateCAC } from "@/calculators/engine/cac";
 import { calculateLTV } from "@/calculators/engine/ltv";
 import { calculateChurn } from "@/calculators/engine/churn";
 import { calculateARPU } from "@/calculators/engine/arpu";
-import { PremiumGate } from "@/components/PremiumGate";
 import Link from "next/link";
 
 interface DashboardInputs {
@@ -88,7 +87,6 @@ export default function DashboardPage() {
         </div>
 
         {/* Results Grid */}
-        <PremiumGate premium={true}>
         <div className="flex-1 grid gap-4 sm:grid-cols-2">
           <ResultCard
             title="Monthly Recurring Revenue"
@@ -124,7 +122,6 @@ export default function DashboardPage() {
             params={`mrr=${inputs.arpu * inputs.customers}&totalCustomers=${inputs.customers}`}
           />
         </div>
-        </PremiumGate>
       </div>
     </div>
   );

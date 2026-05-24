@@ -1,38 +1,36 @@
-# WebCalc — Agent Context
+# WebCalc  -  Agent Context
 
 ## Current Build Status
 - TypeScript: ✅ Passes (0 errors)
 - Lint: ✅ Passes (0 errors, 0 warnings)
-- Build: ✅ Passes (Next.js 16.2.6, Turbopack) — 78 pages
-- Unit Tests: ✅ 71/71 (Vitest, 25 test files)
-- E2E Tests: ✅ 46/46 (Playwright)
+- Build: ✅ Passes (Next.js 16.2.6, Turbopack)
+- Unit Tests: ✅ 231/231 (Vitest, 75 test files)
+- E2E Tests: ✅ 215/215 (Playwright)
 
 ## Project Structure
 ```
 webcalc/
 ├── calculators/
-│   ├── config/            # 26 files: schema + 25 calculator configs
-│   ├── engine/            # 25 pure TS engine functions
+│   ├── config/            # 76 files: schema + 75 calculator configs
+│   ├── engine/            # 75 pure TS engine functions
 │   └── ui/                # 8 shared React components + EmbedModal
 ├── app/
-│   ├── [category]/        # Category listing (SSG)
-│   │   └── [slug]/        # Calc pages + CalculatorClient (25 engines)
+│   ├── [category]/        # Category listing (SSG, 9 categories)
+│   │   └── [slug]/        # Calc pages + CalculatorClient (75 engines)
 │   ├── api/og/            # Dynamic OG image generation
 │   ├── api/auth/[...nextauth]/  # NextAuth v5 route handler
 │   ├── api/calculations/save/   # Calculation save to DB
 │   ├── api/analytics/capture/   # PostHog analytics proxy
-│   ├── api/stripe/        # Checkout, webhook, portal routes
-│   ├── auth/signin/       # Sign-in page (Google OAuth + magic link)
-│   ├── account/calculations/ # Saved calculations (auth required)
-│   ├── account/settings/  # Account settings
+│   ├── account/calculations/ # Saved calculations
+│   ├── account/settings/  # Account settings (language display only)
 │   ├── blog/              # Blog listing + [slug] routes
 │   ├── dashboard/         # Interconnected SaaS dashboard
 │   ├── embed/             # Embed layout (no nav)
-│   │   └── [slug]/        # Embed route + EmbedClient (25 engines, postMessage)
+│   │   └── [slug]/        # Embed route + EmbedClient (75 engines, postMessage)
 │   ├── prelaunch/         # Email capture landing page
-│   ├── pricing/           # Pricing page (Free vs $9/mo Pro)
+│   ├── pricing/           # Pricing page ($0 forever  -  all free)
 │   ├── request-calculator/ # Request form page
-│   ├── layout.tsx         # Root layout (AuthProvider, Nav, skip-to-content)
+│   ├── layout.tsx         # Root layout (Nav, AdScripts, skip-to-content)
 │   ├── not-found.tsx      # Styled 404 page
 │   ├── robots.ts          # Robots.txt
 │   ├── sitemap.ts         # Dynamic sitemap (100+ URLs)
@@ -40,11 +38,12 @@ webcalc/
 ├── lib/
 │   ├── auth.ts            # NextAuth v5 (Google + Resend, Prisma adapter)
 │   ├── prisma.ts          # Prisma client singleton
-│   ├── stripe.ts          # Stripe server client + price constants
+│   ├── ads.ts             # Ad network config + constants
+│   ├── affiliates.ts      # Affiliate program registry (9 categories)
 │   ├── getTranslations.ts # Server-side i18n loader
 │   ├── useLocale.ts       # Client-side i18n hook
 │   ├── embed.ts, i18n.ts, posthog.ts, registry.ts, seo.ts
-│   ├── content-uniqueness.ts, design-tokens.ts, kill-switch.ts
+│   ├── content-uniqueness.ts, kill-switch.ts
 │   ├── related-calculators.ts, useCalculatorState.ts, utils.ts
 ├── i18n/
 │   ├── en/common.json     # English locale
@@ -55,69 +54,73 @@ webcalc/
 │   └── ja/common.json     # Japanese locale
 ├── prisma/schema.prisma   # UserAccount, CalculationRecord, Account, Session, VerificationToken
 ├── tests/
-│   ├── calculators/       # 25 test files, 71 tests
-│   └── e2e/               # 46 Playwright tests (smoke + link + embed + dashboard)
+│   ├── calculators/       # 75 test files, 231 tests
+│   └── e2e/               # 215 Playwright tests (smoke + link + embed + behavior)
 ├── components/
+│   ├── AdSlot.tsx          # Ad placement (mobile sticky footer, responsive)
+│   ├── AdScripts.tsx       # Ad network scripts (EthicalAds, AdSense)
 │   ├── AnalyticsClient.tsx # PostHog pageview tracking
-│   ├── AuthNav.tsx         # Server component nav (auth()-based)
+│   ├── AuthNav.tsx         # Server component nav (sign-in removed)
 │   ├── AuthProvider.tsx    # SessionProvider wrapper
 │   ├── FeedbackWidget.tsx  # User feedback
 │   ├── LocaleSwitcher.tsx  # Language dropdown (EN/ES/DE/PT/FR/JA)
 │   ├── Nav.tsx             # Server component nav with i18n
-│   ├── PremiumGate.tsx     # Pro paywall overlay component
 │   ├── VerifiedBadge.tsx   # Accuracy badge
+│   ├── AffiliateTools.tsx  # Recommended tools section
 │   └── ui/button.tsx       # shadcn/ui button
 ├── middleware.ts           # Locale detection (Accept-Language → cookie)
 ├── types/next-auth.d.ts    # Session user type augmentation
 └── public/logo.svg         # Brand logo
 ```
 
-## Completed Phases (All 11)
-- **Phase 1** (Scaffold): ✅ Project scaffold, config schema, homepage, nav, footer
-- **Phase 2** (Input/UX): ✅ Input components, URL state, SEO, i18n, PostHog
-- **Phase 3** (Original 5): ✅ 5 engines + configs + dynamic route + tests
-- **Phase 4** (Content): ✅ OG images, blog scaffold, request-a-calc, benchmark data
-- **Phase 5** (Dashboard): ✅ Dashboard + 5 calculators
-- **Phase 6** (Embed): ✅ Embed route + postMessage API + embed button/modal + Playwright tests
-- **Phase 7** (Auth): ✅ NextAuth v5, Prisma schema, auth pages, AuthNav, calculation save API
-- **Phase 8** (Monetization): ✅ Stripe integration, pricing page, checkout/webhook/portal APIs, premium gating (20 premium calculators)
-- **Phase 9** (i18n): ✅ 5 locale files (ES/DE/PT/FR/JA), middleware, locale switcher, server/client translation
-- **Phase 10** (Expansion): ✅ 5 new calculators (Activation Rate, Trial-to-Paid, Expansion Revenue Rate, Net Cash Flow, Lead Conversion) — 25 total
-- **Phase 11** (Polish): ✅ 0 lint/TS errors, skip-to-content, aria-live, glassmorphism nav, SaaStify-inspired brand (purple gradient), clean ESLint
-
-## Post-Phase Enhancements
-- ✅ **5 blog posts** with rich content (SaaS metrics guide, MRR growth, customer health score, pricing strategies, activation rate)
-- ✅ **All 25 calculators covered** in E2E tests (5 full test, 20 light smoke tests)
-- ✅ **All 25 calculators covered** in embed E2E tests
-- ✅ **Prelaunch page form** now functional (captures email, shows success)
-- ✅ **Settings page** with real Prisma subscription lookup, Stripe portal link, language display
-- ✅ **OG images** use new purple brand gradient
-- ✅ **@tailwindcss/typography** installed for prose blog content
-- ✅ **Sitemap** includes 5 blog posts
-- ✅ **Links.spec.ts** broken selector fixed
-
 ## Key Stats
-- **25 calculators** (5 free + 20 premium) with 500+ words content, 8 FAQ items, benchmark data each
-- **78 pages** generated
-- **71 unit tests** across 25 test files
-- **46 E2E tests** (Playwright) covering all 25 calculators + embeds
+- **75 calculators** across 9 categories
+- **231 unit tests** across 75 test files
+- **215 E2E tests**
+- **107+ pages** generated
 - **6 languages** (EN, ES, DE, PT, FR, JA)
-- **5 blog posts** with 4000+ words total content
-- **Stripe monetization** ($9/mo Pro tier)
+- **Revenue model**: Display ads (EthicalAds primary, AdSense fallback) + affiliate links
+- **Brand**: Teal/navy (`#008387` / `#143562`), dark hero sections, glassmorphism nav
+
+## Categories
+1. **Revenue** (MRR, ARR, ARPU, LTV, NRR, etc.)
+2. **Churn & Retention** (Churn Rate, NPS, Customer Health, Engagement)
+3. **Growth & Efficiency** (CAC, Quick Ratio, Magic Number, Rule of 40)
+4. **Unit Economics** (Gross Margin, Contribution Margin, Payback, Burn Rate)
+5. **AI Cost** (Claude, ChatGPT, Gemini, Grok, Image Gen, Fine-tuning, Perplexity, Model Comparison)
+6. **Side Hustle** (YouTube, Twitch, Podcast, Newsletter, FBA, Affiliate, Blogging, Etsy, POD, Dropshipping, TikTok, Subscription Content, Side Income Tax, Freelance, Gig Worker)
+7. **Personal Finance** (FIRE, Savings Rate, Investment Returns, Debt Payoff, Emergency Fund, Mortgage, Student Loan, Rent vs Buy, Credit Card, 401k, Dividend Income)
+8. **General Business** (Break-Even, ROI, Employee Cost, Pricing Strategy, Contractor vs Employee, Valuation, Cash Runway)
+9. **SaaS Deepen** (Unit Economics Dashboard, Feature Adoption, Time to Value, ARPU Trend, Quick Ratio, Cohort Analysis, Capital Efficiency, CAC Payback Enhanced)
+
+## Revenue Model
+- 100% free — no paywalls, no gating, no subscription tiers
+- Display ads: EthicalAds primary, AdSense fallback
+- Two ad slots per calc page (below results, between sections)
+- Mobile sticky footer ad for high viewability
+- No ads on /embed/* (embeds are distribution)
+- Contextual affiliate links in calculator content
 
 ## Key Conventions
 - Calculator engines are pure TS (no React/framework deps)
 - Use `@/` path aliases for all imports
 - Embed postMessage sends `{source: "webcalc-embed", slug, inputs, results}` to parent
-- Prisma v5.22.0 (v7 broke `url` in schema datasource)
-- NextAuth v5 with `auth()` server function (not `getServerSession`)
 - i18n uses cookie-based locale detection with Accept-Language fallback
-- Premium calculators gated via PremiumGate component
-- Brand: Purple/violet gradient (`#7c5cfc` → `#5b3cc4`), dark hero sections, glassmorphism nav
+- Ad slots: 3 placements per page (below-results, between-sections, sticky-footer mobile-only)
+- Affiliate links: contextual links within calculator content + FAQ sections
+- All calculators follow pattern: engine (pure TS) + config (registerCalculator) + unit tests + E2E smoke tests
+- Barrel import file `calculators/config/_all.ts` imports all 75 config files
 
 ## Env Vars Required
 - `AUTH_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`, `AUTH_RESEND_KEY`
 - `DATABASE_URL` (Neon/postgres)
 - `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`
-- `STRIPE_SECRET_KEY`, `STRIPE_PRO_PRICE_ID`, `STRIPE_WEBHOOK_SECRET`
+- `NEXT_PUBLIC_ETHICAL_ADS_ID` (EthicalAds publisher ID)
+- `NEXT_PUBLIC_ADSENSE_ID` (Google AdSense publisher ID, fallback)
 - `NEXT_PUBLIC_BASE_URL`
+
+## Signed Out UX
+- Sign-in page removed; sign-in button removed from nav
+- Auth infrastructure kept (auth.ts, AuthProvider, Prisma adapter) for admin login and calculation saving
+- Account pages show "sign in is currently disabled" when not authenticated
+- All calculators fully functional without sign-in

@@ -11,7 +11,7 @@ const posts: BlogPost[] = [
     slug: "saas-metrics-guide-2026",
     title: "The Essential SaaS Metrics Guide for 2026",
     description:
-      "A comprehensive guide to the 10 SaaS metrics that matter most — from MRR and CAC to NRR and Rule of 40. Learn what to track, why it matters, and how to improve each metric.",
+      "A comprehensive guide to the 10 SaaS metrics that matter most  -  from MRR and CAC to NRR and Rule of 40. Learn what to track, why it matters, and how to improve each metric.",
     date: "May 20, 2026",
     content: `
 <p>If you run a SaaS business, you already know that traditional accounting metrics don't tell the full story. Recurring revenue behaves differently than one-time sales, and the metrics that matter most to investors, board members, and leadership teams are uniquely SaaS.</p>
@@ -39,7 +39,7 @@ const posts: BlogPost[] = [
 <p><strong>Healthy benchmark:</strong> 3-5% monthly for SMB, 1-2% for enterprise. Top-quartile companies achieve under 1% monthly churn.</p>
 
 <h2>5. Net Revenue Retention (NRR)</h2>
-<p>NRR measures revenue retention including expansion revenue from existing customers. An NRR above 100% means your existing customers are growing faster than churn is reducing revenue — the holy grail of SaaS.</p>
+<p>NRR measures revenue retention including expansion revenue from existing customers. An NRR above 100% means your existing customers are growing faster than churn is reducing revenue  -  the holy grail of SaaS.</p>
 <p>Calculate NRR by dividing ending MRR (excluding new customers) by starting MRR. Our <a href="/revenue/nrr-calculator">NRR calculator</a> computes this including expansions, churn, and contractions.</p>
 <p><strong>Healthy benchmark:</strong> 120%+ for top-quartile, 100-110% for healthy, below 100% needs attention.</p>
 
@@ -69,9 +69,9 @@ const posts: BlogPost[] = [
 <p><strong>Healthy benchmark:</strong> Under 12 months is excellent, 12-24 months is acceptable, over 24 months needs attention.</p>
 
 <h2>Putting It All Together</h2>
-<p>The most successful SaaS companies don't track these metrics in isolation. They build a dashboard that connects them — understanding how changes in churn affect LTV, how LTV affects allowable CAC, and how CAC efficiency impacts burn rate and runway.</p>
+<p>The most successful SaaS companies don't track these metrics in isolation. They build a dashboard that connects them  -  understanding how changes in churn affect LTV, how LTV affects allowable CAC, and how CAC efficiency impacts burn rate and runway.</p>
 <p>Our <a href="/dashboard">SaaS Metrics Dashboard</a> lets you input your core numbers once and see all key metrics calculated at once, with links to explore each one in detail.</p>
-<p>Remember: the goal isn't just to track metrics — it's to use them to make better decisions about pricing, product investment, go-to-market strategy, and resource allocation.</p>
+<p>Remember: the goal isn't just to track metrics  -  it's to use them to make better decisions about pricing, product investment, go-to-market strategy, and resource allocation.</p>
     `.trim(),
   },
   {
@@ -81,7 +81,7 @@ const posts: BlogPost[] = [
       "MRR growth rate is the single most important leading indicator of SaaS success. Learn how to calculate it, interpret it, and improve it with actionable strategies.",
     date: "May 18, 2026",
     content: `
-<p>Monthly Recurring Revenue (MRR) growth rate is the pulse of your SaaS business. It tells you whether you're accelerating, maintaining, or losing momentum — often before any other metric catches the signal.</p>
+<p>Monthly Recurring Revenue (MRR) growth rate is the pulse of your SaaS business. It tells you whether you're accelerating, maintaining, or losing momentum  -  often before any other metric catches the signal.</p>
 
 <h2>What Is MRR Growth Rate?</h2>
 <p>MRR growth rate measures the percentage change in your monthly recurring revenue from one period to the next. It captures the combined effect of new customer acquisition, expansion revenue, churn, and contraction in a single number.</p>
@@ -91,14 +91,14 @@ const posts: BlogPost[] = [
 <h2>Why MRR Growth Rate Matters</h2>
 <p>MRR growth rate is the single best leading indicator of long-term success because it captures the net effect of everything happening in your business:</p>
 <ul>
-  <li><strong>New customer acquisition</strong> — how many new customers you're adding</li>
-  <li><strong>Expansion revenue</strong> — how well you're growing existing accounts</li>
-  <li><strong>Churn and contraction</strong> — how much revenue you're losing</li>
-  <li><strong>Pricing changes</strong> — whether your pricing strategy is working</li>
+  <li><strong>New customer acquisition</strong>  -  how many new customers you're adding</li>
+  <li><strong>Expansion revenue</strong>  -  how well you're growing existing accounts</li>
+  <li><strong>Churn and contraction</strong>  -  how much revenue you're losing</li>
+  <li><strong>Pricing changes</strong>  -  whether your pricing strategy is working</li>
 </ul>
 
 <h2>What Good MRR Growth Looks Like</h2>
-<p>Growth rate expectations vary significantly by company stage. According to SaaS Capital's benchmark data, the median SaaS company grows approximately 20% year-over-year. But early-stage companies can — and should — grow much faster:</p>
+<p>Growth rate expectations vary significantly by company stage. According to SaaS Capital's benchmark data, the median SaaS company grows approximately 20% year-over-year. But early-stage companies can  -  and should  -  grow much faster:</p>
 <ul>
   <li><strong>Seed stage ($0-$1M ARR):</strong> 15-20% month-over-month growth</li>
   <li><strong>Series A ($1M-$5M ARR):</strong> 10-15% month-over-month</li>
@@ -127,9 +127,9 @@ const posts: BlogPost[] = [
 <h2>Track Alongside These Metrics</h2>
 <p>MRR growth rate doesn't exist in isolation. For a complete picture, track it alongside:</p>
 <ul>
-  <li><a href="/revenue/nrr-calculator">Net Revenue Retention (NRR)</a> — is growth coming from new or existing customers?</li>
-  <li><a href="/growth-efficiency/quick-ratio-calculator">Quick Ratio</a> — is your growth efficient?</li>
-  <li><a href="/unit-economics/payback-period-calculator">CAC Payback Period</a> — are you spending efficiently to acquire customers?</li>
+  <li><a href="/revenue/nrr-calculator">Net Revenue Retention (NRR)</a>  -  is growth coming from new or existing customers?</li>
+  <li><a href="/growth-efficiency/quick-ratio-calculator">Quick Ratio</a>  -  is your growth efficient?</li>
+  <li><a href="/unit-economics/payback-period-calculator">CAC Payback Period</a>  -  are you spending efficiently to acquire customers?</li>
 </ul>
 
 <p>Remember: sustainable growth beats unsustainable growth every time. Focus on building the systems and metrics that support long-term, compounding growth rather than short-term spikes.</p>
@@ -142,12 +142,12 @@ const posts: BlogPost[] = [
       "Learn how to build a predictive customer health score that identifies at-risk accounts before they churn, spots expansion opportunities, and aligns your entire team around retention.",
     date: "May 15, 2026",
     content: `
-<p>Customer health scoring is one of the most powerful tools in a SaaS company's retention arsenal. A well-designed health score tells you which customers are thriving, which need help, and which are at risk of churning — often weeks or months before they leave.</p>
+<p>Customer health scoring is one of the most powerful tools in a SaaS company's retention arsenal. A well-designed health score tells you which customers are thriving, which need help, and which are at risk of churning  -  often weeks or months before they leave.</p>
 
 <p>In this guide, we'll walk through how to build a customer health score system that actually works, what metrics to include, and how to use it to drive retention and expansion.</p>
 
 <h2>What Is a Customer Health Score?</h2>
-<p>A customer health score is a composite metric that predicts customer outcomes — typically retention, expansion, or churn. It combines multiple leading indicators into a single score (often 0-100) that gives your team an instant snapshot of each customer's relationship with your product.</p>
+<p>A customer health score is a composite metric that predicts customer outcomes  -  typically retention, expansion, or churn. It combines multiple leading indicators into a single score (often 0-100) that gives your team an instant snapshot of each customer's relationship with your product.</p>
 
 <p>Try our <a href="/churn-retention/customer-health-score-calculator">customer health score calculator</a> to see how different factors combine into a health score.</p>
 
@@ -166,7 +166,7 @@ const posts: BlogPost[] = [
 <h3>2. Customer Sentiment</h3>
 <p>How does the customer feel about your product and relationship? Sources include:</p>
 <ul>
-  <li>Net Promoter Score (NPS) — use our <a href="/growth-efficiency/nps-calculator">NPS calculator</a></li>
+  <li>Net Promoter Score (NPS)  -  use our <a href="/growth-efficiency/nps-calculator">NPS calculator</a></li>
   <li>CSAT survey responses</li>
   <li>Support ticket feedback</li>
   <li>Executive sponsor sentiment (from QBRs)</li>
@@ -197,7 +197,7 @@ const posts: BlogPost[] = [
   <li><strong>Gather historical data:</strong> Look at customers who churned vs. those who expanded. What signals differed?</li>
   <li><strong>Select leading indicators:</strong> Choose 3-7 metrics that are measurable, leading (not lagging), and actionable</li>
   <li><strong>Weight and normalize:</strong> Assign weights to each component based on predictive power. Normalize to a 0-100 scale</li>
-  <li><strong>Define thresholds:</strong> Green (80-100), Yellow (50-79), Red (0-49) — or your own categories</li>
+  <li><strong>Define thresholds:</strong> Green (80-100), Yellow (50-79), Red (0-49)  -  or your own categories</li>
   <li><strong>Validate and iterate:</strong> Test your model against historical outcomes and refine weights</li>
 </ol>
 
@@ -229,7 +229,7 @@ const posts: BlogPost[] = [
       "The right pricing strategy can double your revenue without adding a single customer. Explore value-based pricing, usage-based models, tiered plans, and how to choose what's right for your SaaS.",
     date: "May 12, 2026",
     content: `
-<p>Pricing is the single most powerful lever in your SaaS business. A 10% price increase flows directly to your bottom line and improves every unit metric — ARPU, LTV, payback period, and expansion revenue rate. Yet most founders and pricing teams spend far more time on feature development than on pricing optimization.</p>
+<p>Pricing is the single most powerful lever in your SaaS business. A 10% price increase flows directly to your bottom line and improves every unit metric  -  ARPU, LTV, payback period, and expansion revenue rate. Yet most founders and pricing teams spend far more time on feature development than on pricing optimization.</p>
 
 <p>In this guide, we'll explore the major SaaS pricing models, when to use each one, and how to choose the right strategy for your business.</p>
 
@@ -239,7 +239,7 @@ const posts: BlogPost[] = [
 <p>One product, one price. Simple and easy to understand, but leaves money on the table because you can't capture different willingness to pay across customer segments. Best for simple, single-feature products.</p>
 
 <h3>2. Tiered Pricing</h3>
-<p>Multiple plan levels (Starter, Pro, Enterprise) with increasing features and limits. This is the most common SaaS pricing model because it segments the market naturally. The key is designing tiers that create clear upgrade paths — each tier should feel like a natural next step, not a forced upsell.</p>
+<p>Multiple plan levels (Starter, Pro, Enterprise) with increasing features and limits. This is the most common SaaS pricing model because it segments the market naturally. The key is designing tiers that create clear upgrade paths  -  each tier should feel like a natural next step, not a forced upsell.</p>
 
 <h3>3. Usage-Based Pricing</h3>
 <p>Customers pay based on their consumption (API calls, storage, seats used). This model aligns cost with value perfectly and drives expansion revenue naturally as customers grow. Companies like Snowflake, Twilio, and Stripe use this model. However, revenue can be unpredictable, and customers may fear runaway costs.</p>
@@ -299,12 +299,12 @@ const posts: BlogPost[] = [
       "Activation rate predicts retention better than any other metric. Learn how to define, measure, and improve your product's activation funnel to drive sustainable growth.",
     date: "May 10, 2026",
     content: `
-<p>Ask any SaaS founder what matters most for growth, and they'll likely say "retention." But retention is a lagging indicator — by the time you see retention data, those customers have already made their decision. The leading indicator that predicts retention weeks ahead is <strong>activation rate</strong>.</p>
+<p>Ask any SaaS founder what matters most for growth, and they'll likely say "retention." But retention is a lagging indicator  -  by the time you see retention data, those customers have already made their decision. The leading indicator that predicts retention weeks ahead is <strong>activation rate</strong>.</p>
 
 <p>In this post, we'll explain why activation rate is the single most important growth metric, how to define your activation milestone, and how to improve it systematically.</p>
 
 <h2>What Is Activation Rate?</h2>
-<p>Activation rate measures the percentage of new signups that reach your product's "aha moment" — the point where a user experiences your core value for the first time. For Slack, activation is sending 2,000 messages. For Dropbox, it's saving the first file. For Airbnb, it's booking the first stay.</p>
+<p>Activation rate measures the percentage of new signups that reach your product's "aha moment"  -  the point where a user experiences your core value for the first time. For Slack, activation is sending 2,000 messages. For Dropbox, it's saving the first file. For Airbnb, it's booking the first stay.</p>
 
 <p>You can use our <a href="/growth-efficiency/activation-rate-calculator">activation rate calculator</a> to measure your current activation funnel.</p>
 
@@ -314,7 +314,7 @@ const posts: BlogPost[] = [
   <li>A company with 10,000 signups and 20% activation has 2,000 activated users</li>
   <li>A company with 5,000 signups and 60% activation has 3,000 activated users</li>
 </ul>
-<p>The company with fewer signups but higher activation wins — it has more users who've experienced value, will return, and will eventually pay.</p>
+<p>The company with fewer signups but higher activation wins  -  it has more users who've experienced value, will return, and will eventually pay.</p>
 
 <h2>The Activation-Retention Link</h2>
 <p>Research across hundreds of SaaS products shows a consistent pattern: users who activate within the first 7 days retain at 3-5x higher rates than users who don't. Activation within the first session is even more predictive.</p>
@@ -354,7 +354,7 @@ const posts: BlogPost[] = [
 
 <h2>Tracking Activation Over Time</h2>
 <p>Activation rate should be a weekly metric for growth-stage companies. Track it alongside trial-to-paid conversion (use our <a href="/revenue/trial-to-paid-calculator">trial-to-paid calculator</a>) to understand the full funnel from signup to paying customer.</p>
-<p>If your activation rate drops, investigate immediately — it's usually the first sign of product or onboarding issues.</p>
+<p>If your activation rate drops, investigate immediately  -  it's usually the first sign of product or onboarding issues.</p>
 
 <h2>Common Activation Mistakes</h2>
 <ul>

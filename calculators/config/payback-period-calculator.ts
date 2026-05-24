@@ -37,12 +37,11 @@ const config = {
       { question: "Can payback period be negative?", answer: "No. If your gross margin or ARPU is too low relative to CAC, payback extends indefinitely. This indicates poor unit economics that need correction before scaling." },
       { question: "How does pricing affect payback period?", answer: "Higher pricing directly improves payback by increasing monthly contribution. A 20% price increase can reduce payback by 15-25% assuming same conversion rates." },
       { question: "Should I calculate payback by customer segment?", answer: "Yes. Different segments (SMB vs Enterprise, self-serve vs sales-assisted) have dramatically different CAC and ARPU. Segment-level payback reveals which customer types are most efficient." },
-      { question: "How does churn affect payback?", answer: "Payback assumes the customer stays at least that long. If median customer lifetime is shorter than payback period, you never recover CAC — a critical business model problem." },
+      { question: "How does churn affect payback?", answer: "Payback assumes the customer stays at least that long. If median customer lifetime is shorter than payback period, you never recover CAC  -  a critical business model problem." },
       { question: "What is the relationship between payback and growth?", answer: "Shorter payback allows faster reinvestment. If payback is 6 months, you recycle each dollar of acquisition spend twice per year. At 12 months payback, you recycle once per year." },
       { question: "How do I improve my payback period?", answer: "Increase ARPU through pricing or upsells, reduce CAC through channel optimization, improve gross margin, or target higher-value customer segments." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

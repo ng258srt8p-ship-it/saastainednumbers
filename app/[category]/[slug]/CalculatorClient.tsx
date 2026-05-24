@@ -4,40 +4,20 @@ import type { CalculatorConfig } from "@/calculators/config/calculator-schema";
 import { CalculatorShell } from "@/calculators/ui/CalculatorShell";
 import { InputSlider } from "@/calculators/ui/InputSlider";
 import { ResultCard } from "@/calculators/ui/ResultCard";
-import { useCalculatorState } from "@/lib/useCalculatorState";
-import { useEffect, useMemo, useState } from "react";
+import { CompareToggle } from "@/calculators/ui/CompareToggle";
+import { ComparisonChart } from "@/calculators/ui/ComparisonChart";
+import { DeltaBadge, type DeltaMode } from "@/calculators/ui/DeltaBadge";
+import { useComparisonState } from "@/lib/useComparisonState";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { EmbedModal } from "@/calculators/ui/EmbedModal";
 import { FeedbackWidget } from "@/calculators/ui/FeedbackWidget";
 import { VerifiedBadge } from "@/calculators/ui/VerifiedBadge";
-import { PremiumGate } from "@/components/PremiumGate";
+import { AdSlot } from "@/components/AdSlot";
+import { renderContent } from "@/lib/renderContent";
 import { analytics } from "@/lib/posthog";
 import { getMetricKey } from "@/lib/benchmarks";
 import type { Stage } from "@/lib/benchmarks";
-import { calculateMRR } from "@/calculators/engine/mrr";
-import { calculateCAC } from "@/calculators/engine/cac";
-import { calculateLTV } from "@/calculators/engine/ltv";
-import { calculateChurn } from "@/calculators/engine/churn";
-import { calculateARPU } from "@/calculators/engine/arpu";
-import { calculateBurnRate, calculateRunway } from "@/calculators/engine/burn-rate";
-import { calculatePaybackPeriod } from "@/calculators/engine/payback-period";
-import { calculateNRR } from "@/calculators/engine/nrr";
-import { calculateGrossMargin } from "@/calculators/engine/gross-margin";
-import { calculateQuickRatio } from "@/calculators/engine/quick-ratio";
-import { calculateCACLTVRatio } from "@/calculators/engine/cac-ltv-ratio";
-import { calculateMagicNumber } from "@/calculators/engine/magic-number";
-import { calculateRuleOf40 } from "@/calculators/engine/rule-of-40";
-import { calculateContributionMargin } from "@/calculators/engine/contribution-margin";
-import { calculateOperatingMargin } from "@/calculators/engine/operating-margin";
-import { calculateRevenuePerEmployee } from "@/calculators/engine/revenue-per-employee";
-import { calculateMRRGrowthRate } from "@/calculators/engine/mrr-growth-rate";
-import { calculateACV } from "@/calculators/engine/acv";
-import { calculateCustomerHealthScore } from "@/calculators/engine/customer-health-score";
-import { calculateNetPromoterScore } from "@/calculators/engine/nps";
-import { calculateActivationRate } from "@/calculators/engine/activation-rate";
-import { calculateTrialToPaid } from "@/calculators/engine/trial-to-paid";
-import { calculateExpansionRevenueRate } from "@/calculators/engine/expansion-revenue-rate";
-import { calculateNetCashFlow } from "@/calculators/engine/net-cash-flow";
-import { calculateLeadConversionRate } from "@/calculators/engine/lead-conversion-rate";
+import { engines } from "@/lib/engine-registry";
 
 interface RelatedCalc {
   slug: string;
@@ -50,151 +30,82 @@ interface Props {
   relatedCalculators?: RelatedCalc[];
 }
 
-const engines: Record<string, (params: Record<string, number>) => Record<string, number>> = {
-  "mrr-calculator": (p) => {
-    const r = calculateMRR({ customers: p.customers, arpu: p.arpu });
-    return { mrr: r.mrr, arr: r.arr };
-  },
-  "cac-calculator": (p) => {
-    const r = calculateCAC({ salesCost: p.salesCost, marketingCost: p.marketingCost, newCustomers: p.newCustomers });
-    return { cac: r.cac };
-  },
-  "ltv-calculator": (p) => {
-    const r = calculateLTV({ arpu: p.arpu, grossMargin: p.grossMargin, churnRate: p.churnRate });
-    return { ltv: r.ltv, ltvCacRatio: r.ltvCacRatio };
-  },
-  "churn-calculator": (p) => {
-    const r = calculateChurn({ customersStart: p.customersStart, customersEnd: p.customersEnd, lostCustomers: p.lostCustomers });
-    return { monthlyChurnPct: r.monthlyChurnPct, annualChurnPct: r.annualChurnPct, retainedCustomers: r.retainedCustomers };
-  },
-  "arpu-calculator": (p) => {
-    const r = calculateARPU({ mrr: p.mrr, totalCustomers: p.totalCustomers });
-    return { arpu: r.arpu };
-  },
-  "burn-rate-calculator": (p) => {
-    const r = p.cashReserves > 0
-      ? calculateRunway({ monthlyExpenses: p.monthlyExpenses, monthlyRevenue: p.monthlyRevenue, cashReserves: p.cashReserves })
-      : { ...calculateBurnRate({ monthlyExpenses: p.monthlyExpenses, monthlyRevenue: p.monthlyRevenue }), runwayMonths: 0, cashReserves: 0 };
-    return { netBurnRate: r.netBurnRate, grossBurnRate: r.grossBurnRate, runwayMonths: r.runwayMonths };
-  },
-  "payback-period-calculator": (p) => {
-    const r = calculatePaybackPeriod({ cac: p.cac, arpu: p.arpu, grossMargin: p.grossMargin });
-    return { paybackPeriodMonths: r.paybackPeriodMonths, yearlyProfit: r.yearlyProfit };
-  },
-  "nrr-calculator": (p) => {
-    const r = calculateNRR({ startMrr: p.startMrr, expansionMrr: p.expansionMrr, churnedMrr: p.churnedMrr, contractionMrr: p.contractionMrr });
-    return { nrr: r.nrr, netRetentionRate: r.netRetentionRate, grossRetentionRate: r.grossRetentionRate };
-  },
-  "gross-margin-calculator": (p) => {
-    const r = calculateGrossMargin({ revenue: p.revenue, cogs: p.cogs });
-    return { grossMargin: r.grossMargin, grossProfit: r.grossProfit, cogsPercentage: r.cogsPercentage };
-  },
-  "quick-ratio-calculator": (p) => {
-    const r = calculateQuickRatio({ newMrr: p.newMrr, expansionMrr: p.expansionMrr, churnedMrr: p.churnedMrr, contractionMrr: p.contractionMrr });
-    return { quickRatio: r.quickRatio, growthMrr: r.growthMrr, lostMrr: r.lostMrr };
-  },
-  "cac-ltv-ratio-calculator": (p) => {
-    const r = calculateCACLTVRatio({ ltv: p.ltv, cac: p.cac });
-    return { ratio: r.ratio };
-  },
-  "magic-number-calculator": (p) => {
-    const r = calculateMagicNumber({ newArr: p.newArr, salesMarketingSpend: p.salesMarketingSpend });
-    return { magicNumber: r.magicNumber };
-  },
-  "rule-of-40-calculator": (p) => {
-    const r = calculateRuleOf40({ revenueGrowthRate: p.revenueGrowthRate, profitMargin: p.profitMargin });
-    return { ruleOf40Score: r.ruleOf40Score, meetsThreshold: r.meetsThreshold ? 1 : 0 };
-  },
-  "contribution-margin-calculator": (p) => {
-    const r = calculateContributionMargin({ revenue: p.revenue, variableCosts: p.variableCosts });
-    return { contributionMargin: r.contributionMargin, contributionMarginPct: r.contributionMarginPct };
-  },
-  "operating-margin-calculator": (p) => {
-    const r = calculateOperatingMargin({ operatingIncome: p.operatingIncome, revenue: p.revenue });
-    return { operatingMargin: r.operatingMargin };
-  },
-  "revenue-per-employee-calculator": (p) => {
-    const r = calculateRevenuePerEmployee({ totalRevenue: p.totalRevenue, headcount: p.headcount });
-    return { revenuePerEmployee: r.revenuePerEmployee };
-  },
-  "mrr-growth-rate-calculator": (p) => {
-    const r = calculateMRRGrowthRate({ previousMrr: p.previousMrr, currentMrr: p.currentMrr });
-    return { growthRate: r.growthRate, mrrChange: r.mrrChange };
-  },
-  "acv-calculator": (p) => {
-    const r = calculateACV({ totalContractValue: p.totalContractValue, contractDurationYears: p.contractDurationYears });
-    return { acv: r.acv, tcv: r.tcv };
-  },
-  "customer-health-score-calculator": (p) => {
-    const r = calculateCustomerHealthScore({ nps: p.nps, productUsageScore: p.productUsageScore, supportTickets: p.supportTickets, daysSinceLastLogin: p.daysSinceLastLogin });
-    return { healthScore: r.healthScore, healthCategory: 0 };
-  },
-  "nps-calculator": (p) => {
-    const r = calculateNetPromoterScore({ promoters: p.promoters, passives: p.passives, detractors: p.detractors });
-    return { nps: r.nps, totalResponses: r.totalResponses, promoterPct: r.promoterPct };
-  },
-  "activation-rate-calculator": (p) => {
-    const r = calculateActivationRate({ signups: p.signups, activated: p.activated });
-    return { activationRate: r.activationRate, notActivated: r.notActivated };
-  },
-  "trial-to-paid-calculator": (p) => {
-    const r = calculateTrialToPaid({ trialSignups: p.trialSignups, paidConversions: p.paidConversions });
-    return { conversionRate: r.conversionRate, notConverted: r.notConverted };
-  },
-  "expansion-revenue-rate-calculator": (p) => {
-    const r = calculateExpansionRevenueRate({ beginningMrr: p.beginningMrr, expansionMrr: p.expansionMrr });
-    return { expansionRevenueRate: r.expansionRevenueRate };
-  },
-  "net-cash-flow-calculator": (p) => {
-    const r = calculateNetCashFlow({ cashIn: p.cashIn, cashOut: p.cashOut });
-    return { netCashFlow: r.netCashFlow, burnRate: r.burnRate, isPositive: r.isPositive ? 1 : 0 };
-  },
-  "lead-conversion-rate-calculator": (p) => {
-    const r = calculateLeadConversionRate({ leads: p.leads, customers: p.customers });
-    return { conversionRate: r.conversionRate, lostLeads: r.lostLeads };
-  },
-};
+
+
+function runEngine(slug: string, params: Record<string, number>): Record<string, number | string> {
+  const engine = engines[slug];
+  if (!engine) return {};
+  try { return engine(params); } catch { return {}; }
+}
 
 export function CalculatorClient({ config, relatedCalculators }: Props) {
   const [embedOpen, setEmbedOpen] = useState(false);
   const [stage, setStage] = useState<Stage>("series-a");
+  const [compareMode, setCompareMode] = useState(false);
+  const [deltaMode, setDeltaMode] = useState<DeltaMode>("both");
+  const compareTracked = useRef(false);
+
   const inputIds = config.inputs.map((i) => i.id);
   const defaults = Object.fromEntries(config.inputs.map((i) => [i.id, i.defaultValue]));
-  const { values, setValue, reset } = useCalculatorState(inputIds, defaults);
+  const { valuesA, valuesB, setValue, reset } = useComparisonState(inputIds, defaults);
 
   const metricKey = getMetricKey(config.slug);
 
-  const results = useMemo(() => {
-    const engine = engines[config.slug];
-    let computedValues: Record<string, number> = {};
-    if (engine) {
-      try {
-        computedValues = engine(values);
-      } catch {
-        computedValues = {};
-      }
-    }
+  const resultsA = useMemo(() => {
+    const computed = runEngine(config.slug, valuesA);
     return config.outputs.map((output) => ({
       id: output.id,
-      value: computedValues[output.id] ?? 0,
+      value: computed[output.id] ?? 0,
       label: output.label,
       type: output.type,
       isPrimary: output.isPrimary,
     }));
-  }, [values, config]);
+  }, [valuesA, config]);
 
-  const primaryValue = results.find((r) => r.isPrimary)?.value ?? 0;
+  const resultsB = useMemo(() => {
+    const computed = runEngine(config.slug, valuesB);
+    return config.outputs.map((output) => ({
+      id: output.id,
+      value: computed[output.id] ?? 0,
+      label: output.label,
+      type: output.type,
+      isPrimary: output.isPrimary,
+    }));
+  }, [valuesB, config]);
+
+  const primaryValue = Number(resultsA.find((r) => r.isPrimary)?.value ?? 0);
   useEffect(() => {
     if (primaryValue > 0) {
-      analytics.calculate(config.slug, values);
+      analytics.calculate(config.slug, valuesA);
     }
-  }, [primaryValue, config.slug, values]);
+  }, [primaryValue, config.slug, valuesA]);
 
-  return (
-    <CalculatorShell
-      title={config.meta.title}
-      description={config.meta.description}
-      stageSelector={metricKey ? (
+  useEffect(() => {
+    if (compareMode && !compareTracked.current) {
+      compareTracked.current = true;
+      analytics.compare(config.slug, valuesA, valuesB);
+    }
+  }, [compareMode, config.slug, valuesA, valuesB]);
+
+  const chartData = compareMode ? resultsA
+    .filter((r) => r.type !== "text")
+    .map((r) => {
+      const b = resultsB.find((rb) => rb.id === r.id);
+      return {
+        label: r.label,
+        scenarioA: typeof r.value === "number" ? r.value : 0,
+        scenarioB: typeof b?.value === "number" ? b.value : 0,
+        type: r.type,
+      };
+    }) : [];
+
+  const chartSection = compareMode && chartData.length > 0 ? (
+    <ComparisonChart data={chartData} />
+  ) : null;
+
+  const stageSelector = (
+    <div className="flex items-center gap-2 flex-wrap">
+      {metricKey && (
         <div className="flex items-center gap-1 rounded-lg border border-gray-700 bg-gray-900 p-0.5 text-xs">
           {(["seed", "series-a", "series-b", "series-c", "growth"] as Stage[]).map((s) => (
             <button
@@ -211,7 +122,35 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             </button>
           ))}
         </div>
-      ) : undefined}
+      )}
+      <CompareToggle compareMode={compareMode} onToggle={() => setCompareMode((v) => !v)} />
+    </div>
+  );
+
+  const deltaModeToggle = compareMode ? (
+    <div className="flex items-center gap-1.5">
+      <span className="text-[10px] font-medium text-gray-500">Delta:</span>
+      {(["absolute", "percent", "both"] as DeltaMode[]).map((m) => (
+        <button
+          key={m}
+          type="button"
+          onClick={() => setDeltaMode(m)}
+          className={`rounded px-1.5 py-0.5 text-[10px] font-medium transition-colors ${
+            deltaMode === m ? "text-brand-600 bg-brand-50" : "text-gray-400 hover:text-gray-600"
+          }`}
+        >
+          {m === "absolute" ? "$" : m === "percent" ? "%" : "Both"}
+        </button>
+      ))}
+    </div>
+  ) : null;
+
+  return (
+    <>
+    <CalculatorShell
+      title={config.meta.title}
+      description={config.meta.description}
+      stageSelector={stageSelector}
       breadcrumbs={[
         { label: "Home", href: "/" },
         { label: config.category.charAt(0).toUpperCase() + config.category.slice(1), href: `/${config.category}` },
@@ -220,7 +159,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       verifiedBadge={
         <VerifiedBadge
           source="SaaS Industry Reports 2025"
-          sourceUrl="https://saasifactory.io"
+          sourceUrl="https://saastainednumbers.com"
           date="May 2026"
         />
       }
@@ -228,7 +167,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       contentSection={
         <div className="space-y-8">
           <section>
-            <p className="text-lg leading-relaxed text-gray-300">{config.content.intro}</p>
+            <div className="text-lg leading-relaxed text-gray-300">{renderContent(config.content.intro)}</div>
           </section>
 
           <section>
@@ -252,7 +191,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
           {config.content.benchmarks && (
           <section>
             <h2 className="text-2xl font-bold text-gray-100 mb-3">Industry Benchmarks</h2>
-              <p className="text-gray-300 mb-4">{config.content.benchmarks}</p>
+              <div className="text-gray-300 mb-4">{renderContent(config.content.benchmarks)}</div>
               {config.content.benchmarkData && config.content.benchmarkData.length > 0 && (
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
@@ -288,7 +227,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
                 <span className="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <div className="border-t border-gray-700 px-4 py-3 text-sm text-gray-400">
-                {item.answer}
+                {renderContent(item.answer)}
               </div>
             </details>
           ))}
@@ -322,7 +261,42 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         ) : undefined
       }
     >
-      <PremiumGate premium={config.premium ?? false}>
+      {compareMode ? (
+        <div className="flex flex-col gap-8 lg:flex-row">
+          <div className="flex-1 space-y-4">
+            <div className="flex items-center gap-2">
+              <span className="inline-block h-3 w-3 rounded-full bg-[#008387]" aria-hidden />
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-[#008387]">Scenario A</h3>
+            </div>
+            {config.inputs.map((input) => (
+              <InputSlider
+                key={input.id}
+                id={input.id}
+                label={input.label}
+                type={input.type}
+                value={valuesA[input.id] ?? 0}
+                onChange={(val) => setValue("a", input.id, val)}
+              />
+            ))}
+          </div>
+          <div className="flex-1 space-y-4">
+            <div className="flex items-center gap-2">
+              <span className="inline-block h-3 w-3 rounded-full bg-[#143562]" aria-hidden />
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-[#143562]">Scenario B</h3>
+            </div>
+            {config.inputs.map((input) => (
+              <InputSlider
+                key={input.id}
+                id={input.id}
+                label={input.label}
+                type={input.type}
+                value={valuesB[input.id] ?? 0}
+                onChange={(val) => setValue("b", input.id, val)}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex-1 space-y-4">
             {config.inputs.map((input) => (
@@ -331,8 +305,8 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
                 id={input.id}
                 label={input.label}
                 type={input.type}
-                value={values[input.id] ?? 0}
-                onChange={(val) => setValue(input.id, val)}
+                value={valuesA[input.id] ?? 0}
+                onChange={(val) => setValue("a", input.id, val)}
               />
             ))}
             <button
@@ -343,13 +317,93 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
               Reset all values
             </button>
           </div>
-        <div className="flex-1 space-y-3" aria-live="polite" aria-label="Calculation results">
-          {results.map((r) => (
-            <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={r.value} stage={stage} />
-          ))}
+          <div className="flex-1 space-y-3" aria-live="polite" aria-label="Calculation results">
+            {resultsA.map((r) => (
+              <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} />
+            ))}
+          </div>
         </div>
+      )}
+
+      {!compareMode && (
+        <div className="mt-6 border-t border-gray-700/50 pt-4">
+          <button
+            type="button"
+            onClick={() => setCompareMode(true)}
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-brand-500/50 px-4 py-3 text-sm font-medium text-brand-400 transition-all hover:border-brand-500 hover:bg-brand-500/5 hover:text-brand-300"
+          >
+            <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+              <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            Add Scenario B to compare
+          </button>
         </div>
-      </PremiumGate>
+      )}
+
+      {compareMode && (
+        <div className="mt-8 space-y-6 border-t border-gray-700/50 pt-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-semibold text-gray-200">Results Comparison</h3>
+            {deltaModeToggle}
+          </div>
+
+          <div className="flex flex-col gap-8 lg:flex-row">
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-1.5">
+                <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#008387]" aria-hidden />
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">Scenario A</span>
+              </div>
+              {resultsA.map((r) => (
+                <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} />
+              ))}
+            </div>
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-1.5">
+                <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#143562]" aria-hidden />
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">Scenario B</span>
+              </div>
+              {resultsB.map((r) => {
+                const other = resultsA.find((ra) => ra.id === r.id);
+                return (
+                  <div key={r.id} className="relative">
+                    <ResultCard value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} />
+                    {other && (
+                      <div className="mt-1 flex justify-center">
+                        <DeltaBadge valueA={typeof other.value === "number" ? other.value : 0} valueB={typeof r.value === "number" ? r.value : 0} type={r.type} mode={deltaMode} />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {chartSection}
+
+          <div className="flex items-center justify-center gap-4 pt-2 border-t border-gray-700/50">
+            <button
+              type="button"
+              onClick={() => setCompareMode(false)}
+              className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+            >
+              Back to single view
+            </button>
+            <button
+              type="button"
+              onClick={reset}
+              className="text-sm text-brand-600 hover:text-brand-700 underline"
+            >
+              Reset both scenarios
+            </button>
+          </div>
+        </div>
+      )}
+
+      <p className="text-xs text-gray-600 text-center px-4">
+        Disclaimer: Results are for informational purposes only and should not be considered financial advice.
+        SaaStainedNumbers is not responsible for any decisions made based on these calculations.
+      </p>
+      <AdSlot placement="below-results" slug={config.slug} />
       <EmbedModal
         slug={config.slug}
         title={config.meta.title}
@@ -357,5 +411,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         onClose={() => setEmbedOpen(false)}
       />
     </CalculatorShell>
+      <AdSlot placement="sticky-footer" slug={config.slug} />
+    </>
   );
 }

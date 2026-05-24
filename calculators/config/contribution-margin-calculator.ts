@@ -6,7 +6,7 @@ const config = {
   category: "unit-economics",
   meta: {
     title: "Contribution Margin Calculator",
-    description: "Calculate your contribution margin — revenue minus variable costs — to understand per-unit profitability.",
+    description: "Calculate your contribution margin  -  revenue minus variable costs  -  to understand per-unit profitability.",
     keywords: ["contribution margin", "variable costs", "profitability", "unit economics", "saas metrics"],
   },
   inputs: [
@@ -41,7 +41,6 @@ const config = {
       { question: "How often should I track contribution margin?", answer: "Monthly for operational decisions. Quarterly for strategic planning. Track trends: declining contribution margins signal rising variable costs or pricing pressure." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

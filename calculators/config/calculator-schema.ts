@@ -1,6 +1,6 @@
 export interface CalculatorConfig {
   slug: string;
-  category: "revenue" | "unit-economics" | "churn-retention" | "growth-efficiency";
+  category: "revenue" | "unit-economics" | "churn-retention" | "growth-efficiency" | "ai-cost" | "side-hustle" | "personal-finance" | "general-business" | "saas-deepen";
   meta: {
     title: string;
     description: string;
@@ -10,7 +10,6 @@ export interface CalculatorConfig {
   outputs: CalculatorOutput[];
   content: CalculatorContent;
   verified?: VerifiedBadge;
-  premium?: boolean;
 }
 
 export interface CalculatorInput {
@@ -26,7 +25,7 @@ export interface CalculatorInput {
 export interface CalculatorOutput {
   id: string;
   label: string;
-  type: "currency" | "percentage" | "number" | "ratio";
+  type: "currency" | "percentage" | "number" | "ratio" | "text";
   isPrimary?: boolean;
   prefix?: string;
   suffix?: string;

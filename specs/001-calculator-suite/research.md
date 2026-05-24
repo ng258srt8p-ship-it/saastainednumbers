@@ -1,4 +1,4 @@
-# Research: Calculator Suite — WebCalc MVP
+# Research: Calculator Suite  -  WebCalc MVP
 
 **Input**: Spec requirements from [spec.md](./spec.md)
 **Output**: Consolidated findings from `/Research/` (v1.1 through v2.1)
@@ -7,7 +7,7 @@
 
 ### Demand Evidence
 
-- **HustleCalcs** (leading competitor): 54 calculators, 1.3M calculations/month,
+- **** (leading competitor): 54 calculators, 1.3M calculations/month,
   38% MoM growth, 50-100K sessions/month. Proves SaaS calculator demand exists
   and is growing rapidly.
 - **CalculatorCove**: 700+ calculators across 14 categories, 50-100K
@@ -23,10 +23,10 @@
 
 | Gap | Confirmed By | Our Approach |
 |-----|-------------|-------------|
-| Embeddable widgets | No competitor offers them (HustleCalcs, CalculatorCove, OnlineCalcAI, SaaSMetricsCalc all checked in v2.1) | iframe widget on every calculator |
+| Embeddable widgets | No competitor offers them (, CalculatorCove, OnlineCalcAI, SaaSMetricsCalc all checked in v2.1) | iframe widget on every calculator |
 | Developer API | No competitor offers programmatic access | REST API with free + paid tiers |
-| SaaS-only focus | HustleCalcs mixes categories, CalculatorCove is general consumer | Pure SaaS metrics + business ops |
-| Content depth + schema | HustleCalcs has 200 words + no schema. CalculatorCove has depth but for consumer tools | 500-1,000 words + full schema per page |
+| SaaS-only focus | mixes categories, CalculatorCove is general consumer | Pure SaaS metrics + business ops |
+| Content depth + schema | has 200 words + no schema. CalculatorCove has depth but for consumer tools | 500-1,000 words + full schema per page |
 | Multi-language | Only OnlineCalcAI does this (but for generic tools) | 5 languages starting month 3 |
 | Interconnected dashboard | Only SaaSMetricsCalculator (but no content depth or monetization) | Dashboard + deep content + freemium |
 
@@ -36,16 +36,16 @@
 
 | Layer | Selected | Rationale | Alternatives Considered |
 |-------|----------|-----------|------------------------|
-| Framework | Next.js 16 (App Router) | SSG-first, best SEO for content-driven tools, Server Components for minimal JS | HustleCalcs uses vanilla HTML/CSS/JS (faster but less scalable for 50+ calculators) |
+| Framework | Next.js 16 (App Router) | SSG-first, best SEO for content-driven tools, Server Components for minimal JS | uses vanilla HTML/CSS/JS (faster but less scalable for 50+ calculators) |
 | Styling | Tailwind CSS v4 + shadcn/ui | Tree-shakeable, zero-runtime CSS, consistent design | CalculatorCove uses global CSS with per-category theming |
 | Hosting | Vercel (Hobby → Pro) | Free tier for MVP, seamless Next.js, edge CDN | CalculatorCove uses Cloudflare |
-| Analytics | PostHog | Privacy-respecting, event-based, self-hostable | HustleCalcs uses no analytics (privacy choice) |
+| Analytics | PostHog | Privacy-respecting, event-based, self-hostable | uses no analytics (privacy choice) |
 | Database | Turso (SQLite edge) + Neon (PostgreSQL) | Turso for config reads at edge, Neon for user data | Supabase (more expensive at scale) |
 | Auth | NextAuth.js | Free, OAuth + email magic link | Clerk (paid at scale) |
 
 ### Competitor Architecture Takeaways
 
-- **HustleCalcs** uses vanilla HTML/CSS/JS — no framework, no analytics scripts,
+- **** uses vanilla HTML/CSS/JS  -  no framework, no analytics scripts,
   no build pipeline. Pages are 15-30KB. Proves framework-free is fast but limits
   scalability beyond 54 calculators.
 - **CalculatorCove** uses static HTML + Cloudflare + full schema markup. Best
@@ -56,14 +56,14 @@
 - **SaaSMetricsCalculator** uses a React SPA dashboard. Proves the
   interconnected UX pattern works.
 
-**Our decision**: Next.js SSG to match HustleCalcs' speed while enabling the
+**Our decision**: Next.js SSG to match' speed while enabling the
 config-driven approach needed for 50+ calculators + 5-30 languages.
 
 ### Content Depth Benchmark
 
 - CalculatorCove's Stripe Fee page: 3,500 words, full schema, data tables,
   formula boxes, FAQ with schema, verified badge with source citations.
-- HustleCalcs' average page: 200-300 words, no schema.
+-' average page: 200-300 words, no schema.
 - **Target**: 500-1,000 words minimum per page, matching CalculatorCove's
   pattern but with SaaS metrics content.
 
@@ -81,8 +81,8 @@ config-driven approach needed for 50+ calculators + 5-30 languages.
 - RevenueCat 2026 median freemium conversion across all app categories: 2.1%
 - For calculator tools specifically: expected 1-2% (lower stickiness than
   platforms like Notion or Figma)
-- HustleCalcs uses $9/mo Pro and $19/mo AI tiers
-- **Our pricing**: Start at $7/mo Pro and $15/mo AI (undercut HustleCalcs
+- uses $9/mo Pro and $19/mo AI tiers
+- **Our pricing**: Start at $7/mo Pro and $15/mo AI (undercut
   while our calculator library is smaller), increase to $9-19 as we reach
   40+ calculators
 
@@ -109,7 +109,7 @@ config-driven approach needed for 50+ calculators + 5-30 languages.
 
 ### Blog Content Velocity
 
-Target: 2-3 posts/week from month 1 (competitors have zero blog content —
+Target: 2-3 posts/week from month 1 (competitors have zero blog content  - 
 this is our window). Each post targets a supporting long-tail keyword and
 links to 2-4 related calculator pages.
 
@@ -118,7 +118,7 @@ links to 2-4 related calculator pages.
 - **Launch order**: Spanish, German, Portuguese, French, Japanese
   (based on SaaS market size + OnlineCalcAI's highest-traffic locales)
 - **Timeline**: Start month 3-4 after English suite is stable
-- **Translation approach**: Config-driven — calculator labels and content
+- **Translation approach**: Config-driven  -  calculator labels and content
   blocks are locale files, refreshed via the same config schema
 
 ## 5. Revenue Model

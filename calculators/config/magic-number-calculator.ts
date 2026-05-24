@@ -6,7 +6,7 @@ const config = {
   category: "growth-efficiency",
   meta: {
     title: "Magic Number Calculator",
-    description: "Calculate your SaaS Magic Number to measure sales and marketing efficiency — new ARR divided by prior quarter sales & marketing spend.",
+    description: "Calculate your SaaS Magic Number to measure sales and marketing efficiency  -  new ARR divided by prior quarter sales & marketing spend.",
     keywords: ["magic number", "saas magic number", "sales efficiency", "arr", "growth"],
   },
   inputs: [
@@ -30,17 +30,16 @@ const config = {
     ],
     relatedCalculators: ["cac-calculator", "quick-ratio-calculator", "burn-rate-calculator"],
     faq: [
-      { question: "What is a good magic number for SaaS?", answer: "Above 1.0 is excellent — each S&M dollar generates $1+ of new ARR. 0.7-1.0 is good. 0.5-0.7 is average. Below 0.5 indicates the GTM engine needs significant improvement." },
-      { question: "Why use prior quarter S&M spend?", answer: "Sales and marketing investments take time to convert into revenue. Using prior quarter spend accounts for the sales cycle lag — what you spend this quarter drives next quarter's results." },
+      { question: "What is a good magic number for SaaS?", answer: "Above 1.0 is excellent  -  each S&M dollar generates $1+ of new ARR. 0.7-1.0 is good. 0.5-0.7 is average. Below 0.5 indicates the GTM engine needs significant improvement." },
+      { question: "Why use prior quarter S&M spend?", answer: "Sales and marketing investments take time to convert into revenue. Using prior quarter spend accounts for the sales cycle lag  -  what you spend this quarter drives next quarter's results." },
       { question: "How is magic number different from CAC payback?", answer: "Magic Number measures top-line GTM efficiency (revenue generated per dollar spent). CAC Payback measures unit economics (months to recover acquisition cost). They're complementary metrics." },
       { question: "Should I include expansion revenue in the magic number?", answer: "No. Use only new ARR from new customers. Expansion revenue from existing customers is driven by customer success, not acquisition. Including it inflates the metric." },
       { question: "How does the magic number vary by company stage?", answer: "Early-stage companies often have higher magic numbers (1.5-3.0) as they find efficient channels. As companies scale, the magic number typically decreases due to channel saturation and increased competition." },
       { question: "How do I improve my magic number?", answer: "Increase conversion rates, improve sales productivity, optimize marketing channels, increase average deal size, or shorten sales cycles. Product-led growth can dramatically improve the magic number." },
       { question: "What costs should I include in S&M spend?", answer: "All sales and marketing expenses: salaries, commissions, advertising, content marketing, events, sales tools, and allocated overhead. Include both direct and indirect GTM costs." },
-      { question: "How does pricing affect the magic number?", answer: "Higher pricing directly improves the magic number — the same acquisition spend generates more ARR. This is why upmarket moves often improve magic numbers despite longer sales cycles." },
+      { question: "How does pricing affect the magic number?", answer: "Higher pricing directly improves the magic number  -  the same acquisition spend generates more ARR. This is why upmarket moves often improve magic numbers despite longer sales cycles." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

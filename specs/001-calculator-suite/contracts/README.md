@@ -1,12 +1,12 @@
-# API Contracts: Calculator Suite — WebCalc MVP
+# API Contracts: Calculator Suite  -  WebCalc MVP
 
 ## Overview
 
 The WebCalc platform exposes three interfaces:
 
-1. **Embed Widget** (iframe) — third-party sites embed calculators
-2. **REST API** (v1) — developers access calculator engines programmatically
-3. **Web App** (browser) — end users interact via the web interface
+1. **Embed Widget** (iframe)  -  third-party sites embed calculators
+2. **REST API** (v1)  -  developers access calculator engines programmatically
+3. **Web App** (browser)  -  end users interact via the web interface
 
 This document defines the contracts for the REST API and Embed Widget.
 

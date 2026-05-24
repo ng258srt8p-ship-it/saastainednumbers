@@ -4,6 +4,7 @@
 @theme {
   --font-sans: var(--font-body), system-ui, sans-serif;
   --font-heading: var(--font-heading), system-ui, sans-serif;
+  --font-numbers: var(--font-numbers), cursive, serif;
 
   --color-brand-50: #eaf6f6;
   --color-brand-100: #ccebeb;
@@ -73,4 +74,53 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: 60px;
+    }
+  }
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.2s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.15s ease-out;
+}
+
+/* Hamburger icon lines */
+.hamburger-bar {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center center;
+  transform-box: fill-box;
+}
+
+button[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+button[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+button[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Scroll shadow on nav */
+nav.is-scrolled {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }

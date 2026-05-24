@@ -36,15 +36,14 @@ const config = {
     faq: [
       { question: "What is a good NRR for a SaaS company?", answer: "Above 120% is best-in-class (top quartile of public SaaS companies). 110-120% is good. 100-110% is acceptable but indicates room for improvement in expansion revenue. Below 100% means your customer base is shrinking in value." },
       { question: "How is NRR different from GRR?", answer: "NRR (Net Revenue Retention) includes expansion revenue from upsells and cross-sells. GRR (Gross Revenue Retention) only considers revenue lost to churn and contraction. NRR can exceed 100%, GRR never can." },
-      { question: "How do I improve NRR?", answer: "Invest in customer success, implement usage-based pricing that grows with adoption, build expansion features, reduce churn through better onboarding, and create upsell paths from free to paid tiers." },
+      { question: "How do I improve NRR?", answer: "Invest in customer success, implement usage-based pricing that grows with adoption, build expansion features, reduce churn through better onboarding, and create upsell paths from free to paid tiers. Use [ChurnZero](https://churnzero.com) for customer success automation." },
       { question: "What drives NRR above 120%?", answer: "Companies with NRR above 120% typically have land-and-expand business models, usage-based pricing, or multi-product ecosystems. Examples: Snowflake, Atlassian, Canva." },
-      { question: "Does NRR matter more than new customer acquisition?", answer: "For mature SaaS companies, NRR matters more. Improving NRR from 100% to 110% has the same growth impact as a 10% increase in new customer acquisition — but costs less to achieve." },
-      { question: "How often should I calculate NRR?", answer: "Monthly is standard. Track the trend over 6-12 months to identify whether retention dynamics are improving or degrading." },
-      { question: "What is the difference between NRR and DBNRR?", answer: "NRR and DBNRR (Dollar-Based Net Revenue Retention) are the same metric — both measure revenue retention including expansion. Different sources use different names for the same concept." },
+      { question: "Does NRR matter more than new customer acquisition?", answer: "For mature SaaS companies, NRR matters more. Improving NRR from 100% to 110% has the same growth impact as a 10% increase in new customer acquisition  -  but costs less to achieve." },
+      { question: "How often should I calculate NRR?", answer: "Monthly is standard. Track the trend over 6-12 months to identify whether retention dynamics are improving or degrading. [Baremetrics](https://baremetrics.com) automates NRR tracking." },
+      { question: "What is the difference between NRR and DBNRR?", answer: "NRR and DBNRR (Dollar-Based Net Revenue Retention) are the same metric  -  both measure revenue retention including expansion. Different sources use different names for the same concept." },
       { question: "Can NRR exceed 200%?", answer: "Theoretically yes, but it's extremely rare. NRR above 150% requires aggressive land-and-expand dynamics where customers dramatically increase spend over time." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

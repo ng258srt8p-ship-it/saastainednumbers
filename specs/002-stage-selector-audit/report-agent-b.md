@@ -5,7 +5,7 @@
 **File:** `lib/useCalculatorState.ts:16`
 **Issue:** When no URL search params exist (fresh page load), all input values fall back to `0` instead of the calculator's configured `defaultValue`.
 ```typescript
-result[id] = Number.isFinite(parsed) ? parsed : 0;  // line 16 — should use defaultValue
+result[id] = Number.isFinite(parsed) ? parsed : 0;  // line 16  -  should use defaultValue
 ```
 **Impact:** Every calculator shows zero-derived results on initial page load. The slider UI renders the correct defaultValue initially, but the actual computation still sees 0 until the user moves a slider (triggering URL update → re-render).
 
@@ -16,7 +16,7 @@ result[id] = Number.isFinite(parsed) ? parsed : 0;  // line 16 — should use de
 2. Buttons call `onClick={() => setStage(s)}`
 3. `ResultCard` receives `stage={stage}` and `metricKey={metricKey ?? undefined}` and `rawValue={r.value}`
 4. `ResultCard` calls `getHealthStatus(metricKey, rawValue, stage)` for badge text/color
-5. `ResultCard` calls `getGradientPercent(metricKey, rawValue)` for progress bar width (STAGE IGNORED — hardcoded `"series-a"`)
+5. `ResultCard` calls `getGradientPercent(metricKey, rawValue)` for progress bar width (STAGE IGNORED  -  hardcoded `"series-a"`)
 
 ### Bug: `getGradientPercent` ignores stage (`lib/benchmarks.ts:207`)
 ```typescript
@@ -44,7 +44,7 @@ Progress bar width never changes when stage is switched.
 | 13 | trial-to-paid | trial-to-paid | Yes (seed:10→growth:25) | 75/500=15% | seed/series-a=Healthy, series-b=Watch, series-c/growth=Critical |
 
 ### Calculators WITHOUT metricKey (12 of 25)
-Stage selector renders but does nothing — no health badges exist.
+Stage selector renders but does nothing  -  no health badges exist.
 
 | Calculator | Suggested metricKey | Rationale |
 |-----------|-------------------|-----------|
@@ -64,9 +64,9 @@ Stage selector renders but does nothing — no health badges exist.
 ## Summary of Action Items
 
 ### Agent C (Implementer) must fix:
-1. **`lib/useCalculatorState.ts:16`** — Use config's defaultValue instead of 0
-2. **`lib/benchmarks.ts:207`** — Add `stage` param to `getGradientPercent`
-3. **`calculators/ui/ResultCard.tsx:77`** — Pass `stage` to `getGradientPercent`
+1. **`lib/useCalculatorState.ts:16`**  -  Use config's defaultValue instead of 0
+2. **`lib/benchmarks.ts:207`**  -  Add `stage` param to `getGradientPercent`
+3. **`calculators/ui/ResultCard.tsx:77`**  -  Pass `stage` to `getGradientPercent`
 4. **Add `burn-multiple`** threshold mapping for burn-rate-calculator
 5. **Add `operating-margin`** threshold block for operating-margin-calculator
 6. **Add `lead-conversion`** threshold block for lead-conversion-rate-calculator

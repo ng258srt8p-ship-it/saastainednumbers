@@ -32,17 +32,16 @@ const config = {
     ],
     relatedCalculators: ["mrr-calculator", "ltv-calculator", "arpu-calculator"],
     faq: [
-      { question: "What is a good gross margin for a SaaS company?", answer: "75-85% is excellent, 70-75% is good, 60-70% is acceptable. Below 60% suggests your cost structure needs attention — either pricing is too low or hosting/customer support costs are too high." },
-      { question: "What costs should be included in COGS for SaaS?", answer: "Cloud infrastructure (AWS, GCP, Azure), hosting fees, CDN costs, database licenses, payment processing fees, customer support salaries, and onboarding costs. Exclude R&D, sales & marketing, and G&A." },
+      { question: "What is a good gross margin for a SaaS company?", answer: "75-85% is excellent, 70-75% is good, 60-70% is acceptable. Below 60% suggests your cost structure needs attention  -  either pricing is too low or hosting/customer support costs are too high." },
+      { question: "What costs should be included in COGS for SaaS?", answer: "Cloud infrastructure (AWS, GCP, Azure), hosting fees, CDN costs, database licenses, payment processing fees, customer support salaries, and onboarding costs. Exclude R&D, sales & marketing, and G&A. [ProfitWell](https://www.profitwell.com) helps track COGS and margin trends." },
       { question: "How is gross margin different from net margin?", answer: "Gross margin only subtracts direct costs (COGS). Net margin subtracts all expenses including R&D, sales & marketing, and G&A. Gross margin shows product profitability; net margin shows overall business profitability." },
       { question: "Why do SaaS companies have high gross margins?", answer: "Software has near-zero marginal cost of reproduction. Once built, serving additional customers costs very little (just hosting and support), enabling 70-85% margins that are impossible for physical goods businesses." },
       { question: "How does pricing affect gross margin?", answer: "Higher pricing directly improves gross margin if COGS stays constant. Usage-based pricing can compress margins at scale if infrastructure costs grow proportionally with revenue." },
       { question: "Can gross margin decrease as you scale?", answer: "Yes. Enterprise deals often require more support and onboarding, reducing gross margin. Multi-tenant SaaS typically maintains margins better than single-tenant deployments." },
-      { question: "How should I track gross margin trends?", answer: "Track gross margin monthly and look for trends: declining margins may indicate rising cloud costs or increased support needs. Improving margins suggest economies of scale." },
+      { question: "How should I track gross margin trends?", answer: "Track gross margin monthly and look for trends: declining margins may indicate rising cloud costs or increased support needs. Improving margins suggest economies of scale. Tools like [ChartMogul](https://chartmogul.com) can track this automatically." },
       { question: "What is the difference between gross margin and contribution margin?", answer: "Gross margin subtracts COGS from revenue. Contribution margin subtracts all variable costs including variable sales commissions and variable support costs. Contribution margin is more comprehensive." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

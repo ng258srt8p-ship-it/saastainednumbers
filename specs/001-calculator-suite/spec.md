@@ -1,4 +1,4 @@
-# Feature Specification: Calculator Suite — WebCalc MVP
+# Feature Specification: Calculator Suite  -  WebCalc MVP
 
 **Feature Branch**: `001-calculator-suite`
 **Created**: 2026-05-21
@@ -14,12 +14,12 @@ customer count and average revenue per customer, and receives the calculated
 result instantly without creating an account or signing in.
 
 **Why this priority**: Without instant, account-free calculations, there is no
-product. Every competitor (HustleCalcs, CalculatorCove, OnlineCalcAI) offers
+product. Every competitor (, CalculatorCove, OnlineCalcAI) offers
 this as the default experience. This is the absolute foundation.
 
 **Independent Test**: A first-time visitor can navigate to any calculator page,
 input values into all fields, and see correct calculated results displayed
-immediately — all without creating an account or providing any personal
+immediately  -  all without creating an account or providing any personal
 information.
 
 **Acceptance Scenarios**:
@@ -69,8 +69,8 @@ and renders rich results (schema markup) in search engine result pages.
 ### User Story 3 - Interconnected Dashboard (Priority: P2)
 
 A SaaS founder fills out a single form on the homepage with their business
-metrics and instantly sees results across 12+ related calculators — MRR,
-ARPU, LTV, CAC, churn rate, payback period, gross margin, and more — all
+metrics and instantly sees results across 12+ related calculators  -  MRR,
+ARPU, LTV, CAC, churn rate, payback period, gross margin, and more  -  all
 in one unified view.
 
 **Why this priority**: The interconnected dashboard is the best UX pattern
@@ -142,7 +142,7 @@ will pay for enhanced features.
 
 **Independent Test**: A user can create an account, use calculators,
 save calculations to their history, export a calculation as PDF, and
-upgrade to a paid plan — all without any prior account or payment.
+upgrade to a paid plan  -  all without any prior account or payment.
 
 **Acceptance Scenarios**:
 
@@ -174,7 +174,7 @@ first. P4 because it is an expansion, not a foundation.
 
 **Independent Test**: A user who selects Spanish as their language can
 navigate the site, use any calculator, read all supporting content, and
-share results — all entirely in Spanish.
+share results  -  all entirely in Spanish.
 
 **Acceptance Scenarios**:
 
@@ -224,12 +224,12 @@ as structured data.
 
 - **Invalid inputs**: User enters negative numbers, non-numeric characters,
   or zero values where division by zero would occur. Calculator shows
-  clear, actionable error messages — not raw error codes or blank results.
+  clear, actionable error messages  -  not raw error codes or blank results.
 - **Extreme values**: User enters extremely large numbers (billions) or
   extremely small (fractions of a cent). Calculator handles gracefully with
   appropriate formatting (scientific notation or rounded output).
 - **Ad blockers active**: User has an ad blocker running. Calculators must
-  still function fully — ad content is blocked gracefully without breaking
+  still function fully  -  ad content is blocked gracefully without breaking
   the calculator experience.
 - **Offline/disconnected**: If network connection drops while using the
   calculator, the tool should continue working for the current session
@@ -342,7 +342,7 @@ as structured data.
 ### Measurable Outcomes
 
 - **SC-001**: A first-time visitor can navigate to any calculator page and
-  receive accurate calculation results in under 2 seconds — without
+  receive accurate calculation results in under 2 seconds  -  without
   creating an account.
 - **SC-002**: At least 20 unique, fully functional calculator types are
   available at launch, distributed across at least 4 business categories.
@@ -364,13 +364,13 @@ as structured data.
   document containing inputs, formulas, and results.
 - **SC-009**: The homepage dashboard displays results from at least 5
   different calculator types from a single form submission.
-- **SC-010**: All user-facing text — calculator labels, navigation,
-  content, FAQs, error messages — is available in at least 5 languages,
+- **SC-010**: All user-facing text  -  calculator labels, navigation,
+  content, FAQs, error messages  -  is available in at least 5 languages,
   and language selection persists across sessions.
 - **SC-011**: A developer with a valid API key can retrieve calculation
   results for any calculator via REST in under 500ms per request.
 - **SC-012**: Invalid inputs (e.g., negative revenue, empty fields) result
-  in clear, human-readable error messages — not system errors or blank
+  in clear, human-readable error messages  -  not system errors or blank
   screens.
 
 ## Assumptions
@@ -386,16 +386,16 @@ as structured data.
   calculator experience must never depend on ad delivery. Ads are served
   alongside, not as part of, the core functionality.
 - **Third-party sites embedding calculators will accept iframe embeds**:
-  No server-side SDK or npm package is provided at launch — distribution
+  No server-side SDK or npm package is provided at launch  -  distribution
   starts with simple iframe embeds.
 - **Users have stable internet connectivity during initial page load**:
   Calculator pages are pre-built static HTML served via CDN. Once loaded,
   the calculator works without further network requests.
 - **Pro subscription pricing starts at $7-15/month** (escalating to $9-19
   as the calculator library grows beyond 40 tools). This undercuts
-  HustleCalcs' $9-19 for a smaller initial calculator set.
+ ' $9-19 for a smaller initial calculator set.
 - **Dashboards and embeds do not replace dedicated calculator pages**:
-  The interconnected dashboard is additive — every calculator also has its
+  The interconnected dashboard is additive  -  every calculator also has its
   own dedicated page with full content and SEO treatment.
 - **Multi-language starts with 5 languages**: Spanish, German, Portuguese,
   French, and Japanese (based on OnlineCalcAI's highest-traffic locales and

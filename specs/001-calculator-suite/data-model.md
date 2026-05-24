@@ -1,4 +1,4 @@
-# Data Model: Calculator Suite — WebCalc MVP
+# Data Model: Calculator Suite  -  WebCalc MVP
 
 ## Overview
 
@@ -175,7 +175,7 @@ Defines translations for all user-facing text in a given language.
 | isRTL | boolean | yes | Right-to-left layout flag |
 
 ### Supported Languages (MVP)
-- English (en) — source language
+- English (en)  -  source language
 - Spanish (es)
 - German (de)
 - Portuguese (pt-BR)

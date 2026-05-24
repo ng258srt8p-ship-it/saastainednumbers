@@ -32,9 +32,9 @@ export function generateBreadcrumbListSchema(category: string, slug: string) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://webcalc.io" },
-      { "@type": "ListItem", position: 2, name: category, item: `https://webcalc.io/${category}` },
-      { "@type": "ListItem", position: 3, name: slug, item: `https://webcalc.io/${category}/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://saastainednumbers.com" },
+      { "@type": "ListItem", position: 2, name: category, item: `https://saastainednumbers.com/${category}` },
+      { "@type": "ListItem", position: 3, name: slug, item: `https://saastainednumbers.com/${category}/${slug}` },
     ],
   };
 }

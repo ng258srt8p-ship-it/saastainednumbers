@@ -17,10 +17,10 @@ const config = {
   ],
   outputs: [
     { id: "healthScore", label: "Health Score", type: "number" as const, isPrimary: true, suffix: "/100" },
-    { id: "healthCategory", label: "Health Category", type: "number" as const, isPrimary: false },
+    { id: "healthCategory", label: "Health Category", type: "text" as const, isPrimary: false },
   ],
   content: {
-    intro: "Customer Health Score is a composite metric that predicts the likelihood of customer retention or churn. By combining NPS (customer sentiment), product adoption (usage depth), support experience (ticket volume), and engagement (login frequency), you get a single score that reveals which customers need attention. Proactive customer success teams use health scores to intervene before customers churn. This calculator helps you score individual customers or segments and take action based on their health category — from At Risk to Champion.",
+    intro: "Customer Health Score is a composite metric that predicts the likelihood of customer retention or churn. By combining NPS (customer sentiment), product adoption (usage depth), support experience (ticket volume), and engagement (login frequency), you get a single score that reveals which customers need attention. Proactive customer success teams use health scores to intervene before customers churn. This calculator helps you score individual customers or segments and take action based on their health category  -  from At Risk to Champion.",
     howToUse: "Enter the customer's NPS score, product usage score (0-100), support tickets in the last 30 days, and days since last login. The calculator will compute a composite health score (0-100) and category. Use the category to prioritize customer success interventions.",
     formulaExplanation: "Health Score = (Normalized NPS × 0.25) + (Usage Score × 0.35) + (Support Score × 0.20) + (Engagement Score × 0.20). Normalized NPS = (NPS + 100) ÷ 2. Support Score = max(0, 100 - tickets × 10). Engagement Score = max(0, 100 - daysSinceLogin × 2). Score > 80: Champion, 60-80: Healthy, 40-60: Needs Attention, < 40: At Risk",
     benchmarks: "Best-in-class SaaS companies maintain average customer health scores above 70. Companies with proactive customer success programs see 20-40% reduction in churn. According to Gainsight and Totango, customers with health scores below 50 have a 60%+ probability of churning within 90 days. Customers with scores above 80 have less than 5% churn probability.",
@@ -43,7 +43,6 @@ const config = {
       { question: "How do I build an automated health scoring system?", answer: "Start with this calculator's formula, then refine weights based on your data. Integrate with your CRM and product analytics to update scores automatically." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

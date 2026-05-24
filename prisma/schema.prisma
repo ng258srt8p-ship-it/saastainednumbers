@@ -11,9 +11,7 @@ model UserAccount {
   id               String   @id @default(cuid())
   email            String   @unique
   displayName      String?
-  subscriptionTier String   @default("free")
-  subscriptionId   String?
-  stripeCustomerId String?
+
   locale           String   @default("en")
   apiKey           String?
   createdAt        DateTime @default(now())

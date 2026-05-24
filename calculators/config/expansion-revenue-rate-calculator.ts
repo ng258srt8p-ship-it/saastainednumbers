@@ -17,7 +17,7 @@ const config = {
     { id: "expansionRevenueRate", label: "Expansion Revenue Rate", type: "percentage" as const, isPrimary: true },
   ],
   content: {
-    intro: "Expansion Revenue Rate measures the percentage of revenue growth driven by existing customers through upsells, cross-sells, and plan upgrades. It is the most important sign of product-market fit because it shows that customers find increasing value in your product over time. High expansion rates compound growth — companies with 120%+ NRR grow without acquiring a single new customer. This metric is particularly important for investors evaluating SaaS companies because expansion revenue is higher-margin and more predictable than new business. This calculator helps you track how effectively you're growing your existing customer base.",
+    intro: "Expansion Revenue Rate measures the percentage of revenue growth driven by existing customers through upsells, cross-sells, and plan upgrades. It is the most important sign of product-market fit because it shows that customers find increasing value in your product over time. High expansion rates compound growth  -  companies with 120%+ NRR grow without acquiring a single new customer. This metric is particularly important for investors evaluating SaaS companies because expansion revenue is higher-margin and more predictable than new business. This calculator helps you track how effectively you're growing your existing customer base.",
     howToUse: "Enter your beginning MRR at the start of the period and the expansion MRR generated during that period from existing customers. The calculator will show your expansion revenue rate as a percentage. Track this monthly alongside churn rate to understand net revenue retention.",
     formulaExplanation: "Expansion Revenue Rate = (Expansion MRR ÷ Beginning MRR) × 100. For example: $15K expansion MRR on $100K beginning MRR = 15% expansion revenue rate. This means existing customers grew their spending by 15% during the period through upgrades and cross-sells.",
     benchmarks: "According to KeyBanc 2025 SaaS Survey, median expansion revenue rate for public SaaS companies is 12-15% annually. Top-quartile companies achieve 20-30%+ expansion. Usage-based pricing models typically see higher expansion rates (20-40%) than flat-fee subscriptions (5-15%).",
@@ -30,7 +30,7 @@ const config = {
     relatedCalculators: ["nrr-calculator", "mrr-calculator", "mrr-growth-rate-calculator"],
     faq: [
       { question: "What is a good expansion revenue rate?", answer: "Above 20% annually is excellent. 12-15% is median. Below 5% suggests limited upsell opportunities or product limitations." },
-      { question: "How is expansion revenue rate different from NRR?", answer: "NRR includes both expansion revenue and churn/contraction. Expansion revenue rate only measures the positive side — growth from existing customers." },
+      { question: "How is expansion revenue rate different from NRR?", answer: "NRR includes both expansion revenue and churn/contraction. Expansion revenue rate only measures the positive side  -  growth from existing customers." },
       { question: "What drives high expansion revenue?", answer: "Usage-based pricing (customers spend more as they grow), multi-product strategy (cross-sell adjacent products), and tiered plans with natural upgrade paths." },
       { question: "How do I increase expansion revenue?", answer: "Build usage-based pricing components, create clear upgrade paths between tiers, develop adjacent product features, implement a customer success team focused on growth, and identify power users for upsell." },
       { question: "How often should I track expansion revenue rate?", answer: "Monthly. Track alongside logo expansion rate (percentage of customers who expanded) for a complete picture of expansion effectiveness." },
@@ -39,7 +39,6 @@ const config = {
       { question: "How does product-led growth affect expansion?", answer: "PLG companies with usage-based pricing naturally drive expansion as customers grow. This creates a powerful flywheel: more usage → more value → more spend → more product investment." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

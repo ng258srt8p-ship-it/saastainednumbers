@@ -6,7 +6,7 @@ const config = {
   category: "growth-efficiency",
   meta: {
     title: "Net Promoter Score (NPS) Calculator",
-    description: "Calculate your Net Promoter Score from survey responses — measure customer loyalty and predict growth.",
+    description: "Calculate your Net Promoter Score from survey responses  -  measure customer loyalty and predict growth.",
     keywords: ["nps", "net promoter score", "customer satisfaction", "loyalty", "survey"],
   },
   inputs: [
@@ -20,7 +20,7 @@ const config = {
     { id: "promoterPct", label: "Promoter %", type: "percentage" as const, isPrimary: false },
   ],
   content: {
-    intro: "Net Promoter Score (NPS) is the gold standard for measuring customer loyalty and predicting business growth. Based on a single question — 'How likely are you to recommend us to a friend?' — NPS categorizes respondents into Promoters (9-10), Passives (7-8), and Detractors (0-6). The score ranges from -100 to +100. Companies with high NPS grow faster because Promoters drive word-of-mouth referrals and have lower churn. This calculator helps you compute your NPS from survey raw data and understand your customer loyalty profile.",
+    intro: "Net Promoter Score (NPS) is the gold standard for measuring customer loyalty and predicting business growth. Based on a single question  -  'How likely are you to recommend us to a friend?'  -  NPS categorizes respondents into Promoters (9-10), Passives (7-8), and Detractors (0-6). The score ranges from -100 to +100. Companies with high NPS grow faster because Promoters drive word-of-mouth referrals and have lower churn. This calculator helps you compute your NPS from survey raw data and understand your customer loyalty profile.",
     howToUse: "Enter the number of Promoters (scores 9-10), Passives (scores 7-8), and Detractors (scores 0-6) from your latest NPS survey. The calculator will compute your overall NPS, total responses, and the percentage breakdown of each category.",
     formulaExplanation: "NPS = (Promoters ÷ Total Responses × 100) - (Detractors ÷ Total Responses × 100). Example: 200 Promoters, 150 Passives, 50 Detractors. Total = 400. Promoter % = 50%. Detractor % = 12.5%. NPS = 50% - 12.5% = 37.5",
     benchmarks: "According to Satmetrix and Bain & Company benchmarks, average B2B SaaS NPS is 30-40. Top-quartile SaaS companies achieve NPS of 60+. World-class NPS is 70+. Companies with NPS above 50 typically have strong organic growth through referrals. NPS below 0 indicates significant customer dissatisfaction. Industry leaders like Apple and Amazon consistently score 60-80.",
@@ -43,7 +43,6 @@ const config = {
       { question: "Can NPS be manipulated?", answer: "Yes. Survey timing, question phrasing, and incentive structure can bias results. Use consistent methodology and benchmark against industry standards for accuracy." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

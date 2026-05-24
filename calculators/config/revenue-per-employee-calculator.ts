@@ -31,7 +31,7 @@ const config = {
     relatedCalculators: ["mrr-calculator", "gross-margin-calculator", "operating-margin-calculator"],
     faq: [
       { question: "What is a good revenue per employee for SaaS?", answer: "Median public SaaS is $350K/year. Above $500K is best-in-class. Early-stage companies may be $50-150K. Compare against companies at similar stage and business model." },
-      { question: "How do I improve revenue per employee?", answer: "Increase revenue without proportional headcount growth — improve pricing, automate operations, use product-led growth, eliminate low-value activities, and invest in scalable systems." },
+      { question: "How do I improve revenue per employee?", answer: "Increase revenue without proportional headcount growth  -  improve pricing, automate operations, use product-led growth, eliminate low-value activities, and invest in scalable systems." },
       { question: "Does revenue per employee include contractors?", answer: "Include full-time equivalent (FTE) headcount for both employees and long-term contractors. Exclude short-term contractors and agencies for accurate comparison." },
       { question: "How does business model affect revenue per employee?", answer: "PLG companies (self-serve) have higher revenue per employee because they need fewer salespeople per dollar of revenue. Enterprise sales companies need more people per dollar." },
       { question: "Is this metric used for valuation?", answer: "Yes. Public SaaS companies with higher revenue per employee often trade at higher multiples. It signals operational efficiency and scalability to investors." },
@@ -40,7 +40,6 @@ const config = {
       { question: "What is a low revenue per employee warning sign?", answer: "Revenue per employee below $100K for a mature SaaS company suggests operational inefficiency, over-hiring, or a business model that doesn't scale (e.g., heavy services component)." },
     ],
   },
-  premium: true,
 } satisfies CalculatorConfig;
 
 registerCalculator(config);
