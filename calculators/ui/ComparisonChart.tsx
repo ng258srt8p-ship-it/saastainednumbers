@@ -25,10 +25,10 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
   if (!active || !payload || payload.length === 0) return null;
   const itemType = (payload[0]?.payload as Record<string, string>)?._type ?? "number";
   return (
-    <div className="rounded-lg border border-gray-700 bg-gray-900 px-3 py-2 text-xs shadow-lg">
-      <p className="font-medium text-gray-200 mb-1">{label}</p>
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-xs shadow-lg">
+      <p className="font-medium text-gray-800 dark:text-gray-200 mb-1">{label}</p>
       {payload.map((entry, i) => (
-        <p key={i} className="text-gray-400">
+        <p key={i} className="text-gray-600 dark:text-gray-400">
           <span className="font-medium" style={{ color: entry.dataKey === "Scenario A" ? "#008387" : "#143562" }}>{entry.name as string}:</span> {formatVal(entry.value as number, itemType)}
         </p>
       ))}
@@ -47,15 +47,15 @@ export function ComparisonChart({ data }: ComparisonChartProps) {
   }));
 
   return (
-    <div className="rounded-xl border border-gray-700 bg-gray-900 p-4">
-      <h3 className="mb-4 text-sm font-semibold text-gray-200">Scenario Comparison</h3>
+    <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+      <h3 className="mb-4 text-sm font-semibold text-gray-800 dark:text-gray-200">Scenario Comparison</h3>
       <ResponsiveContainer width="100%" height={Math.max(200, data.length * 60)}>
         <BarChart data={chartData} layout="vertical" margin={{ top: 4, right: 16, bottom: 4, left: 8 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-          <XAxis type="number" stroke="#9CA3AF" tick={{ fontSize: 11 }} />
-          <YAxis type="category" dataKey="name" stroke="#9CA3AF" tick={{ fontSize: 11 }} width={120} />
+          <CartesianGrid strokeDasharray="3 3" stroke="currentColor" className="stroke-gray-200 dark:stroke-gray-700" />
+          <XAxis type="number" stroke="currentColor" className="text-gray-500 dark:text-gray-400" tick={{ fontSize: 11 }} />
+          <YAxis type="category" dataKey="name" stroke="currentColor" className="text-gray-500 dark:text-gray-400" tick={{ fontSize: 11 }} width={120} />
           <Tooltip content={<CustomTooltip />} />
-          <Legend wrapperStyle={{ fontSize: 11, color: "#D1D5DB" }} />
+          <Legend wrapperStyle={{ fontSize: 11 }} />
           <Bar dataKey="Scenario A" fill="#008387" radius={[0, 4, 4, 0]} />
           <Bar dataKey="Scenario B" fill="#143562" radius={[0, 4, 4, 0]} />
         </BarChart>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { getAllCalculators, getAllKnownCategories, CATEGORY_META } from "@/lib/registry";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
-import { AdSlot } from "@/components/AdSlot";
 import { NewsletterForm } from "@/components/NewsletterForm";
 
 import "@/calculators/config/_all";
@@ -90,9 +89,6 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-4 py-8">
-        <AdSlot placement="below-results" />
-      </div>
 
       {/* § 01 · POPULAR */}
       <section className="px-4 py-20">

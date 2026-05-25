@@ -11,7 +11,7 @@ export function renderContent(text: string): ReactNode {
           href={match[2]}
           target="_blank"
           rel="noopener noreferrer sponsored"
-          className="text-brand-400 hover:text-brand-300 underline"
+          className="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 underline"
         >
           {match[1]}
         </a>

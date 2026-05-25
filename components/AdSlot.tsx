@@ -52,8 +52,8 @@ export function AdSlot({ placement, slug }: AdSlotProps) {
     <div
       className={
         isSticky
-          ? "fixed bottom-0 left-0 right-0 z-50 border-t border-gray-700 bg-gray-900/95 backdrop-blur md:static md:z-auto md:border-0 md:bg-transparent"
-          : "rounded-xl border border-gray-700 bg-gray-800/30 p-3"
+          ? "fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur md:static md:z-auto md:border-0 md:bg-transparent"
+          : "rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/30 p-3"
       }
       style={{ minHeight: dims.minHeight }}
       role="complementary"
@@ -74,7 +74,7 @@ export function AdSlot({ placement, slug }: AdSlotProps) {
             type="button"
             onClick={handleDismiss}
             aria-label="Close ad"
-            className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gray-700/80 text-gray-300 text-xs hover:bg-gray-600 transition-colors"
+            className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700/80 text-gray-600 dark:text-gray-300 text-xs hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
           >
             ×
           </button>

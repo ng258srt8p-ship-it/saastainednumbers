@@ -1,5 +1,4 @@
 import { getAllPosts } from "@/lib/blog";
-import { AdSlot } from "@/components/AdSlot";
 import Link from "next/link";
 
 export default function BlogPage() {
@@ -17,7 +16,7 @@ export default function BlogPage() {
       </div>
 
       <div className="my-8">
-        <AdSlot placement="below-results" />
+
       </div>
 
       {featured && (

@@ -37,7 +37,7 @@ export function ShareButton({ inputs, category, slug }: ShareButtonProps) {
     <button
       type="button"
       onClick={handleCopy}
-      className="rounded-lg border border-gray-700 px-3 py-1.5 text-xs font-medium text-gray-400 hover:bg-gray-700/30 transition-colors"
+      className="rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 transition-colors"
     >
       {copied ? "Copied!" : "Share"}
     </button>

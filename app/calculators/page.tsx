@@ -1,7 +1,6 @@
 import { getAllCalculators, getAllKnownCategories, CATEGORY_META, getCalculatorsByCategory } from "@/lib/registry";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
-import { AdSlot } from "@/components/AdSlot";
 import Link from "next/link";
 
 import "@/calculators/config/_all";
@@ -33,9 +32,6 @@ export default function CalculatorsPage() {
         />
       </div>
 
-      <div className="my-8">
-        <AdSlot placement="below-results" />
-      </div>
 
       <div className="space-y-12">
         {categories.map((cat) => {

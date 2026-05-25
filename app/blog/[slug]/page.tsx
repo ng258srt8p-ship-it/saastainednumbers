@@ -1,5 +1,4 @@
 import { getAllPosts } from "@/lib/blog";
-import { AdSlot } from "@/components/AdSlot";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -64,7 +63,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
           <div className="mt-8">
-            <AdSlot placement="below-results" />
+
           </div>
         </article>
       </div>

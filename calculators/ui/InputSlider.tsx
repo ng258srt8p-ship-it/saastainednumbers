@@ -44,12 +44,12 @@ export function InputSlider({
 
   return (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="block text-sm font-medium text-gray-300">
+      <label htmlFor={id} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
         {label}
       </label>
       <div className="relative">
         {prefix && (
-          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">
             {prefix}
           </span>
         )}
@@ -61,19 +61,19 @@ export function InputSlider({
           min={min ?? 0}
           max={max}
           placeholder={placeholder}
-          className={`w-full rounded-xl border px-3 py-3 text-sm text-gray-100 placeholder:text-gray-500 bg-gray-800/50 transition-shadow focus:outline-none focus:ring-2 ${
+          className={`w-full rounded-xl border px-3 py-3 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-500 bg-white dark:bg-gray-800/50 transition-shadow focus:outline-none focus:ring-2 ${
             error
               ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
-              : "border-gray-700 focus:border-brand-500 focus:ring-brand-500/20"
+              : "border-gray-200 dark:border-gray-700 focus:border-brand-500 focus:ring-brand-500/20"
           } ${prefix ? "pl-7" : ""} ${suffix ? "pr-7" : ""}`}
         />
         {suffix && (
-          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">
             {suffix}
           </span>
         )}
       </div>
-      {error && <p className="text-xs text-red-400">{error}</p>}
+      {error && <p className="text-xs text-red-500 dark:text-red-400">{error}</p>}
       <input
         type="range"
         min={min ?? 0}
@@ -84,7 +84,7 @@ export function InputSlider({
           setLocalValue(String(v));
           onChange(v);
         }}
-        className="mt-1 h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-700 accent-brand-500"
+        className="mt-1 h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 dark:bg-gray-700 accent-brand-500"
         aria-hidden
         tabIndex={-1}
       />

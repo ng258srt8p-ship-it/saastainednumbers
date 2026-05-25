@@ -32,7 +32,7 @@ export function DeltaBadge({ valueA, valueB, type, mode }: DeltaBadgeProps) {
 
   const arrow = isNeutral ? "" : isPositive ? "▲" : "▼";
   const colorClass = isNeutral
-    ? "text-gray-400 border-gray-300"
+    ? "text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600"
     : isPositive
       ? "text-green-600 border-green-200 bg-green-50"
       : "text-red-600 border-red-200 bg-red-50";

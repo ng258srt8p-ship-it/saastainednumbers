@@ -107,7 +107,7 @@ export default async function CalculatorPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([webApp, howTo, ...(faq ? [faq] : [])]) }}
       />
       <CalculatorClient config={config} relatedCalculators={related} />
-      <AdSlot placement="below-results" slug={slug} />
+
       <AdSlot placement="sticky-footer" slug={slug} />
     </>
   );

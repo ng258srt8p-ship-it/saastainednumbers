@@ -9,8 +9,10 @@
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --border: #e5e7eb;
-  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-bg: #ffffff;
   --footer-bg: #f9fafb;
+  --page-bg: #ffffff;
+  --card-bg: #f9fafb;
 }
 
 .dark {
@@ -19,8 +21,10 @@
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --border: #334155;
-  --nav-bg: rgba(15, 23, 42, 0.8);
+  --nav-bg: #111827;
   --footer-bg: #1e293b;
+  --page-bg: #0B0F1A;
+  --card-bg: #1A2035;
 }
 
 @theme {
@@ -42,8 +46,8 @@
 
   --color-brand-gradient: linear-gradient(135deg, #008387, #143562);
 
-  --color-page-bg: #0B0F1A;
-  --color-card-bg: #1A2035;
+  --color-page-bg: var(--page-bg);
+  --color-card-bg: var(--card-bg);
 
   --color-secondary-50: #f4fafb;
   --color-secondary-100: #dff0f2;
