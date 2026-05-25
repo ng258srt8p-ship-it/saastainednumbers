@@ -9,7 +9,7 @@ export interface CalculatorConfig {
   inputs: CalculatorInput[];
   outputs: CalculatorOutput[];
   content: CalculatorContent;
-  verified?: VerifiedBadge;
+
   benchmarkMetric?: string;
 }
 
@@ -51,12 +51,6 @@ export interface BenchmarkRow {
 export interface FAQItem {
   question: string;
   answer: string;
-}
-
-export interface VerifiedBadge {
-  source: string;
-  sourceUrl: string;
-  date: string;
 }
 
 export interface ChartConfig {

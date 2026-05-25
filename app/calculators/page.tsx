@@ -2,6 +2,7 @@ import { getAllCalculators, getAllKnownCategories, CATEGORY_META, getCalculators
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import Link from "next/link";
+import Script from "next/script";
 
 import "@/calculators/config/_all";
 
@@ -15,6 +16,13 @@ export default function CalculatorsPage() {
   const categories = getAllKnownCategories();
 
   return (
+    <>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4115230840067798"
+        crossOrigin="anonymous"
+        strategy="beforeInteractive"
+      />
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="font-heading text-3xl font-bold mb-2">All Calculators</h1>
       <p className="text-gray-600 mb-6">
@@ -69,5 +77,6 @@ export default function CalculatorsPage() {
         })}
       </div>
     </div>
+    </>
   );
 }

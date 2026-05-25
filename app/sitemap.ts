@@ -42,9 +42,6 @@ export default async function sitemap() {
     { url: "https://saastainednumbers.com/", lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1.0 },
     { url: "https://saastainednumbers.com/dashboard", lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 },
     { url: "https://saastainednumbers.com/blog", lastModified: new Date(), changeFrequency: "daily" as const, priority: 0.6 },
-    { url: "https://saastainednumbers.com/prelaunch", lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.3 },
-    { url: "https://saastainednumbers.com/request-calculator", lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
-
     { url: "https://saastainednumbers.com/pricing", lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
     { url: "https://saastainednumbers.com/calculators", lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
   ];

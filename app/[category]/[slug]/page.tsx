@@ -2,9 +2,9 @@ import { getAllCalculators } from "@/lib/registry";
 import { getRelatedCalculators } from "@/lib/related-calculators";
 import { generateMetadata as seoMetadata } from "@/lib/seo";
 import { CalculatorClient } from "./CalculatorClient";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import Link from "next/link";
+import Script from "next/script";
 
 // Import all calculator configs to register them in the registry
 import "@/calculators/config/_all";
@@ -97,18 +97,24 @@ export default async function CalculatorPage({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumb items={[
-        { label: "Home", href: "/" },
-        { label: categoryName, href: `/${config.category}` },
-        { label: config.meta.title, href: `/${config.category}/${config.slug}` },
-      ]} />
+      <div className="mx-auto max-w-6xl px-4">
+        <Breadcrumb items={[
+          { label: "Home", href: "/" },
+          { label: categoryName, href: `/${config.category}` },
+          { label: config.meta.title, href: `/${config.category}/${config.slug}` },
+        ]} />
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([webApp, howTo, ...(faq ? [faq] : [])]) }}
       />
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4115230840067798"
+        crossOrigin="anonymous"
+        strategy="beforeInteractive"
+      />
       <CalculatorClient config={config} relatedCalculators={related} />
-
-      <AdSlot placement="sticky-footer" slug={slug} />
     </>
   );
 }

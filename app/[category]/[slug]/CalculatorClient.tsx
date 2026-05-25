@@ -11,13 +11,13 @@ import { useComparisonState } from "@/lib/useComparisonState";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { EmbedModal } from "@/calculators/ui/EmbedModal";
 import { FeedbackWidget } from "@/calculators/ui/FeedbackWidget";
-import { VerifiedBadge } from "@/calculators/ui/VerifiedBadge";
 import { renderContent } from "@/lib/renderContent";
 import { analytics } from "@/lib/posthog";
 import { getMetricKey } from "@/lib/benchmarks";
 import type { Stage } from "@/lib/benchmarks";
 import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
+import { Insights } from "@/components/Insights";
 
 interface RelatedCalc {
   slug: string;
@@ -72,6 +72,15 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       isPrimary: output.isPrimary,
     }));
   }, [valuesB, config]);
+
+  const aiInputs = config.inputs.map((i) => ({
+    id: i.id,
+    label: i.label,
+    value: valuesA[i.id] ?? 0,
+    type: i.type,
+  }));
+
+  const aiOutputs = resultsA;
 
   const primaryValue = Number(resultsA.find((r) => r.isPrimary)?.value ?? 0);
   useEffect(() => {
@@ -153,15 +162,6 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       title={config.meta.title}
       description={config.meta.description}
       stageSelector={stageSelector}
-      verifiedBadge={
-        config.verified ? (
-          <VerifiedBadge
-            source={config.verified.source}
-            sourceUrl={config.verified.sourceUrl}
-            date={config.verified.date}
-          />
-        ) : undefined
-      }
       feedbackWidget={<FeedbackWidget slug={config.slug} />}
       contentSection={
         <div className="space-y-8">
@@ -339,6 +339,13 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             </svg>
             Add Scenario B to compare
           </button>
+          <Insights
+            title={config.meta.title}
+            description={config.meta.description}
+            category={config.category}
+            inputs={aiInputs}
+            outputs={aiOutputs}
+          />
         </div>
       )}
 
@@ -401,7 +408,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         </div>
       )}
 
-      <p className="text-xs text-gray-600 dark:text-gray-400 text-center px-4">
+      <p className="mt-8 text-xs text-gray-600 dark:text-gray-400 text-center px-4">
         Disclaimer: Results are for informational purposes only and should not be considered financial advice.
         SaaStainedNumbers is not responsible for any decisions made based on these calculations.
       </p>

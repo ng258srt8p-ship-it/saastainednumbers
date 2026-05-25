@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getAllCalculators, getAllKnownCategories, CATEGORY_META } from "@/lib/registry";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
-import { NewsletterForm } from "@/components/NewsletterForm";
+
 
 import "@/calculators/config/_all";
 
@@ -230,22 +230,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* § 05 · NEWSLETTER */}
-      <section className="px-4 py-20 bg-gray-50">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="font-heading text-3xl font-bold text-gray-900">
-            Stay up to date
-          </h2>
-          <p className="mt-3 text-gray-500">
-            Get the latest SaaS benchmarks, calculator updates, and growth tips delivered to your inbox.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <div className="w-full max-w-sm">
-              <NewsletterForm />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* § 06 · CTA */}
       <section className="bg-gradient-to-r from-brand-900 to-brand-800 px-4 py-20">
@@ -264,12 +248,7 @@ export default function Home() {
             >
               Browse Calculators
             </Link>
-            <Link
-              href="/request-calculator"
-              className="rounded-xl border border-white/30 px-8 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10"
-            >
-              Request a Calculator
-            </Link>
+
           </div>
         </div>
       </section>

@@ -1,26 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import posthog from "posthog-js";
 
 type PostHogEvent = "pageview" | "calculate" | "compare" | "feedback" | "signup" | "upgrade";
 
 function capture(event: PostHogEvent, properties?: Record<string, unknown>) {
   try {
-    fetch("/api/analytics/capture", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ event, properties, timestamp: new Date().toISOString() }),
-      keepalive: true,
-    });
+    posthog.capture(event, properties);
   } catch {
     /* analytics silently fail */
   }
-}
-
-export function usePageview() {
-  useEffect(() => {
-    capture("pageview", { url: window.location.href, referrer: document.referrer });
-  }, []);
 }
 
 export const analytics = {

@@ -9,11 +9,6 @@ const config = {
     description: "Calculate your path to Financial Independence, Retire Early (FIRE) based on savings, contributions, and investment returns.",
     keywords: ["fire", "financial independence", "retire early", "fire number", "coast fire", "retirement planning"],
   },
-  verified: {
-    source: "Trinity Study / r/financialindependence / Federal Reserve 2025",
-    sourceUrl: "https://www.bogleheads.org/wiki/Trinity_study_update",
-    date: "2025",
-  },
   inputs: [
     { id: "currentSavings", label: "Current Savings ($)", type: "currency" as const, defaultValue: 50000, min: 0 },
     { id: "monthlyContribution", label: "Monthly Contribution ($)", type: "currency" as const, defaultValue: 2000, min: 0 },

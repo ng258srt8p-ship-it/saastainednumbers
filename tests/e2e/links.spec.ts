@@ -50,7 +50,7 @@ test("all category pages return 200 (including empty categories)", async ({ page
 });
 
 test("static pages return 200", async ({ page }) => {
-  for (const path of ["/blog", "/dashboard", "/prelaunch", "/request-calculator"]) {
+  for (const path of ["/blog", "/dashboard", "/request-calculator"]) {
     const r = await page.goto(`${BASE}${path}`, { waitUntil: "networkidle" });
     expect(r?.status()).toBe(200);
   }

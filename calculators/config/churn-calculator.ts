@@ -10,11 +10,6 @@ const config = {
     keywords: ["churn", "churn rate", "customer retention", "saas metrics", "monthly churn", "annual churn"],
   },
   benchmarkMetric: "churn-rate",
-  verified: {
-    source: "Recurly Research 2025 / KeyBanc SaaS Survey",
-    sourceUrl: "https://recurly.com/research/",
-    date: "2025",
-  },
   inputs: [
     { id: "customersStart", label: "Customers at Period Start", type: "number" as const, defaultValue: 1000 },
     { id: "customersEnd", label: "Customers at Period End", type: "number" as const, defaultValue: 950 },
@@ -48,8 +43,8 @@ const config = {
       { question: "What causes involuntary churn?", answer: "Failed payments are the primary cause of involuntary churn. Implement dunning (automatic retry), email reminders before card expiry, and multiple payment methods to reduce it." },
       { question: "How does churn rate affect company valuation?", answer: "Dramatically. Lower churn means higher LTV, more predictable revenue, and lower replacement costs. Investors heavily weight churn rate when valuing SaaS companies. A company with 5% monthly churn needs to replace half its customer base every year, severely limiting growth potential and commanding a lower revenue multiple." },
       { question: "What industries have the lowest churn rates?", answer: "Enterprise SaaS and B2B companies with long-term contracts typically have the lowest churn rates (1-2% monthly). Subscription boxes and consumer apps tend to have higher churn (5-10% monthly). Fintech and healthcare SaaS products often see under 3% monthly churn due to high switching costs and integration depth." },
-      { question: "Can churn rate be negative?", answer: "No, churn rate cannot technically be negative — it represents customers lost. However, if you gained more customers than you lost, your net growth is positive. What some call 'negative churn' actually refers to net negative revenue churn, where expansion revenue from existing customers exceeds revenue lost to churn. This is a sign of a healthy SaaS business with strong upsell motion." },
-      { question: "What is the difference between voluntary and involuntary churn and how do I reduce each?", answer: "Voluntary churn happens when customers actively cancel due to dissatisfaction, cost, or lack of need. Reduce it with better onboarding, engagement workflows, and product improvements. Involuntary churn occurs from failed payments — expired cards, insufficient funds. Reduce it with dunning emails, automatic retries, and backup payment methods. Involuntary churn is often easier to fix and can account for 20-40% of total churn." },
+      { question: "Can churn rate be negative?", answer: "No, churn rate cannot technically be negative  -  it represents customers lost. However, if you gained more customers than you lost, your net growth is positive. What some call 'negative churn' actually refers to net negative revenue churn, where expansion revenue from existing customers exceeds revenue lost to churn. This is a sign of a healthy SaaS business with strong upsell motion." },
+      { question: "What is the difference between voluntary and involuntary churn and how do I reduce each?", answer: "Voluntary churn happens when customers actively cancel due to dissatisfaction, cost, or lack of need. Reduce it with better onboarding, engagement workflows, and product improvements. Involuntary churn occurs from failed payments  -  expired cards, insufficient funds. Reduce it with dunning emails, automatic retries, and backup payment methods. Involuntary churn is often easier to fix and can account for 20-40% of total churn." },
     ],
   },
 } satisfies CalculatorConfig;

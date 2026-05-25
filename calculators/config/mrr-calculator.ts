@@ -10,11 +10,6 @@ const config = {
     keywords: ["mrr", "arr", "recurring revenue", "saas metrics", "monthly revenue"],
   },
   benchmarkMetric: "mrr-growth-rate",
-  verified: {
-    source: "SaaS Capital / KeyBanc Capital Markets 2025 SaaS Survey",
-    sourceUrl: "https://www.keybanc.com/capital-markets",
-    date: "2025",
-  },
   inputs: [
     { id: "customers", label: "Number of Customers", type: "number" as const, defaultValue: 100 },
     { id: "arpu", label: "Avg Revenue Per User (ARPU)", type: "currency" as const, defaultValue: 50 },

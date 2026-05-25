@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
-import Script from "next/script";
 import { AnalyticsClient } from "@/components/AnalyticsClient";
 import { Nav } from "@/components/Nav";
-import { NewsletterForm } from "@/components/NewsletterForm";
-import { adsConfig } from "@/lib/ads";
+import { PostHogProvider } from "@/components/PostHogProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -58,14 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
-        {adsConfig.enabled && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${adsConfig.publisherId}`}
-            strategy="beforeInteractive"
-            crossOrigin="anonymous"
-          />
-        )}
+        <PostHogProvider>
         <AnalyticsClient />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -86,19 +77,6 @@ export default function RootLayout({
           </main>
         <footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
           <div className="mx-auto max-w-6xl px-4 py-10">
-            <div className="mb-10 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 text-center">
-              <h3 className="font-heading text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Get SaaS metrics insights
-              </h3>
-              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                Weekly benchmarks, tips, and new calculators.
-              </p>
-              <div className="mt-3 flex justify-center">
-                <div className="w-full max-w-xs">
-                  <NewsletterForm />
-                </div>
-              </div>
-            </div>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <div>
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Product</h3>
@@ -107,7 +85,6 @@ export default function RootLayout({
                   <li><Link href="/calculators" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">All Calculators</Link></li>
                   <li><Link href="/pricing" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Pricing</Link></li>
                   <li><Link href="/dashboard" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Dashboard</Link></li>
-                  <li><Link href="/request-calculator" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Request a Calculator</Link></li>
                 </ul>
               </div>
               <div>
@@ -128,8 +105,7 @@ export default function RootLayout({
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Resources</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Blog</Link></li>
-                  <li><Link href="/request-calculator" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Suggest a Feature</Link></li>
-                  <li><Link href={`mailto:hello@saastainednumbers.com`} className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Contact</Link></li>
+
                 </ul>
               </div>
             </div>
@@ -143,7 +119,7 @@ export default function RootLayout({
               </div>
               <div className="flex gap-4">
                 <Link href="/blog" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">Blog</Link>
-                <Link href="/request-calculator" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">Request</Link>
+
               </div>
             </div>
           </div>
@@ -177,6 +153,7 @@ export default function RootLayout({
             ]),
           }}
         />
+        </PostHogProvider>
       </body>
     </html>
   );

@@ -27,7 +27,7 @@ export async function GET(request: Request) {
             {title}
           </div>
           <div style={{ fontSize: 28, color: "#b3d4d9", marginTop: 16, textAlign: "center" }}>
-            {category === "home" ? "Free SaaS & Business Operations Calculators" : `Free ${description} — No Account Required`}
+            {category === "home" ? "Free SaaS & Business Operations Calculators" : `Free ${description}  -  No Account Required`}
           </div>
           <div style={{ fontSize: 20, color: "#70bcbe", marginTop: 32 }}>
             saastainednumbers.com

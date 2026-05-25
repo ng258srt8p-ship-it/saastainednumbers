@@ -51,7 +51,7 @@ test.describe("Accessibility audit (Section 508 / WCAG 2.1 AA)", () => {
       );
 
       if (violations.length > 0) {
-        console.log(`\n=== ${label} (${path}) — ${violations.length} critical/serious violations ===`);
+        console.log(`\n=== ${label} (${path})  -  ${violations.length} critical/serious violations ===`);
         for (const v of violations) {
           console.log(`  [${v.impact}] ${v.id}: ${v.help}`);
           console.log(`    URL: ${v.helpUrl}`);

@@ -47,7 +47,7 @@ export const contentTemplate: CalculatorContent = {
  * 2. Formula: "How is X calculated?"
  * 3. Benchmark: "What is a good X value?"
  * 4. Improvement: "How to improve X?"
- * 5. Comparison: "X vs Y — what's the difference?"
+ * 5. Comparison: "X vs Y  -  what's the difference?"
  * 6. Industry context: "Industry benchmarks for X"
  * 7. Pitfalls: "Common mistakes with X"
  * 8. Frequency: "How often to track X"

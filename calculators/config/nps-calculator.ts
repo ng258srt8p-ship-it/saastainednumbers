@@ -3,7 +3,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 
 const config = {
   slug: "nps-calculator",
-  category: "growth-efficiency",
+  category: "churn-retention",
   meta: {
     title: "Net Promoter Score (NPS) Calculator",
     description: "Calculate your Net Promoter Score from survey responses  -  measure customer loyalty and predict growth.",

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getAllCalculators } from "@/lib/registry";
 
+import "@/calculators/config/_all";
+
 const calculatorCount = getAllCalculators().length;
 
 const allFeatures = [
