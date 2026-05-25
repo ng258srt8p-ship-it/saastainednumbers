@@ -13,7 +13,7 @@ export async function Nav() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-gray-100/80 dark:border-gray-700/80 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg">
+    <nav className="sticky top-0 z-50 border-b border-gray-100/80 dark:border-gray-700/80 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
       <div className="mx-auto max-w-6xl flex items-center justify-between px-4 py-5">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/logo.svg" alt="SaaStainedNumbers" width={40} height={40} className="shrink-0" unoptimized />
