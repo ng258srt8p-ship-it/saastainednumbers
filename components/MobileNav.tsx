@@ -128,7 +128,7 @@ export function MobileNav({ t }: MobileNavProps) {
         aria-expanded={open}
         aria-controls="mobile-menu"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" className="w-6 h-6 text-gray-800">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" className="w-6 h-6 text-gray-500 dark:text-gray-400">
           <line className="hamburger-bar" x1="3" y1="6" x2="21" y2="6" />
           <line className="hamburger-bar" x1="3" y1="12" x2="21" y2="12" />
           <line className="hamburger-bar" x1="3" y1="18" x2="21" y2="18" />
