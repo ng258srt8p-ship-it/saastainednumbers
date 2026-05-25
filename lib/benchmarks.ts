@@ -223,6 +223,118 @@ export function getBarColor(status: HealthStatus): string {
   }
 }
 
+// ── Benchmark Reference Data (for display on calculator pages) ──
+
+export interface BenchmarkData {
+  poor: string;
+  average: string;
+  good: string;
+  excellent: string;
+  source: string;
+  date: string;
+  notes?: string;
+}
+
+export const benchmarkReferences: Record<string, BenchmarkData> = {
+  "ltv-cac": {
+    poor: "< 1x",
+    average: "1-3x",
+    good: "3-5x",
+    excellent: "> 5x",
+    source: "Ballpark / SaaS Benchmarks Report",
+    date: "2025",
+    notes: "LTV:CAC > 3x is considered healthy for most SaaS businesses"
+  },
+  "churn-rate": {
+    poor: "> 10% monthly",
+    average: "5-10% monthly",
+    good: "3-5% monthly",
+    excellent: "< 3% monthly",
+    source: "Recurly Research / SaaS Benchmarks",
+    date: "2025",
+  },
+  nps: {
+    poor: "< 0",
+    average: "0-30",
+    good: "30-70",
+    excellent: "> 70",
+    source: "Satmetrix / Net Promoter System",
+    date: "2024",
+  },
+  "mrr-growth-rate": {
+    poor: "< 5%",
+    average: "5-10%",
+    good: "10-20%",
+    excellent: "> 20%",
+    source: "OpenView SaaS Benchmarks",
+    date: "2025",
+  },
+  "gross-margin": {
+    poor: "< 50%",
+    average: "50-65%",
+    good: "65-80%",
+    excellent: "> 80%",
+    source: "KeyBanc SaaS Survey",
+    date: "2025",
+  },
+  "quick-ratio": {
+    poor: "< 1",
+    average: "1-2",
+    good: "2-4",
+    excellent: "> 4",
+    source: "David Sacks / SaaS Capital",
+    date: "2025",
+  },
+  "cac-payback": {
+    poor: "> 24 months",
+    average: "12-24 months",
+    good: "6-12 months",
+    excellent: "< 6 months",
+    source: "OpenView / Scale Partners",
+    date: "2025",
+  },
+  "burn-multiple": {
+    poor: "> 2x",
+    average: "1-2x",
+    good: "0.5-1x",
+    excellent: "< 0.5x",
+    source: "Bessemer Venture Partners",
+    date: "2025",
+  },
+  "rule-of-40": {
+    poor: "< 20",
+    average: "20-30",
+    good: "30-40",
+    excellent: "> 40",
+    source: "Brad Feld / SaaS Capital",
+    date: "2025",
+  },
+  arpu: {
+    poor: "< $10",
+    average: "$10-50",
+    good: "$50-150",
+    excellent: "> $150",
+    source: "OpenView SaaS Benchmarks",
+    date: "2025",
+  },
+  "magic-number": {
+    poor: "< 0.5",
+    average: "0.5-0.75",
+    good: "0.75-1.0",
+    excellent: "> 1.0",
+    source: "a16z / OpenView",
+    date: "2025",
+  },
+  "employee-cost": {
+    poor: "Above market",
+    average: "Market rate",
+    good: "10-15% below market with equity",
+    excellent: "Below market with high equity upside",
+    source: "Pave / Radford Salary Surveys",
+    date: "2025",
+  },
+};
+
 export function getGradientPercent(metricKey: string, value: number, stage: Stage = "series-a"): number {
   const thresholds = THRESHOLDS[metricKey]?.[stage];
   if (!thresholds) return 50;

@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your LTV to CAC ratio  -  the most important unit economics metric for SaaS businesses.",
     keywords: ["ltv cac ratio", "unit economics", "saas metrics", "customer lifetime value", "acquisition cost"],
   },
+  benchmarkMetric: "ltv-cac",
   inputs: [
     { id: "ltv", label: "Customer Lifetime Value (LTV)", type: "currency" as const, defaultValue: 3000 },
     { id: "cac", label: "Customer Acquisition Cost (CAC)", type: "currency" as const, defaultValue: 1000 },

@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your gross margin percentage, gross profit, and COGS percentage to understand your business profitability.",
     keywords: ["gross margin", "gross profit", "cogs", "profitability", "saas metrics"],
   },
+  benchmarkMetric: "gross-margin",
   inputs: [
     { id: "revenue", label: "Total Revenue", type: "currency" as const, defaultValue: 100000 },
     { id: "cogs", label: "Cost of Goods Sold (COGS)", type: "currency" as const, defaultValue: 25000 },

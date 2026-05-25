@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { getAllCalculators } from "@/lib/registry";
+
+const calculatorCount = getAllCalculators().length;
 
 const allFeatures = [
-  "All 25 calculators  -  no limits",
+  `All ${calculatorCount} calculators  -  no limits`,
   "Real-time results with benchmark comparisons",
   "Stage-based growth insights (Seed to Series C+)",
   "Unlimited embeds for your website",
@@ -17,7 +20,7 @@ export default function PricingPage() {
         Everything is Free
       </h1>
       <p className="mt-3 text-lg text-gray-500">
-        No subscriptions, no paywalls. All 25 calculators are completely free to use.
+        No subscriptions, no paywalls. All {calculatorCount} calculators are completely free to use.
       </p>
 
       <div className="mx-auto mt-12 max-w-lg rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">

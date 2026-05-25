@@ -1,6 +1,26 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --footer-bg: #f9fafb;
+}
+
+.dark {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border: #334155;
+  --nav-bg: rgba(15, 23, 42, 0.8);
+  --footer-bg: #1e293b;
+}
+
 @theme {
   --font-sans: var(--font-body), system-ui, sans-serif;
   --font-heading: var(--font-heading), system-ui, sans-serif;

@@ -9,6 +9,11 @@ const config = {
     description: "Calculate your path to Financial Independence, Retire Early (FIRE) based on savings, contributions, and investment returns.",
     keywords: ["fire", "financial independence", "retire early", "fire number", "coast fire", "retirement planning"],
   },
+  verified: {
+    source: "Trinity Study / r/financialindependence / Federal Reserve 2025",
+    sourceUrl: "https://www.bogleheads.org/wiki/Trinity_study_update",
+    date: "2025",
+  },
   inputs: [
     { id: "currentSavings", label: "Current Savings ($)", type: "currency" as const, defaultValue: 50000, min: 0 },
     { id: "monthlyContribution", label: "Monthly Contribution ($)", type: "currency" as const, defaultValue: 2000, min: 0 },
@@ -36,7 +41,7 @@ const config = {
       { metric: "Historical S&P 500 Return", value: "10% before inflation", source: "Morningstar" },
       { metric: "Safe Withdrawal Rate", value: "4% annually", source: "Trinity Study" },
     ],
-    relatedCalculators: ["savings-rate-calculator", "break-even-calculator"],
+    relatedCalculators: ["savings-rate-calculator", "investment-returns-calculator", "retire-401k-calculator", "emergency-fund-calculator", "debt-payoff-calculator"],
     faq: [
       { question: "What is the 4% Rule and is it still valid?", answer: "The 4% Rule states you can withdraw 4% of your portfolio annually with a low risk of running out of money over 30 years. Recent research (the Trinity Study update and Bengen's work) suggests 4% is still valid for 30-year retirements, but a 3-3.5% withdrawal rate is safer for longer retirements (50+ years). Adjust based on your timeline." },
       { question: "What is the difference between Lean FIRE, Fat FIRE, and Coast FIRE?", answer: "Lean FIRE means retiring on a minimal budget ($20-40K/year). Fat FIRE means retiring with a higher standard of living ($80K+/year). Coast FIRE means having enough saved that it will grow to your FIRE number by traditional retirement age without additional contributions  -  you can 'coast' working a less stressful job." },
@@ -46,6 +51,9 @@ const config = {
       { question: "How does asset allocation change in retirement?", answer: "Accumulation phase: 80-100% stocks for growth. Early retirement: 60-80% stocks, 20-40% bonds for stability. Late retirement: 40-60% stocks, 40-60% bonds. The key is having 5-7 years of expenses in bonds/cash to avoid selling stocks during market downturns." },
       { question: "How do healthcare costs affect FIRE plans?", answer: "Healthcare is often the largest unplanned FIRE expense. Pre-65: budget $500-1,500/month for ACA marketplace plans with subsidies. Post-65: $300-500/month for Medicare plus supplemental coverage. Consider health savings accounts (HSAs) as a triple-tax-advantaged retirement tool." },
       { question: "What is the optimal savings rate for early retirement?", answer: "10% savings rate → retire in ~51 years. 25% → ~32 years. 50% → ~17 years. 75% → ~7 years. The relationship is nonlinear  -  doubling your savings rate from 10% to 20% cuts 15 years off your working career. Use tools like [WalletBurst](https://walletburst.com) or [Networthify](https://networthify.com) for personalized projections." },
+      { question: "How does FIRE differ from traditional retirement planning?", answer: "Traditional retirement planning assumes you work until age 65 and save 10-15% of income. FIRE involves saving 50-70% of income to retire in 5-15 years. Traditional planning uses a 4% withdrawal rate for 30-year retirements. FIRE needs a more conservative 3-3.5% rate for potentially 50+ year retirements. Traditional investing is 60/40 stocks/bonds; FIRE is often 80-100% stocks for longer growth horizons. Compare retirement strategies with [NerdWallet](https://nerdwallet.com)." },
+      { question: "How do taxes affect my FIRE withdrawal strategy?", answer: "Tax-efficient withdrawal sequencing is critical in FIRE. Withdraw from taxable accounts first, then tax-deferred (Traditional IRA/401k), then tax-free (Roth IRA). Consider Roth conversion ladders to access retirement funds early without penalties. Capital gains tax rates apply to taxable account withdrawals. Health insurance subsidies under the ACA are based on MAGI, so managing taxable income keeps healthcare affordable. Consult a tax professional for your specific situation." },
+      { question: "What are common FIRE calculation mistakes to avoid?", answer: "Common mistakes include: using nominal returns instead of real (inflation-adjusted) returns; underestimating healthcare costs before Medicare age; ignoring sequence of return risk (poor market returns in early retirement); not accounting for major life expenses like children's education or home purchases; assuming constant spending in retirement; and failing to include taxes in withdrawal calculations. Use conservative assumptions and revisit your plan annually." },
     ],
   },
 } satisfies CalculatorConfig;

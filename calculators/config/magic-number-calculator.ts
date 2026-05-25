@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your SaaS Magic Number to measure sales and marketing efficiency  -  new ARR divided by prior quarter sales & marketing spend.",
     keywords: ["magic number", "saas magic number", "sales efficiency", "arr", "growth"],
   },
+  benchmarkMetric: "magic-number",
   inputs: [
     { id: "newArr", label: "New ARR this Quarter", type: "currency" as const, defaultValue: 300000 },
     { id: "salesMarketingSpend", label: "Prior Quarter S&M Spend", type: "currency" as const, defaultValue: 200000 },

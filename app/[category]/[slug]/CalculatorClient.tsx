@@ -17,6 +17,8 @@ import { analytics } from "@/lib/posthog";
 import { getMetricKey } from "@/lib/benchmarks";
 import type { Stage } from "@/lib/benchmarks";
 import { engines } from "@/lib/engine-registry";
+import { ShareButton } from "@/components/ShareButton";
+import { AffiliateTools } from "@/components/AffiliateTools";
 
 interface RelatedCalc {
   slug: string;
@@ -48,7 +50,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
   const defaults = Object.fromEntries(config.inputs.map((i) => [i.id, i.defaultValue]));
   const { valuesA, valuesB, setValue, reset } = useComparisonState(inputIds, defaults);
 
-  const metricKey = getMetricKey(config.slug);
+  const metricKey = config.benchmarkMetric ?? getMetricKey(config.slug);
 
   const resultsA = useMemo(() => {
     const computed = runEngine(config.slug, valuesA);
@@ -74,9 +76,11 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
 
   const primaryValue = Number(resultsA.find((r) => r.isPrimary)?.value ?? 0);
   useEffect(() => {
-    if (primaryValue > 0) {
+    if (primaryValue <= 0) return;
+    const timer = setTimeout(() => {
       analytics.calculate(config.slug, valuesA);
-    }
+    }, 500);
+    return () => clearTimeout(timer);
   }, [primaryValue, config.slug, valuesA]);
 
   useEffect(() => {
@@ -150,17 +154,14 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       title={config.meta.title}
       description={config.meta.description}
       stageSelector={stageSelector}
-      breadcrumbs={[
-        { label: "Home", href: "/" },
-        { label: config.category.charAt(0).toUpperCase() + config.category.slice(1), href: `/${config.category}` },
-        { label: config.meta.title },
-      ]}
       verifiedBadge={
-        <VerifiedBadge
-          source="SaaS Industry Reports 2025"
-          sourceUrl="https://saastainednumbers.com"
-          date="May 2026"
-        />
+        config.verified ? (
+          <VerifiedBadge
+            source={config.verified.source}
+            sourceUrl={config.verified.sourceUrl}
+            date={config.verified.date}
+          />
+        ) : undefined
       }
       feedbackWidget={<FeedbackWidget slug={config.slug} />}
       contentSection={
@@ -230,16 +231,20 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
               </div>
             </details>
           ))}
+          <AffiliateTools category={config.category} />
         </div>
       }
       embedButton={
-        <button
-          type="button"
-          onClick={() => setEmbedOpen(true)}
-          className="rounded-lg border border-gray-700 px-3 py-1.5 text-xs font-medium text-gray-400 hover:bg-gray-700/30 transition-colors"
-        >
-          Embed
-        </button>
+        <div className="flex items-center gap-2">
+          <ShareButton inputs={valuesA} category={config.category} slug={config.slug} />
+          <button
+            type="button"
+            onClick={() => setEmbedOpen(true)}
+            className="rounded-lg border border-gray-700 px-3 py-1.5 text-xs font-medium text-gray-400 hover:bg-gray-700/30 transition-colors"
+          >
+            Embed
+          </button>
+        </div>
       }
       relatedCalculators={
         relatedCalculators && relatedCalculators.length > 0 ? (

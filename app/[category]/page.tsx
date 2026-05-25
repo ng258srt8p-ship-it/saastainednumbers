@@ -1,6 +1,7 @@
 import { getCalculatorsByCategory, getCategories, CATEGORY_META, getAllKnownCategories } from "@/lib/registry";
 import Link from "next/link";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 import "@/calculators/config/_all";
 
@@ -51,22 +52,13 @@ export default async function CategoryPage({ params }: PageProps) {
     );
   }
 
-  const breadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://saastainednumbers.com" },
-      { "@type": "ListItem", position: 2, name: categoryName, item: `https://saastainednumbers.com/${category}` },
-    ],
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
-      />
       <div className="mx-auto max-w-4xl px-4 py-12">
+        <Breadcrumb items={[
+          { label: "Home", href: "/" },
+          { label: categoryName, href: `/${category}` },
+        ]} />
         <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} Calculators</h1>
         <p className="text-gray-600 mb-6">{meta?.description}</p>
         <div className="mb-8">

@@ -3,6 +3,7 @@ import { getAllCalculators, getAllKnownCategories, CATEGORY_META } from "@/lib/r
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import { AdSlot } from "@/components/AdSlot";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 import "@/calculators/config/_all";
 
@@ -233,7 +234,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* § 05 · CTA */}
+      {/* § 05 · NEWSLETTER */}
+      <section className="px-4 py-20 bg-gray-50">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="font-heading text-3xl font-bold text-gray-900">
+            Stay up to date
+          </h2>
+          <p className="mt-3 text-gray-500">
+            Get the latest SaaS benchmarks, calculator updates, and growth tips delivered to your inbox.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <div className="w-full max-w-sm">
+              <NewsletterForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* § 06 · CTA */}
       <section className="bg-gradient-to-r from-brand-900 to-brand-800 px-4 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <SectionLabel num={5} />

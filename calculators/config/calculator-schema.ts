@@ -10,6 +10,7 @@ export interface CalculatorConfig {
   outputs: CalculatorOutput[];
   content: CalculatorContent;
   verified?: VerifiedBadge;
+  benchmarkMetric?: string;
 }
 
 export interface CalculatorInput {

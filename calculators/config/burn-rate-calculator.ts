@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your monthly gross burn, net burn, and cash runway to understand how long your capital will last.",
     keywords: ["burn rate", "cash runway", "saas metrics", "startup", "runway"],
   },
+  benchmarkMetric: "burn-multiple",
   inputs: [
     { id: "monthlyExpenses", label: "Monthly Operating Expenses", type: "currency" as const, defaultValue: 50000 },
     { id: "monthlyRevenue", label: "Monthly Revenue", type: "currency" as const, defaultValue: 30000 },

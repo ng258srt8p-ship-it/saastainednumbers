@@ -123,7 +123,7 @@ export function MobileNav({ t }: MobileNavProps) {
         ref={hamburgerRef}
         type="button"
         onClick={() => setOpen((p) => !p)}
-        className="md:hidden flex items-center justify-center w-10 h-10 relative z-50"
+        className="md:hidden flex items-center justify-center w-11 h-11 relative z-50"
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={open}
         aria-controls="mobile-menu"

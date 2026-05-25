@@ -4,9 +4,13 @@ import type { NextRequest } from "next/server";
 const locales = ["en", "es", "de", "pt", "fr", "ja"];
 
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
   const locale = request.cookies.get("locale")?.value;
+
   if (locale && locales.includes(locale)) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+    addCachingHeaders(response, pathname);
+    return response;
   }
 
   const acceptLang = request.headers.get("accept-language") ?? "";
@@ -24,7 +28,16 @@ export function middleware(request: NextRequest) {
     });
   }
 
+  addCachingHeaders(response, pathname);
   return response;
+}
+
+function addCachingHeaders(response: NextResponse, pathname: string) {
+  if (pathname.startsWith("/embed/")) {
+    response.headers.set("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=604800");
+  } else {
+    response.headers.set("Cache-Control", "public, s-maxage=86400, stale-while-revalidate=604800");
+  }
 }
 
 export const config = {

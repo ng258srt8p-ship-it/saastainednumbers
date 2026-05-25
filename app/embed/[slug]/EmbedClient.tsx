@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import { InputSlider } from "@/calculators/ui/InputSlider";
 import { ResultCard } from "@/calculators/ui/ResultCard";
 import { useComparisonState } from "@/lib/useComparisonState";
@@ -12,9 +13,20 @@ interface Props {
   config: CalculatorConfig;
 }
 
-
-
 export function EmbedClient({ slug, config }: Props) {
+  const searchParams = useSearchParams();
+  const theme = searchParams.get("theme") ?? "light";
+  const embedHeight = Number(searchParams.get("height")) || 600;
+  const hideHeader = searchParams.get("hideHeader") === "true";
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
   const inputIds = config.inputs.map((i) => i.id);
   const { valuesA, valuesB, setValue } = useComparisonState(inputIds);
 
@@ -40,7 +52,6 @@ export function EmbedClient({ slug, config }: Props) {
     }));
   }, [valuesB, slug, config]);
 
-  // Post results to parent window for postMessage API
   useEffect(() => {
     const payload = {
       source: "saastainednumbers-embed",
@@ -53,7 +64,6 @@ export function EmbedClient({ slug, config }: Props) {
     window.parent.postMessage(payload, "*");
   }, [resultsA, resultsB, valuesA, valuesB, slug]);
 
-  // Listen for input updates from parent
   useEffect(() => {
     const handler = (event: MessageEvent) => {
       if (event.data?.source === "webcalc-parent" && event.data.slug === slug) {
@@ -70,7 +80,17 @@ export function EmbedClient({ slug, config }: Props) {
   }, [slug, setValue]);
 
   return (
-    <div className="min-h-0">
+    <div className="min-h-0" style={{ minHeight: embedHeight }}>
+      {!hideHeader && (
+        <div className="mb-4">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            {config.meta.title}
+          </h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            {config.meta.description}
+          </p>
+        </div>
+      )}
       <div className="space-y-4">
         {config.inputs.map((input) => (
           <InputSlider

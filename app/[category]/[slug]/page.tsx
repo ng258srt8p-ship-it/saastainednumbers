@@ -3,34 +3,11 @@ import { getRelatedCalculators } from "@/lib/related-calculators";
 import { generateMetadata as seoMetadata } from "@/lib/seo";
 import { CalculatorClient } from "./CalculatorClient";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import Link from "next/link";
 
-// Import calculator configs to register them in the registry
-import "@/calculators/config/mrr-calculator";
-import "@/calculators/config/cac-calculator";
-import "@/calculators/config/ltv-calculator";
-import "@/calculators/config/churn-calculator";
-import "@/calculators/config/arpu-calculator";
-import "@/calculators/config/burn-rate-calculator";
-import "@/calculators/config/payback-period-calculator";
-import "@/calculators/config/nrr-calculator";
-import "@/calculators/config/gross-margin-calculator";
-import "@/calculators/config/quick-ratio-calculator";
-import "@/calculators/config/cac-ltv-ratio-calculator";
-import "@/calculators/config/magic-number-calculator";
-import "@/calculators/config/rule-of-40-calculator";
-import "@/calculators/config/contribution-margin-calculator";
-import "@/calculators/config/operating-margin-calculator";
-import "@/calculators/config/revenue-per-employee-calculator";
-import "@/calculators/config/mrr-growth-rate-calculator";
-import "@/calculators/config/acv-calculator";
-import "@/calculators/config/customer-health-score-calculator";
-import "@/calculators/config/nps-calculator";
-import "@/calculators/config/activation-rate-calculator";
-import "@/calculators/config/trial-to-paid-calculator";
-import "@/calculators/config/expansion-revenue-rate-calculator";
-import "@/calculators/config/net-cash-flow-calculator";
-import "@/calculators/config/lead-conversion-rate-calculator";
+// Import all calculator configs to register them in the registry
+import "@/calculators/config/_all";
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -78,16 +55,6 @@ export default async function CalculatorPage({ params }: PageProps) {
 
   const related = getRelatedCalculators(slug, 4);
 
-  const breadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://saastainednumbers.com" },
-      { "@type": "ListItem", position: 2, name: config.category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()), item: `https://saastainednumbers.com/${config.category}` },
-      { "@type": "ListItem", position: 3, name: config.meta.title, item: `https://saastainednumbers.com/${config.category}/${config.slug}` },
-    ],
-  };
-
   const webApp = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -104,6 +71,18 @@ export default async function CalculatorPage({ params }: PageProps) {
     url: `https://saastainednumbers.com/${config.category}/${config.slug}`,
   };
 
+  const howTo = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: config.meta.title,
+    description: config.meta.description,
+    step: config.content.howToUse.split(".").filter(Boolean).map((step: string, i: number) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      text: step.trim(),
+    })),
+  };
+
   const faq = config.content.faq.length > 0 ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -114,11 +93,18 @@ export default async function CalculatorPage({ params }: PageProps) {
     })),
   } : null;
 
+  const categoryName = config.category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
   return (
     <>
+      <Breadcrumb items={[
+        { label: "Home", href: "/" },
+        { label: categoryName, href: `/${config.category}` },
+        { label: config.meta.title, href: `/${config.category}/${config.slug}` },
+      ]} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([webApp, breadcrumb, ...(faq ? [faq] : [])]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([webApp, howTo, ...(faq ? [faq] : [])]) }}
       />
       <CalculatorClient config={config} relatedCalculators={related} />
       <AdSlot placement="below-results" slug={slug} />

@@ -30,7 +30,7 @@ export async function GET(request: Request) {
             {category === "home" ? "Free SaaS & Business Operations Calculators" : `Free ${description} — No Account Required`}
           </div>
           <div style={{ fontSize: 20, color: "#70bcbe", marginTop: 32 }}>
-            saasifactory.io
+            saastainednumbers.com
           </div>
         </div>
       ),

@@ -9,6 +9,12 @@ const config = {
     description: "Calculate your monthly and annual churn rate to understand customer retention.",
     keywords: ["churn", "churn rate", "customer retention", "saas metrics", "monthly churn", "annual churn"],
   },
+  benchmarkMetric: "churn-rate",
+  verified: {
+    source: "Recurly Research 2025 / KeyBanc SaaS Survey",
+    sourceUrl: "https://recurly.com/research/",
+    date: "2025",
+  },
   inputs: [
     { id: "customersStart", label: "Customers at Period Start", type: "number" as const, defaultValue: 1000 },
     { id: "customersEnd", label: "Customers at Period End", type: "number" as const, defaultValue: 950 },
@@ -31,7 +37,7 @@ const config = {
       { metric: "Top-Quartile Monthly Churn", value: "< 1%", source: "KeyBanc 2025" },
       { metric: "Healthy Annual Churn (Enterprise)", value: "5 - 10%", source: "SaaS Capital" },
     ],
-    relatedCalculators: ["mrr-calculator", "ltv-calculator", "arpu-calculator"],
+    relatedCalculators: ["mrr-calculator", "ltv-calculator", "arpu-calculator", "customer-health-score-calculator", "nrr-calculator"],
     faq: [
       { question: "What is a good churn rate?", answer: "For SaaS, 3-5% monthly churn is average for SMB, while enterprise SaaS aims for 1-2% or lower. Under 1% monthly is world-class. Annual churn under 10% is considered healthy." },
       { question: "Should I include voluntary and involuntary churn?", answer: "Yes. Track both types separately but include both in your total churn calculation for accuracy. Voluntary churn (customers who cancel) and involuntary churn (failed payments) require different solutions. Reduce involuntary churn with dunning tools like [Baremetrics](https://baremetrics.com)." },
@@ -40,7 +46,10 @@ const config = {
       { question: "What is a healthy annual churn rate for SaaS?", answer: "Under 10% annual churn is excellent. 10-20% is average. Above 20% needs immediate attention. Enterprise SaaS often achieves 5-7% annual churn." },
       { question: "How do I calculate churn for a new product with few customers?", answer: "Use cohort analysis. Track groups of customers who joined in the same month and measure their retention over time. This gives more reliable data than overall churn for small customer bases." },
       { question: "What causes involuntary churn?", answer: "Failed payments are the primary cause of involuntary churn. Implement dunning (automatic retry), email reminders before card expiry, and multiple payment methods to reduce it." },
-      { question: "How does churn rate affect company valuation?", answer: "Dramatically. Lower churn means higher LTV, more predictable revenue, and lower replacement costs. Investors heavily weight churn rate when valuing SaaS companies." },
+      { question: "How does churn rate affect company valuation?", answer: "Dramatically. Lower churn means higher LTV, more predictable revenue, and lower replacement costs. Investors heavily weight churn rate when valuing SaaS companies. A company with 5% monthly churn needs to replace half its customer base every year, severely limiting growth potential and commanding a lower revenue multiple." },
+      { question: "What industries have the lowest churn rates?", answer: "Enterprise SaaS and B2B companies with long-term contracts typically have the lowest churn rates (1-2% monthly). Subscription boxes and consumer apps tend to have higher churn (5-10% monthly). Fintech and healthcare SaaS products often see under 3% monthly churn due to high switching costs and integration depth." },
+      { question: "Can churn rate be negative?", answer: "No, churn rate cannot technically be negative — it represents customers lost. However, if you gained more customers than you lost, your net growth is positive. What some call 'negative churn' actually refers to net negative revenue churn, where expansion revenue from existing customers exceeds revenue lost to churn. This is a sign of a healthy SaaS business with strong upsell motion." },
+      { question: "What is the difference between voluntary and involuntary churn and how do I reduce each?", answer: "Voluntary churn happens when customers actively cancel due to dissatisfaction, cost, or lack of need. Reduce it with better onboarding, engagement workflows, and product improvements. Involuntary churn occurs from failed payments — expired cards, insufficient funds. Reduce it with dunning emails, automatic retries, and backup payment methods. Involuntary churn is often easier to fix and can account for 20-40% of total churn." },
     ],
   },
 } satisfies CalculatorConfig;

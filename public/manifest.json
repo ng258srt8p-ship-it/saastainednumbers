@@ -1,0 +1,16 @@
+{
+  "name": "SaaStainedNumbers",
+  "short_name": "SaaStainedNumbers",
+  "description": "Free SaaS calculators for MRR, CAC, LTV, churn, and more",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#008387",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

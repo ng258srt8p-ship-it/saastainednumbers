@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your Net Promoter Score from survey responses  -  measure customer loyalty and predict growth.",
     keywords: ["nps", "net promoter score", "customer satisfaction", "loyalty", "survey"],
   },
+  benchmarkMetric: "nps",
   inputs: [
     { id: "promoters", label: "Promoters (score 9-10)", type: "number" as const, defaultValue: 200 },
     { id: "passives", label: "Passives (score 7-8)", type: "number" as const, defaultValue: 150 },
@@ -39,7 +40,7 @@ const config = {
       { question: "What response rate do I need for reliable NPS?", answer: "Aim for 30%+ response rate for statistical significance. Lower response rates may have response bias (unhappy customers are more likely to respond)." },
       { question: "How does NPS correlate with growth?", answer: "Companies with NPS 50+ grow at 2x+ the rate of companies with NPS below 20. Promoters drive referrals (lower CAC), renew at higher rates, and expand faster." },
       { question: "Should I benchmark NPS by industry?", answer: "Yes. SaaS NPS averages 30-40. E-commerce averages 50-60. Insurance averages 20-30. Always compare against your specific industry and segment." },
-      { question: "How do I improve NPS?", answer: "Close the loop with detractors, fix product pain points, improve onboarding, enhance support quality, and build features that drive customer outcomes. Track NPS driver analysis." },
+      { question: "How do I improve NPS?", answer: "Close the loop with detractors, fix product pain points, improve onboarding, enhance support quality, and build features that drive customer outcomes. Track NPS driver analysis with tools like [Intercom](https://intercom.com) for proactive customer communication and feedback collection." },
       { question: "Can NPS be manipulated?", answer: "Yes. Survey timing, question phrasing, and incentive structure can bias results. Use consistent methodology and benchmark against industry standards for accuracy." },
     ],
   },

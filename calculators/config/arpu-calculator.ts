@@ -9,6 +9,7 @@ const config = {
     description: "Calculate Average Revenue Per User (ARPU) to understand your per-customer revenue.",
     keywords: ["arpu", "average revenue per user", "saas metrics", "revenue analysis", "per customer revenue"],
   },
+  benchmarkMetric: "arpu",
   inputs: [
     { id: "mrr", label: "Total Monthly Recurring Revenue", type: "currency" as const, defaultValue: 50000 },
     { id: "totalCustomers", label: "Total Paying Customers", type: "number" as const, defaultValue: 1000 },

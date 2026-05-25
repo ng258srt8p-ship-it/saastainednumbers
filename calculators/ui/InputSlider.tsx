@@ -61,7 +61,7 @@ export function InputSlider({
           min={min ?? 0}
           max={max}
           placeholder={placeholder}
-          className={`w-full rounded-xl border px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 bg-gray-800/50 transition-shadow focus:outline-none focus:ring-2 ${
+          className={`w-full rounded-xl border px-3 py-3 text-sm text-gray-100 placeholder:text-gray-500 bg-gray-800/50 transition-shadow focus:outline-none focus:ring-2 ${
             error
               ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
               : "border-gray-700 focus:border-brand-500 focus:ring-brand-500/20"
@@ -84,7 +84,7 @@ export function InputSlider({
           setLocalValue(String(v));
           onChange(v);
         }}
-        className="mt-1 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-gray-700 accent-brand-500"
+        className="mt-1 h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-700 accent-brand-500"
         aria-hidden
       />
     </div>

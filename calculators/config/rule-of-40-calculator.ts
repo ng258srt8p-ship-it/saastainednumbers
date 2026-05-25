@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your Rule of 40 score  -  revenue growth rate plus profit margin  -  to measure your SaaS company's health.",
     keywords: ["rule of 40", "saas rule of 40", "growth", "profitability", "saas metrics"],
   },
+  benchmarkMetric: "rule-of-40",
   inputs: [
     { id: "revenueGrowthRate", label: "Revenue Growth Rate (%)", type: "percentage" as const, defaultValue: 30 },
     { id: "profitMargin", label: "Profit Margin (%)", type: "percentage" as const, defaultValue: 10 },

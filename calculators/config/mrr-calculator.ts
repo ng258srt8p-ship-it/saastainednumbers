@@ -9,6 +9,12 @@ const config = {
     description: "Calculate your Monthly Recurring Revenue (MRR) and Annual Recurring Revenue (ARR) instantly.",
     keywords: ["mrr", "arr", "recurring revenue", "saas metrics", "monthly revenue"],
   },
+  benchmarkMetric: "mrr-growth-rate",
+  verified: {
+    source: "SaaS Capital / KeyBanc Capital Markets 2025 SaaS Survey",
+    sourceUrl: "https://www.keybanc.com/capital-markets",
+    date: "2025",
+  },
   inputs: [
     { id: "customers", label: "Number of Customers", type: "number" as const, defaultValue: 100 },
     { id: "arpu", label: "Avg Revenue Per User (ARPU)", type: "currency" as const, defaultValue: 50 },
@@ -29,7 +35,7 @@ const config = {
       { metric: "Top Quartile MoM Growth (Early)", value: "15 - 20%", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Median MoM Growth (Scaling)", value: "5 - 10%", source: "KeyBanc 2025 SaaS Survey" },
     ],
-    relatedCalculators: ["cac-calculator", "ltv-calculator", "arpu-calculator"],
+    relatedCalculators: ["cac-calculator", "ltv-calculator", "arpu-calculator", "mrr-growth-rate-calculator", "nrr-calculator"],
     faq: [
       { question: "What is a good MRR for a SaaS startup?", answer: "It depends on your stage. Early-stage startups ($0-10K MRR) focus on product-market fit; $10K-100K MRR indicates traction; $100K+ MRR signals scaling. What matters more than absolute MRR is your growth rate. Aim for 15-20% monthly MRR growth in early stages." },
       { question: "Should I include free trial users in MRR?", answer: "No. MRR should only include paying customers. Free trials, paused subscriptions, and one-time fees should be excluded. Include only active, paying subscribers generating recurring revenue." },
@@ -39,6 +45,9 @@ const config = {
       { question: "Should I include usage-based billing in MRR?", answer: "Yes, but average it. For usage-based components, use the average of the last 3 months to smooth out fluctuations and get a more accurate recurring view." },
       { question: "How does churn impact MRR?", answer: "Churn directly reduces MRR. If you acquire $10K in new MRR but lose $8K to churn, your net new MRR is only $2K. Reducing churn by even 1-2% can dramatically improve net MRR growth. Track MRR and churn side-by-side with [ChartMogul](https://chartmogul.com)." },
       { question: "What is the difference between MRR and revenue?", answer: "MRR represents recurring subscription revenue only. Total revenue may include one-time fees, professional services, hardware sales, or other non-recurring items. MRR gives a clearer picture of recurring business health." },
+      { question: "What is the difference between MRR and ARPU?", answer: "MRR (Monthly Recurring Revenue) is the total recurring revenue from all customers. ARPU (Average Revenue Per User) is the average revenue per customer. ARPU × customer count = MRR. ARPU helps you understand per-customer value, while MRR gives you the aggregate revenue picture. Tracking both together provides a complete view of your revenue health." },
+      { question: "How often should I calculate MRR?", answer: "MRR should be calculated at least monthly, but top-performing SaaS companies track it weekly or even in real-time using tools like [Baremetrics](https://baremetrics.com) or [ChartMogul](https://chartmogul.com). Monthly calculation is sufficient for board reporting and investor updates, while weekly tracking helps you spot trends and react to changes faster. Daily MRR is useful during growth sprints or after major product launches." },
+      { question: "What are the limitations of MRR as a metric?", answer: "MRR does not account for customer acquisition costs, profitability, or cash flow. A company can have high MRR but still be unprofitable if customer acquisition costs are too high. MRR also ignores one-time revenue streams, professional services income, and non-recurring charges that may be meaningful parts of your business. Use MRR alongside profitability metrics like gross margin, CAC, and LTV for a complete financial picture." },
     ],
   },
 } satisfies CalculatorConfig;
