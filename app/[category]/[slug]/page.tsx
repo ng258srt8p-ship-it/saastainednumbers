@@ -112,7 +112,7 @@ export default async function CalculatorPage({ params }: PageProps) {
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4115230840067798"
         crossOrigin="anonymous"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
       <CalculatorClient config={config} relatedCalculators={related} />
     </>

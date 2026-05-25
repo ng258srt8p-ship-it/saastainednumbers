@@ -21,7 +21,7 @@ export default function CalculatorsPage() {
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4115230840067798"
         crossOrigin="anonymous"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="font-heading text-3xl font-bold mb-2">All Calculators</h1>

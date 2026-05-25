@@ -17,12 +17,13 @@ interface InsightContext {
   title: string;
   description: string;
   category: string;
-  inputs: InputValue[];
-  outputs: OutputValue[];
+  inputs?: InputValue[];
+  outputs?: OutputValue[];
 }
 
 function fmt(val: string | number, type: string): string {
   if (typeof val === "string") return val;
+  if (typeof val !== "number" || isNaN(val) || !isFinite(val)) return "N/A";
   if (type === "currency") {
     if (val >= 1_000_000) return `$${(val / 1_000_000).toFixed(1)}M`;
     if (val >= 1_000) return `$${(val / 1_000).toFixed(0)}K`;
@@ -34,29 +35,35 @@ function fmt(val: string | number, type: string): string {
 }
 
 function primaryOutput(outputs: OutputValue[]): OutputValue | undefined {
+  if (!outputs || !outputs.length) return undefined;
   return outputs.find((o) => o.isPrimary) || outputs[0];
 }
 
 function primaryNum(outputs: OutputValue[]): number | null {
   const p = primaryOutput(outputs);
   if (!p) return null;
-  return typeof p.value === "number" ? p.value : null;
+  if (typeof p.value !== "number") return null;
+  if (isNaN(p.value) || !isFinite(p.value)) return null;
+  return p.value;
 }
 
-function findInput(inputs: InputValue[], labelKeywords: string[]): number | null {
+function findInput(inputs: InputValue[] | undefined, labelKeywords: string[]): number | null {
+  if (!inputs) return null;
   for (const inp of inputs) {
-    if (labelKeywords.some((kw) => inp.label.toLowerCase().includes(kw))) {
+    if (inp.label && labelKeywords.some((kw) => inp.label.toLowerCase().includes(kw))) {
       return inp.value;
     }
   }
   return null;
 }
 
-function findOutput(outputs: OutputValue[], idSubstring: string): OutputValue | undefined {
-  return outputs.find((o) => o.id.includes(idSubstring));
+function findOutput(outputs: OutputValue[] | undefined, idSubstring: string): OutputValue | undefined {
+  if (!outputs) return undefined;
+  return outputs.find((o) => o.id && o.id.includes(idSubstring));
 }
 
 function typeOfPrimary(outputs: OutputValue[]): string {
+  if (!outputs || !outputs.length) return "number";
   const p = primaryOutput(outputs);
   return p?.type || "number";
 }
@@ -804,15 +811,17 @@ function investmentInsights(ctx: InsightContext): string[] {
   const totalInvested = findOutput(ctx.outputs, "totalInvested") || findOutput(ctx.outputs, "totalPrincipal");
   const totalInvestedVal = totalInvested && typeof totalInvested.value === "number" ? totalInvested.value : null;
 
-  if (totalInvestedVal !== null && totalInvestedVal > 0) {
+  if (totalInvestedVal !== null && totalInvestedVal > 0 && isFinite(totalInvestedVal)) {
     const gain = val - totalInvestedVal;
     const pct = (gain / totalInvestedVal) * 100;
-    if (pct > 0) {
-      insights.push(`Your portfolio grew by ${fmt(Math.abs(gain), "currency")} (${pct.toFixed(1)}% return). The S&P 500 has historically returned ~10% annually before inflation.`);
-      if (pct > 10) insights.push(`Returns above 10% are excellent. Review whether these gains are sustainable or driven by market conditions that could reverse.`);
-      else if (pct > 0) insights.push(`Returns of ${pct.toFixed(1)}% are positive. Consistent investing over time, not timing the market, is the key to long-term wealth building.`);
-    } else {
-      insights.push(`Your portfolio declined by ${fmt(Math.abs(gain), "currency")} (${Math.abs(pct).toFixed(1)}%). Market downturns are normal  -  stay the course and continue investing regularly to buy at lower prices.`);
+    if (isFinite(pct) && !isNaN(pct)) {
+      if (pct > 0) {
+        insights.push(`Your portfolio grew by ${fmt(Math.abs(gain), "currency")} (${pct.toFixed(1)}% return). The S&P 500 has historically returned ~10% annually before inflation.`);
+        if (pct > 10) insights.push(`Returns above 10% are excellent. Review whether these gains are sustainable or driven by market conditions that could reverse.`);
+        else if (pct > 0) insights.push(`Returns of ${pct.toFixed(1)}% are positive. Consistent investing over time, not timing the market, is the key to long-term wealth building.`);
+      } else {
+        insights.push(`Your portfolio declined by ${fmt(Math.abs(gain), "currency")} (${Math.abs(pct).toFixed(1)}%). Market downturns are normal  -  stay the course and continue investing regularly to buy at lower prices.`);
+      }
     }
   }
 
@@ -868,10 +877,12 @@ function retirementInsights(ctx: InsightContext): string[] {
     insights.push(`Your 401(k) balance of ${fmt(val, "currency")} is in the early growth phase. Increasing your contribution rate by even 1-2% can make a meaningful difference over 20+ years.`);
   }
 
-  if (contributionsVal !== null && contributionsVal > 0) {
+  if (contributionsVal !== null && contributionsVal > 0 && isFinite(contributionsVal)) {
     const gains = val - contributionsVal;
     const pct = ((val - contributionsVal) / contributionsVal) * 100;
-    insights.push(`Your contributions of ${fmt(contributionsVal, "currency")} have grown by ${fmt(gains, "currency")} (${pct.toFixed(0)}%) from investment returns. This is the power of compound growth.`);
+    if (isFinite(pct) && !isNaN(pct)) {
+      insights.push(`Your contributions of ${fmt(contributionsVal, "currency")} have grown by ${fmt(gains, "currency")} (${pct.toFixed(0)}%) from investment returns. This is the power of compound growth.`);
+    }
   }
 
   return insights;
@@ -883,9 +894,11 @@ function emergencyFundInsights(ctx: InsightContext): string[] {
   const insights: string[] = [];
 
   const monthlyExpenses = findInput(ctx.inputs, ["monthly expense", "monthly spend", "monthly cost"]);
-  if (monthlyExpenses !== null && monthlyExpenses > 0) {
+  if (monthlyExpenses !== null && monthlyExpenses > 0 && isFinite(monthlyExpenses)) {
     const months = val / monthlyExpenses;
-    if (months >= 12) insights.push(`Your emergency fund of ${fmt(val, "currency")} covers ${months.toFixed(0)} months of expenses  -  a conservative and secure position.`);
+    if (!isFinite(months)) {
+      insights.push(`Your emergency fund of ${fmt(val, "currency")} is a key financial safety net. Most financial advisors recommend 3-6 months of essential expenses.`);
+    } else if (months >= 12) insights.push(`Your emergency fund of ${fmt(val, "currency")} covers ${months.toFixed(0)} months of expenses  -  a conservative and secure position.`);
     else if (months >= 6) insights.push(`Your emergency fund of ${fmt(val, "currency")} covers ${months.toFixed(0)} months of expenses. The standard recommendation is 3-6 months.`);
     else if (months >= 3) insights.push(`Your emergency fund of ${fmt(val, "currency")} covers ${months.toFixed(0)} months of expenses  -  within the 3-6 month recommendation.`);
     else insights.push(`Your emergency fund of ${fmt(val, "currency")} covers only ${months.toFixed(0)} months of expenses. Build toward 3-6 months of essential costs.`);
@@ -932,8 +945,9 @@ function mortgageInsights(ctx: InsightContext): string[] {
   const val = primaryNum(ctx.outputs);
   if (val === null) return [];
   const income = findInput(ctx.inputs, ["income", "salary", "monthly pay"]);
-  if (income && income > 0) {
+  if (income && income > 0 && isFinite(income)) {
     const ratio = (val / income) * 100;
+    if (!isFinite(ratio)) return [`Your housing cost of ${fmt(val, "currency")} is a key budget item. Compare this against your income to assess affordability.`];
     if (ratio > 50) return [`Your housing cost of ${fmt(val, "currency")} is ${ratio.toFixed(0)}% of income  -  above the 30% recommended threshold. Consider reducing housing costs or increasing income.`];
     if (ratio > 30) return [`Your housing cost of ${fmt(val, "currency")} is ${ratio.toFixed(0)}% of income  -  slightly above the 30% threshold. Keep this in mind for other financial goals.`];
     return [`Your housing cost of ${fmt(val, "currency")} is ${ratio.toFixed(0)}% of income  -  within the 30% recommendation. This leaves room for saving and investing.`];
@@ -974,26 +988,48 @@ const CATEGORY_HANDLERS: Record<string, (ctx: InsightContext) => string[]> = {
 /* ─── Public API ──────────────────────────────────────────────────── */
 
 function insightSummary(ctx: InsightContext): string[] {
-  const handler = CATEGORY_HANDLERS[ctx.category];
-  const primary: string[] = handler ? handler(ctx) : [];
+  try {
+    const category = ctx.category || "";
+    const title = ctx.title || "";
+    const inputs = ctx.inputs || [];
+    const outputs = ctx.outputs || [];
 
-  const fallback = primary.length < 2 ? categoryFallback(ctx) : [];
+    const handler = CATEGORY_HANDLERS[category];
+    const primary: string[] = handler ? handler({ title, description: ctx.description || "", category, inputs, outputs }) : [];
 
-  const combined = [...primary, ...fallback];
+    const fallback = primary.length < 2 ? categoryFallback({ title, description: ctx.description || "", category, inputs, outputs }) : [];
 
-  const val = primaryNum(ctx.outputs);
-  if (combined.length < 2 && val !== null) {
-    combined.push(`Your result of ${fmt(val, typeOfPrimary(ctx.outputs))} is a starting point. Track this number over time  -  the trend matters more than any single data point.`);
+    const combined = [...primary, ...fallback];
+
+    const val = primaryNum(outputs);
+    if (combined.length < 2 && val !== null) {
+      combined.push(`Your result of ${fmt(val, typeOfPrimary(outputs))} is a starting point. Track this number over time  -  the trend matters more than any single data point.`);
+    }
+
+    if (combined.length < 3) {
+      combined.push(`Bookmark this page and re-run as your numbers change. Tracking the trend over consecutive periods is more informative than any single result.`);
+    }
+
+    return combined.slice(0, 5);
+  } catch {
+    return [
+      "Review your inputs and results to understand what they mean for your specific situation.",
+      "Every metric tells a story  -  compare against your historical data to spot trends over time.",
+    ];
   }
-
-  if (combined.length < 3) {
-    combined.push(`Bookmark this page and re-run as your numbers change. Tracking the trend over consecutive periods is more informative than any single result.`);
-  }
-
-  return combined.slice(0, 5);
 }
 
 export function generateInsights(ctx: InsightContext): string {
-  const list = insightSummary(ctx);
-  return list.map((t, i) => `${i + 1}. ${t}`).join("\n\n");
+  try {
+    if (!ctx) {
+      return "No data available. Enter your information and try again.";
+    }
+    const list = insightSummary(ctx);
+    if (!list || list.length === 0) {
+      return "Your results provide a snapshot of your current metrics. Track them over time to identify trends and make informed decisions.";
+    }
+    return list.map((t, i) => `${i + 1}. ${t}`).join("\n\n");
+  } catch {
+    return "Unable to generate insights right now. Review your calculated results and compare against industry benchmarks to assess performance.";
+  }
 }

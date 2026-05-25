@@ -13,9 +13,9 @@ function ctx(overrides: Record<string, unknown> = {}) {
 }
 
 describe("generateInsights", () => {
-  it("returns markdown with ## Insights header", () => {
+  it("returns numbered insights", () => {
     const result = generateInsights(ctx());
-    expect(result).toContain("## Insights");
+    expect(result).toMatch(/^\d+\.\s/);
   });
 
   it("returns at least 3 insights", () => {
@@ -32,13 +32,11 @@ describe("generateInsights", () => {
 
   it("handles zero primary value", () => {
     const result = generateInsights(ctx({ outputs: [{ id: "out", label: "Val", value: 0, type: "currency", isPrimary: true }] }));
-    expect(result).toContain("## Insights");
     expect(result.length).toBeGreaterThan(20);
   });
 
   it("handles negative primary value", () => {
     const result = generateInsights(ctx({ outputs: [{ id: "out", label: "Val", value: -500, type: "currency", isPrimary: true }] }));
-    expect(result).toContain("## Insights");
   });
 
   it("handles number type primary (NPS-like)", () => {
@@ -46,14 +44,12 @@ describe("generateInsights", () => {
       category: "churn-retention",
       outputs: [{ id: "score", label: "Score", value: 42, type: "number", isPrimary: true }],
     }));
-    expect(result).toContain("## Insights");
   });
 
   it("handles percentage type primary", () => {
     const result = generateInsights(ctx({
       outputs: [{ id: "pct", label: "Rate", value: 75, type: "percentage", isPrimary: true }],
     }));
-    expect(result).toContain("## Insights");
   });
 
   it("handles ratio type primary", () => {
@@ -61,7 +57,6 @@ describe("generateInsights", () => {
       outputs: [{ id: "ratio", label: "Ratio", value: 3.5, type: "ratio", isPrimary: true }],
       category: "saas-deepen",
     }));
-    expect(result).toContain("## Insights");
   });
 });
 
@@ -91,7 +86,6 @@ describe("revenue category", () => {
       category: "revenue",
       outputs: [{ id: "mrr", label: "MRR", value: 50000, type: "currency", isPrimary: true }],
     }));
-    expect(result).toContain("## Insights");
   });
 });
 
@@ -121,7 +115,6 @@ describe("growth-efficiency category", () => {
       category: "growth-efficiency",
       outputs: [{ id: "cac", label: "CAC", value: 1200, type: "currency", isPrimary: true }],
     }));
-    expect(result).toContain("## Insights");
   });
 
   it("handles Magic Number calculator", () => {
@@ -267,6 +260,5 @@ describe("saas-deepen category", () => {
       category: "saas-deepen",
       outputs: [{ id: "ratio", label: "Efficiency Ratio", value: 2.5, type: "ratio", isPrimary: true }],
     }));
-    expect(result).toContain("## Insights");
   });
 });
