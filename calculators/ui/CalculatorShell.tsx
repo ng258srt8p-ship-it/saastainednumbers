@@ -68,7 +68,7 @@ export function CalculatorShell({
 
       <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-card-bg p-4 sm:p-6 shadow-sm">
         <div className="flex items-start justify-between gap-3 sm:gap-4">
-          <div className="flex-1">{children}</div>
+          <div className="flex-1 min-w-0">{children}</div>
           {embedButton && <div className="shrink-0">{embedButton}</div>}
         </div>
         <PrivacyNotice />

@@ -106,7 +106,10 @@ export default async function CalculatorPage({ params }: PageProps) {
       </div>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([webApp, howTo, ...(faq ? [faq] : [])]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [webApp, howTo, ...(faq ? [faq] : [])].filter(Boolean)
+        }) }}
       />
       <Script
         async

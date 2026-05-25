@@ -77,8 +77,8 @@ export default function RootLayout({
           </main>
         <footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
           <div className="mx-auto max-w-6xl px-4 py-10">
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <div>
+            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12">
+              <div className="w-40 sm:w-auto">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Product</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Home</Link></li>
@@ -87,7 +87,7 @@ export default function RootLayout({
                   <li><Link href="/dashboard" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Dashboard</Link></li>
                 </ul>
               </div>
-              <div>
+              <div className="w-40 sm:w-auto">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Categories</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/revenue" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Revenue</Link></li>
@@ -101,7 +101,7 @@ export default function RootLayout({
                   <li><Link href="/saas-deepen" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">SaaS Deepen</Link></li>
                 </ul>
               </div>
-              <div>
+              <div className="w-40 sm:w-auto">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Resources</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Blog</Link></li>
@@ -127,30 +127,31 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                name: "SaaStainedNumbers",
-                url: "https://saastainednumbers.com",
-                logo: "https://saastainednumbers.com/logo.svg",
-                description:
-                  "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                name: "SaaStainedNumbers",
-                url: "https://saastainednumbers.com",
-                description:
-                  "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
-                potentialAction: {
-                  "@type": "SearchAction",
-                  target: "https://saastainednumbers.com/calculators?q={search_term_string}",
-                  "query-input": "required name=search_term_string",
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  name: "SaaStainedNumbers",
+                  url: "https://saastainednumbers.com",
+                  logo: "https://saastainednumbers.com/logo.svg",
+                  description:
+                    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
                 },
-              },
-            ]),
+                {
+                  "@type": "WebSite",
+                  name: "SaaStainedNumbers",
+                  url: "https://saastainednumbers.com",
+                  description:
+                    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: "https://saastainednumbers.com/calculators?q={search_term_string}",
+                    "query-input": "required name=search_term_string",
+                  },
+                },
+              ],
+            }),
           }}
         />
         </PostHogProvider>

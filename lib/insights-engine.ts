@@ -34,12 +34,12 @@ function fmt(val: string | number, type: string): string {
   return `${val.toFixed(1)}`;
 }
 
-function primaryOutput(outputs: OutputValue[]): OutputValue | undefined {
+function primaryOutput(outputs: OutputValue[] | undefined): OutputValue | undefined {
   if (!outputs || !outputs.length) return undefined;
   return outputs.find((o) => o.isPrimary) || outputs[0];
 }
 
-function primaryNum(outputs: OutputValue[]): number | null {
+function primaryNum(outputs: OutputValue[] | undefined): number | null {
   const p = primaryOutput(outputs);
   if (!p) return null;
   if (typeof p.value !== "number") return null;
@@ -62,7 +62,7 @@ function findOutput(outputs: OutputValue[] | undefined, idSubstring: string): Ou
   return outputs.find((o) => o.id && o.id.includes(idSubstring));
 }
 
-function typeOfPrimary(outputs: OutputValue[]): string {
+function typeOfPrimary(outputs: OutputValue[] | undefined): string {
   if (!outputs || !outputs.length) return "number";
   const p = primaryOutput(outputs);
   return p?.type || "number";
