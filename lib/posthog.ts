@@ -4,7 +4,10 @@ import posthog from "posthog-js";
 
 type PostHogEvent = "pageview" | "calculate" | "compare" | "feedback" | "signup" | "upgrade";
 
+const enabled = typeof window !== "undefined" && !!process.env.NEXT_PUBLIC_POSTHOG_KEY;
+
 function capture(event: PostHogEvent, properties?: Record<string, unknown>) {
+  if (!enabled) return;
   try {
     posthog.capture(event, properties);
   } catch {

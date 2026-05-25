@@ -77,7 +77,11 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
       setInsights(data.insights);
       setTimeout(() => setVisible(true), 10);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      const msg = err instanceof Error ? err.message : "Something went wrong";
+      const userFacing = msg.includes("did not match the expected pattern") || msg.includes("Unexpected token")
+        ? "Unable to generate insights. Please try again."
+        : msg;
+      setError(userFacing);
     } finally {
       setLoading(false);
     }
