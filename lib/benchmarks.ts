@@ -206,7 +206,7 @@ export function getHealthColor(status: HealthStatus): string {
     case "critical":
       return "bg-red-100 text-red-700 border-red-200";
     case "reference":
-      return "bg-gray-100 text-gray-500 border-gray-200";
+      return "bg-gray-100 text-gray-600 border-gray-200";
   }
 }
 

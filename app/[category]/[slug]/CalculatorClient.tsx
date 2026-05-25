@@ -18,7 +18,6 @@ import { getMetricKey } from "@/lib/benchmarks";
 import type { Stage } from "@/lib/benchmarks";
 import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
-import { AffiliateTools } from "@/components/AffiliateTools";
 
 interface RelatedCalc {
   slug: string;
@@ -207,7 +206,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
                         <tr key={i} className="border-b border-gray-800">
                           <td className="py-2 text-gray-200">{row.metric}</td>
                           <td className="py-2 text-gray-300">{row.value}</td>
-                          <td className="py-2 text-gray-500">{row.source}</td>
+                          <td className="py-2 text-gray-400">{row.source}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -231,7 +230,6 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
               </div>
             </details>
           ))}
-          <AffiliateTools category={config.category} />
         </div>
       }
       embedButton={
@@ -258,7 +256,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
                 <h3 className="font-medium text-gray-200 group-hover:text-brand-400 transition-colors">
                   {rc.meta.title}
                 </h3>
-                <p className="mt-1 text-xs text-gray-500 line-clamp-2">{rc.meta.description}</p>
+                <p className="mt-1 text-xs text-gray-400 line-clamp-2">{rc.meta.description}</p>
               </a>
             ))}
           </div>
@@ -316,7 +314,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             <button
               type="button"
               onClick={reset}
-              className="text-sm text-brand-600 hover:text-brand-700 underline"
+              className="text-sm text-brand-400 hover:text-brand-300 underline"
             >
               Reset all values
             </button>
@@ -355,7 +353,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-1.5">
                 <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#008387]" aria-hidden />
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">Scenario A</span>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">Scenario A</span>
               </div>
               {resultsA.map((r) => (
                 <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} />
@@ -364,7 +362,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-1.5">
                 <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#143562]" aria-hidden />
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">Scenario B</span>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">Scenario B</span>
               </div>
               {resultsB.map((r) => {
                 const other = resultsA.find((ra) => ra.id === r.id);
@@ -388,14 +386,14 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             <button
               type="button"
               onClick={() => setCompareMode(false)}
-              className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+              className="text-sm text-gray-400 hover:text-gray-300 transition-colors"
             >
               Back to single view
             </button>
             <button
               type="button"
               onClick={reset}
-              className="text-sm text-brand-600 hover:text-brand-700 underline"
+              className="text-sm text-brand-400 hover:text-brand-300 underline"
             >
               Reset both scenarios
             </button>
@@ -403,7 +401,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         </div>
       )}
 
-      <p className="text-xs text-gray-600 text-center px-4">
+      <p className="text-xs text-gray-400 text-center px-4">
         Disclaimer: Results are for informational purposes only and should not be considered financial advice.
         SaaStainedNumbers is not responsible for any decisions made based on these calculations.
       </p>

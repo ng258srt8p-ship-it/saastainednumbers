@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         </Link>
         <article>
           <header className="mb-8">
-            <time className="text-sm text-gray-400">{post.date}</time>
+            <time className="text-sm text-gray-500">{post.date}</time>
             <h1 className="font-heading text-3xl font-bold mt-1">{post.title}</h1>
             <p className="text-gray-600 mt-2">{post.description}</p>
           </header>

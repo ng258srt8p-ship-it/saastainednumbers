@@ -86,6 +86,7 @@ export function InputSlider({
         }}
         className="mt-1 h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-700 accent-brand-500"
         aria-hidden
+        tabIndex={-1}
       />
     </div>
   );

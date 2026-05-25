@@ -79,7 +79,7 @@ export default function DashboardPage() {
             <button
               type="button"
               onClick={() => setInputs(defaultInputs)}
-              className="mt-4 text-sm text-brand-600 hover:text-brand-700 underline"
+              className="mt-4 text-sm text-brand-700 hover:text-brand-800 underline"
             >
               Reset defaults
             </button>
@@ -128,10 +128,12 @@ export default function DashboardPage() {
 }
 
 function InputField({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
+  const id = `dash-${label.toLowerCase().replace(/[^a-z]+/g, "-")}`;
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+      <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
       <input
+        id={id}
         type="number"
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
@@ -150,7 +152,7 @@ function ResultCard({ title, value, subtitle, href, params }: { title: string; v
       <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{title}</p>
       <p className="mt-2 font-heading text-2xl font-bold text-gray-900">{value}</p>
       {subtitle && <p className="mt-1 text-sm text-gray-500">{subtitle}</p>}
-      <p className="mt-3 text-xs text-brand-600 font-medium">Explore in detail &rarr;</p>
+      <p className="mt-3 text-xs text-brand-700 font-medium">Explore in detail &rarr;</p>
     </Link>
   );
 }

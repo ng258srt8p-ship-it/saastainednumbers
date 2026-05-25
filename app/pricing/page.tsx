@@ -25,7 +25,7 @@ export default function PricingPage() {
 
       <div className="mx-auto mt-12 max-w-lg rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
         <p className="text-5xl font-bold text-gray-900">$0</p>
-        <p className="mt-1 text-sm text-gray-400">forever</p>
+        <p className="mt-1 text-sm text-gray-500">forever</p>
 
         <ul className="mt-8 space-y-4 text-left">
           {allFeatures.map((f) => (

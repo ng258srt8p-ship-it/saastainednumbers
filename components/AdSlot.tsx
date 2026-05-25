@@ -59,11 +59,6 @@ export function AdSlot({ placement, slug }: AdSlotProps) {
       role="complementary"
       aria-label="Advertisement"
     >
-      {!isSticky && (
-        <p className="text-[10px] font-medium uppercase tracking-wider text-gray-500 mb-1">
-          Sponsored
-        </p>
-      )}
       <div className="relative">
         <ins
           ref={insRef}

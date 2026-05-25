@@ -218,17 +218,17 @@ export default function Home() {
             <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900">{totalCount}</p>
               <p className="mt-1 text-sm text-gray-500">calculators in catalog</p>
-              <p className="text-xs text-gray-400 mt-1">across <span className="font-numbers">{categories.length}</span> categories</p>
+              <p className="text-xs text-gray-500 mt-1">across <span className="font-numbers">{categories.length}</span> categories</p>
             </div>
             <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900">{totalCount * 4}</p>
               <p className="mt-1 text-sm text-gray-500">calculation benchmarks</p>
-              <p className="text-xs text-gray-400 mt-1">industry-standard data</p>
+              <p className="text-xs text-gray-500 mt-1">industry-standard data</p>
             </div>
             <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900">$0</p>
               <p className="mt-1 text-sm text-gray-500">always free</p>
-              <p className="text-xs text-gray-400 mt-1">no paywalls, no tiers</p>
+              <p className="text-xs text-gray-500 mt-1">no paywalls, no tiers</p>
             </div>
           </div>
         </div>
