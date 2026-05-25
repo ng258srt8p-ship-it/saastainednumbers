@@ -104,7 +104,7 @@ export function MobileNav({ t }: MobileNavProps) {
 
   return (
     <>
-      <div className="hidden md:flex items-center gap-5 text-sm text-gray-700">
+      <div className="hidden md:flex items-center gap-5 text-sm text-gray-500 dark:text-gray-400">
         <Link href="/calculators" className="transition-colors hover:text-gray-900">
           Calculators
         </Link>
