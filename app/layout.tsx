@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
-import { AnalyticsClient } from "@/components/AnalyticsClient";
 import { Nav } from "@/components/Nav";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import "./globals.css";
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
     default: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
   },
   description:
-    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
+    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. Available in 6 languages. No account or sign-up required.",
   metadataBase: new URL("https://saastainednumbers.com"),
   icons: {
     icon: "/favicon.png",
@@ -57,7 +56,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
         <PostHogProvider>
-        <AnalyticsClient />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

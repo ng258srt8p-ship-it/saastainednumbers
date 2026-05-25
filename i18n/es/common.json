@@ -1,41 +1,7 @@
 {
   "nav": {
-    "home": "Inicio",
-    "calculators": "Calculadoras",
-    "blog": "Blog",
-    "pricing": "Precios",
     "dashboard": "Panel",
-    "account": "Cuenta",
-    "signIn": "Iniciar Sesión",
-    "signUp": "Registrarse"
-  },
-  "calculator": {
-    "calculate": "Calcular",
-    "reset": "Restablecer",
-    "result": "Resultado",
-    "results": "Resultados",
-    "input": "Entrada",
-    "embed": "Incrustar",
-    "share": "Compartir",
-    "copyLink": "Copiar Enlace",
-    "copied": "¡Copiado!",
-    "relatedCalculators": "Calculadoras Relacionadas",
-    "verified": "Verificado",
-    "source": "Fuente",
-    "privacy": "Sus datos nunca salen de su dispositivo. No almacenamos cálculos en nuestros servidores.",
-    "feedback": "¿Fue útil esto?"
-  },
-  "errors": {
-    "required": "Este campo es obligatorio",
-    "positive": "El valor debe ser positivo",
-    "number": "Ingrese un número válido",
-    "generic": "Algo salió mal. Intente de nuevo."
-  },
-  "common": {
-    "calculationsThisMonth": "cálculos este mes",
-    "noAccount": "No se requiere cuenta",
-    "free": "Gratis",
-    "loading": "Cargando...",
-    "learnMore": "Más información"
+    "pricing": "Precios",
+    "blog": "Blog"
   }
 }

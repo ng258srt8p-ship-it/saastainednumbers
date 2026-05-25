@@ -31,12 +31,12 @@ const config = {
     formulaExplanation: "Taxable Side Income = Side Income - Expenses. Self-Employment Tax = Taxable Side Income × 15.3% × 50% (deductible employer portion only). Federal Tax: Estimates additional federal income tax by comparing total income (employment + side) tax to employment-only tax using simplified brackets ($0-60K at 10%, over $60K at 22%). State Tax = Taxable Side Income × 5% (estimated average state rate). Effective Tax Rate = Total Additional Tax ÷ Taxable Side Income × 100. After-Tax Side Income = Taxable Side Income - Total Additional Tax.",
     benchmarks: "The effective tax rate on side hustle income typically ranges from 25-40% depending on your total income, filing status, and deductions. Self-employment tax alone adds 15.3% on top of income tax. According to IRS data, approximately 30% of independent contractors fail to pay sufficient estimated taxes, resulting in penalties. The average sole proprietor deducts $5,000-15,000 in business expenses annually. Using a dedicated business bank account and tracking software like [QuickBooks](https://quickbooks.intuit.com) can reduce tax preparation time by 50% and uncover legitimate deductions. State income tax rates vary from 0% (TX, FL, NV, WA) to 13.3% (CA).",
     benchmarkData: [
-      { metric: "Self-Employment Tax Rate", value: "15.3%", source: "IRS 2025" },
-      { metric: "Federal Tax Bracket (Low)", value: "10% ($0-60K combined)", source: "IRS 2025" },
-      { metric: "Federal Tax Bracket (High)", value: "22% ($60K+ combined)", source: "IRS 2025" },
-      { metric: "Average Effective Side Income Tax Rate", value: "25-35%", source: "Freelancer Tax Study 2025" },
+      { metric: "Self-Employment Tax Rate", value: "15.3%", source: "IRS 2026" },
+      { metric: "Federal Tax Bracket (Low)", value: "10% ($0-60K combined)", source: "IRS 2026" },
+      { metric: "Federal Tax Bracket (High)", value: "22% ($60K+ combined)", source: "IRS 2026" },
+      { metric: "Average Effective Side Income Tax Rate", value: "25-35%", source: "Freelancer Tax Study 2026" },
       { metric: "Average Business Expense Deduction", value: "$5,000-15,000", source: "IRS Sole Proprietor Data" },
-      { metric: "State Income Tax Range", value: "0-13.3%", source: "State Tax Authorities 2025" },
+      { metric: "State Income Tax Range", value: "0-13.3%", source: "State Tax Authorities 2026" },
     ],
     relatedCalculators: ["savings-rate-calculator", "fire-calculator"],
     faq: [

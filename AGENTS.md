@@ -124,3 +124,18 @@ webcalc/
 - Auth infrastructure kept (auth.ts, AuthProvider, Prisma adapter) for admin login and calculation saving
 - Account pages show "sign in is currently disabled" when not authenticated
 - All calculators fully functional without sign-in
+
+## Session Summary (May 25, 2026)
+
+### Done
+- **Footer centering**: Changed footer from `grid grid-cols-3` to `flex flex-wrap justify-center` with gap-based spacing for centered 3-column layout
+- **Search icon**: Replaced emoji 🔍 with Material Symbols "search" icon
+- **Content currency audit**: Comprehensive audit (32 items across 5 phases + 4 deployment)
+- **Phase 1-6 implementation**:
+  - Pricing page metadata, language support text, meta description expansion
+  - 401k defaults, side-income-tax config, benchmarks update
+  - Removed AnalyticsClient, cleaned AGENTS.md
+  - Cleaned translation keys from all 6 locale files, removed dead i18n code
+  - Removed dead AI code from insights route, cleaned i18n.ts
+  - Updated deploy workflow
+- **Git email fix**: Rebated 18 commits to replace `privaterelay.appleid.com` with `users.noreply.github.com`; force-pushed to remote
