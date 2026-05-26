@@ -53,7 +53,7 @@ export function ComparisonChart({ data }: ComparisonChartProps) {
         <BarChart data={chartData} layout="vertical" margin={{ top: 4, right: 16, bottom: 4, left: 8 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="currentColor" className="stroke-gray-200 dark:stroke-gray-700" />
           <XAxis type="number" stroke="currentColor" className="text-gray-500 dark:text-gray-400" tick={{ fontSize: 11 }} />
-          <YAxis type="category" dataKey="name" stroke="currentColor" className="text-gray-500 dark:text-gray-400" tick={{ fontSize: 11 }} width={120} />
+          <YAxis type="category" dataKey="name" stroke="currentColor" className="text-gray-500 dark:text-gray-400" tick={{ fontSize: 10 }} width={90} />
           <Tooltip content={<CustomTooltip />} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
           <Bar dataKey="Scenario A" fill="#008387" radius={[0, 4, 4, 0]} />

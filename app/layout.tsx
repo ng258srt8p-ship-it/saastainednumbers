@@ -75,8 +75,8 @@ export default function RootLayout({
           </main>
         <footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
           <div className="mx-auto max-w-6xl px-4 py-10">
-            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12">
-              <div className="w-40 sm:w-auto">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-6 sm:gap-8 lg:gap-12">
+              <div className="w-full sm:w-auto">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Product</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Home</Link></li>
@@ -85,7 +85,7 @@ export default function RootLayout({
                   <li><Link href="/dashboard" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Dashboard</Link></li>
                 </ul>
               </div>
-              <div className="w-40 sm:w-auto">
+              <div className="w-full sm:w-auto">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Categories</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/revenue" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Revenue</Link></li>
@@ -99,8 +99,8 @@ export default function RootLayout({
                   <li><Link href="/saas-deepen" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">SaaS Deepen</Link></li>
                 </ul>
               </div>
-              <div className="w-40 sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Resources</h3>
+              <div className="w-full sm:w-auto">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">Resources</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Blog</Link></li>
 
