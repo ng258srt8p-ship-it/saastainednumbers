@@ -367,6 +367,110 @@ const posts: BlogPost[] = [
 <p>The bottom line: stop celebrating signups and start celebrating activation. It's the metric that separates companies that grow from companies that just add users.</p>
     `.trim(),
   },
+  {
+    slug: "mrr-growth-rate-guide-2026",
+    title: "MRR Growth Rate: The Complete SaaS Guide for 2026",
+    description:
+      "Learn how to calculate, interpret, and improve MRR growth rate for your SaaS business. Includes benchmarks by stage, calculation examples, and actionable strategies.",
+    date: "May 27, 2026",
+    content: `
+<p>If you run a SaaS business, no single metric tells you more about your trajectory than MRR growth rate. It captures the net effect of every customer acquired, every expansion deal closed, and every churn event in a single number. Whether you're a seed-stage founder or a scale-up operator, understanding and improving MRR growth rate is the fastest path to building a valuable company.</p>
+
+<p>This guide covers everything you need to know about MRR growth rate in 2026: how to calculate it, what good looks like at every stage, the three levers that drive it, and the benchmarks that matter.</p>
+
+<h2>What Is MRR Growth Rate?</h2>
+<p>MRR growth rate measures the percentage change in your Monthly Recurring Revenue from one period to the next. It tells you whether your business is accelerating, maintaining momentum, or decelerating — often weeks before other metrics catch the signal.</p>
+
+<p>Unlike traditional revenue growth (which can be distorted by one-time fees, professional services, or hardware sales), MRR growth focuses exclusively on the recurring subscription revenue that defines a SaaS business. This makes it the single most important leading indicator of SaaS health.</p>
+
+<p><strong>Why it matters:</strong> Companies with strong MRR growth rates attract better talent, command higher valuations, and have more strategic options. Investors use it as the primary filter for evaluating SaaS companies. Our <a href="/revenue/mrr-growth-rate-calculator">MRR growth rate calculator</a> computes yours instantly.</p>
+
+<h2>How to Calculate MRR Growth Rate</h2>
+<p>The formula is straightforward:</p>
+<p><strong>MRR Growth Rate = ((Current Month MRR - Previous Month MRR) / Previous Month MRR) × 100</strong></p>
+
+<p>For example, if your MRR was $50,000 last month and $55,000 this month:</p>
+<p>MRR Growth Rate = (($55,000 - $50,000) / $50,000) × 100 = <strong>10% MoM growth</strong></p>
+
+<h3>Month-over-Month vs Year-over-Year</h3>
+<p>Month-over-month (MoM) growth is the standard for early-stage companies because it captures momentum in near real-time. As you mature, year-over-year (YoY) growth becomes more meaningful, since MoM numbers naturally compress at scale. A mature company growing 3% MoM is compounding at 42% annually — an exceptional result.</p>
+
+<h3>Net vs Gross MRR Growth</h3>
+<p><strong>Net MRR growth</strong> includes new revenue, expansion revenue, churn, and contraction. It's the full picture. <strong>Gross MRR growth</strong> only includes new and expansion revenue, excluding churn and contraction. Track both to understand whether your growth is efficient. Our <a href="/revenue/mrr-calculator">MRR calculator</a> computes your base recurring revenue, and the <a href="/revenue/nrr-calculator">NRR calculator</a> reveals how churn and expansion affect your trajectory.</p>
+
+<h2>What Good MRR Growth Looks Like by Stage</h2>
+<p>Growth rate expectations vary dramatically by company stage. Using benchmarks from KeyBanc Capital Markets and SaaS Capital:</p>
+
+<ul>
+  <li><strong>Seed stage ($0-$1M ARR):</strong> 15-20% MoM target. At this stage, finding product-market fit matters more than efficiency. High growth rates on a small base are expected.</li>
+  <li><strong>Series A ($1M-$5M ARR):</strong> 10-15% MoM. You've found fit and are building your GTM engine. Growth should be accelerating, not slowing.</li>
+  <li><strong>Growth stage ($5M-$20M ARR):</strong> 5-10% MoM. Efficiency becomes important. The Rule of 40 starts to matter.</li>
+  <li><strong>Scale stage ($20M+ ARR):</strong> 2-5% MoM. At this scale, compounding 3% monthly equals 42% annual growth — a world-class result.</li>
+</ul>
+
+<p>Use our <a href="/revenue/mrr-calculator">MRR calculator</a> to project your growth trajectory across different stages.</p>
+
+<h2>The Three Levers of MRR Growth</h2>
+<p>Every MRR growth initiative falls into one of three categories. Mastering all three is how you build a compounding growth machine.</p>
+
+<h3>1. New Revenue</h3>
+<p>Acquiring new customers is the most visible growth lever. It's driven by your go-to-market engine: content marketing, paid acquisition, sales team effectiveness, partnership channels. Track your efficiency with our <a href="/growth-efficiency/cac-calculator">CAC calculator</a> to ensure you're spending wisely.</p>
+
+<h3>2. Expansion Revenue</h3>
+<p>Existing customers are your fastest and most profitable growth path. Expansion comes from usage-based pricing overages, tier upgrades, cross-sells, and add-on purchases. Companies with strong expansion revenue often achieve net revenue retention above 120%. Measure yours with our <a href="/revenue/nrr-calculator">NRR calculator</a>.</p>
+
+<h3>3. Revenue Retention</h3>
+<p>Every percentage point of churn reduction compounds your growth rate significantly. Improving retention is often the highest-ROI growth investment you can make. Track your retention with our <a href="/churn-retention/churn-calculator">churn calculator</a> and build automated re-engagement workflows for at-risk accounts.</p>
+
+<h2>Common MRR Growth Mistakes</h2>
+<p>Even experienced operators make these errors. Avoid them to get an accurate picture of your growth health:</p>
+<ul>
+  <li><strong>Confusing logo growth with revenue growth:</strong> Adding 100 small customers while losing 5 enterprise accounts looks good on logo counts but may hide contracting revenue.</li>
+  <li><strong>Ignoring seasonality:</strong> Month-over-month comparisons in December and January are often misleading. Always compare year-over-year for the full picture.</li>
+  <li><strong>Not segmenting by cohort:</strong> Aggregate growth rates hide critical detail. Segment by acquisition channel, customer size, and product line to identify what's working and what isn't.</li>
+  <li><strong>Celebrating percentage growth on a tiny base:</strong> Going from $100 to $200 MRR is 100% growth but not meaningful. Focus on absolute dollar growth once you pass $10K MRR.</li>
+</ul>
+
+<h2>Track MRR Growth Alongside These Metrics</h2>
+<p>MRR growth rate doesn't exist in isolation. For a complete picture of your business health, track it alongside:</p>
+<ul>
+  <li><strong>Quick Ratio:</strong> (New + Expansion) / Churn + Contraction. A Quick Ratio above 4 means hyper-efficient growth. Use our <a href="/growth-efficiency/quick-ratio-calculator">Quick Ratio calculator</a>.</li>
+  <li><strong>Rule of 40:</strong> Growth rate + profit margin should exceed 40%. Our <a href="/growth-efficiency/rule-of-40-calculator">Rule of 40 calculator</a> shows where you stand.</li>
+  <li><strong>LTV:CAC Ratio:</strong> Each customer should generate 3-5x what you spent to acquire them. Our <a href="/revenue/ltv-calculator">LTV calculator</a> computes customer lifetime value.</li>
+</ul>
+
+<h2>How to Accelerate MRR Growth</h2>
+<p>Once you understand your current MRR growth rate, here are the highest-impact actions to improve it:</p>
+<h3>Improve Onboarding</h3>
+<p>The faster customers experience your product's core value, the higher your activation and retention rates. A structured onboarding flow that guides users to the "aha moment" within their first session can improve activation by 20-40%. Use our <a href="/growth-efficiency/activation-rate-calculator">activation rate calculator</a> to measure your current funnel.</p>
+<h3>Implement Usage-Based Pricing</h3>
+<p>Usage-based pricing creates natural expansion revenue as customers grow. It aligns your revenue with the value customers receive and reduces friction in upgrades. Companies with usage-based components grow expansion revenue 20-30% faster than fixed-tier-only companies.</p>
+<h3>Build a Customer Health Score</h3>
+<p>Proactive retention starts with knowing which accounts are at risk before they churn. A customer health score combining product engagement, support interactions, and billing history lets you intervene early. Our <a href="/churn-retention/customer-health-score-calculator">customer health score calculator</a> helps you build your model.</p>
+
+<h2>MRR Growth Rate Benchmarks (2026)</h2>
+<p>Here are the latest benchmarks by company stage, based on data from KeyBanc Capital Markets 2026 SaaS Survey and SaaS Capital:</p>
+<ul>
+  <li><strong>Top-quartile (Seed):</strong> 20%+ MoM — exceptional product-market fit and GTM execution</li>
+  <li><strong>Median (Seed):</strong> 12-15% MoM — healthy early traction</li>
+  <li><strong>Top-quartile (Growth):</strong> 8-10% MoM — strong product-led growth</li>
+  <li><strong>Median (Growth):</strong> 5-7% MoM — solid execution</li>
+  <li><strong>Top-quartile (Scale):</strong> 4-5% MoM — efficient compounding machine</li>
+  <li><strong>Median (Scale):</strong> 2-3% MoM — sustainable but room for improvement</li>
+</ul>
+<p>Industry verticals also vary — infrastructure and developer tools typically grow faster than horizontal SaaS, while verticalized enterprise SaaS grows more slowly but with higher retention.</p>
+
+<h2>Tools to Track MRR Growth</h2>
+<p>Tracking MRR growth rate manually is error-prone. Use these tools to automate measurement and gain deeper insights:</p>
+<ul>
+  <li><strong><a href="/dashboard">SaaS Metrics Dashboard</a>:</strong> Our free dashboard connects MRR, CAC, LTV, churn, and ARPU in one view. Input your numbers once and see all metrics calculated instantly.</li>
+  <li><strong>Spreadsheet templates:</strong> For early-stage companies, a simple spreadsheet with monthly MRR inputs and automatic growth rate calculations works well.</li>
+  <li><strong>Automated tools:</strong> Baremetrics, ChartMogul, and ProfitWell provide real-time MRR tracking, cohort analysis, and growth rate dashboards with historical trending.</li>
+</ul>
+
+<p>Your MRR growth rate is the single best measure of whether your business is heading in the right direction. Track it weekly, understand what drives it, and build your entire operating system around improving it.</p>
+    `.trim(),
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {

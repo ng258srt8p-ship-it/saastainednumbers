@@ -1,6 +1,7 @@
 import { getTranslations } from "@/lib/getTranslations";
 import Link from "next/link";
 import { MobileNav } from "./MobileNav";
+import { ThemeToggle } from "./ThemeToggle";
 
 export async function Nav() {
   const { t } = await getTranslations();
@@ -22,7 +23,8 @@ export async function Nav() {
             SaaStainedNumbers
           </span>
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
           <MobileNav t={links} />
         </div>
       </div>
