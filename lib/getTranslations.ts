@@ -1,6 +1,3 @@
-import { cookies } from "next/headers";
-import type { Locale } from "./useLocale";
-
 type Messages = Record<string, string | Record<string, unknown>>;
 
 const cache = new Map<string, Messages>();
@@ -29,17 +26,10 @@ function getNestedValue(obj: Messages, path: string): string {
 }
 
 export async function getTranslations() {
-  let locale: Locale = "en";
-  try {
-    const cookieStore = await cookies();
-    locale = (cookieStore.get("locale")?.value ?? "en") as Locale;
-  } catch {
-    // cookies() not available during SSG/static export  -  fall back to English
-  }
-  const messages = await loadMessages(locale);
+  const messages = await loadMessages("en");
 
   return {
-    locale,
+    locale: "en" as const,
     t: (key: string): string => getNestedValue(messages, key),
   };
 }
