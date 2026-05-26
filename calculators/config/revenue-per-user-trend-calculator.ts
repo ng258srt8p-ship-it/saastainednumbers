@@ -42,7 +42,7 @@ const config = {
       { question: "Should I track ARPU by customer segment?", answer: "Yes. Overall ARPU can be misleading if your customer mix is changing. Track ARPU separately for each segment (self-serve, sales-led, SMB, mid-market, enterprise) to understand which segments are improving and which are underperforming." },
       { question: "What is a healthy ARPU growth rate?", answer: "5-15% year-over-year ARPU growth is healthy for mature SaaS companies. Early-stage companies may see 20%+ growth as they optimize pricing. Negative ARPU growth warrants investigation  -  it may be acceptable if driven by a deliberate land-and-expand strategy." },
       { question: "How does ARPU relate to LTV?", answer: "LTV = ARPU / Monthly Churn Rate (simplified). Higher ARPU directly increases LTV, making your unit economics more attractive. Improving ARPU is one of the most effective ways to improve LTV without reducing churn." },
-      { question: "What actions can improve ARPU trend?", answer: "Introduce usage-based pricing tiers, launch premium add-on features, implement annual prepayment discounts that increase commitment, improve onboarding to drive faster value realization, and create upsell paths from free to paid and paid to premium tiers." },
+      { question: "What actions can improve ARPU trend?", answer: "Introduce usage-based pricing tiers, launch premium add-on features, implement annual prepayment discounts that increase commitment, improve onboarding to drive faster value realization, and create upsell paths from free to paid and paid to premium tiers. Track ARPU trends per segment with [Baremetrics](https://baremetrics.com?via=saastainednumbers)." },
     ],
   },
 } satisfies CalculatorConfig;

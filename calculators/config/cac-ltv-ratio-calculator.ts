@@ -32,7 +32,7 @@ const config = {
     relatedCalculators: ["cac-calculator", "ltv-calculator", "payback-period-calculator"],
     faq: [
       { question: "What is a good LTV:CAC ratio?", answer: "3:1 or higher is healthy. Below 1:1 means you lose money on each customer. Above 5:1 may signal under-investment  -  you could profitably spend more on acquisition to grow faster." },
-      { question: "How do I improve my LTV:CAC ratio?", answer: "Increase LTV through better retention, higher pricing, or expansion revenue. Reduce CAC through channel optimization or product-led growth. Both approaches improve the ratio." },
+      { question: "How do I improve my LTV:CAC ratio?", answer: "Increase LTV through better retention, higher pricing, or expansion revenue. Reduce CAC through channel optimization or product-led growth. Both approaches improve the ratio. Use [Baremetrics](https://baremetrics.com?via=saastainednumbers) to track LTV:CAC across customer segments automatically." },
       { question: "Should I calculate LTV:CAC by channel?", answer: "Yes. Different channels have dramatically different ratios. Paid ads might have 2:1, while referrals might have 10:1. Channel-level analysis reveals where to invest." },
       { question: "What does a declining LTV:CAC ratio mean?", answer: "It means either LTV is decreasing (worse retention, lower pricing) or CAC is increasing (more expensive channels, sales inefficiency). Investigate the root cause." },
       { question: "How does LTV:CAC relate to payback period?", answer: "They're complementary. LTV:CAC measures overall return; payback period measures how long to recover CAC. A 3:1 ratio with 6-month payback is healthier than 3:1 with 18-month payback." },

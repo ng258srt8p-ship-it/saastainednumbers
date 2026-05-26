@@ -11,8 +11,6 @@ const allFeatures = [
   "Stage-based growth insights (Seed to Series C+)",
   "Unlimited embeds for your website",
   "URL sharing for collaboration",
-  "Save calculations to your account",
-  "Multilingual (EN, ES, DE, PT, FR, JA)",
 ];
 
 export default function PricingPage() {
