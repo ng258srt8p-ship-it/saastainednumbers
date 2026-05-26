@@ -44,6 +44,7 @@ export default async function sitemap() {
     { url: "https://saastainednumbers.com/blog", lastModified: new Date(), changeFrequency: "daily" as const, priority: 0.6 },
     { url: "https://saastainednumbers.com/pricing", lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
     { url: "https://saastainednumbers.com/calculators", lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: "https://saastainednumbers.com/legal", lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.3 },
   ];
 
   return [...staticPages, ...categoryPages, ...calculatorPages, ...embedPages, ...blogPages];

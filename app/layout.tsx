@@ -103,7 +103,15 @@ export default function RootLayout({
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">Resources</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Blog</Link></li>
-
+                </ul>
+              </div>
+              <div className="w-full sm:w-auto">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">Legal</h3>
+                <ul className="mt-3 space-y-2">
+                  <li><Link href="/legal#disclaimer" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Disclaimer</Link></li>
+                  <li><Link href="/legal#privacy" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Privacy Policy</Link></li>
+                  <li><Link href="/legal#terms" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Terms of Service</Link></li>
+                  <li><Link href="/legal#cookies" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Cookie Policy</Link></li>
                 </ul>
               </div>
             </div>
