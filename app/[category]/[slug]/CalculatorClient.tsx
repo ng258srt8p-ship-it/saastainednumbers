@@ -18,7 +18,7 @@ import type { Stage } from "@/lib/benchmarks";
 import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
 import { Insights } from "@/components/Insights";
-import { EmailCapture } from "@/components/EmailCapture";
+
 
 interface RelatedCalc {
   slug: string;
@@ -347,7 +347,6 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             inputs={aiInputs}
             outputs={aiOutputs}
           />
-          <EmailCapture />
         </div>
       )}
 
