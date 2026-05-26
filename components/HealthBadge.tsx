@@ -5,10 +5,10 @@ import { benchmarkReferences } from "@/lib/benchmarks";
 type Rating = "excellent" | "good" | "average" | "poor";
 
 const ratingColors: Record<Rating, string> = {
-  excellent: "bg-green-100 text-green-800",
-  good: "bg-teal-100 text-teal-800",
-  average: "bg-yellow-100 text-yellow-800",
-  poor: "bg-red-100 text-red-800",
+  excellent: "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300",
+  good: "bg-teal-100 text-teal-800 dark:bg-teal-900/40 dark:text-teal-300",
+  average: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300",
+  poor: "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300",
 };
 
 function getRating(
@@ -77,22 +77,22 @@ export function HealthBadge({ value, metric, label }: HealthBadgeProps) {
       title={label ? `${label}: ${value}` : String(value)}
     >
       <span className="capitalize">{rating}</span>
-      <span className="absolute bottom-full left-1/2 z-10 mb-2 hidden w-56 -translate-x-1/2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs text-gray-700 shadow-lg group-hover:block whitespace-pre-line text-left">
-        <div className="font-medium text-gray-900 mb-1">Benchmarks</div>
+      <span className="absolute bottom-full left-1/2 z-10 mb-2 hidden w-56 -translate-x-1/2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-xs text-gray-700 dark:text-gray-300 shadow-lg group-hover:block whitespace-pre-line text-left">
+        <div className="font-medium text-gray-900 dark:text-gray-100 mb-1">Benchmarks</div>
         {Object.entries(ref).map(([key, val]) => {
           if (key === "source" || key === "date" || key === "notes") return null;
           return (
             <div key={key} className="flex justify-between gap-2">
-              <span className="capitalize text-gray-500">{key}:</span>
+              <span className="capitalize text-gray-500 dark:text-gray-400">{key}:</span>
               <span className="font-medium">{val}</span>
             </div>
           );
         })}
-        <div className="mt-1 border-t border-gray-100 pt-1 text-gray-400">
+        <div className="mt-1 border-t border-gray-100 dark:border-gray-700 pt-1 text-gray-400 dark:text-gray-500">
           {ref.source} ({ref.date})
         </div>
         {ref.notes && (
-          <div className="mt-1 text-gray-500 italic">{ref.notes}</div>
+          <div className="mt-1 text-gray-500 dark:text-gray-400 italic">{ref.notes}</div>
         )}
       </span>
     </span>

@@ -105,16 +105,16 @@ export function MobileNav({ t }: MobileNavProps) {
   return (
     <>
       <div className="hidden md:flex items-center gap-5 text-sm text-gray-500 dark:text-gray-400">
-        <Link href="/calculators" className="transition-colors hover:text-gray-900">
+        <Link href="/calculators" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
           Calculators
         </Link>
-        <Link href="/dashboard" className="transition-colors hover:text-gray-900">
+        <Link href="/dashboard" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
           {t.dashboard}
         </Link>
-        <Link href="/pricing" className="transition-colors hover:text-gray-900">
+        <Link href="/pricing" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
           {t.pricing}
         </Link>
-        <Link href="/blog" className="transition-colors hover:text-gray-900">
+        <Link href="/blog" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
           {t.blog}
         </Link>
       </div>
@@ -141,7 +141,7 @@ export function MobileNav({ t }: MobileNavProps) {
         role="dialog"
         aria-label="Mobile navigation"
         aria-hidden={!open}
-        className={`md:hidden fixed left-0 right-0 top-[80px] bg-white border-t border-gray-100 shadow-lg z-40 transition-all duration-300 ${
+        className={`md:hidden fixed left-0 right-0 top-[80px] bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-700 shadow-lg z-40 transition-all duration-300 ${
           open
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none -translate-y-2"
@@ -158,7 +158,7 @@ export function MobileNav({ t }: MobileNavProps) {
                       href={item.href}
                       onClick={close}
                       aria-current={isCurrent ? "page" : undefined}
-                      className="block px-3 py-3 text-[15px] font-medium text-gray-800 border-b border-gray-100 transition-colors hover:text-brand-600 last:border-b-0"
+                      className="block px-3 py-3 text-[15px] font-medium text-gray-800 dark:text-gray-200 border-b border-gray-100 dark:border-gray-700 transition-colors hover:text-brand-600 last:border-b-0"
                     >
                       {item.label}
                     </Link>

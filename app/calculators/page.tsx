@@ -25,7 +25,7 @@ export default function CalculatorsPage() {
       />
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="font-heading text-3xl font-bold mb-2">All Calculators</h1>
-      <p className="text-gray-600 mb-6">
+      <p className="text-gray-600 dark:text-gray-400 mb-6">
         Browse our complete collection of {calculators.length} calculators across {categories.length} categories.
       </p>
       <div className="mb-10">
@@ -49,15 +49,15 @@ export default function CalculatorsPage() {
           return (
             <section key={cat}>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-heading text-xl font-bold text-gray-900 flex items-center gap-2">
+                <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
                   <CategoryIcon identifier={meta?.icon} className="w-6 h-6" />
                   {meta?.name ?? cat}
                 </h2>
-                <Link href={`/${cat}`} className="text-sm font-medium text-brand-600 hover:text-brand-700">
+                <Link href={`/${cat}`} className="text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300">
                   View all &rarr;
                 </Link>
               </div>
-              <p className="text-sm text-gray-500 mb-4">{meta?.description}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{meta?.description}</p>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {catCalcs.map((calc) => (
                   <Link

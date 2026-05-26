@@ -55,22 +55,22 @@ export default function DashboardPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="font-heading text-3xl font-bold mb-2">SaaS Metrics Dashboard</h1>
-      <p className="text-gray-600 mb-8">
+      <p className="text-gray-600 dark:text-gray-400 mb-8">
         Fill in your business metrics once and see all key SaaS calculations at a glance.
       </p>
 
       <div className="flex flex-col gap-8 lg:flex-row">
         {/* Input Form */}
         <div className="lg:w-96 space-y-5">
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold mb-4">Your Metrics</h2>
+          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Your Metrics</h2>
 
             <div className="space-y-4">
               <InputField label="Customers" value={inputs.customers} onChange={(v) => update("customers", v)} />
               <InputField label="ARPU ($)" value={inputs.arpu} onChange={(v) => update("arpu", v)} />
               <InputField label="Monthly Churn Rate (%)" value={inputs.churnRate} onChange={(v) => update("churnRate", v)} />
               <InputField label="Gross Margin (%)" value={inputs.grossMargin} onChange={(v) => update("grossMargin", v)} />
-              <hr className="border-gray-100" />
+              <hr className="border-gray-100 dark:border-gray-700" />
               <InputField label="Sales Costs ($)" value={inputs.salesCost} onChange={(v) => update("salesCost", v)} />
               <InputField label="Marketing Costs ($)" value={inputs.marketingCost} onChange={(v) => update("marketingCost", v)} />
               <InputField label="New Customers/Mo" value={inputs.newCustomers} onChange={(v) => update("newCustomers", v)} />
@@ -79,7 +79,7 @@ export default function DashboardPage() {
             <button
               type="button"
               onClick={() => setInputs(defaultInputs)}
-              className="mt-4 text-sm text-brand-700 hover:text-brand-800 underline"
+              className="mt-4 text-sm text-brand-700 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300 underline"
             >
               Reset defaults
             </button>
@@ -131,13 +131,13 @@ function InputField({ label, value, onChange }: { label: string; value: number; 
   const id = `dash-${label.toLowerCase().replace(/[^a-z]+/g, "-")}`;
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+      <label htmlFor={id} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}</label>
       <input
         id={id}
         type="number"
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+        className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
       />
     </div>
   );
@@ -147,12 +147,12 @@ function ResultCard({ title, value, subtitle, href, params }: { title: string; v
   return (
     <Link
       href={`${href}?${params}`}
-      className="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+      className="block rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition-shadow hover:shadow-md"
     >
-      <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{title}</p>
-      <p className="mt-2 font-heading text-2xl font-bold text-gray-900">{value}</p>
-      {subtitle && <p className="mt-1 text-sm text-gray-500">{subtitle}</p>}
-      <p className="mt-3 text-xs text-brand-700 font-medium">Explore in detail &rarr;</p>
+      <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">{title}</p>
+      <p className="mt-2 font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">{value}</p>
+      {subtitle && <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{subtitle}</p>}
+      <p className="mt-3 text-xs text-brand-700 dark:text-brand-400 font-medium">Explore in detail &rarr;</p>
     </Link>
   );
 }

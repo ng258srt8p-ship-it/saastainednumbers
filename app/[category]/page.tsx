@@ -40,11 +40,11 @@ export default async function CategoryPage({ params }: PageProps) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-12">
         <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} Calculators</h1>
-        <p className="text-gray-600 mb-8">{meta?.description}</p>
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-12 text-center">
-          <p className="text-lg text-gray-600">Calculators in this category are coming soon.</p>
-          <p className="mt-2 text-sm text-gray-500">We are building them now. Check back soon!</p>
-          <Link href="/" className="mt-6 inline-block text-sm font-medium text-brand-600 hover:text-brand-700 underline">
+        <p className="text-gray-600 dark:text-gray-400 mb-8">{meta?.description}</p>
+        <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 p-12 text-center">
+          <p className="text-lg text-gray-600 dark:text-gray-400">Calculators in this category are coming soon.</p>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">We are building them now. Check back soon!</p>
+          <Link href="/" className="mt-6 inline-block text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 underline">
             Browse all categories &rarr;
           </Link>
         </div>
@@ -60,7 +60,7 @@ export default async function CategoryPage({ params }: PageProps) {
           { label: categoryName, href: `/${category}` },
         ]} />
         <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} Calculators</h1>
-        <p className="text-gray-600 mb-6">{meta?.description}</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">{meta?.description}</p>
         <div className="mb-8">
           <CalculatorSearch
             calculators={calculators.map((c) => ({
@@ -77,12 +77,12 @@ export default async function CategoryPage({ params }: PageProps) {
             <Link
               key={calc.slug}
               href={`/${calc.category}/${calc.slug}`}
-              className="group rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+              className="group rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
             >
               <div className="flex items-center justify-between">
-                <h2 className="font-heading text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">{calc.meta.title}</h2>
+                <h2 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 transition-colors">{calc.meta.title}</h2>
               </div>
-              <p className="mt-2 text-sm text-gray-600">{calc.meta.description}</p>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{calc.meta.description}</p>
             </Link>
           ))}
         </div>

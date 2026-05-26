@@ -49,17 +49,17 @@ export default async function BlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPosting) }}
       />
       <div className="mx-auto max-w-3xl px-4 py-12">
-        <Link href="/blog" className="text-sm text-brand-600 hover:text-brand-700 mb-4 inline-block">
+        <Link href="/blog" className="text-sm text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 mb-4 inline-block">
           &larr; Back to Blog
         </Link>
         <article>
           <header className="mb-8">
-            <time className="text-sm text-gray-500">{post.date}</time>
-            <h1 className="font-heading text-3xl font-bold mt-1">{post.title}</h1>
-            <p className="text-gray-600 mt-2">{post.description}</p>
+            <time className="text-sm text-gray-500 dark:text-gray-400">{post.date}</time>
+            <h1 className="font-heading text-3xl font-bold mt-1 text-gray-900 dark:text-gray-100">{post.title}</h1>
+            <p className="text-gray-600 dark:text-gray-400 mt-2">{post.description}</p>
           </header>
           <div
-            className="prose prose-gray max-w-none"
+            className="prose prose-gray dark:prose-invert max-w-none"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
           <div className="mt-8">
