@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account or sign-up required.",
   metadataBase: new URL("https://saastainednumbers.com"),
   icons: {
-    icon: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
