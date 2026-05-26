@@ -18,10 +18,6 @@ import type { Stage } from "@/lib/benchmarks";
 import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
 import { Insights } from "@/components/Insights";
-import { EmailCapture } from "@/components/EmailCapture";
-import { AdSense } from "@/components/AdSense";
-import { EthicalAds } from "@/components/EthicalAds";
-
 
 interface RelatedCalc {
   slug: string;
@@ -189,11 +185,6 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
                 <p key={i} className="mb-1 text-gray-700 dark:text-gray-300">{part}{i === 0 ? ":" : "."}</p>
               ))}
             </div>
-          </section>
-
-          <section className="flex justify-center">
-            <AdSense slot="0000000000" className="w-full max-w-2xl" />
-            <EthicalAds className="w-full max-w-2xl" />
           </section>
 
           {config.content.benchmarks && (
@@ -421,10 +412,6 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         Disclaimer: Results are for informational purposes only and should not be considered financial advice.
         SaaStainedNumbers is not responsible for any decisions made based on these calculations.
       </p>
-      <AdSense slot="0000000000" className="mt-6" />
-      <div className="mt-6">
-        <EmailCapture />
-      </div>
       <EmbedModal
         slug={config.slug}
         title={config.meta.title}

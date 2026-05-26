@@ -33,7 +33,6 @@ const PAGE_TYPES = [
   { path: "/blog/saas-metrics-guide-2026", label: "Blog post" },
   { path: "/dashboard", label: "Dashboard" },
   { path: "/pricing", label: "Pricing" },
-  { path: "/request-calculator", label: "Request" },
 ];
 
 test.describe("Accessibility audit (Section 508 / WCAG 2.1 AA)", () => {

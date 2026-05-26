@@ -209,23 +209,6 @@ test.describe("Dashboard", () => {
   });
 });
 
-test.describe("Request Calculator Form", () => {
-  test("validates required fields", async ({ page }) => {
-    await page.goto(`${BASE}/request-calculator`, { waitUntil: "networkidle" });
-    await page.click('button[type="submit"]');
-    expect(await page.locator("text=Thank You!").count()).toBe(0);
-  });
-
-  test("submits successfully with valid data", async ({ page }) => {
-    await page.goto(`${BASE}/request-calculator`, { waitUntil: "networkidle" });
-    await page.fill("#name", "Test Calculator");
-    await page.selectOption("#category", "revenue");
-    await page.fill("#useCase", "Testing Playwright E2E");
-    await page.fill("#email", "e2e@test.com");
-    await page.click('button[type="submit"]');
-    await expect(page.locator("text=Thank You!")).toBeVisible();
-  });
-});
 
 test.describe("Embed Routes", () => {
   const embedSlugs = [

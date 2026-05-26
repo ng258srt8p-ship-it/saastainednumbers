@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
-import { GA4Provider } from "@/components/GA4Provider";
-import { AdSenseScript } from "@/components/AdSenseScript";
 import "./globals.css";
 
 const inter = Inter({
@@ -63,13 +61,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
-        <GA4Provider>
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" media="all" />
-        <AdSenseScript />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
@@ -167,7 +162,6 @@ export default function RootLayout({
             }),
           }}
         />
-        </GA4Provider>
       </body>
     </html>
   );
