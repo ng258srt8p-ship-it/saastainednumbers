@@ -165,9 +165,11 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
                 );
               }
               if (line.match(/^\d+\.\s/)) {
+                const num = line.match(/^\d+/);
+                const rest = line.replace(/^\d+/, "");
                 return (
                   <p key={i} className="text-sm text-gray-700 dark:text-gray-300 ml-4 mb-2">
-                    {line}
+                    <span className="font-numbers">{num?.[0]}</span>{rest}
                   </p>
                 );
               }

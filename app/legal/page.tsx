@@ -107,28 +107,9 @@ export default function LegalPage() {
             device. We do not store, transmit, or process your calculator inputs on our servers.
           </p>
 
-          <h3>Information We Collect</h3>
-          <p>We collect minimal information:</p>
-          <ul>
-            <li>
-              <strong>Analytics data</strong> via PostHog: anonymous page views, feature usage,
-              browser type, and general location (country/city level). We do not track personally
-              identifiable information through analytics.
-            </li>
-            <li>
-              <strong>Authentication data</strong> (if you choose to sign in): your email address,
-              name, and avatar image via Google OAuth. Sign-in is currently disabled for general
-              users but the infrastructure exists for administrative purposes.
-            </li>
-            <li>
-              <strong>Saved calculations</strong> (if you choose to sign in): calculator inputs and
-              results you explicitly save to your account.
-            </li>
-          </ul>
-
           <h3>What We Do NOT Collect</h3>
           <ul>
-            <li>We do <strong>not</strong> collect or store your calculator inputs unless you explicitly save them to an account.</li>
+            <li>We do <strong>not</strong> collect or store your calculator inputs.</li>
             <li>We do <strong>not</strong> sell, rent, or share your personal information with third parties.</li>
             <li>We do <strong>not</strong> use your data for advertising personalization or profiling.</li>
           </ul>
@@ -136,18 +117,14 @@ export default function LegalPage() {
           <h3>Cookies and Local Storage</h3>
           <p>
             We use <strong>localStorage</strong> in your browser to remember your theme preference
-            (light/dark mode). This data stays on your device and is not sent to our servers.
-            PostHog analytics may set cookies to distinguish unique visitors. See our{" "}
+            (light/dark mode). This data stays on your device and is not sent to our servers. See our{" "}
             <a href="#cookies" className="text-brand-600 dark:text-brand-400 hover:underline">Cookie Policy</a> for details.
           </p>
 
           <h3>Third-Party Services</h3>
           <p>We use the following third-party services:</p>
           <ul>
-            <li><strong>PostHog</strong> — self-hosted or cloud analytics. Data is anonymized and not shared.</li>
-            <li><strong>Google OAuth</strong> — for authentication (currently disabled for general users).</li>
-            <li><strong>Resend</strong> — for transactional emails if you sign up for notifications.</li>
-            <li><strong>Neon (PostgreSQL)</strong> — database hosting for user accounts and saved calculations.</li>
+            <li><strong>Neon (PostgreSQL)</strong> — database hosting for user accounts and saved calculations (currently dormant — sign-in is disabled).</li>
           </ul>
 
           <h3>Your Rights</h3>
@@ -159,9 +136,8 @@ export default function LegalPage() {
 
           <h3>Data Retention</h3>
           <p>
-            Analytics data is retained for 12 months. Account data is retained until you request
-            deletion. Saved calculations are retained until deleted by the user or upon account
-            deletion.
+            We do not retain any personal data. All calculator calculations happen entirely in your
+            browser and are never stored on our servers.
           </p>
         </div>
       </section>
@@ -264,33 +240,12 @@ export default function LegalPage() {
             used to remember preferences, distinguish visitors, and analyze usage patterns.
           </p>
 
-          <h3>Cookies We Use</h3>
-          <ul>
-            <li>
-              <strong>PostHog analytics cookies</strong> — used to distinguish unique visitors and
-              track anonymized usage data. These are optional and can be blocked.
-            </li>
-          </ul>
-
           <h3>Local Storage</h3>
           <p>
             We use browser <strong>localStorage</strong> (not cookies) to store your theme
             preference (light/dark mode). This data never leaves your device and is not accessible
             to our servers or third parties.
           </p>
-
-          <h3>Managing Cookies</h3>
-          <p>
-            You can control cookies through your browser settings. Most browsers allow you to block
-            or delete cookies. Blocking analytics cookies will not affect the functionality of the
-            calculators. Instructions for common browsers:
-          </p>
-          <ul>
-            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="nofollow" className="text-brand-600 dark:text-brand-400 hover:underline">Chrome</a></li>
-            <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="nofollow" className="text-brand-600 dark:text-brand-400 hover:underline">Firefox</a></li>
-            <li><a href="https://support.apple.com/en-ca/guide/safari/sfri11471/mac" target="_blank" rel="nofollow" className="text-brand-600 dark:text-brand-400 hover:underline">Safari</a></li>
-            <li><a href="https://support.microsoft.com/en-us/windows/microsoft-edge-browsing-data-and-privacy-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd" target="_blank" rel="nofollow" className="text-brand-600 dark:text-brand-400 hover:underline">Edge</a></li>
-          </ul>
         </div>
       </section>
 

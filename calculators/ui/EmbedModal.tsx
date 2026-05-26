@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { generateEmbedCode } from "@/lib/embed";
+import { analytics } from "@/lib/analytics";
 
 interface EmbedModalProps {
   slug: string;
@@ -26,8 +27,9 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
   const handleCopy = useCallback(async () => {
     await navigator.clipboard.writeText(code);
     setCopied(true);
+    analytics.embed(slug, theme, height);
     setTimeout(() => setCopied(false), 2000);
-  }, [code]);
+  }, [code, slug, theme, height]);
 
   if (!open) return null;
 

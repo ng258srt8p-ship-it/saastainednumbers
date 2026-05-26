@@ -12,12 +12,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { EmbedModal } from "@/calculators/ui/EmbedModal";
 import { FeedbackWidget } from "@/calculators/ui/FeedbackWidget";
 import { renderContent } from "@/lib/renderContent";
-import { analytics } from "@/lib/posthog";
+import { analytics } from "@/lib/analytics";
 import { getMetricKey } from "@/lib/benchmarks";
 import type { Stage } from "@/lib/benchmarks";
 import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
 import { Insights } from "@/components/Insights";
+import { EmailCapture } from "@/components/EmailCapture";
 import { AdSense } from "@/components/AdSense";
 
 
@@ -168,7 +169,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       contentSection={
         <div className="space-y-8">
           <section>
-            <div className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">{renderContent(config.content.intro)}</div>
+            <div className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">{renderContent(config.content.intro, config.slug)}</div>
           </section>
 
           <section>
@@ -192,7 +193,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
           {config.content.benchmarks && (
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Industry Benchmarks</h2>
-              <div className="text-gray-700 dark:text-gray-300 mb-4">{renderContent(config.content.benchmarks)}</div>
+              <div className="text-gray-700 dark:text-gray-300 mb-4">{renderContent(config.content.benchmarks, config.slug)}</div>
               {config.content.benchmarkData && config.content.benchmarkData.length > 0 && (
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
@@ -228,7 +229,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
                 <span className="text-gray-600 dark:text-gray-500 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
-                {renderContent(item.answer)}
+                {renderContent(item.answer, config.slug)}
               </div>
             </details>
           ))}
@@ -415,6 +416,9 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         SaaStainedNumbers is not responsible for any decisions made based on these calculations.
       </p>
       <AdSense slot="0000000000" className="mt-6" />
+      <div className="mt-6">
+        <EmailCapture />
+      </div>
       <EmbedModal
         slug={config.slug}
         title={config.meta.title}

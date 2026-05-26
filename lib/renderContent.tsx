@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export function renderContent(text: string): ReactNode {
+export function renderContent(text: string, slug?: string): ReactNode {
   const parts = text.split(/(\[.*?\]\(.*?\))/g);
   return parts.map((part, i) => {
     const match = part.match(/^\[(.*?)\]\((.*?)\)$/);
@@ -11,6 +11,11 @@ export function renderContent(text: string): ReactNode {
           href={match[2]}
           target="_blank"
           rel="noopener noreferrer sponsored"
+          onClick={() => {
+            if (slug && typeof window !== "undefined" && window.gtag) {
+              window.gtag("event", "affiliate_click", { slug, url: match[2] });
+            }
+          }}
           className="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 underline"
         >
           {match[1]}

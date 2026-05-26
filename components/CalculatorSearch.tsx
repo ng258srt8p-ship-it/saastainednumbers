@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { analytics } from "@/lib/analytics";
 
 interface CalculatorItem {
   slug: string;
@@ -21,7 +22,7 @@ export function CalculatorSearch({ calculators, placeholder = "Search calculator
   const filtered = useMemo(() => {
     if (!query.trim()) return [];
     const q = query.toLowerCase();
-    return calculators
+    const results = calculators
       .filter(
         (c) =>
           c.title.toLowerCase().includes(q) ||
@@ -29,6 +30,10 @@ export function CalculatorSearch({ calculators, placeholder = "Search calculator
           c.slug.toLowerCase().includes(q),
       )
       .slice(0, 8);
+    if (query.trim().length >= 2) {
+      analytics.search(query, results.length);
+    }
+    return results;
   }, [query, calculators]);
 
   return (

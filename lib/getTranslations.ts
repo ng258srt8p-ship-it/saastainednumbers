@@ -1,6 +1,9 @@
+import { cookies } from "next/headers";
+
 type Messages = Record<string, string | Record<string, unknown>>;
 
 const cache = new Map<string, Messages>();
+const LOCALES = ["en", "es", "de", "pt", "fr", "ja"];
 
 async function loadMessages(locale: string): Promise<Messages> {
   if (cache.has(locale)) return cache.get(locale)!;
@@ -26,10 +29,13 @@ function getNestedValue(obj: Messages, path: string): string {
 }
 
 export async function getTranslations() {
-  const messages = await loadMessages("en");
+  const cookieStore = await cookies();
+  const localeCookie = cookieStore.get("locale")?.value;
+  const locale = localeCookie && LOCALES.includes(localeCookie) ? localeCookie : "en";
+  const messages = await loadMessages(locale);
 
   return {
-    locale: "en" as const,
+    locale,
     t: (key: string): string => getNestedValue(messages, key),
   };
 }

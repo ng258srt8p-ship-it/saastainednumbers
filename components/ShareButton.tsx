@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { analytics } from "@/lib/analytics";
 
 interface ShareButtonProps {
   inputs: Record<string, number>;
@@ -20,6 +21,7 @@ export function ShareButton({ inputs, category, slug }: ShareButtonProps) {
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
+      analytics.share(slug);
       setTimeout(() => setCopied(false), 2000);
     } catch {
       const textarea = document.createElement("textarea");
@@ -29,6 +31,7 @@ export function ShareButton({ inputs, category, slug }: ShareButtonProps) {
       document.execCommand("copy");
       document.body.removeChild(textarea);
       setCopied(true);
+      analytics.share(slug);
       setTimeout(() => setCopied(false), 2000);
     }
   }, [inputs, category, slug]);

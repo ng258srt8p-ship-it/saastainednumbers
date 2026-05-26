@@ -7,3 +7,10 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 }
+
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
+  }
+}

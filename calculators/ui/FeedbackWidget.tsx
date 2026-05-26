@@ -1,6 +1,6 @@
 "use client";
 
-import { analytics } from "@/lib/posthog";
+import { analytics } from "@/lib/analytics";
 import { useState } from "react";
 
 interface FeedbackWidgetProps {

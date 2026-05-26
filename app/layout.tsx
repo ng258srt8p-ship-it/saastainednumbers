@@ -3,7 +3,7 @@ import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 import { Nav } from "@/components/Nav";
-import { PostHogProvider } from "@/components/PostHogProvider";
+import { GA4Provider } from "@/components/GA4Provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -56,26 +56,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
-        <PostHogProvider>
-        <script dangerouslySetInnerHTML={{ __html: "document.cookie='locale=;path=/;max-age=0'" }} />
+        <GA4Provider>
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" as="style" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" media="all" />
-        {/* @ts-expect-error Shopify uses `value` instead of `content` for its meta verification tag */}
-        <meta name="impact-site-verification" value="3bf25d0f-602c-486a-82a3-9453b6b12c4c" />
         <Script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.NEXT_PUBLIC_ADSENSE_ID ?? "0000000000000000"}`}
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-        <Script id="impact-tracking" strategy="afterInteractive">
-          {`(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7346865-68e6-4c72-b468-1f8baef5f5681.js','script','impactStat',document,window);impactStat('trackImpression');`}
-        </Script>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
@@ -99,7 +92,7 @@ export default function RootLayout({
                 </ul>
               </div>
               <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Categories</h3>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">Categories</h3>
                 <ul className="mt-3 space-y-2">
                   <li><Link href="/revenue" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Revenue</Link></li>
                   <li><Link href="/unit-economics" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Unit Economics</Link></li>
@@ -173,7 +166,7 @@ export default function RootLayout({
             }),
           }}
         />
-        </PostHogProvider>
+        </GA4Provider>
       </body>
     </html>
   );
