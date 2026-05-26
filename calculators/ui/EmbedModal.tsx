@@ -33,32 +33,32 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="flex w-full max-w-4xl flex-col rounded-xl bg-white shadow-xl sm:flex-row">
+      <div className="flex w-full max-w-4xl flex-col rounded-xl bg-white dark:bg-gray-800 shadow-xl sm:flex-row">
         <div className="flex-1 p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Embed &ldquo;{title}&rdquo;
             </h3>
             <button
               type="button"
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 text-xl leading-none"
+              className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 text-xl leading-none"
             >
               &times;
             </button>
           </div>
 
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             Customize and copy the embed code below.
           </p>
 
           <div className="space-y-3 mb-4">
             <label className="flex items-center justify-between">
-              <span className="text-sm text-gray-700">Theme</span>
+              <span className="text-sm text-gray-700 dark:text-gray-300">Theme</span>
               <select
                 value={theme}
                 onChange={(e) => setTheme(e.target.value as "light" | "dark")}
-                className="rounded-lg border border-gray-200 px-2 py-1 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                className="rounded-lg border border-gray-200 dark:border-gray-600 px-2 py-1 text-sm text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
               >
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
@@ -66,7 +66,7 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
             </label>
 
             <label className="flex items-center justify-between gap-4">
-              <span className="text-sm text-gray-700">Height</span>
+              <span className="text-sm text-gray-700 dark:text-gray-300">Height</span>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
@@ -77,17 +77,17 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
                   onChange={(e) => setHeight(Number(e.target.value))}
                   className="w-28 accent-brand-600"
                 />
-                <span className="text-xs text-gray-500 w-10 text-right">{height}px</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 w-10 text-right">{height}px</span>
               </div>
             </label>
 
             <label className="flex items-center justify-between">
-              <span className="text-sm text-gray-700">Hide header</span>
+              <span className="text-sm text-gray-700 dark:text-gray-300">Hide header</span>
               <input
                 type="checkbox"
                 checked={hideHeader}
                 onChange={(e) => setHideHeader(e.target.checked)}
-                className="rounded border-gray-300 text-brand-600 focus:ring-brand-500"
+                className="rounded border-gray-300 dark:border-gray-600 text-brand-600 focus:ring-brand-500"
               />
             </label>
           </div>
@@ -98,8 +98,8 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
               onClick={() => setTab("code")}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
                 tab === "code"
-                  ? "bg-brand-100 text-brand-700"
-                  : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                  ? "bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300"
+                  : "text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:bg-gray-700/30"
               }`}
             >
               Code
@@ -109,8 +109,8 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
               onClick={() => setTab("preview")}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
                 tab === "preview"
-                  ? "bg-brand-100 text-brand-700"
-                  : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                  ? "bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300"
+                  : "text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:bg-gray-700/30"
               }`}
             >
               Preview
@@ -123,7 +123,7 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
                 readOnly
                 value={code}
                 rows={5}
-                className="w-full rounded-lg bg-gray-50 p-3 text-xs font-mono text-gray-700 border border-gray-200 resize-none"
+                className="w-full rounded-lg bg-gray-50 dark:bg-gray-800 p-3 text-xs font-mono text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 resize-none"
               />
               <button
                 type="button"
@@ -136,7 +136,7 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
           )}
 
           {tab === "preview" && (
-            <div className="rounded-lg border border-gray-200 overflow-hidden bg-white" style={{ height: Math.min(height, 400) }}>
+            <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900" style={{ height: Math.min(height, 400) }}>
               <iframe
                 src={`/embed/${slug}?${previewParams.toString()}`}
                 width="100%"
@@ -147,7 +147,7 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
             </div>
           )}
 
-          <p className="mt-4 text-xs text-gray-400">
+          <p className="mt-4 text-xs text-gray-400 dark:text-gray-500">
             The embedded calculator includes attribution to SaaStainedNumbers. No account required.
           </p>
         </div>

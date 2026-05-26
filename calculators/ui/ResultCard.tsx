@@ -45,9 +45,9 @@ export function ResultCard({ label, value, type, isPrimary, prefix, suffix, metr
 
   if (isPrimary) {
     return (
-      <div className="rounded-2xl bg-gradient-to-br from-brand-50 to-brand-100/50 border border-brand-100 p-6 text-center shadow-sm">
-        <p className="text-sm font-medium text-brand-600">{label}</p>
-        <p className="mt-2 font-heading text-4xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+      <div className="rounded-2xl bg-gradient-to-br from-brand-50 to-brand-100/50 dark:from-brand-950/40 dark:to-brand-900/30 border border-brand-100 dark:border-brand-800/50 p-6 text-center shadow-sm">
+        <p className="text-sm font-medium text-brand-600 dark:text-brand-400">{label}</p>
+        <p className="mt-2 font-heading text-4xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 dark:from-brand-400 dark:to-brand-300 bg-clip-text text-transparent">
           {prefix}{formatted}{suffix}
         </p>
         {health && health !== "reference" && (
@@ -60,16 +60,16 @@ export function ResultCard({ label, value, type, isPrimary, prefix, suffix, metr
   }
 
   return (
-    <div className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
+    <div className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm">
       <div className="flex items-center justify-between gap-2">
-        <p className="text-xs font-medium text-gray-500">{label}</p>
+        <p className="text-xs font-medium text-gray-500 dark:text-gray-400">{label}</p>
         {health && (
           <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold leading-tight ${getHealthColor(health)}`}>
             {getHealthLabel(health)}
           </span>
         )}
       </div>
-      <p className="mt-1 font-heading text-xl font-semibold text-gray-900">
+      <p className="mt-1 font-heading text-xl font-semibold text-gray-900 dark:text-gray-100">
         {prefix}{formatted}{suffix}
       </p>
       {metricKey && rawValue !== undefined && (
