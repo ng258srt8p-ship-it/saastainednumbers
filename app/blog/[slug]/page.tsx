@@ -21,6 +21,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `https://saastainednumbers.com/blog/${slug}`,
     },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: new Date(post.date).toISOString(),
+      images: [`/api/og?title=${encodeURIComponent(post.title)}&category=blog&description=${encodeURIComponent(post.description)}`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [`/api/og?title=${encodeURIComponent(post.title)}&category=blog&description=${encodeURIComponent(post.description)}`],
+    },
   };
 }
 

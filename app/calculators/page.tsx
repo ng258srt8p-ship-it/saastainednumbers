@@ -8,6 +8,20 @@ import "@/calculators/config/_all";
 export const metadata = {
   title: "All Calculators  -  SaaStainedNumbers",
   description: "Browse all free calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account required.",
+  alternates: {
+    canonical: "https://saastainednumbers.com/calculators",
+  },
+  openGraph: {
+    title: "All Calculators  -  SaaStainedNumbers",
+    description: "Browse all free calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account required.",
+    images: ["/api/og?title=All+Calculators&category=home"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "All Calculators  -  SaaStainedNumbers",
+    description: "Browse all free calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account required.",
+    images: ["/api/og?title=All+Calculators&category=home"],
+  },
 };
 
 export default function CalculatorsPage() {

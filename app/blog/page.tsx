@@ -1,5 +1,25 @@
+import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Blog  -  SaaStainedNumbers",
+  description: "SaaS metrics insights, tutorials, and industry benchmarks. Learn how to calculate and improve MRR, CAC, LTV, churn, and more.",
+  alternates: {
+    canonical: "https://saastainednumbers.com/blog",
+  },
+  openGraph: {
+    title: "Blog  -  SaaStainedNumbers",
+    description: "SaaS metrics insights, tutorials, and industry benchmarks. Learn how to calculate and improve MRR, CAC, LTV, churn, and more.",
+    images: ["/api/og?title=Blog&category=home"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog  -  SaaStainedNumbers",
+    description: "SaaS metrics insights, tutorials, and industry benchmarks. Learn how to calculate and improve MRR, CAC, LTV, churn, and more.",
+    images: ["/api/og?title=Blog&category=home"],
+  },
+};
 
 export default function BlogPage() {
   const posts = getAllPosts();

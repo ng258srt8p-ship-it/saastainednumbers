@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getAllCalculators } from "@/lib/registry";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -7,6 +8,18 @@ import { EmbedClient } from "./EmbedClient";
 import "@/calculators/config/_all";
 
 export const dynamicParams = false;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const calculators = getAllCalculators();
+  const config = calculators.find((c) => c.slug === slug);
+  if (!config) return {};
+  return {
+    title: `${config.meta.title} (Embed)`,
+    description: config.meta.description,
+    robots: { index: false, follow: false },
+  };
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;

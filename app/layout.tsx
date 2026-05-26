@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
-import Script from "next/script";
 import { Nav } from "@/components/Nav";
 import { GA4Provider } from "@/components/GA4Provider";
+import { AdSenseScript } from "@/components/AdSenseScript";
 import "./globals.css";
 
 const inter = Inter({
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     default: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
   },
   description:
-    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. Available in 6 languages. No account or sign-up required.",
+    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account or sign-up required.",
   metadataBase: new URL("https://saastainednumbers.com"),
   icons: {
     icon: "/logo.svg",
@@ -40,6 +40,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "SaaStainedNumbers",
+    images: ["/api/og?title=SaaStainedNumbers"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SaaStainedNumbers",
+    description:
+      "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account or sign-up required.",
     images: ["/api/og?title=SaaStainedNumbers"],
   },
   robots: {
@@ -61,14 +68,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" as="style" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" media="all" />
-        <Script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.NEXT_PUBLIC_ADSENSE_ID ?? "0000000000000000"}`}
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        <AdSenseScript />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"

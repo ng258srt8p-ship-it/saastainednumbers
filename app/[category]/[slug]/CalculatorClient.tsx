@@ -20,6 +20,7 @@ import { ShareButton } from "@/components/ShareButton";
 import { Insights } from "@/components/Insights";
 import { EmailCapture } from "@/components/EmailCapture";
 import { AdSense } from "@/components/AdSense";
+import { EthicalAds } from "@/components/EthicalAds";
 
 
 interface RelatedCalc {
@@ -188,6 +189,11 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
                 <p key={i} className="mb-1 text-gray-700 dark:text-gray-300">{part}{i === 0 ? ":" : "."}</p>
               ))}
             </div>
+          </section>
+
+          <section className="flex justify-center">
+            <AdSense slot="0000000000" className="w-full max-w-2xl" />
+            <EthicalAds className="w-full max-w-2xl" />
           </section>
 
           {config.content.benchmarks && (

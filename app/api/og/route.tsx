@@ -5,7 +5,7 @@ export const runtime = "edge";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const title = searchParams.get("title") || "Saasifactory";
+    const title = searchParams.get("title") || "SaaStainedNumbers";
     const category = searchParams.get("category") || "calculator";
     const description = searchParams.get("description") || "SaaS & Business Operations Calculator";
 

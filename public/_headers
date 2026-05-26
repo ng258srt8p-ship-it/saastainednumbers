@@ -1,0 +1,76 @@
+# ── Security Headers (Applied to all routes) ──
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 1; mode=block
+
+# ── Immutable: Next.js build artifacts (fingerprinted, never change between deploys) ──
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── Static file formats (also fingerprinted or versioned) ──
+*.svg
+  Cache-Control: public, max-age=31536000, immutable
+*.png
+  Cache-Control: public, max-age=31536000, immutable
+*.ico
+  Cache-Control: public, max-age=31536000, immutable
+*.css
+  Cache-Control: public, max-age=31536000, immutable
+*.js
+  Cache-Control: public, max-age=31536000, immutable
+*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── Calculator pages — static HTML/JS, 7-day edge + browser cache ──
+/revenue/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/churn-retention/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/growth-efficiency/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/unit-economics/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/ai-cost/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/side-hustle/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/personal-finance/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/general-business/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/saas-deepen/*
+  Cache-Control: public, max-age=604800, s-maxage=604800
+/calculators
+  Cache-Control: public, max-age=604800, s-maxage=604800
+
+# ── Embed pages — static tools, allow iframing, no indexing ──
+/embed/*
+  X-Frame-Options: ALLOWALL
+  Cache-Control: public, max-age=604800, s-maxage=604800
+  X-Robots-Tag: noindex, nofollow
+
+# ── Blog — 1-hour cache with stale-while-revalidate (updates in background) ──
+/blog/*
+  Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400
+
+# ── Homepage, pricing, legal — stable content, 1-hour cache ──
+/
+  Cache-Control: public, max-age=3600, s-maxage=3600
+/pricing
+  Cache-Control: public, max-age=3600, s-maxage=3600
+/legal
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+# ── Dashboard — never cache (dynamic user data) ──
+/dashboard/*
+  Cache-Control: no-store, must-revalidate
+
+# ── Account pages — never cache ──
+/account/*
+  Cache-Control: no-store, must-revalidate
+
+# ── API routes — never cache ──
+/api/*
+  Cache-Control: no-store, must-revalidate

@@ -9,7 +9,7 @@ export function generateMetadata(config: CalculatorConfig): Metadata {
     openGraph: {
       title: config.meta.title,
       description: config.meta.description,
-      images: [`/api/og?title=${encodeURIComponent(config.meta.title)}`],
+      images: [`/api/og?title=${encodeURIComponent(config.meta.title)}&category=${encodeURIComponent(config.category)}&description=${encodeURIComponent(config.meta.description)}`],
     },
   };
 }

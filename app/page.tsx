@@ -1,7 +1,30 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCalculators, getAllKnownCategories, CATEGORY_META } from "@/lib/registry";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
+
+const CALC_COUNT = getAllCalculators().length;
+const CAT_COUNT = getAllKnownCategories().length;
+
+export const metadata: Metadata = {
+  title: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
+  description: `${CALC_COUNT} free, instant calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account or sign-up required.`,
+  alternates: {
+    canonical: "https://saastainednumbers.com",
+  },
+  openGraph: {
+    title: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
+    description: `${CALC_COUNT} free, instant calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account or sign-up required.`,
+    images: ["/api/og?title=SaaStainedNumbers&category=home"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
+    description: `${CALC_COUNT} free, instant calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account or sign-up required.`,
+    images: ["/api/og?title=SaaStainedNumbers&category=home"],
+  },
+};
 
 
 import "@/calculators/config/_all";

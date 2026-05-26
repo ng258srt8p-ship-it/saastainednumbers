@@ -1,5 +1,6 @@
 "use client";
 
+import type { Metadata } from "next";
 import { useState, useMemo, useCallback } from "react";
 import { calculateMRR } from "@/calculators/engine/mrr";
 import { calculateCAC } from "@/calculators/engine/cac";
@@ -7,6 +8,25 @@ import { calculateLTV } from "@/calculators/engine/ltv";
 import { calculateChurn } from "@/calculators/engine/churn";
 import { calculateARPU } from "@/calculators/engine/arpu";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Dashboard  -  SaaStainedNumbers",
+  description: "Track your SaaS metrics in one place. Free interconnected dashboard for MRR, CAC, LTV, churn, and ARPU.",
+  alternates: {
+    canonical: "https://saastainednumbers.com/dashboard",
+  },
+  openGraph: {
+    title: "Dashboard  -  SaaStainedNumbers",
+    description: "Track your SaaS metrics in one place. Free interconnected dashboard for MRR, CAC, LTV, churn, and ARPU.",
+    images: ["/api/og?title=Dashboard&category=home"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dashboard  -  SaaStainedNumbers",
+    description: "Track your SaaS metrics in one place. Free interconnected dashboard for MRR, CAC, LTV, churn, and ARPU.",
+    images: ["/api/og?title=Dashboard&category=home"],
+  },
+};
 
 interface DashboardInputs {
   customers: number;

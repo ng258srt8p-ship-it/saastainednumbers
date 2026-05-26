@@ -1,9 +1,29 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCalculators } from "@/lib/registry";
 
 import "@/calculators/config/_all";
 
 const calculatorCount = getAllCalculators().length;
+
+export const metadata: Metadata = {
+  title: "Pricing  -  SaaStainedNumbers",
+  description: `All ${calculatorCount} calculators are completely free. No subscriptions, no paywalls, no account required.`,
+  alternates: {
+    canonical: "https://saastainednumbers.com/pricing",
+  },
+  openGraph: {
+    title: "Pricing  -  SaaStainedNumbers",
+    description: `All ${calculatorCount} calculators are completely free. No subscriptions, no paywalls, no account required.`,
+    images: ["/api/og?title=Pricing&category=home"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pricing  -  SaaStainedNumbers",
+    description: `All ${calculatorCount} calculators are completely free. No subscriptions, no paywalls, no account required.`,
+    images: ["/api/og?title=Pricing&category=home"],
+  },
+};
 
 const allFeatures = [
   `All ${calculatorCount} calculators  -  no limits`,

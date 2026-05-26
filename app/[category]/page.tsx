@@ -21,11 +21,23 @@ export async function generateMetadata({ params }: PageProps) {
   const meta = CATEGORY_META[category];
   const name = meta?.name ?? category.charAt(0).toUpperCase() + category.slice(1);
 
+  const desc = meta?.description ?? `Browse our collection of ${category} calculators.`;
   return {
     title: `${name} Calculators`,
-    description: meta?.description ?? `Browse our collection of ${category} calculators.`,
+    description: desc,
     alternates: {
       canonical: `https://saastainednumbers.com/${category}`,
+    },
+    openGraph: {
+      title: `${name} Calculators`,
+      description: desc,
+      images: [`/api/og?title=${encodeURIComponent(name)}&category=${category}&description=${encodeURIComponent(desc)}`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} Calculators`,
+      description: desc,
+      images: [`/api/og?title=${encodeURIComponent(name)}&category=${category}&description=${encodeURIComponent(desc)}`],
     },
   };
 }
@@ -52,8 +64,24 @@ export default async function CategoryPage({ params }: PageProps) {
     );
   }
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${categoryName} Calculators`,
+    description: meta?.description ?? "",
+    url: `https://saastainednumbers.com/${category}`,
+    numberOfItems: calculators.length,
+    itemListElement: calculators.map((calc, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: calc.meta.title,
+      url: `https://saastainednumbers.com/${calc.category}/${calc.slug}`,
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <div className="mx-auto max-w-6xl px-4 py-12">
         <Breadcrumb items={[
           { label: "Home", href: "/" },
