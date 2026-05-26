@@ -113,9 +113,16 @@ export function EmbedClient({ slug, config }: Props) {
           href={`https://saastainednumbers.com/${config.category}/${config.slug}`}
           target="_blank"
           rel="nofollow"
-          className="text-xs text-gray-400 hover:text-gray-600"
+          className="inline-flex items-center gap-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:border-brand-300 dark:hover:border-brand-600 hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
         >
-          Powered by SaaStainedNumbers
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" className="w-5 h-5 shrink-0" aria-hidden>
+            <polygon points="20,70 60,70 40,40" fill="#008387" stroke="#008387" strokeWidth="5" strokeLinejoin="round"/>
+            <polygon points="26,32 54,32 40,10" fill="#143562" stroke="#143562" strokeWidth="5" strokeLinejoin="round"/>
+          </svg>
+          <span>
+            <span className="font-medium">SaaStainedNumbers</span>
+            <span className="ml-1 text-gray-400 dark:text-gray-500">· saastainednumbers.com</span>
+          </span>
         </a>
       </div>
     </div>
