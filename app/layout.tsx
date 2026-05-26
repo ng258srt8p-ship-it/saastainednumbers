@@ -56,6 +56,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
         <PostHogProvider>
+        <script dangerouslySetInnerHTML={{ __html: "document.cookie='locale=;path=/;max-age=0'" }} />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
