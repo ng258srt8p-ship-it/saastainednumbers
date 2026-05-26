@@ -1,21 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 
-function getInitialDark(): boolean {
-  if (typeof window === "undefined") return false;
+if (typeof window !== "undefined") {
   const stored = localStorage.getItem("theme");
-  const isDark = stored === "dark";
-  if (isDark) document.documentElement.classList.add("dark");
-  return isDark;
+  if (stored === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+}
+
+function getSnapshot() {
+  if (typeof window === "undefined") return false;
+  return document.documentElement.classList.contains("dark");
+}
+
+function getServerSnapshot() {
+  return false;
 }
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(getInitialDark);
+  const dark = useSyncExternalStore(
+    () => {
+      return () => {};
+    },
+    getSnapshot,
+    getServerSnapshot,
+  );
 
   const toggle = () => {
     const next = !dark;
-    setDark(next);
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem("theme", next ? "dark" : "light");
   };
