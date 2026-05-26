@@ -106,22 +106,6 @@ webcalc/
 - Component at `components/EmailCapture.tsx` POSTs to `/api/subscribe`
 - Requires a Cloudflare Pages Function at `functions/api/subscribe.js` (not yet created — see instructions below)
 - Falls back to local state if endpoint unavailable
-
-## Deployment Instructions for Email Capture
-
-The function file already exists at `functions/api/subscribe.js`. To make it work on Cloudflare, follow these steps:
-
-### Cloudflare Dashboard Setup
-
-1. Log in to [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** → select your `saastainednumbers` Pages project
-2. Go to **Settings** → **Functions** → ensure the **Compatibility flags** include `nodejs_compat` (it's already set in `wrangler.jsonc`)
-3. No additional configuration needed — Cloudflare Pages auto-discovers the `functions/` directory
-
-### How the Deploy Pipeline Picks It Up
-
-The current deploy workflow (`npm run build` then `wrangler pages deploy out`) deploys the `out/` directory as static assets and automatically discovers the `functions/` directory at the project root:
-
-```
 project root/
 ├── functions/
 │   └── api/
