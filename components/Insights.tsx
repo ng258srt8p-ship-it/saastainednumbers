@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { generateInsights } from "@/lib/insights-engine";
 
 interface InputValue {
   id: string;
@@ -62,26 +63,14 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
     setVisible(false);
 
     try {
-      const res = await fetch("/api/ai/insights", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, description, category, inputs, outputs }),
-      });
+      const insights = generateInsights({ title, description, category, inputs, outputs });
 
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Failed to generate insights");
-      }
+      await new Promise((r) => setTimeout(r, 300));
 
-      const data = await res.json();
-      setInsights(data.insights);
+      setInsights(insights);
       setTimeout(() => setVisible(true), 10);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Something went wrong";
-      const userFacing = msg.includes("did not match the expected pattern") || msg.includes("Unexpected token")
-        ? "Unable to generate insights. Please try again."
-        : msg;
-      setError(userFacing);
+    } catch {
+      setError("Unable to generate insights. Please try again.");
     } finally {
       setLoading(false);
     }
