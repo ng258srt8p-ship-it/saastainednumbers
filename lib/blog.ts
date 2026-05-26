@@ -77,7 +77,7 @@ const posts: BlogPost[] = [
     `.trim(),
   },
   {
-    slug: "understanding mrr growth rate",
+    slug: "understanding-mrr-growth-rate",
     title: "Understanding MRR Growth Rate: The Ultimate Guide",
     description:
       "MRR growth rate is the single most important leading indicator of SaaS success. Learn how to calculate it, interpret it, and improve it with actionable strategies.",
@@ -140,7 +140,7 @@ const posts: BlogPost[] = [
     `.trim(),
   },
   {
-    slug: "customer health score guide",
+    slug: "customer-health-score-guide",
     title: "Building a Customer Health Score System That Works",
     description:
       "Learn how to build a predictive customer health score that identifies at risk accounts before they churn, spots expansion opportunities, and aligns your entire team around retention.",
@@ -229,7 +229,7 @@ const posts: BlogPost[] = [
     `.trim(),
   },
   {
-    slug: "saas pricing strategies 2026",
+    slug: "saas-pricing-strategies-2026",
     title: "SaaS Pricing Strategies That Drive Growth in 2026",
     description:
       "The right pricing strategy can double your revenue without adding a single customer. Explore value based pricing, usage based models, tiered plans, and how to choose what's right for your SaaS.",
@@ -260,7 +260,7 @@ const posts: BlogPost[] = [
   <li><strong>ARPU (Average Revenue Per User):</strong> Your current baseline. Use our <a href="/revenue/arpu-calculator">ARPU calculator</a> to compute it.</li>
   <li><strong>LTV (Customer Lifetime Value):</strong> How much a customer is worth over their lifetime. Our <a href="/revenue/ltv-calculator">LTV calculator</a> helps here.</li>
   <li><strong>Payback Period:</strong> How long to recover CAC. Track it with our <a href="/unit-economics/payback-period-calculator">payback period calculator</a>.</li>
-  <li><strong>Trial to Paid Conversion:</strong> Your pricing directly affects trial conversion rates. Measure with our <a href="/revenue/trial to paid-calculator">trial to paid calculator</a>.</li>
+  <li><strong>Trial to Paid Conversion:</strong> Your pricing directly affects trial conversion rates. Measure with our <a href="/revenue/trial-to-paid-calculator">trial to paid calculator</a>.</li>
   <li><strong>Gross Margin:</strong> Ensure your pricing covers costs. Our <a href="/revenue/gross-margin-calculator">gross margin calculator</a> shows your true margins.</li>
 </ul>
 
@@ -301,7 +301,7 @@ const posts: BlogPost[] = [
     `.trim(),
   },
   {
-    slug: "activation rate retention",
+    slug: "activation-rate-retention",
     title: "Why Activation Rate Is the Most Important Growth Metric",
     description:
       "Activation rate predicts retention better than any other metric. Learn how to define, measure, and improve your product's activation funnel to drive sustainable growth.",
@@ -361,7 +361,7 @@ const posts: BlogPost[] = [
 <p>Show users their progress toward activation (e.g., "Complete your profile: 3 of 5 steps"). Progress indicators drive completion rates by 15 to 25%.</p>
 
 <h2>Tracking Activation Over Time</h2>
-<p>Activation rate should be a weekly metric for growth stage companies. Track it alongside trial to paid conversion (use our <a href="/revenue/trial to paid-calculator">trial to paid calculator</a>) to understand the full funnel from signup to paying customer.</p>
+<p>Activation rate should be a weekly metric for growth stage companies. Track it alongside trial to paid conversion (use our <a href="/revenue/trial-to-paid-calculator">trial to paid calculator</a>) to understand the full funnel from signup to paying customer.</p>
 <p>If your activation rate drops, investigate immediately: it's usually the first sign of product or onboarding issues.</p>
 
 <h2>Common Activation Mistakes</h2>
@@ -378,7 +378,7 @@ const posts: BlogPost[] = [
     `.trim(),
   },
   {
-    slug: "mrr growth rate guide 2026",
+    slug: "mrr-growth-rate-guide-2026",
     title: "MRR Growth Rate: The Complete SaaS Guide for 2026",
     description:
       "Learn how to calculate, interpret, and improve MRR growth rate for your SaaS business. Includes benchmarks by stage, calculation examples, and actionable strategies.",
