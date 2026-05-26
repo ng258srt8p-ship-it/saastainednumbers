@@ -29,9 +29,12 @@ function getNestedValue(obj: Messages, path: string): string {
 }
 
 export async function getTranslations() {
-  const cookieStore = await cookies();
-  const localeCookie = cookieStore.get("locale")?.value;
-  const locale = localeCookie && LOCALES.includes(localeCookie) ? localeCookie : "en";
+  let locale = "en";
+  try {
+    const cookieStore = await cookies();
+    const localeCookie = cookieStore.get("locale")?.value;
+    if (localeCookie && LOCALES.includes(localeCookie)) locale = localeCookie;
+  } catch {}
   const messages = await loadMessages(locale);
 
   return {
