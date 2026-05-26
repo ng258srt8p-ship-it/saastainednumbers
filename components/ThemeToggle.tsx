@@ -5,8 +5,7 @@ import { useState } from "react";
 function getInitialDark(): boolean {
   if (typeof window === "undefined") return false;
   const stored = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const isDark = stored === "dark" || (!stored && prefersDark);
+  const isDark = stored === "dark";
   if (isDark) document.documentElement.classList.add("dark");
   return isDark;
 }

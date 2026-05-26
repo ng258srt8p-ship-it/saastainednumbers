@@ -16,10 +16,10 @@ export async function Nav() {
       <div className="mx-auto max-w-6xl flex items-center justify-between px-4 py-5">
         <Link href="/" className="flex items-center gap-3">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" className="w-10 h-10 shrink-0" aria-hidden>
-            <polygon points="20,70 60,70 40,40" fill="#008387" stroke="#008387" strokeWidth="5" strokeLinejoin="round"/>
-            <polygon points="26,32 54,32 40,10" fill="#143562" stroke="#143562" strokeWidth="5" strokeLinejoin="round"/>
+            <polygon points="20,70 60,70 40,40" fill="#008387" stroke="#008387" strokeWidth="5" strokeLinejoin="round" className="dark:fill-teal-400 dark:stroke-teal-400"/>
+            <polygon points="26,32 54,32 40,10" fill="#143562" stroke="#143562" strokeWidth="5" strokeLinejoin="round" className="dark:fill-blue-400 dark:stroke-blue-400"/>
           </svg>
-          <span className="font-heading text-xl font-bold bg-gradient-to-r from-brand-500 to-brand-900 bg-clip-text text-transparent tracking-tight">
+          <span className="font-heading text-xl font-bold bg-gradient-to-r from-brand-500 to-brand-900 dark:from-teal-400 dark:to-blue-300 bg-clip-text text-transparent tracking-tight">
             SaaStainedNumbers
           </span>
         </Link>
