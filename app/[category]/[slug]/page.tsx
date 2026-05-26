@@ -4,7 +4,6 @@ import { generateMetadata as seoMetadata } from "@/lib/seo";
 import { CalculatorClient } from "./CalculatorClient";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import Link from "next/link";
-import Script from "next/script";
 
 // Import all calculator configs to register them in the registry
 import "@/calculators/config/_all";
@@ -110,12 +109,6 @@ export default async function CalculatorPage({ params }: PageProps) {
           "@context": "https://schema.org",
           "@graph": [webApp, howTo, ...(faq ? [faq] : [])].filter(Boolean)
         }) }}
-      />
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4115230840067798"
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
       />
       <CalculatorClient config={config} relatedCalculators={related} />
     </>

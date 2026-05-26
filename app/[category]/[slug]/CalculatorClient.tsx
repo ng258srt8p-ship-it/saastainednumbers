@@ -18,6 +18,7 @@ import type { Stage } from "@/lib/benchmarks";
 import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
 import { Insights } from "@/components/Insights";
+import { AdSense } from "@/components/AdSense";
 
 
 interface RelatedCalc {
@@ -413,6 +414,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
         Disclaimer: Results are for informational purposes only and should not be considered financial advice.
         SaaStainedNumbers is not responsible for any decisions made based on these calculations.
       </p>
+      <AdSense slot="0000000000" className="mt-6" />
       <EmbedModal
         slug={config.slug}
         title={config.meta.title}
