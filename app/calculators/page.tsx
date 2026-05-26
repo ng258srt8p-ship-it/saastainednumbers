@@ -24,7 +24,7 @@ export default function CalculatorsPage() {
         strategy="afterInteractive"
       />
     <div className="mx-auto max-w-5xl px-4 py-12">
-      <h1 className="font-heading text-3xl font-bold mb-2">All Calculators</h1>
+      <h1 className="font-heading text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">All Calculators</h1>
       <p className="text-gray-600 dark:text-gray-400 mb-6">
         Browse our complete collection of {calculators.length} calculators across {categories.length} categories.
       </p>
@@ -63,12 +63,12 @@ export default function CalculatorsPage() {
                   <Link
                     key={calc.slug}
                     href={`/${calc.category}/${calc.slug}`}
-                    className="group rounded-xl border border-gray-100 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                    className="group rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
                   >
-                    <h3 className="font-heading text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
+                    <h3 className="font-heading text-base font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                       {calc.meta.title}
                     </h3>
-                    <p className="mt-1.5 text-sm text-gray-600 line-clamp-2">{calc.meta.description}</p>
+                    <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{calc.meta.description}</p>
                   </Link>
                 ))}
               </div>
