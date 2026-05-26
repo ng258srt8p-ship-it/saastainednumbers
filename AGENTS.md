@@ -108,41 +108,82 @@ webcalc/
 - Falls back to local state if endpoint unavailable
 
 ## Deployment Instructions for Email Capture
-To make the email capture work, create `functions/api/subscribe.js` in the project root:
 
-```js
-export async function onRequest(context) {
-  const { request } = context;
-  if (request.method !== "POST") {
-    return new Response("Method not allowed", { status: 405 });
-  }
+The function file already exists at `functions/api/subscribe.js`. To make it work on Cloudflare, follow these steps:
 
-  try {
-    const { email } = await request.json();
-    if (!email || !email.includes("@")) {
-      return new Response(JSON.stringify({ error: "Invalid email" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
+### Cloudflare Dashboard Setup
 
-    // Store the email — add KV or external service here
-    console.log("New subscriber:", email);
+1. Log in to [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** → select your `saastainednumbers` Pages project
+2. Go to **Settings** → **Functions** → ensure the **Compatibility flags** include `nodejs_compat` (it's already set in `wrangler.jsonc`)
+3. No additional configuration needed — Cloudflare Pages auto-discovers the `functions/` directory
 
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch {
-    return new Response(JSON.stringify({ error: "Invalid request" }), {
-      status: 400,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-}
+### How the Deploy Pipeline Picks It Up
+
+The current deploy workflow (`npm run build` then `wrangler pages deploy out`) deploys the `out/` directory as static assets and automatically discovers the `functions/` directory at the project root:
+
+```
+project root/
+├── functions/
+│   └── api/
+│       └── subscribe.js    ← auto-deployed as Cloudflare Pages Function
+├── out/                    ← static export (from Next.js build)
+├── build-static.sh
+└── wrangler.jsonc
 ```
 
-Then the deploy workflow will auto-deploy it alongside the static assets. Subscribers are logged to Cloudflare Pages logs by default. Connect a KV namespace or forward to an email service for permanent storage.
+No changes needed to the deploy.yml. On the next push to `main`, the function will be live.
+
+### Test That It Works
+
+After deployment, test from any calculator page (e.g. `https://saastainednumbers.com/revenue/mrr-calculator`):
+
+1. Scroll to the email capture form below the results
+2. Enter an email address and click **Subscribe**
+3. If successful, you'll see "You're subscribed!" — the function logged the email to Cloudflare Pages logs
+4. To view logs: Cloudflare Dashboard → Pages → `saastainednumbers` → **Functions** tab → click `api/subscribe` → **Logs**
+
+### Add Persistent Storage (Optional)
+
+By default, emails are logged but not stored permanently. For persistent storage:
+
+**Option A: Cloudflare KV (recommended)**
+
+1. Create a KV namespace:
+   ```
+   npx wrangler kv:namespace create "EMAIL_SUBSCRIBERS"
+   ```
+   Copy the output ID.
+
+2. Add the binding to `wrangler.jsonc`:
+   ```jsonc
+   {
+     // ...existing config
+     "kv_namespaces": [
+       {
+         "binding": "EMAIL_KV",
+         "id": "<the-id-from-step-1>"
+       }
+     ]
+   }
+   ```
+
+3. Update `functions/api/subscribe.js` to store to KV:
+   ```js
+   export async function onRequest(context) {
+     const { request, env } = context;
+     // ...
+     const key = `subscriber:${Date.now()}`;
+     await env.EMAIL_KV.put(key, email);
+     // ...
+   }
+   ```
+
+**Option B: Forward to email service**
+
+Replace the `console.log` line with a POST to ConvertKit, Mailchimp, or your preferred email API. Pass the API key via a Cloudflare Pages secret:
+```
+npx wrangler pages secret put EMAIL_API_KEY
+```
 
 ## Signed Out UX
 - Sign-in page removed; sign-in button removed from nav
