@@ -7,8 +7,12 @@ function gtag(...args: unknown[]) {
 }
 
 export const analytics = {
-  calculate: (slug: string, inputs: Record<string, number>) => {
-    gtag("event", "calculate_tool", { slug, ...inputs });
+  calculate: (slug: string, inputs: Record<string, number>, primaryResult?: { value: number; label: string; type: string }) => {
+    gtag("event", "calculate_tool", {
+      slug,
+      ...inputs,
+      ...(primaryResult ? { primary_value: primaryResult.value, primary_label: primaryResult.label, primary_type: primaryResult.type } : {}),
+    });
   },
   compare: (slug: string, inputsA: Record<string, number>, inputsB: Record<string, number>) => {
     gtag("event", "compare_scenario", { slug, inputs_a: JSON.stringify(inputsA), inputs_b: JSON.stringify(inputsB) });

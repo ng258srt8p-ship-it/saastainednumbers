@@ -1,9 +1,41 @@
-# ── Security Headers (Applied to all routes) ──
+# ── Security Headers (applied to all routes, but X-Frame-Options is per-route
+#    to avoid conflicting with /embed/* which needs ALLOWALL) ──
 /*
-  X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-XSS-Protection: 1; mode=block
+
+# ── X-Frame-Options: DENY for all non-embed pages ──
+/revenue/*
+  X-Frame-Options: DENY
+/churn-retention/*
+  X-Frame-Options: DENY
+/growth-efficiency/*
+  X-Frame-Options: DENY
+/unit-economics/*
+  X-Frame-Options: DENY
+/ai-cost/*
+  X-Frame-Options: DENY
+/side-hustle/*
+  X-Frame-Options: DENY
+/personal-finance/*
+  X-Frame-Options: DENY
+/general-business/*
+  X-Frame-Options: DENY
+/saas-deepen/*
+  X-Frame-Options: DENY
+/blog/*
+  X-Frame-Options: DENY
+/dashboard/*
+  X-Frame-Options: DENY
+/
+  X-Frame-Options: DENY
+/pricing
+  X-Frame-Options: DENY
+/legal
+  X-Frame-Options: DENY
+/calculators
+  X-Frame-Options: DENY
 
 # ── Immutable: Next.js build artifacts (fingerprinted, never change between deploys) ──
 /_next/static/*

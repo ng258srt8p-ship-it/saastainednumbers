@@ -87,7 +87,8 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
   useEffect(() => {
     if (primaryValue <= 0) return;
     const timer = setTimeout(() => {
-      analytics.calculate(config.slug, valuesA);
+      const primary = resultsA.find((r) => r.isPrimary);
+      analytics.calculate(config.slug, valuesA, primary ? { value: Number(primary.value), label: primary.label, type: primary.type } : undefined);
     }, 500);
     return () => clearTimeout(timer);
   }, [primaryValue, config.slug, valuesA]);
