@@ -227,7 +227,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             <details key={i} className="group rounded-lg border border-gray-200 dark:border-gray-700 bg-card-bg">
               <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/30">
                 {item.question}
-                <span className="text-gray-600 dark:text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                <span className="material-symbols-outlined text-gray-600 dark:text-gray-500 group-open:rotate-180 transition-transform text-xl leading-none select-none" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24" }}>expand_more</span>
               </summary>
               <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
                 {renderContent(item.answer, config.slug)}
