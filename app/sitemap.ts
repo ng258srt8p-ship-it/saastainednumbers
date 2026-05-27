@@ -1,5 +1,6 @@
 import { getAllCalculators, getCategories, getAllKnownCategories } from "@/lib/registry";
 import { getAllPosts } from "@/lib/blog";
+import "@/calculators/config/_all";
 
 export const dynamic = "force-static";
 

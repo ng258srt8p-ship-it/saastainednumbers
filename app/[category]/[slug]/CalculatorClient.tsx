@@ -30,6 +30,7 @@ interface RelatedCalc {
 interface Props {
   config: CalculatorConfig;
   relatedCalculators?: RelatedCalc[];
+  hideContent?: boolean;
 }
 
 
@@ -40,7 +41,7 @@ function runEngine(slug: string, params: Record<string, number>): Record<string,
   try { return engine(params); } catch { return {}; }
 }
 
-export function CalculatorClient({ config, relatedCalculators }: Props) {
+export function CalculatorClient({ config, relatedCalculators, hideContent }: Props) {
   const [embedOpen, setEmbedOpen] = useState(false);
   const [stage, setStage] = useState<Stage>("series-a");
   const [compareMode, setCompareMode] = useState(false);
@@ -167,8 +168,8 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       stageSelector={stageSelector}
       feedbackWidget={<FeedbackWidget slug={config.slug} />}
       sidebarAd={<SidekickAd />}
-      afterContentAd={<AdUnit slot="calculator-below-content" />}
-      contentSection={
+      afterContentAd={hideContent ? undefined : <AdUnit slot="calculator-below-content" />}
+      contentSection={hideContent ? undefined : (
         <div className="space-y-8">
           <section>
             <div className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">{renderContent(config.content.intro, config.slug)}</div>
@@ -222,8 +223,8 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
           )}
           <AdUnit slot="calculator-in-content" className="mt-8" />
         </div>
-      }
-      faqSection={
+      )}
+      faqSection={hideContent ? undefined : (
         <div className="space-y-3">
           {config.content.faq.map((item, i) => (
             <details key={i} className="group rounded-lg border border-gray-200 dark:border-gray-700 bg-card-bg">
@@ -237,7 +238,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
             </details>
           ))}
         </div>
-      }
+      )}
       embedButton={
         <div className="flex items-center gap-2">
           <ShareButton inputs={valuesA} category={config.category} slug={config.slug} />

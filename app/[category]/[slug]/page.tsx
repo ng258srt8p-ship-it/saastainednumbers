@@ -2,10 +2,7 @@ import { getAllCalculators } from "@/lib/registry";
 import { getRelatedCalculators } from "@/lib/related-calculators";
 import { generateMetadata as seoMetadata } from "@/lib/seo";
 import { CalculatorClient } from "./CalculatorClient";
-import { Breadcrumb } from "@/components/Breadcrumb";
-import Link from "next/link";
 
-// Import all calculator configs to register them in the registry
 import "@/calculators/config/_all";
 
 interface PageProps {
@@ -38,6 +35,7 @@ export default async function CalculatorPage({ params }: PageProps) {
   const calculators = getAllCalculators();
   const config = calculators.find((c) => c.slug === slug && c.category === category);
   if (!config) {
+    const Link = (await import("next/link")).default;
     return (
       <div className="flex flex-1 items-center justify-center px-4 py-24">
         <div className="text-center">
@@ -54,63 +52,5 @@ export default async function CalculatorPage({ params }: PageProps) {
 
   const related = getRelatedCalculators(slug, 4);
 
-  const webApp = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: config.meta.title,
-    description: config.meta.description,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/OnlineOnly",
-    },
-    url: `https://saastainednumbers.com/${config.category}/${config.slug}`,
-  };
-
-  const howTo = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: config.meta.title,
-    description: config.meta.description,
-    step: config.content.howToUse.split(". ").filter(Boolean).map((step: string, i: number) => ({
-      "@type": "HowToStep",
-      position: i + 1,
-      text: step.trim(),
-    })),
-  };
-
-  const faq = config.content.faq.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: config.content.faq.map((item: { question: string; answer: string }) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  } : null;
-
-  const categoryName = config.category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-
-  return (
-    <>
-      <div className="mx-auto max-w-6xl px-4">
-        <Breadcrumb items={[
-          { label: "Home", href: "/" },
-          { label: categoryName, href: `/${config.category}` },
-          { label: config.meta.title, href: `/${config.category}/${config.slug}` },
-        ]} />
-      </div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [webApp, howTo, ...(faq ? [faq] : [])].filter(Boolean)
-        }) }}
-      />
-      <CalculatorClient config={config} relatedCalculators={related} />
-    </>
-  );
+  return <CalculatorClient config={config} relatedCalculators={related} hideContent />;
 }

@@ -1,4 +1,4 @@
-import { getCalculatorsByCategory, getCategories, CATEGORY_META, getAllKnownCategories } from "@/lib/registry";
+import { getCalculatorsByCategory, getCategories, CATEGORY_META, getAllKnownCategories, KNOWN_CATEGORIES } from "@/lib/registry";
 import Link from "next/link";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -42,11 +42,50 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
+const CATEGORY_EDITORIAL: Record<string, string> = {
+  revenue: `Understanding your revenue metrics is the foundation of SaaS financial management. 
+MRR (Monthly Recurring Revenue), ARR (Annual Recurring Revenue), ARPU, and NRR tell you whether your business is growing sustainably. 
+These metrics are what investors evaluate first — they reveal your pricing power, customer value, and revenue predictability. 
+Use these calculators to track your revenue health, benchmark against industry standards, and identify opportunities for growth through pricing optimization and expansion revenue.`,
+  "unit-economics": `Unit economics determine whether each customer relationship is profitable. 
+CAC (Customer Acquisition Cost), LTV (Customer Lifetime Value), payback period, and gross margin tell you if your business model works at scale. 
+Healthy unit economics mean you're spending efficiently to acquire customers and earning more from them over time. 
+These calculators help you measure your per-customer profitability, benchmark against SaaS standards, and identify where to focus improvement efforts.`,
+  "churn-retention": `Churn is the silent killer of SaaS businesses. Even a 1% improvement in monthly churn can double your customer lifetime value. 
+Understanding your churn rate, retention rate, and customer health score is essential for predicting revenue and planning growth. 
+These calculators help you measure customer attrition, identify at-risk accounts, and track the effectiveness of your retention strategies against industry benchmarks.`,
+  "growth-efficiency": `Growth efficiency measures how effectively you convert investment into revenue. 
+Your Quick Ratio, Magic Number, Rule of 40, and CAC efficiency tell investors whether your growth is sustainable or burning cash. 
+The most valuable SaaS companies grow efficiently — they acquire customers at reasonable cost and retain them profitably. 
+Use these calculators to measure your growth efficiency, benchmark against top-quartile companies, and optimize your sales and marketing spend.`,
+  "ai-cost": `AI costs can quickly spiral without careful tracking. Whether you're using Claude, ChatGPT, Gemini, or Grok APIs, 
+understanding your per-token costs, monthly API spend, and model comparison economics is critical for managing AI infrastructure budgets. 
+These calculators help you estimate API costs by model, compare providers, and project monthly spending so you can optimize your AI stack without surprises.`,
+  "side-hustle": `Side hustle income is becoming a primary revenue stream for millions of creators, freelancers, and entrepreneurs. 
+Whether you're monetizing YouTube, Twitch, podcasting, newsletter subscriptions, Etsy, Amazon FBA, or freelance work, 
+understanding your true earnings after fees, taxes, and expenses is essential. 
+These calculators help you project income, estimate taxes, and optimize pricing across dozens of side hustle categories.`,
+  "personal-finance": `Personal financial planning requires accurate projections and realistic assumptions. 
+Whether you're pursuing FIRE (Financial Independence, Retire Early), saving for a down payment, paying off debt, 
+or planning for retirement, these calculators give you data-driven answers to your biggest money questions. 
+Use them to model different scenarios, understand trade-offs, and build a financial plan that works for your goals.`,
+  "general-business": `Every business decision should be backed by numbers. Whether you're calculating break-even, 
+evaluating ROI, pricing a product, comparing contractor vs employee costs, valuing your company, or 
+managing cash runway, having accurate calculations makes the difference between guessing and knowing. 
+These calculators cover the essential business math that founders and operators need to make confident decisions.`,
+  "saas-deepen": `Beyond the basics — advanced SaaS metrics reveal the operational drivers of your business. 
+Customer engagement scoring, feature adoption rates, time-to-value analysis, cohort retention, ARPU trends, 
+and capital efficiency ratios help you understand not just what's happening, but why. 
+These calculators are designed for operators who want to dig deeper into their metrics and find 
+specific, actionable levers to improve their business performance.`,
+};
+
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
   const calculators = getCalculatorsByCategory(category);
   const meta = CATEGORY_META[category];
   const categoryName = meta?.name ?? category.charAt(0).toUpperCase() + category.slice(1);
+  const editorial = CATEGORY_EDITORIAL[category];
 
   if (calculators.length === 0) {
     return (
@@ -64,8 +103,23 @@ export default async function CategoryPage({ params }: PageProps) {
     );
   }
 
-  const itemListSchema = {
+  const webAppSchema = {
     "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: `${categoryName} Calculators`,
+    description: meta?.description ?? `${categoryName} calculators for SaaS and business metrics.`,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/OnlineOnly",
+    },
+    url: `https://saastainednumbers.com/${category}`,
+  };
+
+  const itemListSchema = {
     "@type": "ItemList",
     name: `${categoryName} Calculators`,
     description: meta?.description ?? "",
@@ -81,14 +135,33 @@ export default async function CategoryPage({ params }: PageProps) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [webAppSchema, itemListSchema].filter(Boolean),
+          }),
+        }}
+      />
       <div className="mx-auto max-w-6xl px-4 py-12">
         <Breadcrumb items={[
           { label: "Home", href: "/" },
           { label: categoryName, href: `/${category}` },
         ]} />
         <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} Calculators</h1>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">{meta?.description}</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-2">{meta?.description}</p>
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 dark:bg-brand-950/50 px-3 py-1 text-xs font-medium text-brand-700 dark:text-brand-300 mb-6">
+          <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20" }}>verified</span>
+          No signup. No email. Free forever.
+        </div>
+        {editorial && (
+          <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed max-w-3xl">
+            {editorial.split("\n").map((line, i) => (
+              <span key={i}>{line}{i < editorial.split("\n").length - 1 ? " " : ""}</span>
+            ))}
+          </p>
+        )}
         <div className="mb-8">
           <CalculatorSearch
             calculators={calculators.map((c) => ({

@@ -56,7 +56,7 @@ export function DashboardClient() {
       const raw = searchParams.get(id);
       const parsed = raw !== null ? Number.parseFloat(raw) : NaN;
       if (Number.isFinite(parsed)) {
-        (result as Record<string, number>)[id] = parsed;
+        (result as unknown as Record<string, number>)[id] = parsed;
       }
     }
     return result;

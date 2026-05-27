@@ -29,10 +29,51 @@ export default function CalculatorsPage() {
   const categories = getAllKnownCategories();
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebApplication",
+                name: "SaaStainedNumbers - All Calculators",
+                description: "Free, instant calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account required.",
+                applicationCategory: "BusinessApplication",
+                operatingSystem: "Web",
+                offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/OnlineOnly" },
+                url: "https://saastainednumbers.com/calculators",
+              },
+              {
+                "@type": "ItemList",
+                name: "All SaaStainedNumbers Calculators",
+                numberOfItems: calculators.length,
+                itemListElement: calculators.map((calc, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  name: calc.meta.title,
+                  url: `https://saastainednumbers.com/${calc.category}/${calc.slug}`,
+                })),
+              },
+            ],
+          }),
+        }}
+      />
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="font-heading text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">All Calculators</h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-6">
+      <p className="text-gray-600 dark:text-gray-400 mb-2">
         Browse our complete collection of {calculators.length} calculators across {categories.length} categories.
+      </p>
+      <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 dark:bg-brand-950/50 px-3 py-1 text-xs font-medium text-brand-700 dark:text-brand-300 mb-6">
+        <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20" }}>verified</span>
+        No signup. No email. Free forever.
+      </div>
+      <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed max-w-3xl">
+        Free, instant calculators for the metrics that matter. From SaaS revenue and unit economics to AI costs,
+        side hustle income, and personal finance — every calculator is 100% free with no account required.
+        Results update live as you type, and nothing leaves your device. Built for founders, operators,
+        creators, and anyone who needs answers fast.
       </p>
       <div className="mb-10">
         <CalculatorSearch
@@ -89,5 +130,6 @@ export default function CalculatorsPage() {
         })}
       </div>
     </div>
+    </>
   );
 }
