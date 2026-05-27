@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
+import { SidekickAd } from "@/components/SidekickAd";
 
 export const metadata: Metadata = {
   title: "Blog  -  SaaStainedNumbers",
@@ -36,7 +37,7 @@ export default function BlogPage() {
       </div>
 
       <div className="my-8">
-
+        <SidekickAd />
       </div>
 
       {featured && (

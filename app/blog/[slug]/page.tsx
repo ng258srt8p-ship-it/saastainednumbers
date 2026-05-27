@@ -2,6 +2,7 @@ import { getAllPosts } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { SidekickAd } from "@/components/SidekickAd";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -76,7 +77,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
           <div className="mt-8">
-
+            <SidekickAd />
           </div>
         </article>
       </div>
