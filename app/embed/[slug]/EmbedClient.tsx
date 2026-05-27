@@ -6,6 +6,7 @@ import { InputSlider } from "@/calculators/ui/InputSlider";
 import { ResultCard } from "@/calculators/ui/ResultCard";
 import { useComparisonState } from "@/lib/useComparisonState";
 import { engines } from "@/lib/engine-registry";
+import { Insights } from "@/components/Insights";
 import type { CalculatorConfig } from "@/calculators/config/calculator-schema";
 
 interface Props {
@@ -64,6 +65,15 @@ export function EmbedClient({ slug, config }: Props) {
     window.parent.postMessage(payload, "*");
   }, [resultsA, resultsB, valuesA, valuesB, slug]);
 
+  const aiInputs = config.inputs.map((i) => ({
+    id: i.id,
+    label: i.label,
+    value: valuesA[i.id] ?? 0,
+    type: i.type,
+  }));
+
+  const aiOutputs = resultsA;
+
   useEffect(() => {
     const handler = (event: MessageEvent) => {
       if (event.data?.source === "webcalc-parent" && event.data.slug === slug) {
@@ -108,6 +118,13 @@ export function EmbedClient({ slug, config }: Props) {
           <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} />
         ))}
       </div>
+      <Insights
+        title={config.meta.title}
+        description={config.meta.description}
+        category={config.category}
+        inputs={aiInputs}
+        outputs={aiOutputs}
+      />
       <div className="mt-4 text-center">
         <a
           href={`https://saastainednumbers.com/${config.category}/${config.slug}`}
@@ -125,6 +142,9 @@ export function EmbedClient({ slug, config }: Props) {
           </span>
         </a>
       </div>
+      <p className="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center px-2">
+        Disclaimer: Results are for informational purposes only and should not be considered financial advice.
+      </p>
     </div>
   );
 }
