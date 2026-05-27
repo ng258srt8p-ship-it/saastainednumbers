@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "cpc-calculator",
   category: "growth-efficiency",
+  isNew: true,
   meta: {
     title: "CPC Calculator (Cost Per Click)",
     description: "Calculate Cost Per Click (CPC) for your advertising campaigns based on total cost and clicks generated.",

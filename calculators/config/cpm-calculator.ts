@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "cpm-calculator",
   category: "side-hustle",
+  isNew: true,
   meta: {
     title: "CPM Calculator (Cost Per Mille)",
     description: "Calculate Cost Per Mille (CPM) — the cost per 1,000 ad impressions — for advertising campaigns and content monetization.",

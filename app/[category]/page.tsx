@@ -109,6 +109,12 @@ export default async function CategoryPage({ params }: PageProps) {
             >
               <div className="flex items-center justify-between">
                 <h2 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 transition-colors">{calc.meta.title}</h2>
+                {calc.isNew && (
+                  <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300 shrink-0">
+                    <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20" }}>star</span>
+                    New
+                  </span>
+                )}
               </div>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{calc.meta.description}</p>
             </Link>

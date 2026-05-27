@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "gpu-compute-cost-calculator",
   category: "ai-cost",
+  isNew: true,
   meta: {
     title: "GPU Compute Cost Calculator",
     description: "Calculate GPU cloud compute costs including on-demand vs spot pricing, monthly and annual projections for AI/ML workloads.",

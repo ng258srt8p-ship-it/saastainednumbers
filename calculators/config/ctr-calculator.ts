@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "ctr-calculator",
   category: "growth-efficiency",
+  isNew: true,
   meta: {
     title: "CTR Calculator (Click-Through Rate)",
     description: "Calculate Click-Through Rate (CTR) for your ads, emails, and content based on impressions and clicks.",

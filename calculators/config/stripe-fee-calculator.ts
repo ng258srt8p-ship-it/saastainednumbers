@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "stripe-fee-calculator",
   category: "general-business",
+  isNew: true,
   meta: {
     title: "Stripe Fee Calculator",
     description: "Calculate Stripe payment processing fees including per-transaction fees, percentage fees, and monthly/annual costs with enterprise rate logic.",

@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "tam-sam-som-calculator",
   category: "general-business",
+  isNew: true,
   meta: {
     title: "TAM SAM SOM Calculator",
     description: "Calculate Total Addressable Market (TAM), Serviceable Addressable Market (SAM), and Serviceable Obtainable Market (SOM) with growth projections.",

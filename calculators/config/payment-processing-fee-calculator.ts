@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "payment-processing-fee-calculator",
   category: "general-business",
+  isNew: true,
   meta: {
     title: "Payment Processing Fee Calculator",
     description: "Calculate payment processing fees including transaction fees, chargeback costs, and effective rate for any payment processor.",

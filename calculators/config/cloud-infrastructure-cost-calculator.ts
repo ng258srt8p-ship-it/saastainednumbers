@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "cloud-infrastructure-cost-calculator",
   category: "ai-cost",
+  isNew: true,
   meta: {
     title: "Cloud Infrastructure Cost Calculator",
     description: "Estimate monthly and annual cloud infrastructure costs including compute, storage, data transfer, and managed services.",

@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "conversion-rate-calculator",
   category: "growth-efficiency",
+  isNew: true,
   meta: {
     title: "Conversion Rate Calculator",
     description: "Calculate your conversion rate from visitors to customers with total conversions and non-converting visitor breakdown.",

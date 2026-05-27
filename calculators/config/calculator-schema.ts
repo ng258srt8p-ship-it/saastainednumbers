@@ -1,6 +1,7 @@
 export interface CalculatorConfig {
   slug: string;
   category: "revenue" | "unit-economics" | "churn-retention" | "growth-efficiency" | "ai-cost" | "side-hustle" | "personal-finance" | "general-business" | "saas-deepen";
+  isNew?: boolean;
   meta: {
     title: string;
     description: string;

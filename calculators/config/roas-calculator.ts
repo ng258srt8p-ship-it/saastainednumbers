@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "roas-calculator",
   category: "growth-efficiency",
+  isNew: true,
   meta: {
     title: "ROAS Calculator (Return on Ad Spend)",
     description: "Calculate Return on Ad Spend (ROAS), net return, and profit margin for your advertising campaigns.",

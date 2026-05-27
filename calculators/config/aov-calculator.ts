@@ -4,6 +4,7 @@ import type { CalculatorConfig } from "./calculator-schema";
 const config = {
   slug: "aov-calculator",
   category: "general-business",
+  isNew: true,
   meta: {
     title: "AOV Calculator (Average Order Value)",
     description: "Calculate Average Order Value (AOV) based on total revenue and number of orders to measure purchase behavior.",
