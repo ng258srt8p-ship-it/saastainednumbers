@@ -80,7 +80,7 @@ export function EmbedClient({ slug, config }: Props) {
   }, [slug, setValue]);
 
   return (
-    <div className="min-h-0" style={{ minHeight: embedHeight }}>
+    <div className="min-h-0 p-4" style={{ minHeight: embedHeight }}>
       {!hideHeader && (
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
