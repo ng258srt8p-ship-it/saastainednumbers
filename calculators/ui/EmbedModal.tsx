@@ -57,14 +57,30 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
           <div className="space-y-3 mb-4">
             <label className="flex items-center justify-between">
               <span className="text-sm text-gray-700 dark:text-gray-300">Theme</span>
-              <select
-                value={theme}
-                onChange={(e) => setTheme(e.target.value as "light" | "dark")}
-                className="rounded-lg border border-gray-200 dark:border-gray-600 px-2 py-1 text-sm text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
-              >
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-              </select>
+              <div className="flex items-center gap-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 p-0.5 text-xs">
+                <button
+                  type="button"
+                  onClick={() => setTheme("light")}
+                  className={`rounded-md px-2.5 py-1.5 font-medium transition-colors ${
+                    theme === "light"
+                      ? "bg-brand-600 text-white shadow-sm"
+                      : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
+                  }`}
+                >
+                  Light
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTheme("dark")}
+                  className={`rounded-md px-2.5 py-1.5 font-medium transition-colors ${
+                    theme === "dark"
+                      ? "bg-brand-600 text-white shadow-sm"
+                      : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
+                  }`}
+                >
+                  Dark
+                </button>
+              </div>
             </label>
 
             <label className="flex items-center justify-between gap-4">
