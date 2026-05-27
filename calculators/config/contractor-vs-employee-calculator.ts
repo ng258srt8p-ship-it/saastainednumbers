@@ -9,6 +9,7 @@ const config = {
     description: "Compare the true annual cost of hiring a contractor versus a full-time employee including salary, taxes, benefits, equipment, and overhead.",
     keywords: ["contractor vs employee", "contractor cost", "employee cost", "hire contractor", "full time employee cost", "freelancer vs employee", "cost comparison"],
   },
+  benchmarkMetric: "employee-cost",
   inputs: [
     { id: "contractorRate", label: "Contractor Hourly Rate ($)", type: "currency" as const, defaultValue: 100, min: 0 },
     { id: "contractorHoursPerYear", label: "Contractor Hours per Year", type: "number" as const, defaultValue: 2000, min: 0 },

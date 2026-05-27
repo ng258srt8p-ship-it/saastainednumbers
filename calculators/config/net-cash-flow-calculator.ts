@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your net cash flow, burn rate, and determine whether your business is cash flow positive or negative.",
     keywords: ["net cash flow", "burn rate", "cash flow", "operating cash", "saas finance"],
   },
+  benchmarkMetric: "burn-multiple",
   inputs: [
     { id: "cashIn", label: "Cash In (revenue + collections)", type: "currency" as const, defaultValue: 80000 },
     { id: "cashOut", label: "Cash Out (expenses + payables)", type: "currency" as const, defaultValue: 95000 },

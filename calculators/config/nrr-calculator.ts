@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your Net Revenue Retention (NRR) rate to measure how much revenue you retain from existing customers including expansions and downgrades.",
     keywords: ["nrr", "net revenue retention", "saas metrics", "retention", "revenue retention"],
   },
+  benchmarkMetric: "nrr",
   inputs: [
     { id: "startMrr", label: "Starting MRR", type: "currency" as const, defaultValue: 100000 },
     { id: "expansionMrr", label: "Expansion MRR (upgrades)", type: "currency" as const, defaultValue: 15000 },

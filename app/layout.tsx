@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
+import { AdScript } from "@/components/AdScript";
 import { Nav } from "@/components/Nav";
 import "./globals.css";
 
@@ -69,6 +70,7 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'G-BHDH2PETBK');`}
         </Script>
+        <AdScript />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

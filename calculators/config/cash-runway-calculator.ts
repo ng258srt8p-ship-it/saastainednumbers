@@ -9,6 +9,7 @@ const config = {
     description: "Calculate how many months your startup can operate before running out of cash based on burn rate and revenue growth.",
     keywords: ["cash runway", "burn rate", "startup runway", "runway calculation", "cash run out", "startup cash", "financial runway"],
   },
+  benchmarkMetric: "burn-multiple",
   inputs: [
     { id: "currentCash", label: "Current Cash ($)", type: "currency" as const, defaultValue: 500000, min: 0 },
     { id: "monthlyRevenue", label: "Monthly Revenue ($)", type: "currency" as const, defaultValue: 50000, min: 0 },

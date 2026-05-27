@@ -1,18 +1,22 @@
-import { getAllCalculators } from "./registry";
+import { getAllCalculators, getCalculator } from "./registry";
 
 export function getRelatedCalculators(slug: string, count = 4) {
-  const calculators = getAllCalculators();
-  const current = calculators.find((c) => c.slug === slug);
+  const current = getCalculator(slug);
   if (!current) return [];
 
-  const sameCategory = calculators.filter(
-    (c) => c.slug !== slug && c.category === current.category
-  );
+  const calculators = getAllCalculators();
+  const curated = current.content.relatedCalculators
+    .map((s) => calculators.find((c) => c.slug === s))
+    .filter((c): c is NonNullable<typeof c> => c != null);
 
-  const otherCategory = calculators.filter(
-    (c) => c.slug !== slug && c.category !== current.category
-  );
+  const result = [...curated];
 
-  const related = [...sameCategory, ...otherCategory].slice(0, count);
-  return related;
+  if (result.length < count) {
+    const extra = calculators.filter(
+      (c) => c.slug !== slug && c.category === current.category && !result.some((r) => r.slug === c.slug)
+    );
+    result.push(...extra);
+  }
+
+  return result.slice(0, count);
 }

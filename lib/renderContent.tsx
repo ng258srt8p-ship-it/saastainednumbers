@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { analytics } from "./analytics";
 
 export function renderContent(text: string, slug?: string): ReactNode {
   const parts = text.split(/(\[.*?\]\(.*?\))/g);
@@ -12,8 +13,8 @@ export function renderContent(text: string, slug?: string): ReactNode {
           target="_blank"
           rel="noopener noreferrer sponsored"
           onClick={() => {
-            if (slug && typeof window !== "undefined" && window.gtag) {
-              window.gtag("event", "affiliate_click", { slug, url: match[2] });
+            if (slug) {
+              analytics.affiliate_click(slug, match[2]);
             }
           }}
           className="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 underline"

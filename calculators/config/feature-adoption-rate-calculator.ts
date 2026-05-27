@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your SaaS feature adoption rate, measure the gap to target adoption, and determine how many additional users need to adopt a feature to hit your goals.",
     keywords: ["feature adoption", "product adoption", "saas metrics", "user engagement", "feature usage"],
   },
+  benchmarkMetric: "activation-rate",
   inputs: [
     { id: "totalUsers", label: "Total Users", type: "number" as const, defaultValue: 1000, min: 1 },
     { id: "usersUsingFeature", label: "Users Using Feature", type: "number" as const, defaultValue: 300, min: 0 },

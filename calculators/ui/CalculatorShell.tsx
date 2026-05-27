@@ -14,6 +14,7 @@ interface CalculatorShellProps {
   children: ReactNode;
   breadcrumbs?: Breadcrumb[];
   contentSection?: ReactNode;
+  afterContentAd?: ReactNode;
   faqSection?: ReactNode;
   relatedCalculators?: ReactNode;
   feedbackWidget?: ReactNode;
@@ -26,6 +27,7 @@ export function CalculatorShell({
   description,
   children,
   contentSection,
+  afterContentAd,
   faqSection,
   relatedCalculators,
   feedbackWidget,
@@ -81,6 +83,8 @@ export function CalculatorShell({
           <div className="prose prose-invert max-w-none">{contentSection}</div>
         </section>
       )}
+
+      {afterContentAd && <div className="mt-8">{afterContentAd}</div>}
 
       {faqSection && (
         <section className="mt-12">

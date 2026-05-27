@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your enhanced CAC payback period in months and days accounting for gross margin, giving a more accurate view of how quickly you recoup customer acquisition costs.",
     keywords: ["cac payback period", "customer acquisition cost", "payback period", "saas metrics", "unit economics"],
   },
+  benchmarkMetric: "cac-payback",
   inputs: [
     { id: "cac", label: "Customer Acquisition Cost (CAC)", type: "currency" as const, defaultValue: 500, min: 0 },
     { id: "arpu", label: "Average Revenue Per User (ARPU)", type: "currency" as const, defaultValue: 100, min: 0 },

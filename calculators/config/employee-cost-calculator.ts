@@ -9,6 +9,7 @@ const config = {
     description: "Calculate the true cost of an employee including salary, taxes, benefits, equipment, and overhead.",
     keywords: ["employee cost", "cost of employee", "employer cost", "total compensation", "hiring budget", "payroll cost"],
   },
+  benchmarkMetric: "employee-cost",
   inputs: [
     { id: "baseSalary", label: "Base Salary ($)", type: "currency" as const, defaultValue: 80000, min: 0 },
     { id: "bonusPercent", label: "Bonus (% of Salary)", type: "percentage" as const, defaultValue: 10, min: 0, max: 100 },

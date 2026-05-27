@@ -9,6 +9,7 @@ const config = {
     description: "Measure customer engagement using DAU/MAU ratio, session frequency, duration, and feature adoption.",
     keywords: ["customer engagement", "dau mau ratio", "engagement score", "user engagement", "product engagement", "saas metrics"],
   },
+  benchmarkMetric: "customer-health",
   inputs: [
     { id: "dailyActiveUsers", label: "Daily Active Users (DAU)", type: "number" as const, defaultValue: 5000, min: 0 },
     { id: "monthlyActiveUsers", label: "Monthly Active Users (MAU)", type: "number" as const, defaultValue: 25000, min: 0 },

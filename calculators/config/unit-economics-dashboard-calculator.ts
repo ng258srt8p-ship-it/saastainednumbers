@@ -9,6 +9,7 @@ const config = {
     description: "Track your SaaS unit economics with a comprehensive dashboard showing LTV/CAC ratio, contribution margin, payback period, MRR, and gross profit per customer.",
     keywords: ["unit economics", "saas metrics", "ltv cac ratio", "contribution margin", "payback period", "mrr", "gross profit per customer"],
   },
+  benchmarkMetric: "ltv-cac",
   inputs: [
     { id: "cac", label: "Customer Acquisition Cost (CAC)", type: "currency" as const, defaultValue: 500, min: 0 },
     { id: "ltv", label: "Customer Lifetime Value (LTV)", type: "currency" as const, defaultValue: 3000, min: 0 },

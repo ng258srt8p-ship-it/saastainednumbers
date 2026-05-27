@@ -9,6 +9,7 @@ const config = {
     description: "Calculate the percentage of revenue growth from existing customers through upsells, cross-sells, and upgrades.",
     keywords: ["expansion revenue", "net retention", "upsell", "cross-sell", "saas growth"],
   },
+  benchmarkMetric: "nrr",
   inputs: [
     { id: "beginningMrr", label: "Beginning MRR (start of period)", type: "currency" as const, defaultValue: 100000 },
     { id: "expansionMrr", label: "Expansion MRR (upsells + cross-sells)", type: "currency" as const, defaultValue: 15000 },

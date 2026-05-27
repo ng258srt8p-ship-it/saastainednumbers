@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your SaaS capital efficiency ratio to understand how effectively you convert invested capital into ARR growth, a key metric for founders and investors.",
     keywords: ["capital efficiency", "saas metrics", "arr", "fundraising", "venture capital", "growth efficiency"],
   },
+  benchmarkMetric: "magic-number",
   inputs: [
     { id: "totalRaised", label: "Total Capital Raised", type: "currency" as const, defaultValue: 5000000, min: 0 },
     { id: "arr", label: "Current ARR", type: "currency" as const, defaultValue: 3000000, min: 0 },

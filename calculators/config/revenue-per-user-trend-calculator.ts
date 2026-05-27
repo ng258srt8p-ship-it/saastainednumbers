@@ -9,6 +9,7 @@ const config = {
     description: "Track your ARPU trend over time by comparing previous and current month revenue and user counts to determine if your per-user revenue is growing, stable, or declining.",
     keywords: ["arpu trend", "revenue per user", "saas metrics", "monetization", "average revenue per user"],
   },
+  benchmarkMetric: "arpu",
   inputs: [
     { id: "prevMonthRevenue", label: "Previous Month Revenue", type: "currency" as const, defaultValue: 50000, min: 0 },
     { id: "currentMonthRevenue", label: "Current Month Revenue", type: "currency" as const, defaultValue: 55000, min: 0 },

@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your month-over-month MRR growth rate to measure your SaaS company's growth trajectory.",
     keywords: ["mrr growth rate", "monthly growth", "saas growth", "revenue growth", "saas metrics"],
   },
+  benchmarkMetric: "revenue-growth",
   inputs: [
     { id: "previousMrr", label: "Previous Month MRR", type: "currency" as const, defaultValue: 80000 },
     { id: "currentMrr", label: "Current Month MRR", type: "currency" as const, defaultValue: 100000 },

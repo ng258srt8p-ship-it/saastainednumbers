@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your SaaS quick ratio to measure sales efficiency by comparing new and expansion MRR against churned and contraction MRR.",
     keywords: ["quick ratio", "saas metrics", "sales efficiency", "mrr", "growth efficiency"],
   },
+  benchmarkMetric: "quick-ratio",
   inputs: [
     { id: "newMRR", label: "New MRR", type: "currency" as const, defaultValue: 10000, min: 0 },
     { id: "expansionMRR", label: "Expansion MRR", type: "currency" as const, defaultValue: 3000, min: 0 },

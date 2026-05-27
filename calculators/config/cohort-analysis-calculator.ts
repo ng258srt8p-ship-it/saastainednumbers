@@ -9,6 +9,7 @@ const config = {
     description: "Perform cohort retention analysis by tracking how many users from an initial cohort remain active over multiple months and calculating your average retention rate.",
     keywords: ["cohort analysis", "retention analysis", "saas metrics", "user retention", "cohort retention"],
   },
+  benchmarkMetric: "churn-rate",
   inputs: [
     { id: "initialCohortSize", label: "Initial Cohort Size", type: "number" as const, defaultValue: 1000, min: 1 },
     { id: "month1Retention", label: "Month 1 Retention Rate", type: "percentage" as const, defaultValue: 80, min: 0, max: 100 },

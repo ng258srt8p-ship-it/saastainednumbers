@@ -9,6 +9,7 @@ const config = {
     description: "Calculate your customer health score based on NPS, product usage, support tickets, and engagement to predict retention risk.",
     keywords: ["customer health score", "churn prediction", "customer success", "saas metrics", "retention"],
   },
+  benchmarkMetric: "customer-health",
   inputs: [
     { id: "nps", label: "NPS Score (-100 to 100)", type: "number" as const, defaultValue: 50, min: -100, max: 100 },
     { id: "productUsageScore", label: "Product Usage Score (0-100)", type: "number" as const, defaultValue: 70, min: 0, max: 100 },

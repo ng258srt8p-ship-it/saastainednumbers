@@ -17,6 +17,7 @@ import { getMetricKey } from "@/lib/benchmarks";
 import type { Stage } from "@/lib/benchmarks";
 import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
+import { AdUnit } from "@/components/AdUnit";
 import { Insights } from "@/components/Insights";
 
 interface RelatedCalc {
@@ -163,6 +164,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       description={config.meta.description}
       stageSelector={stageSelector}
       feedbackWidget={<FeedbackWidget slug={config.slug} />}
+      afterContentAd={<AdUnit slot="calculator-below-content" />}
       contentSection={
         <div className="space-y-8">
           <section>
@@ -215,6 +217,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
               )}
             </section>
           )}
+          <AdUnit slot="calculator-in-content" className="mt-8" />
         </div>
       }
       faqSection={
