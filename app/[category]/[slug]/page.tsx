@@ -75,7 +75,7 @@ export default async function CalculatorPage({ params }: PageProps) {
     "@type": "HowTo",
     name: config.meta.title,
     description: config.meta.description,
-    step: config.content.howToUse.split(".").filter(Boolean).map((step: string, i: number) => ({
+    step: config.content.howToUse.split(". ").filter(Boolean).map((step: string, i: number) => ({
       "@type": "HowToStep",
       position: i + 1,
       text: step.trim(),

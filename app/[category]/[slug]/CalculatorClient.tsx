@@ -175,7 +175,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Calculator</h2>
             <ol className="list-decimal pl-5 space-y-2">
-              {config.content.howToUse.split(".").filter(Boolean).map((step, i) => (
+              {config.content.howToUse.split(". ").filter(Boolean).map((step, i) => (
                 <li key={i} className="text-gray-600 dark:text-gray-400">{step.trim()}.</li>
               ))}
             </ol>
