@@ -19,6 +19,7 @@ import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
 import { AdUnit } from "@/components/AdUnit";
 import { Insights } from "@/components/Insights";
+import { SidekickAd } from "@/components/SidekickAd";
 
 interface RelatedCalc {
   slug: string;
@@ -165,6 +166,7 @@ export function CalculatorClient({ config, relatedCalculators }: Props) {
       description={config.meta.description}
       stageSelector={stageSelector}
       feedbackWidget={<FeedbackWidget slug={config.slug} />}
+      sidebarAd={<SidekickAd />}
       afterContentAd={<AdUnit slot="calculator-below-content" />}
       contentSection={
         <div className="space-y-8">

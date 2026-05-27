@@ -20,6 +20,7 @@ interface CalculatorShellProps {
   feedbackWidget?: ReactNode;
   embedButton?: ReactNode;
   stageSelector?: ReactNode;
+  sidebarAd?: ReactNode;
 }
 
 export function CalculatorShell({
@@ -34,6 +35,7 @@ export function CalculatorShell({
   embedButton,
   breadcrumbs,
   stageSelector,
+  sidebarAd,
 }: CalculatorShellProps) {
   return (
     <div className="bg-page-bg">
@@ -68,23 +70,29 @@ export function CalculatorShell({
         </div>
       </header>
 
-      <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-card-bg p-4 sm:p-6 shadow-sm">
-        <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
-          <div className="flex-1 min-w-0 w-full sm:w-auto">{children}</div>
-          {embedButton && <div className="shrink-0 w-full sm:w-auto">{embedButton}</div>}
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex-1 min-w-0">
+          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-card-bg p-4 sm:p-6 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
+              <div className="flex-1 min-w-0 w-full sm:w-auto">{children}</div>
+              {embedButton && <div className="shrink-0 w-full sm:w-auto">{embedButton}</div>}
+            </div>
+            <PrivacyNotice />
+          </div>
+
+          {feedbackWidget && <div className="mt-4">{feedbackWidget}</div>}
+
+          {contentSection && (
+            <section className="mt-12">
+              <div className="prose prose-invert max-w-none">{contentSection}</div>
+            </section>
+          )}
+
+          {afterContentAd && <div className="mt-8">{afterContentAd}</div>}
         </div>
-        <PrivacyNotice />
+
+        {sidebarAd && <div className="w-full lg:w-72 shrink-0">{sidebarAd}</div>}
       </div>
-
-      {feedbackWidget && <div className="mt-4">{feedbackWidget}</div>}
-
-      {contentSection && (
-        <section className="mt-12">
-          <div className="prose prose-invert max-w-none">{contentSection}</div>
-        </section>
-      )}
-
-      {afterContentAd && <div className="mt-8">{afterContentAd}</div>}
 
       {faqSection && (
         <section className="mt-12">
