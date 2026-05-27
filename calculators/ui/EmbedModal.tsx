@@ -140,6 +140,7 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
           {tab === "preview" && (
             <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900" style={{ height: Math.min(height, 400) }}>
               <iframe
+                key={`${slug}-${previewParams.toString()}`}
                 src={`/embed/${slug}?${previewParams.toString()}`}
                 width="100%"
                 height={Math.min(height, 400)}

@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 import { AdScript } from "@/components/AdScript";
+import { ShowWhenNotEmbed } from "@/components/ShowWhenNotEmbed";
 import { Nav } from "@/components/Nav";
 import "./globals.css";
 
@@ -81,11 +82,11 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-          <Nav />
+          <ShowWhenNotEmbed><Nav /></ShowWhenNotEmbed>
           <main id="main-content" className="flex-1">
             {children}
           </main>
-        <footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+        <ShowWhenNotEmbed><footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
           <div className="mx-auto max-w-6xl px-4 py-10">
             <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-6 sm:gap-8 lg:gap-12">
               <div className="w-full sm:w-auto">
@@ -141,7 +142,7 @@ export default function RootLayout({
               </div>
             </div>
           </div>
-        </footer>
+        </footer></ShowWhenNotEmbed>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
