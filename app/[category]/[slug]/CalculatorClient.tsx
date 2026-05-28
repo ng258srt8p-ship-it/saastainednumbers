@@ -426,6 +426,21 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
         onClose={() => setEmbedOpen(false)}
       />
     </CalculatorShell>
+
+      <div className="mx-auto max-w-4xl px-4 pb-8 flex justify-center">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: [
+              '<a rel="sponsored"',
+              'href="https://shopify.pxf.io/c/7346865/3797165/13624" target="_top" id="3797165">',
+              '<img src="//a.impactradius-go.com/display-ad/13624-3797165" border="0" alt="Shopify" width="728" height="90"/>',
+              '</a>',
+              '<img height="0" width="0" src="https://imp.pxf.io/i/7346865/3797165/13624" style="position:absolute;visibility:hidden;" border="0" />',
+            ].join(""),
+          }}
+        />
+      </div>
+
     </>
   );
 }
