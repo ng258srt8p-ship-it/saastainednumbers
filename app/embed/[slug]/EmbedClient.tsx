@@ -145,11 +145,11 @@ export function EmbedClient({ slug, config }: Props) {
           rel="sponsored"
           href="https://shopify.pxf.io/c/7346865/3797165/13624"
           target="_blank"
-          className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-br from-brand-600 to-brand-900 px-3 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:from-brand-500 hover:to-brand-800 shrink-0"
+          className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-br from-brand-600 to-brand-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:from-brand-500 hover:to-brand-800 shrink-0"
         >
           <img src="/shopify-icon.png" alt="" className="w-4 h-4" aria-hidden />
           <span>Shopify</span>
-          <span className="text-[10px] text-white/60 font-normal">Sponsored</span>
+          <span className="text-xs text-white/60 font-normal">Sponsored</span>
         </a>
       </div>
       <p className="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center px-2">
