@@ -67,7 +67,7 @@ export default function CalculatorsPage() {
       </p>
       <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 dark:bg-brand-950/50 px-3 py-1 text-xs font-medium text-brand-700 dark:text-brand-300 mb-6">
         <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20" }}>verified</span>
-        No signup. No email. Free forever.
+        No signup. No email. No catch.
       </div>
       <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed max-w-3xl">
         Free, instant calculators for the metrics that matter. From SaaS revenue and unit economics to AI costs,

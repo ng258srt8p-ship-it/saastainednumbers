@@ -207,7 +207,7 @@ export default function Home() {
               </div>
               <h3 className="mt-6 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">Pick a calculator</h3>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                From AI costs to FIRE plans  -  all <span className="font-numbers">{totalCount}</span> are free, forever. No signup gate.
+                From AI costs to FIRE plans  -  all <span className="font-numbers">{totalCount}</span> are free to use. No signup gate.
               </p>
             </div>
             <div className="text-center">

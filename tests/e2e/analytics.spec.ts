@@ -19,7 +19,8 @@ test.describe("Google Analytics 4 — script injection", () => {
     await page.goto("/revenue/mrr-calculator", { waitUntil: "networkidle" });
 
     const configFired = await page.evaluate(() => {
-      return window.dataLayer?.some(
+      const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
+      return dl?.some(
         (entry) =>
           entry[0] === "config" && entry[1] === "G-BHDH2PETBK",
       );
@@ -33,23 +34,26 @@ test.describe("Google Analytics 4 — script injection", () => {
     const gtagScript = page.locator(`script[src*="googletagmanager.com/gtag/js"]`);
     await expect(gtagScript).toBeAttached();
 
-    const configFired = await page.evaluate(() =>
-      window.dataLayer?.some((entry) => entry[0] === "config"),
-    );
+    const configFired = await page.evaluate(() => {
+      const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
+      return dl?.some((entry) => entry[0] === "config");
+    });
     expect(configFired).toBe(true);
   });
 
   test("GA4 loads on category and homepage", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
-    const homepageLoaded = await page.evaluate(() =>
-      window.dataLayer?.some((entry) => entry[0] === "config"),
-    );
+    const homepageLoaded = await page.evaluate(() => {
+      const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
+      return dl?.some((entry) => entry[0] === "config");
+    });
     expect(homepageLoaded).toBe(true);
 
     await page.goto("/revenue", { waitUntil: "networkidle" });
-    const categoryLoaded = await page.evaluate(() =>
-      window.dataLayer?.some((entry) => entry[0] === "config"),
-    );
+    const categoryLoaded = await page.evaluate(() => {
+      const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
+      return dl?.some((entry) => entry[0] === "config");
+    });
     expect(categoryLoaded).toBe(true);
   });
 });
@@ -62,7 +66,8 @@ test.describe("Google Analytics 4 — custom events", () => {
     await page.waitForTimeout(2000);
 
     const hasEvent = await page.evaluate(() => {
-      return window.dataLayer?.some(
+      const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
+      return dl?.some(
         (entry) => entry[0] === "event" && entry[1] === "calculate_tool",
       ) ?? false;
     });
@@ -80,7 +85,8 @@ test.describe("Google Analytics 4 — custom events", () => {
       await page.waitForTimeout(500);
 
       const hasEvent = await page.evaluate(() => {
-        return window.dataLayer?.some(
+        const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
+        return dl?.some(
           (entry) => entry[0] === "event" && entry[1] === "share_tool",
         ) ?? false;
       });
@@ -97,7 +103,8 @@ test.describe("Google Analytics 4 — custom events", () => {
       await page.waitForTimeout(500);
 
       const hasEvent = await page.evaluate(() => {
-        return window.dataLayer?.some(
+        const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
+        return dl?.some(
           (entry) => entry[0] === "event" && entry[1] === "search",
         ) ?? false;
       });
@@ -112,7 +119,8 @@ test.describe("Google Analytics 4 — events cross-page", () => {
     await page.waitForTimeout(1000);
 
     const configFired = await page.evaluate(() => {
-      return window.dataLayer?.some(
+      const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
+      return dl?.some(
         (entry) => entry[0] === "config" && entry[1] === "G-BHDH2PETBK",
       );
     });
