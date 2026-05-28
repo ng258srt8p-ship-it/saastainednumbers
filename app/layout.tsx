@@ -134,7 +134,7 @@ export default function RootLayout({
                   <polygon points="20,70 60,70 40,40" fill="#008387" stroke="#008387" strokeWidth="5" strokeLinejoin="round"/>
                   <polygon points="26,32 54,32 40,10" fill="#143562" stroke="#143562" strokeWidth="5" strokeLinejoin="round"/>
                 </svg>
-                <p className="text-xs text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} SaaStainedNumbers. All rights reserved.</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} SaaStainedNumbers.</p>
               </div>
               <div className="flex gap-4">
                 <Link href="/blog" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">Blog</Link>
