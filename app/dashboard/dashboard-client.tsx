@@ -1,266 +1,313 @@
 "use client";
 
-import { useMemo, useEffect, useRef, useState, useCallback } from "react";
+import React, { useMemo, useCallback, useState, useRef } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { calculateMRR } from "@/calculators/engine/mrr";
-import { calculateCAC } from "@/calculators/engine/cac";
-import { calculateLTVWithCAC } from "@/calculators/engine/ltv";
-import { calculateChurn } from "@/calculators/engine/churn";
-import { calculateARPU } from "@/calculators/engine/arpu";
-import { InputSlider } from "@/calculators/ui/InputSlider";
-import { Insights } from "@/components/Insights";
-import { analytics } from "@/lib/analytics";
-import { getHealthStatus, type Stage } from "@/lib/benchmarks";
-import Link from "next/link";
+import { DashboardWidget } from "@/components/DashboardWidget";
+import { DashboardTotalWidget } from "@/components/DashboardTotalWidget";
+import { DashboardCalculatorPicker } from "@/components/DashboardCalculatorPicker";
+import { SidekickAd } from "@/components/SidekickAd";
+import { getAllCalculators } from "@/lib/registry";
+import { getCalculator } from "@/lib/registry";
+import { engines } from "@/lib/engine-registry";
+import { findInputWiring, TEMPLATES } from "@/lib/dashboard-wiring";
+import "@/calculators/config/_all";
 
-interface DashboardInputs {
-  customers: number;
-  arpu: number;
-  churnRate: number;
-  grossMargin: number;
-  salesCost: number;
-  marketingCost: number;
-  newCustomers: number;
-}
-
-const DEFAULTS: DashboardInputs = {
-  customers: 1000,
-  arpu: 50,
-  churnRate: 5,
-  grossMargin: 80,
-  salesCost: 15000,
-  marketingCost: 5000,
-  newCustomers: 100,
-};
-
-const INPUT_IDS = ["customers", "arpu", "churnRate", "grossMargin", "salesCost", "marketingCost", "newCustomers"] as const;
-
-function formatCurrency(n: number): string {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(n);
-}
-
-function formatPercent(n: number): string {
-  return `${n.toFixed(1)}%`;
+class WidgetErrorBoundary extends React.Component<{ children: React.ReactNode; title: string }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950/20 p-4 text-sm text-red-600 dark:text-red-400">
+          {this.props.title} encountered an error.
+        </div>
+      );
+    }
+    return this.props.children;
+  }
 }
 
 export function DashboardClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [stage, setStage] = useState<Stage>("series-a");
-  const tracked = useRef(false);
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-  const inputs = useMemo(() => {
-    const result: DashboardInputs = { ...DEFAULTS };
-    for (const id of INPUT_IDS) {
-      const raw = searchParams.get(id);
-      const parsed = raw !== null ? Number.parseFloat(raw) : NaN;
-      if (Number.isFinite(parsed)) {
-        (result as unknown as Record<string, number>)[id] = parsed;
-      }
+  const allCalculators = useMemo(() => getAllCalculators(), []);
+
+  const selectedSlugs = useMemo(() => {
+    const raw = searchParams.getAll("calc");
+    if (raw.length === 0) {
+      return ["mrr-calculator", "cac-calculator", "ltv-calculator", "churn-calculator", "arpu-calculator"];
     }
-    return result;
+    return raw;
   }, [searchParams]);
 
-  const setInput = useCallback((id: string, value: number) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (Number.isFinite(value)) {
-      params.set(id, value.toString());
-    } else {
-      params.delete(id);
+  const selectedConfigs = useMemo(() => {
+    return selectedSlugs
+      .map((slug) => getCalculator(slug))
+      .filter((c): c is NonNullable<typeof c> => c !== undefined);
+  }, [selectedSlugs]);
+
+  const inputValuesBySlug = useMemo(() => {
+    const all: Record<string, Record<string, number>> = {};
+    for (const config of selectedConfigs) {
+      const slugValues: Record<string, number> = {};
+      for (const input of config.inputs) {
+        const paramKey = `${config.slug}.${input.id}`;
+        const raw = searchParams.get(paramKey);
+        const parsed = raw !== null ? Number.parseFloat(raw) : NaN;
+        slugValues[input.id] = Number.isFinite(parsed) ? parsed : input.defaultValue;
+      }
+      all[config.slug] = slugValues;
     }
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }, [searchParams, router, pathname]);
+    return all;
+  }, [selectedConfigs, searchParams]);
 
-  const reset = useCallback(() => {
-    router.replace(pathname, { scroll: false });
-  }, [router, pathname]);
+  const allResults = useMemo(() => {
+    const results = new Map<string, Record<string, number>>();
 
-  const results = useMemo(() => {
-    const mrr = calculateMRR({ customers: inputs.customers, arpu: inputs.arpu });
-    const cac = calculateCAC({ salesCost: inputs.salesCost, marketingCost: inputs.marketingCost, newCustomers: inputs.newCustomers });
-    const ltvWithCac = calculateLTVWithCAC({ arpu: inputs.arpu, grossMargin: inputs.grossMargin, churnRate: inputs.churnRate, cac: cac.cac });
-    const churn = calculateChurn({
-      customersStart: inputs.customers,
-      customersEnd: inputs.customers - Math.round(inputs.customers * inputs.churnRate / 100),
-      lostCustomers: Math.round(inputs.customers * inputs.churnRate / 100),
+    for (const config of selectedConfigs) {
+      const engine = engines[config.slug];
+      if (!engine) continue;
+      try {
+        const computed = engine(inputValuesBySlug[config.slug] ?? {});
+        const outputs: Record<string, number> = {};
+        for (const [key, value] of Object.entries(computed)) {
+          outputs[key] = typeof value === "number" ? value : Number(value);
+        }
+        results.set(config.slug, outputs);
+      } catch {
+        results.set(config.slug, {});
+      }
+    }
+
+    return results;
+  }, [selectedConfigs, inputValuesBySlug]);
+
+  const wiredValuesBySlug = useMemo(() => {
+    const wired: Record<string, Record<string, number>> = {};
+
+    for (const config of selectedConfigs) {
+      const inputWiring: Record<string, number> = {};
+      for (const input of config.inputs) {
+        const wiredValue = findInputWiring(input.id, config.slug, allResults);
+        if (wiredValue !== undefined) {
+          inputWiring[input.id] = wiredValue;
+        }
+      }
+      wired[config.slug] = inputWiring;
+    }
+
+    return wired;
+  }, [selectedConfigs, allResults]);
+
+  const setInput = useCallback(
+    (slug: string, id: string, value: number) => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+      debounceRef.current = setTimeout(() => {
+        const params = new URLSearchParams(searchParams.toString());
+        const paramKey = `${slug}.${id}`;
+        if (Number.isFinite(value)) {
+          params.set(paramKey, value.toString());
+        } else {
+          params.delete(paramKey);
+        }
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+      }, 300);
+    },
+    [searchParams, router, pathname],
+  );
+
+  const toggleCalculator = useCallback(
+    (slug: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      const current = params.getAll("calc");
+
+      if (current.includes(slug)) {
+        params.delete("calc");
+        for (const s of current) {
+          if (s !== slug) params.append("calc", s);
+        }
+        for (const key of Array.from(params.keys())) {
+          if (key.startsWith(`${slug}.`)) {
+            params.delete(key);
+          }
+        }
+      } else {
+        params.append("calc", slug);
+      }
+
+      if (Array.from(params.keys()).length === 0) {
+        router.replace(pathname, { scroll: false });
+      } else {
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+      }
+    },
+    [searchParams, router, pathname],
+  );
+
+  const applyTemplate = useCallback(
+    (calcs: string[]) => {
+      const params = new URLSearchParams();
+      for (const slug of calcs) {
+        params.append("calc", slug);
+      }
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [router, pathname],
+  );
+
+  const copyShareLink = useCallback(() => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     });
-    const arpu = calculateARPU({ mrr: mrr.mrr, totalCustomers: inputs.customers });
-    return { mrr, cac, ltv: ltvWithCac, churn, arpu };
-  }, [inputs]);
-
-  const primaryValue = Number(results.mrr.mrr);
-  useEffect(() => {
-    if (primaryValue <= 0) return;
-    const timer = setTimeout(() => {
-      analytics.calculate("dashboard", { ...inputs }, { value: primaryValue, label: "MRR", type: "currency" });
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [primaryValue, inputs]);
-
-  useEffect(() => {
-    if (!tracked.current) {
-      tracked.current = true;
-    }
   }, []);
 
-  const insightsInputs = [
-    { id: "customers", label: "Customers", value: inputs.customers, type: "number" },
-    { id: "arpu", label: "ARPU", value: inputs.arpu, type: "currency" },
-    { id: "churnRate", label: "Monthly Churn Rate", value: inputs.churnRate, type: "percentage" },
-    { id: "grossMargin", label: "Gross Margin", value: inputs.grossMargin, type: "percentage" },
-    { id: "salesCost", label: "Sales Costs", value: inputs.salesCost, type: "currency" },
-    { id: "marketingCost", label: "Marketing Costs", value: inputs.marketingCost, type: "currency" },
-    { id: "newCustomers", label: "New Customers/Mo", value: inputs.newCustomers, type: "number" },
-  ];
-
-  const insightsOutputs = [
-    { id: "mrr", label: "Monthly Recurring Revenue", value: results.mrr.mrr, type: "currency", isPrimary: true },
-    { id: "cac", label: "Customer Acquisition Cost", value: results.cac.cac, type: "currency" },
-    { id: "ltv", label: "Customer Lifetime Value", value: results.ltv.ltv, type: "currency" },
-    { id: "churn", label: "Monthly Churn Rate", value: results.churn.monthlyChurnPct, type: "percentage" },
-    { id: "arpu", label: "Average Revenue Per User", value: results.arpu.arpu, type: "currency" },
-  ];
-
-  const ltvCacHealth: string | null = results.ltv.ltvCacRatio > 0 ? getHealthStatus("ltv-cac", results.ltv.ltvCacRatio, stage) : null;
-  const churnHealth: string | null = getHealthStatus("churn-rate", results.churn.monthlyChurnPct, stage);
-
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12">
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="font-heading text-3xl font-bold mb-2">SaaS Metrics Dashboard</h1>
+          <h1 className="font-heading text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+            Mission Control
+          </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Fill in your business metrics once and see all key SaaS calculations at a glance.
+            Build your own dashboard. Add the calculators you need, enter data once, see everything connect.
           </p>
         </div>
-        <div className="flex items-center gap-2 shrink-0">
-          <div className="flex items-center gap-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 p-0.5 text-xs">
-            {(["seed", "series-a", "series-b", "series-c", "growth"] as Stage[]).map((s) => (
+        <button
+          type="button"
+          onClick={copyShareLink}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 transition-colors shrink-0"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          {copied ? "Copied!" : "Share"}
+        </button>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-2 mb-8">
+        <button
+          type="button"
+          onClick={() => setPickerOpen(true)}
+          className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          </svg>
+          Add Calculator
+        </button>
+
+        <div className="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-1 hidden sm:block" />
+
+        {Object.entries(TEMPLATES).map(([key, tmpl]) => (
+          <button
+            key={key}
+            type="button"
+            onClick={() => applyTemplate(tmpl.calcs)}
+            className="rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-2 text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+          >
+            {tmpl.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="mb-6 space-y-6">
+        <DashboardTotalWidget allOutputs={allResults} />
+        <SidekickAd />
+      </div>
+
+      {selectedConfigs.length === 0 ? (
+        <div className="rounded-xl border-2 border-dashed border-gray-200 dark:border-gray-700 p-12 text-center">
+          <svg
+            className="w-12 h-12 mx-auto text-gray-300 dark:text-gray-600 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+            />
+          </svg>
+          <p className="text-gray-500 dark:text-gray-400 mb-4">
+            No calculators selected. Pick a template or add individual calculators.
+          </p>
+          <button
+            type="button"
+            onClick={() => setPickerOpen(true)}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 transition-colors"
+          >
+            Browse Calculators
+          </button>
+        </div>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {selectedConfigs.map((config) => (
+            <WidgetErrorBoundary key={config.slug} title={config.meta.title}>
+              <DashboardWidget
+                slug={config.slug}
+                config={config}
+                values={inputValuesBySlug[config.slug] ?? {}}
+                onChange={(id, value) => setInput(config.slug, id, value)}
+                wiredValues={wiredValuesBySlug[config.slug] ?? {}}
+              />
+            </WidgetErrorBoundary>
+          ))}
+        </div>
+      )}
+
+      {selectedConfigs.length > 0 && (
+        <div className="mt-6">
+          <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+            {selectedConfigs.length} calculator{selectedConfigs.length !== 1 ? "s" : ""} active
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {selectedConfigs.map((c) => (
               <button
-                key={s}
+                key={c.slug}
                 type="button"
-                onClick={() => setStage(s)}
-                className={`rounded-md px-2.5 py-1.5 font-medium transition-colors ${
-                  stage === s
-                    ? "bg-brand-600 text-white shadow-sm"
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
-                }`}
+                onClick={() => toggleCalculator(c.slug)}
+                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 hover:border-red-200 dark:hover:border-red-800 transition-colors group"
               >
-                {s === "series-a" ? "Series A" : s === "series-b" ? "Series B" : s === "series-c" ? "Series C" : s.charAt(0).toUpperCase() + s.slice(1)}
+                <span className="truncate max-w-32">{c.meta.title}</span>
+                <svg className="w-3 h-3 text-gray-400 group-hover:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
             ))}
           </div>
         </div>
+      )}
+
+      <div className="mt-8 flex items-center justify-center">
+        <a
+          rel="sponsored"
+          href="https://shopify.pxf.io/c/7346865/3797165/13624"
+          target="_blank"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-br from-brand-600 to-brand-900 px-3 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:from-brand-500 hover:to-brand-800"
+        >
+          <img src="/shopify-icon.png" alt="" className="w-4 h-4" aria-hidden />
+          <span>Shopify</span>
+        </a>
       </div>
 
-      <div className="flex flex-col gap-8 lg:flex-row">
-        <div className="lg:w-96 space-y-5">
-          <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Your Metrics</h2>
-
-            <div className="space-y-4">
-              <InputSlider id="customers" label="Customers" type="number" value={inputs.customers} onChange={(v) => setInput("customers", v)} min={0} max={100000} />
-              <InputSlider id="arpu" label="ARPU" type="currency" value={inputs.arpu} onChange={(v) => setInput("arpu", v)} min={0} max={1000} />
-              <InputSlider id="churnRate" label="Monthly Churn Rate" type="percentage" value={inputs.churnRate} onChange={(v) => setInput("churnRate", v)} min={0} max={50} />
-              <InputSlider id="grossMargin" label="Gross Margin" type="percentage" value={inputs.grossMargin} onChange={(v) => setInput("grossMargin", v)} min={0} max={100} />
-              <hr className="border-gray-100 dark:border-gray-700" />
-              <InputSlider id="salesCost" label="Sales Costs" type="currency" value={inputs.salesCost} onChange={(v) => setInput("salesCost", v)} min={0} max={500000} />
-              <InputSlider id="marketingCost" label="Marketing Costs" type="currency" value={inputs.marketingCost} onChange={(v) => setInput("marketingCost", v)} min={0} max={500000} />
-              <InputSlider id="newCustomers" label="New Customers/Mo" type="number" value={inputs.newCustomers} onChange={(v) => setInput("newCustomers", v)} min={0} max={10000} />
-            </div>
-
-            <button
-              type="button"
-              onClick={reset}
-              className="mt-4 text-sm text-brand-700 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300 underline"
-            >
-              Reset defaults
-            </button>
-          </div>
-        </div>
-
-        <div className="flex-1 space-y-6">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <MetricCard
-              title="Monthly Recurring Revenue"
-              value={formatCurrency(results.mrr.mrr)}
-              subtitle={`ARR: ${formatCurrency(results.mrr.arr)}`}
-              href="/revenue/mrr-calculator"
-              params={`customers=${inputs.customers}&arpu=${inputs.arpu}`}
-            />
-            <MetricCard
-              title="Customer Acquisition Cost"
-              value={formatCurrency(results.cac.cac)}
-              href="/growth-efficiency/cac-calculator"
-              params={`salesCost=${inputs.salesCost}&marketingCost=${inputs.marketingCost}&newCustomers=${inputs.newCustomers}`}
-            />
-            <MetricCard
-              title="Customer Lifetime Value"
-              value={formatCurrency(results.ltv.ltv)}
-              subtitle={`LTV:CAC Ratio: ${results.ltv.ltvCacRatio.toFixed(1)}`}
-              href="/revenue/ltv-calculator"
-              params={`arpu=${inputs.arpu}&grossMargin=${inputs.grossMargin}&churnRate=${inputs.churnRate}`}
-              health={ltvCacHealth}
-            />
-            <MetricCard
-              title="Monthly Churn Rate"
-              value={formatPercent(results.churn.monthlyChurnPct)}
-              subtitle={`Annual: ${formatPercent(results.churn.annualChurnPct)}`}
-              href="/churn-retention/churn-calculator"
-              params={`customersStart=${inputs.customers}&customersEnd=${inputs.customers - Math.round(inputs.customers * inputs.churnRate / 100)}&lostCustomers=${Math.round(inputs.customers * inputs.churnRate / 100)}`}
-              health={churnHealth}
-            />
-            <MetricCard
-              title="Average Revenue Per User"
-              value={formatCurrency(results.arpu.arpu)}
-              href="/revenue/arpu-calculator"
-              params={`mrr=${inputs.arpu * inputs.customers}&totalCustomers=${inputs.customers}`}
-            />
-          </div>
-
-          <Insights
-            title="SaaS Metrics Dashboard"
-            description="Fill in your business metrics once and see all key SaaS calculations at a glance."
-            category="saas-deepen"
-            inputs={insightsInputs}
-            outputs={insightsOutputs}
-          />
-        </div>
-      </div>
+      {pickerOpen && (
+        <DashboardCalculatorPicker
+          allCalculators={allCalculators}
+          selected={selectedSlugs}
+          onToggle={toggleCalculator}
+          onClose={() => setPickerOpen(false)}
+        />
+      )}
     </div>
-  );
-}
-
-function MetricCard({ title, value, subtitle, href, params, health }: {
-  title: string; value: string; subtitle?: string; href: string; params: string; health?: string | null;
-}) {
-  return (
-    <Link
-      href={`${href}?${params}`}
-      className="block rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition-shadow hover:shadow-md"
-    >
-      <div className="flex items-start justify-between gap-2">
-        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">{title}</p>
-        {health && <HealthBadge status={health} />}
-      </div>
-      <p className="mt-2 font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">{value}</p>
-      {subtitle && <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{subtitle}</p>}
-      <p className="mt-3 text-xs text-brand-700 dark:text-brand-400 font-medium">Explore in detail &rarr;</p>
-    </Link>
-  );
-}
-
-function HealthBadge({ status }: { status: string }) {
-  const colors: Record<string, string> = {
-    healthy: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-green-200 dark:border-green-800/50",
-    watch: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800/50",
-    critical: "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-200 dark:border-red-800/50",
-    reference: "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700",
-  };
-  return (
-    <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${colors[status] || colors.reference}`}>
-      {status}
-    </span>
   );
 }
