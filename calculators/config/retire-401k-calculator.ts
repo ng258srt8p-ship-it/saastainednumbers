@@ -50,6 +50,14 @@ const config = {
       { question: "How do 401k fees impact my retirement savings?", answer: "401k fees  -  including expense ratios on funds, administration fees, and advisory fees  -  can significantly erode your savings. A 1% fee on a $500K portfolio costs $5K/year and $150K+ over 30 years. Choose low-cost index funds (0.03-0.10% ER) and favor plans with low administrative fees. If your employer's plan has high fees, contribute enough to get the match, then maximize an IRA (where you have full control over fund selection) before contributing more to the 401k." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "401k退職資金計算機",
+        description: "企業マッチ、複利成長を含む401k残高を予測し、退職後の収入を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

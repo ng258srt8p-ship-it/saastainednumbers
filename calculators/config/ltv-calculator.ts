@@ -42,6 +42,14 @@ const config = {
       { question: "How do I segment LTV by customer type?", answer: "Calculate LTV separately for each customer segment (by plan tier, acquisition channel, company size). Segment-level LTV reveals which customers are most valuable and where to focus retention." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "LTV計算機",
+        description: "顧客生涯価値（LTV）とLTV:CAC比率をSaaSビジネス向けに計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

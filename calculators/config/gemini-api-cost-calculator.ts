@@ -47,6 +47,14 @@ const config = {
       { question: "Does Google offer volume discounts for Gemini API?", answer: "Yes, Google offers committed use discounts for consistent high-volume usage (typically $5K+/month). Contact Google Cloud sales for reserved throughput pricing. They also offer the Google for Startups Cloud Program with up to $200K in credits over 2 years." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Gemini API費用計算機",
+        description: "モデル階層、トークン数、使用量に応じたGoogle Gemini API費用を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

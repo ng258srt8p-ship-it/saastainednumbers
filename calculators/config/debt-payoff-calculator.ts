@@ -45,6 +45,14 @@ const config = {
       { question: "What is a good debt payoff timeline?", answer: "Credit card debt: 12-24 months. Auto loans: original term (3-5 years). Student loans: 5-15 years (standard) or 20-25 years (income-driven). Mortgage: 15-30 years. The faster you pay off high-interest debt, the more money you keep. Aim to be debt-free except for a mortgage within 5 years." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "借金返済計算機",
+        description: "現在の返済計画に基づいて借金の完済までの期間と支払利息を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

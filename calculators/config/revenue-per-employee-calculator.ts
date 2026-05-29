@@ -40,6 +40,14 @@ const config = {
       { question: "What is a low revenue per employee warning sign?", answer: "Revenue per employee below $100K for a mature SaaS company suggests operational inefficiency, over-hiring, or a business model that doesn't scale (e.g., heavy services component)." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "従業員一人あたりの収益計算機",
+        description: "従業員一人あたりの収益を計算し、業界ベンチマークと比較します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

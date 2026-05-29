@@ -45,6 +45,14 @@ const config = {
       { question: "How do taxes work for TikTok Creator Fund income?", answer: "TikTok Creator Fund income is taxable as self-employment income. US creators receive a 1099-NEC form if earnings exceed $600. You must pay self-employment tax (15.3%) plus federal and state income tax. Track all deductible expenses: camera equipment, lighting, editing software ([CapCut](https://capcut.com) Pro, [Adobe Premiere](https://adobe.com)), internet, phone, props, and home office deduction. Set aside 25-30% of Creator Fund earnings for taxes." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "TikTokクリエイターファンド計算機",
+        description: "視聴回数、地域、エンゲージメント、動画時間に基づいてTikTokクリエイターファンドの支払額を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

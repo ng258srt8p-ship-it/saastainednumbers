@@ -45,6 +45,14 @@ const config = {
       { question: "What is the relationship between quick ratio and growth rate?", answer: "A high quick ratio enables sustainable high growth. If your quick ratio is low, growth requires increasingly more new customer acquisition to compensate for churn losses, which becomes unsustainable. The Rule of 40 and quick ratio together give a complete growth efficiency picture." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "SaaSクイックレシオ計算機",
+        description: "新規および拡大MRRを解約および縮小MRRと比較してSaaSクイックレシオを計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

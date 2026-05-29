@@ -49,6 +49,14 @@ const config = {
       { question: "How do I find higher-paying freelance clients?", answer: "Specialize in a niche (the riches are in the niches). Build a portfolio site showcasing results. Network at industry events and on LinkedIn. Raise rates proactively. Offer value-based pricing (charging based on value delivered, not time spent). Use platforms like [Toptal](https://toptal.com) for premium clients." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "フリーランス時給計算機",
+        description: "希望収入、請求可能時間、経費、税金に基づいて最適なフリーランス時給を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

@@ -43,6 +43,14 @@ const config = {
       { question: "What is the difference between gross margin and contribution margin?", answer: "Gross margin subtracts COGS from revenue. Contribution margin subtracts all variable costs including variable sales commissions and variable support costs. Contribution margin is more comprehensive." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "粗利益率計算機",
+        description: "粗利益率、粗利益、売上原価率を計算してビジネスの収益性を把握します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

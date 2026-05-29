@@ -43,6 +43,14 @@ const config = {
       { question: "How do payment processing and taxes affect YouTube income?", answer: "YouTube pays net 30-60 days after the month ends. Income is taxable  -  US creators receive a 1099-MISC. Estimated 30% withholding applies to non-US creators without tax treaties. Track revenue with [TubeBuddy](https://tubebuddy.com) or [VidIQ](https://vidiq.com) for analytics." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "YouTube広告収益計算機",
+        description: "視聴回数、RPM、エンゲージメント指標に基づいてYouTubeチャンネルの収益を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

@@ -44,6 +44,14 @@ const config = {
       { question: "How do ad blockers affect CPM?", answer: "Ad blockers reduce your total impressions and can skew CPM higher (because only non-blocking users see ads, and they tend to be less tech-savvy and potentially more valuable). However, total revenue drops proportionally to your ad block rate (typically 20-40% of visitors). Some publishers use ad block recovery messages asking users to whitelist the site." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "CPM計算機（インプレッション単価）",
+        description: "広告キャンペーンとコンテンツマネタイゼーションのインプレッション単価（CPM）を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

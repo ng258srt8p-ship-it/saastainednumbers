@@ -44,6 +44,14 @@ const config = {
       { question: "What is the difference between manual CPC and automated bidding?", answer: "Manual CPC gives you full control over individual keyword bids — ideal for experienced advertisers with time to optimize. Automated bidding (Target CPA, Target ROAS, Maximize Conversions) uses Google's machine learning to adjust bids in real-time. Automated bidding often outperforms manual for accounts with 30+ conversions per month. Large accounts with 100+ conversions/month nearly always benefit from automated bidding." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "CPC計算機（クリック単価）",
+        description: "総費用とクリック数に基づいて広告キャンペーンのクリック単価（CPC）を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

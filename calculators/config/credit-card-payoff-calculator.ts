@@ -45,6 +45,14 @@ const config = {
       { question: "How can I avoid credit card debt in the future?", answer: "Best practices: 1) Pay your statement balance in full every month, 2) Use the 30% rule  -  don't charge more than 30% of your credit limit, 3) Track spending with budgeting apps like YNAB or Mint, 4) Build a 3-6 month emergency fund to avoid using cards for unexpected expenses, 5) Treat credit cards as payment tools, not loans. Use [NerdWallet](https://nerdwallet.com) to find cards with rewards that match your spending patterns while keeping a zero balance." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "クレジットカード返済計算機",
+        description: "現在の返済計画に基づいてクレジットカード債務の完済までの期間と支払利息を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

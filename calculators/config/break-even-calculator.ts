@@ -44,6 +44,14 @@ const config = {
       { question: "How does seasonality affect break-even analysis?", answer: "Seasonal businesses may break even in peak months but lose money in off-peak months. Calculate both monthly break-even (to manage cash flow) and annual break-even (to assess overall business health). Build a cash reserve to cover off-peak periods." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "損益分岐点分析計算機",
+        description: "固定費、変動費、価格に基づいて損益分岐点に達するために必要な販売単位数を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

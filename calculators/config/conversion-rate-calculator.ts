@@ -44,6 +44,14 @@ const config = {
       { question: "How does seasonality affect conversion rates?", answer: "Conversion rates typically increase 20-40% during peak shopping seasons (Q4 holiday, Black Friday, Cyber Monday) due to buyer intent. They drop in January and summer months. Always compare year-over-year rather than month-over-month. Adjust your conversion rate targets and budgets based on seasonal trends." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "コンバージョン率計算機",
+        description: "訪問者から顧客へのコンバージョン率を総コンバージョン数と非コンバージョン訪問者数で計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

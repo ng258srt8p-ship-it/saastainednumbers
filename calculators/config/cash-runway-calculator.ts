@@ -46,6 +46,14 @@ const config = {
       { question: "How do different funding stages affect expected runway?", answer: "Seed stage: 16-20 months average runway  -  enough to build product, find product-market fit, and reach key metrics for Series A. Series A: 18-24 months  -  enough to scale team, grow revenue, and reach Series B metrics. Series B+: 18-24 months  -  focused on growth at scale and path to profitability. If you raise less, expect less runway between rounds. Plan your fundraising timing carefully." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "キャッシュランウェイ計算機",
+        description: "バーンレートと収益成長率に基づいて、スタートアップの資金が尽きるまでの月数を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

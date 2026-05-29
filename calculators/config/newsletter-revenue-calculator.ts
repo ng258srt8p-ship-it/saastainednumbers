@@ -49,6 +49,14 @@ const config = {
       { question: "What expenses should newsletter creators track?", answer: "Platform fees (Substack takes 10%, ConvertKit $29-59/month), email design tools (Canva, Figma), writing/editing help, advertising costs for paid acquisition, and software subscriptions. Most newsletters operate at 10-30% expense ratio. Track these to understand true profitability." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ニュースレター収益計算機",
+        description: "購読者数とエンゲージメントに基づいて有料購読とスポンサーシップからのニュースレター収入を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

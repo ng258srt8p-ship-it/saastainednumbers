@@ -45,6 +45,14 @@ const config = {
       { question: "What is the difference between subsidized and unsubsidized loans?", answer: "Subsidized loans (undergraduate only) don't accrue interest while you're in school at least half-time, during the 6-month grace period, or during deferment. The government pays the interest. Unsubsidized loans (undergraduate and graduate) accrue interest from the date of disbursement. Unpaid interest capitalizes (adds to principal) when entering repayment. Prioritize subsidized loans first if you need to borrow." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "学生ローン返済計算機",
+        description: "学生ローンの返済期間と総支払利息を計算し、スノーボール vs アバランチ戦略を比較します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

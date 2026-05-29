@@ -49,6 +49,14 @@ const config = {
       { question: "How often should I review unit economics?", answer: "Monthly review is standard for active SaaS companies. Track trends over 3-6 months to identify deterioration early. Quarterly deep dives with cohort analysis help you understand how unit economics evolve as you scale and acquire different customer segments." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ユニットエコノミクスダッシュボード計算機",
+        description: "LTV/CAC比率、貢献利益率、回収期間、MRR、顧客あたり粗利益を包括的に追跡します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

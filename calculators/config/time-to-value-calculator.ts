@@ -45,6 +45,14 @@ const config = {
       { question: "Can TTV vary by customer segment?", answer: "Yes. Enterprise customers typically have longer TTV due to implementation complexity and multiple stakeholders. Self-serve customers expect near-instant value. Segment your TTV analysis by plan type, customer size, and acquisition channel for actionable insights." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "タイムトゥーバリュー計算機",
+        description: "SaaSのタイムトゥーバリューを測定し、目標期間内に価値を実現するユーザー数を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

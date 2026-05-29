@@ -53,6 +53,14 @@ const config = {
       { question: "What is the cost impact of multi-region deployment?", answer: "Multi-region deployment typically increases costs 50-100% because you're running duplicate infrastructure in two or more regions. Data replication and cross-region traffic add significant costs. However, the redundancy and latency improvements may justify the expense for compliance, disaster recovery, or global user bases. Consider active-passive (one region live, one on standby) to reduce costs while maintaining failover capability." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "クラウドインフラ費用計算機",
+        description: "コンピュート、ストレージ、データ転送、マネージドサービスを含む月間・年間のクラウドインフラ費用を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

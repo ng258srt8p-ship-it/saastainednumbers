@@ -40,6 +40,14 @@ const config = {
       { question: "How often should I track operating margin?", answer: "Monthly for internal management. Quarterly for board reporting and investor updates. Track the trailing 12-month trend to identify whether profitability is improving or degrading." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "営業利益率計算機",
+        description: "営業利益率（営業利益÷収益）を計算してビジネスの収益性を測定します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

@@ -43,6 +43,14 @@ const config = {
       { question: "How do seasonality and market conditions affect ROAS?", answer: "ROAS typically drops 20-40% during peak competitive periods (Q4 holiday season, Prime Day, industry events) because more advertisers compete for the same audience. Plan for lower ROAS during these periods and higher ROAS during off-peak times. Year-over-year ROAS comparison is more meaningful than month-over-month due to seasonality." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ROAS計算機（広告費用対効果）",
+        description: "広告費用対効果（ROAS）、純収益、広告キャンペーンの利益率を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

@@ -55,6 +55,14 @@ const config = {
       { question: "Do I need to register as a business for dropshipping?", answer: "Yes. In the US, you should register as a sole proprietor or LLC depending on your risk tolerance. An LLC ($50-500 to file) protects personal assets from lawsuits. You'll need a business bank account, sales tax registration in states where you have economic nexus, and you'll pay self-employment tax (15.3%) plus income tax on profits. Use [QuickBooks](https://quickbooks.intuit.com) or [Wave](https://waveapps.com) to track expenses and taxes." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ドロップシッピング利益率計算機",
+        description: "商品原価、配送料、プラットフォーム手数料、広告費、返品を考慮したドロップシッピングの利益率を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

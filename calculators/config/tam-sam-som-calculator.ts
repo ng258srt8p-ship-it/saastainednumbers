@@ -50,6 +50,14 @@ const config = {
       { question: "What's the difference between TAM SAM SOM and bottoms-up market sizing?", answer: "TAM SAM SOM is a top-down framework that starts with the total market and narrows down. Bottom-up starts with your unit economics (price × customers you can realistically reach) and builds up. Both are useful — TAM SAM SOM shows the total opportunity, bottom-up validates the go-to-market plan. The best pitch decks show both approaches converging on a similar SOM number." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "TAM SAM SOM計算機",
+        description: "総獲得可能市場（TAM）、サービス可能獲得可能市場（SAM）、サービス可能獲得市場（SOM）を成長予測とともに計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

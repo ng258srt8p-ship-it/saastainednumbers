@@ -41,6 +41,14 @@ const config = {
       { question: "What is the difference between ACV and ARPU?", answer: "ACV is annual (per customer per year). ARPU is monthly (per customer per month). ACV = ARPU × 12. ARPU is more common for monthly subscription businesses; ACV for annual contracts." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ACV計算機",
+        description: "年間契約額（ACV）と総契約額（TCV）をサブスクリプション契約ごとに計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

@@ -51,6 +51,14 @@ const config = {
       { question: "How do I compare a contractor's rate to an employee's hourly equivalent?", answer: "Take the employee's total annual cost (salary + all overhead) and divide by working hours per year (approximately 2,000 for full-time, minus PTO: ~1,920). An employee costing $180K total ÷ 1,920 hours = $93.75/hr effective rate. Compare that to the contractor's $100-150/hr rate. This calculator does this comparison automatically." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "契約社員vs正社員比較計算機",
+        description: "契約社員と正社員の年間コストを給与、税金、福利厚生、諸経費を含めて比較します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

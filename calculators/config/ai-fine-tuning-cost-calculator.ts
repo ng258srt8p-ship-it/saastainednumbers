@@ -48,6 +48,14 @@ const config = {
       { question: "How do I evaluate fine-tuning ROI?", answer: "Compare performance (accuracy, relevance, format compliance) before and after fine-tuning on a held-out test set. Calculate cost savings from shorter prompts (fine-tuned models need fewer few-shot examples). Measure improved user satisfaction or task completion rates. If fine-tuning improves accuracy by 20%+ or reduces prompt costs by 50%+, it's likely worth it." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "AIファインチューニング費用計算機",
+        description: "AIモデルのファインチューニング費用をトレーニング費用と推論費用を含めて計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

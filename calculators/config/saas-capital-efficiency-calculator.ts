@@ -44,6 +44,14 @@ const config = {
       { question: "Does capital efficiency vary by SaaS business model?", answer: "Yes. Product-led growth companies with low CAC (like Slack, Zoom, Canva) typically have higher capital efficiency. Sales-led enterprise companies with high-touch acquisition have lower efficiency due to higher upfront investment. Usage-based pricing can improve efficiency by aligning revenue with consumption." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "SaaS資本効率計算機",
+        description: "投下資本をARR成長にどれだけ効率的に転換できるかを示すSaaS資本効率比率を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

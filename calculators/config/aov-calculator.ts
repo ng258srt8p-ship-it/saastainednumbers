@@ -44,6 +44,14 @@ const config = {
       { question: "How do returns affect AOV?", answer: "Returns effectively reduce your net AOV. If your AOV is $50 but 10% of orders are returned, your net AOV is $45. Track both gross AOV (before returns) and net AOV (after returns). High return rates in categories like apparel (20-40% return rate) mean gross AOV significantly overstates actual revenue per order." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "AOV計算機（平均注文額）",
+        description: "総収益と注文数に基づいて平均注文額（AOV）を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

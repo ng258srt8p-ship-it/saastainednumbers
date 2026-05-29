@@ -41,6 +41,14 @@ const config = {
       { question: "What happens after users activate?", answer: "Guide activated users to their next milestone: first value, first collaboration, first integration. Build habits through repeated value delivery. Activated users should then move to monetization." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "アクティベーション率計算機",
+        description: "新規サインアップのうちアクティベーションに達した割合を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

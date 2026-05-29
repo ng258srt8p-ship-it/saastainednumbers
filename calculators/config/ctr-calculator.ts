@@ -44,6 +44,14 @@ const config = {
       { question: "Should I optimize for CTR or conversion rate?", answer: "Optimize for both sequentially. First improve CTR to drive more traffic at lower cost (via improved Quality Score). Then optimize landing pages to improve conversion rate from that traffic. A 2% CTR with 5% conversion rate equals the same conversion volume as 5% CTR with 2% conversion rate — but the first scenario likely has lower CPC and higher ROAS." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "CTR計算機（クリック率）",
+        description: "広告、メール、コンテンツのインプレッション数とクリック数に基づいてクリック率（CTR）を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

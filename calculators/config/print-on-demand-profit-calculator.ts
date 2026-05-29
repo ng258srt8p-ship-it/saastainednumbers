@@ -51,6 +51,14 @@ const config = {
       { question: "How do I market my POD store effectively?", answer: "Social media marketing is the most effective channel for POD. [Pinterest](https://pinterest.com) drives significant traffic for visual products. [TikTok](https://tiktok.com) and [Instagram](https://instagram.com) are great for showcasing designs through videos and lifestyle photos. Facebook groups in your niche can generate targeted traffic. Consider running small ad tests ($5-10/day) on winning designs. Email marketing through [Mailchimp](https://mailchimp.com) helps with repeat customers." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "POD（プリントオンデマンド）利益計算機",
+        description: "商品原価、印刷費、プラットフォーム手数料、配送料を差し引いたPODストアの利益を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

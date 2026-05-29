@@ -40,6 +40,14 @@ const config = {
       { question: "How does product-led growth affect expansion?", answer: "PLG companies with usage-based pricing naturally drive expansion as customers grow. This creates a powerful flywheel: more usage → more value → more spend → more product investment." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "拡大収益率計算機",
+        description: "アップセル、クロスセル、アップグレードによる既存顧客からの収益成長率を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

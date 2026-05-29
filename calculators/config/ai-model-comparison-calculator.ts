@@ -51,6 +51,14 @@ const config = {
       { question: "What is the best strategy for reducing AI API costs?", answer: "Use prompt caching across all providers (50% discount on cached tokens). Implement semantic caching to avoid redundant API calls. Use the cheapest model that handles each task. Batch non-real-time requests for 50% discount. Monitor usage with Langfuse or Helicone to identify cost optimization opportunities." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "AIモデル比較計算機",
+        description: "Claude、GPT、GeminiモデルのAPI費用を入出力トークンと日間呼び出し数で比較します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

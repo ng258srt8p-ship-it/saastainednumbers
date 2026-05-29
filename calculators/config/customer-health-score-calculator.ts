@@ -44,6 +44,14 @@ const config = {
       { question: "How do I build an automated health scoring system?", answer: "Start with this calculator's formula, then refine weights based on your data. Integrate with your CRM and product analytics to update scores automatically." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "カスタマーヘルススコア計算機",
+        description: "NPS、製品使用状況、サポートチケット、エンゲージメントに基づいてカスタマーヘルススコアを計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

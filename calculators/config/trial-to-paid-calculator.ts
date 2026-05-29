@@ -41,6 +41,14 @@ const config = {
       { question: "What is a good trial-to-paid conversion improvement target?", answer: "Aim for 20-30% improvement over 6 months through onboarding, pricing, and product optimization. Each percentage point improvement at scale translates to significant revenue." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "トライアル→有料転換率計算機",
+        description: "トライアルユーザーが有料顧客に転換する割合を計算し、トライアルファネルの効率を把握します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

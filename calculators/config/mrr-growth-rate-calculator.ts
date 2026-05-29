@@ -42,6 +42,14 @@ const config = {
       { question: "What is a healthy MRR growth rate for a mature company?", answer: "For companies with $10M+ ARR, 5-10% MoM (60-120% annually) is excellent. 3-5% MoM (36-60% annually) is good. Below 2-3% MoM suggests the company is approaching maturity." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "MRR成長率計算機",
+        description: "SaaS企業の成長軌道を測定するための月次MRR成長率を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

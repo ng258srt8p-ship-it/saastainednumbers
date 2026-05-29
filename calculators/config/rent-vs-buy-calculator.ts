@@ -58,6 +58,14 @@ const config = {
       { question: "What if I can't afford a 20% down payment?", answer: "Many conventional loans require as little as 3-5% down. FHA loans require 3.5%. However, less than 20% down means paying PMI (0.5-2% of loan amount annually) until you reach 20% equity. PMI adds to your monthly cost and should be factored into the comparison. A smaller down payment also means a larger loan and higher monthly payment, potentially making buying less attractive relative to renting." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "賃貸vs購入比較計算機",
+        description: "住宅ローン、税金、保険、維持費、投資収益を考慮して賃貸と購入の総コストを比較します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

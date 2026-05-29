@@ -48,6 +48,14 @@ const config = {
       { question: "How do discounting and promotions affect pricing strategy?", answer: "Frequent discounts train customers to wait for sales, eroding your regular price. Never discount more than 20% off your regular price  -  deeper discounts signal desperation and devalue your product. Instead of discounts, offer bundles, annual prepay discounts, or added value (bonus features, extended support) to preserve price integrity." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "価格戦略計算機",
+        description: "プロダクトやサービスの原価加算、競合ベース、価値ベースの価格戦略を比較します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

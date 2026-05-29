@@ -41,6 +41,14 @@ const config = {
       { question: "What is a healthy sales cycle length?", answer: "For SMB: 1-14 days. For mid-market: 30-90 days. For enterprise: 90-180+ days. Shorter cycles typically have higher conversion rates. Longer cycles need more touchpoints and nurturing." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "リード転換率計算機",
+        description: "リードの何パーセントが有料顧客に転換するかを計算し、セールスファネルの効率を測定します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

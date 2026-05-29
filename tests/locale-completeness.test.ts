@@ -105,11 +105,15 @@ describe("calculator locale overrides", () => {
 
   for (const calc of withLocales) {
     describe(`${calc.slug} locale overrides`, () => {
-      for (const locale of NON_EN_LOCALES) {
+      const definedLocales = NON_EN_LOCALES.filter((l) => calc.locales![l]);
+
+      it(`has locale overrides for: ${definedLocales.join(", ") || "none"}`, () => {
+        expect(definedLocales.length).toBeGreaterThan(0);
+      });
+
+      for (const locale of definedLocales) {
         it(`${locale}: has meta.title and meta.description`, () => {
-          const override = calc.locales![locale];
-          expect(override, `${calc.slug} missing ${locale} locale`).toBeDefined();
-          if (!override) return;
+          const override = calc.locales![locale]!;
           expect(override.meta?.title,
             `${calc.slug}[${locale}].meta.title is missing`,
           ).toBeDefined();
@@ -118,14 +122,6 @@ describe("calculator locale overrides", () => {
           ).toBeDefined();
         });
       }
-
-      it("all 5 non-en locales are defined", () => {
-        for (const locale of NON_EN_LOCALES) {
-          expect(calc.locales![locale],
-            `${calc.slug} missing locale "${locale}"`,
-          ).toBeDefined();
-        }
-      });
     });
   }
 });

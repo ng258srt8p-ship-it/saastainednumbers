@@ -48,6 +48,14 @@ const config = {
       { question: "How often should I measure engagement?", answer: "Daily for DAU/MAU and session metrics. Weekly for cohort engagement trends. Monthly for full engagement score and segmentation analysis. Real-time monitoring for automated triggers (drop below 40 score → trigger re-engagement sequence). Quarterly for strategic engagement initiatives and product improvements." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "顧客エンゲージメントスコア計算機",
+        description: "DAU/MAU比率、セッション頻度、利用時間、機能採用率で顧客エンゲージメントを測定します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

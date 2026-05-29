@@ -51,6 +51,14 @@ const config = {
       { question: "What other costs should I budget for as a homeowner?", answer: "Beyond your mortgage payment, budget 1-2% of the home's value annually for maintenance and repairs, $300-1,000/year for homeowners insurance, property taxes (0.3-2.5% of value), HOA fees ($100-500+/month if applicable), utilities, and closing costs (2-5% of purchase price). The CFPB recommends having 3-6 months of housing expenses in emergency savings before buying a home." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "住宅ローン借入可能額計算機",
+        description: "収入、負債、頭金、金利に基づいて住宅ローンの借入可能額を28/36ルールで算出します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

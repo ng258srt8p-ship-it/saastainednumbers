@@ -41,6 +41,14 @@ const config = {
       { question: "How does product-led growth affect CAC?", answer: "PLG companies often have lower CAC because users self-serve. Self-serve CAC can be 2-10x lower than sales-assisted CAC, though conversion rates may differ." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "CAC計算機",
+        description: "顧客獲得コスト（CAC）を計算して、新規顧客獲得にかかる費用を把握します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

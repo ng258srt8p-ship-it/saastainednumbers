@@ -44,6 +44,14 @@ const config = {
       { question: "How do I compare ROI across different investment types?", answer: "Always use annualized ROI for fair comparison. Account for risk, liquidity, time horizon, and tax treatment. A 15% annualized ROI in real estate (moderate risk, low liquidity) may be equivalent to a 25% annualized ROI in a startup (high risk, illiquid). Use the Sharpe Ratio to compare risk-adjusted returns." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ROI計算機",
+        description: "あらゆるビジネス投資やプロジェクトの投資収益率（ROI）と年率換算ROIを計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

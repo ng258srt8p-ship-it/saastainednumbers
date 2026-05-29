@@ -45,6 +45,14 @@ const config = {
       { question: "Can NRR exceed 200%?", answer: "Theoretically yes, but it's extremely rare. NRR above 150% requires aggressive land-and-expand dynamics where customers dramatically increase spend over time." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "NRR計算機（純収益維持率）",
+        description: "純収益維持率（NRR）を計算して、拡張とダウングレードを含む既存顧客からの収益維持率を測定します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

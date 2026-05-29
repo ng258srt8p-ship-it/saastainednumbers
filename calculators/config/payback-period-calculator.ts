@@ -42,6 +42,14 @@ const config = {
       { question: "How do I improve my payback period?", answer: "Increase ARPU through pricing or upsells, reduce CAC through channel optimization, improve gross margin, or target higher-value customer segments." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "CAC回収期間計算機",
+        description: "粗利貢献を通じて顧客獲得コストを回収するまでの月数を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

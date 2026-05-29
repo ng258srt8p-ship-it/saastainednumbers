@@ -46,6 +46,14 @@ const config = {
       { question: "Does business valuation differ for an acquisition vs raising investment?", answer: "Yes. For acquisitions, buyers discount for risk and apply control premiums  -  they value what they can make from the business. For investment (minority stake), valuations are often higher because investors pay for growth potential and take less control. Strategic buyers (competitors) often pay 20-50% more than financial buyers (private equity) due to synergies." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "企業価値評価計算機",
+        description: "収益倍率とEBITDA倍率を使用して企業価値を評価します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

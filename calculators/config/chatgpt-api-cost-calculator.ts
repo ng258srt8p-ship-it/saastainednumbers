@@ -47,6 +47,14 @@ const config = {
       { question: "Are there open-source alternatives to reduce costs?", answer: "Yes. Llama 3 (Meta), Mistral, and DeepSeek models can be self-hosted or accessed through providers like Together AI, Groq, and Perplexity at lower costs. Self-hosting has high fixed infrastructure costs but near-zero per-token costs at scale  -  break-even is typically 5-10M tokens/day." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ChatGPT API費用計算機",
+        description: "モデル（GPT-4o、GPT-4、GPT-3.5 Turbo）、トークン数、使用量に応じたOpenAI ChatGPT API費用を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

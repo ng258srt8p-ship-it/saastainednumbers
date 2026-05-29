@@ -47,6 +47,14 @@ const config = {
       { question: "How can gig workers increase their effective hourly rate?", answer: "Work peak hours (rush hour, weekend nights, events). Use multiple platforms simultaneously. Focus on high-demand areas. Optimize routes to minimize empty miles. Switch to a fuel-efficient or electric vehicle. Upgrade to a larger platform (towing, hauling) that pays more per trip." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ギグワーカー手取り収入計算機",
+        description: "経費と税金を差し引いたライドシェア、配送、ギグエコノミーでの純収入を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

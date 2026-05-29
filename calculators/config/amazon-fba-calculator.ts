@@ -52,6 +52,14 @@ const config = {
       { question: "How do I increase Amazon FBA profit margins?", answer: "Raise prices (test 5-10% increases), negotiate with suppliers for better COGS, reduce advertising ACOS, optimize product size to lower FBA fees, bundle products to increase AOV, reduce return rates with better listings, and source from lower-cost countries. Each 1% margin improvement compounds significantly at scale." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Amazon FBA収益計算機",
+        description: "Amazon FBAの利益率を紹介料、フルフィルメント費用、保管料、広告費を差し引いて計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

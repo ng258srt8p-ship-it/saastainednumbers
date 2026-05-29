@@ -46,6 +46,14 @@ const config = {
       { question: "What tools help with cohort analysis?", answer: "Amplitude, Mixpanel, Heap, and PostHog all offer built-in cohort analysis. Google Analytics 4 has basic cohort capabilities. For SQL-savvy teams, writing custom cohort queries against your data warehouse provides maximum flexibility and customization." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "コホート分析計算機",
+        description: "コホート維持率分析を行い、初期コホートのユーザーが複数月にわたってどの程度維持されているかを追跡します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

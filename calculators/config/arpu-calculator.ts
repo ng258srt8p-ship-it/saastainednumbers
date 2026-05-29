@@ -39,6 +39,14 @@ const config = {
       { question: "Can ARPU be misleading?", answer: "Yes. ARPU can increase even as overall revenue declines if low-value customers churn. Always track ARPU alongside total customer count and total MRR." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ARPU計算機",
+        description: "ユーザーあたりの平均収益（ARPU）を計算して顧客あたりの収益を把握します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

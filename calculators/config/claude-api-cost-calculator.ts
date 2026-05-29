@@ -51,6 +51,14 @@ const config = {
       { question: "What are common mistakes when estimating API costs?", answer: "Common mistakes include: forgetting to account for output tokens (they cost more than input tokens); not considering system prompts in token counts; underestimating daily call volume as usage grows; ignoring context caching savings; not setting token limits resulting in unexpectedly large outputs; and failing to monitor cost per user as you scale. Always add 20-30% buffer to your cost estimates for production systems." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Claude API費用計算機",
+        description: "モデル（Haiku、Sonnet、Opus）、トークン数、使用量に応じたAnthropic Claude API費用を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

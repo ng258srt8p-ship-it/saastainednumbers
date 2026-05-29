@@ -51,6 +51,14 @@ const config = {
       { question: "What are common FIRE calculation mistakes to avoid?", answer: "Common mistakes include: using nominal returns instead of real (inflation-adjusted) returns; underestimating healthcare costs before Medicare age; ignoring sequence of return risk (poor market returns in early retirement); not accounting for major life expenses like children's education or home purchases; assuming constant spending in retirement; and failing to include taxes in withdrawal calculations. Use conservative assumptions and revisit your plan annually." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "FIRE計算機",
+        description: "貯蓄、貢献額、投資収益に基づいて経済的自立・早期リタイア（FIRE）への道筋を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

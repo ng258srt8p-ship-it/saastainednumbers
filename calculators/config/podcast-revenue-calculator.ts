@@ -47,6 +47,14 @@ const config = {
       { question: "How do I grow podcast downloads to reach revenue thresholds?", answer: "Consistent publishing schedule (weekly minimum). Strong SEO (show notes, transcripts). Cross-promotion with other podcasts. Social media clips (short-form video). Guest appearances on larger shows. Email list building. Most shows grow to 5K downloads/episode within 6-12 months of consistent publishing." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ポッドキャスト収益計算機",
+        description: "広告、スポンサーシップ、リスナーサポートからのポッドキャスト収益を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

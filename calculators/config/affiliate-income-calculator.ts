@@ -47,6 +47,14 @@ const config = {
       { question: "How do I disclose affiliate links legally?", answer: "FTC requires clear disclosure. Add a disclaimer at the top of each affiliate page (something like: 'This post contains affiliate links. I may earn a commission at no extra cost to you.'). Some countries require even more prominent disclosure. Non-compliance can result in fines. Always be transparent with your audience." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "アフィリエイト収入計算機",
+        description: "トラフィック、クリック率、コンバージョン率、手数料に基づいてアフィリエイトマーケティング収入を予測します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

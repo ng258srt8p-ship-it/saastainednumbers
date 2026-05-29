@@ -49,6 +49,14 @@ const config = {
       { question: "How do subscriptions and recurring billing affect fees?", answer: "Stripe Billing charges the same 2.9% + $0.30 per recurring transaction plus an additional 0.5% on each recurring payment. For a $50 monthly subscription, the total fee is approximately $2.00 per month ($1.75 processing + $0.25 billing). Annual billing reduces per-transaction costs by processing once instead of 12 times." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Stripe手数料計算機",
+        description: "取引手数料、 percentage手数料、月間・年間コストをエンタープライズレートロジックで計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

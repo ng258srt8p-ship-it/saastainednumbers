@@ -42,6 +42,14 @@ const config = {
       { question: "How do investors use the Rule of 40?", answer: "Public market investors use it to value SaaS companies. Companies with higher Rule of 40 scores command higher revenue multiples. It's a standard slide in board meetings and earnings calls." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Rule of 40計算機",
+        description: "収益成長率に利益率を加えたRule of 40スコアを計算してSaaS企業の健全性を測定します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

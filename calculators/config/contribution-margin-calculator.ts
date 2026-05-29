@@ -41,6 +41,14 @@ const config = {
       { question: "How often should I track contribution margin?", answer: "Monthly for operational decisions. Quarterly for strategic planning. Track trends: declining contribution margins signal rising variable costs or pricing pressure." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "貢献利益率計算機",
+        description: "収益から変動費を差し引いた貢献利益を計算し、単位あたりの収益性を把握します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

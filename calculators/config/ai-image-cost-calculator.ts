@@ -43,6 +43,14 @@ const config = {
       { question: "How do I optimize AI image generation costs?", answer: "Use lower resolutions when quality isn't critical. Batch generations to reduce overhead. Use SD API or self-hosting for high volume. Reserve premium models (Midjourney, Flux) for final assets and use cheaper models for iterations and drafts." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "AI画像生成費用計算機",
+        description: "DALL-E、Midjourney、Stable Diffusionの画像生成AI費用を比較します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

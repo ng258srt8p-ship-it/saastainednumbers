@@ -44,6 +44,14 @@ const config = {
       { question: "How does payback period relate to LTV/CAC ratio?", answer: "Payback period and LTV/CAC are complementary metrics. LTV/CAC tells you the total return on acquisition investment. Payback period tells you how quickly that return materializes. A company can have a good LTV/CAC ratio but a dangerously long payback period if retention is slow to materialize revenue." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "CAC回収期間拡張計算機",
+        description: "粗利益率を考慮した拡張CAC回収期間を月数と日数で計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

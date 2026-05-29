@@ -46,6 +46,14 @@ const config = {
       { question: "How does inflation affect investment returns?", answer: "Inflation reduces purchasing power. At 3% inflation, $100 today will purchase only $55 in 20 years. Use real returns (after inflation) for projections  -  7% for stocks instead of 10%. Your investments need to outpace inflation to grow purchasing power over time." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "投資収益計算機",
+        description: "複利リターンと定期的な貢献額、カスタマイズ可能な期間で投資成長を予測します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

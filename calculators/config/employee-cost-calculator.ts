@@ -50,6 +50,14 @@ const config = {
       { question: "How do benefits costs vary by company size?", answer: "Small companies (under 50 employees) pay 10-25% more for health insurance than large companies due to less negotiating power. 401k plans cost more for small companies to administer. As you scale, per-employee benefits costs typically decrease. Group buying power and plan design optimize at 100+ employees." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "従業員コスト計算機",
+        description: "給与、税金、福利厚生、備品、諸経費を含む従業員の真のコストを計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

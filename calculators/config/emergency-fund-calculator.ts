@@ -46,6 +46,14 @@ const config = {
       { question: "What is the difference between an emergency fund and a sinking fund?", answer: "Emergency fund = unplanned, urgent expenses. Sinking fund = planned, expected expenses (car registration, annual insurance, holiday gifts). Sinking funds prevent true emergencies by smoothing out predictable irregular expenses. Have separate sinking funds for known upcoming costs." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "緊急資金計算機",
+        description: "支出に基づいて必要な緊急資金の額とその達成期間を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

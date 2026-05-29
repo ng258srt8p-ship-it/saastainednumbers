@@ -46,6 +46,14 @@ const config = {
       { question: "How does inflation affect my savings goals?", answer: "Cash savings lose purchasing power to inflation (~3% annually). A $50K goal today will need $67K in 10 years at 3% inflation. That's why long-term savings should be invested in assets that outpace inflation (stocks, real estate) rather than sitting in a savings account earning 1-4%." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "貯蓄率計算機",
+        description: "収入と支出に基づいて貯蓄率と目標達成までの期間を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

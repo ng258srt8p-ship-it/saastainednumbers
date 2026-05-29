@@ -41,6 +41,14 @@ const config = {
       { question: "How does cash flow differ from burn rate?", answer: "Net cash flow is the actual difference (positive means generating cash). Burn rate is specifically how fast you consume cash when cash flow is negative. Burn rate = absolute value of negative cash flow." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "純キャッシュフロー計算機",
+        description: "純キャッシュフロー、バーンレートを計算し、キャッシュフローがプラスかマイナスかを判断します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

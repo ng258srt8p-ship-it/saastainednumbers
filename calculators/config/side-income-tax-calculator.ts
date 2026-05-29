@@ -50,6 +50,14 @@ const config = {
       { question: "What tax breaks are available specifically for side hustlers?", answer: "The Qualified Business Income (QBI) deduction (Section 199A) allows eligible sole proprietors and LLCs to deduct up to 20% of qualified business income, subject to phaseout thresholds ($191,950 single / $383,900 MFJ in 2025). The home office deduction (simplified method: $5/sq ft up to 300 sq ft = $1,500 max). Health insurance premiums may be deductible if you're not eligible for an employer plan. Retirement contributions (SEP IRA, Solo 401k) reduce taxable income significantly." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "副業税金計算機",
+        description: "個人事業税、連邦税、州税を含む副業収入の税金を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

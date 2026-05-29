@@ -49,6 +49,14 @@ const config = {
       { question: "How does GPU memory affect pricing and performance?", answer: "GPU memory (VRAM) is the primary cost driver. H100 80GB costs 2-4x more than T4 16GB. More VRAM allows larger models, bigger batch sizes, and higher throughput. Key VRAM thresholds: Model weights (LLaMA 7B = 14GB FP16, LLaMA 70B = 140GB FP16, requiring multiple GPUs), plus overhead for activations, optimizer states, and batch data. Use gradient checkpointing and LoRA/QLoRA fine-tuning to reduce VRAM requirements." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "GPUコンピュート費用計算機",
+        description: "オンデマンド vs スポット価格を含むGPUクラウドコンピュート費用を月間・年間で計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

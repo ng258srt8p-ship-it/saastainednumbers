@@ -41,6 +41,14 @@ const config = {
       { question: "How does pricing affect the magic number?", answer: "Higher pricing directly improves the magic number  -  the same acquisition spend generates more ARR. This is why upmarket moves often improve magic numbers despite longer sales cycles." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "マジックナンバー計算機",
+        description: "SaaSマジックナンバーを計算して営業・マーケティング効率を測定します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

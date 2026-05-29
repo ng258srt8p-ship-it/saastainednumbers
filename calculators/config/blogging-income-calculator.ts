@@ -49,6 +49,14 @@ const config = {
       { question: "What expenses should bloggers budget for?", answer: "Hosting ($10-50/month), domain ($15/year), email marketing ($0-50/month), design tools ($0-30/month), SEO tools ($30-100/month), ad network fees (varies), and freelance help if outsourcing. Most bloggers operate at 10-30% expense ratio. Track all expenses carefully for tax deductions." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ブログ収入計算機",
+        description: "広告、アフィリエイト、スポンサーシップ、デジタルプロダクトからのブログ収益の可能性を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

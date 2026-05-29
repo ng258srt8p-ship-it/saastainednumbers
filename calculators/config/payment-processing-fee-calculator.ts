@@ -51,6 +51,14 @@ const config = {
       { question: "How does international payment processing affect fees?", answer: "International transactions add 1-3% in cross-border fees, plus currency conversion costs (1-2.5% above spot rate). A standard domestic rate of 2.9% + $0.30 becomes 4-5% + $0.30 for international. Some processors charge a flat 1% international fee; others use dynamic pricing. If you have significant international customers, compare processors on their cross-border pricing specifically." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "決済手数料計算機",
+        description: "取引手数料、チャージバック費用、実効率を含む決済手数料を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

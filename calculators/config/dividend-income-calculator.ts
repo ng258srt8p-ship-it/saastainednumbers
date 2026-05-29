@@ -48,6 +48,14 @@ const config = {
       { question: "How do interest rates affect dividend stocks?", answer: "Rising interest rates make bonds and savings accounts more competitive with dividend stocks, often causing short-term price declines for dividend payers. However, quality dividend stocks with pricing power and strong balance sheets tend to raise dividends regardless of the rate environment. During periods of rising rates (2022-2023), dividend growth stocks actually outperformed the broader market. For long-term investors, rate cycles are noise  -  focus on the growing income stream." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "配当収入計算機",
+        description: "配当金再投資（DRIP）と複利効果を考慮した配当金収入を予測します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

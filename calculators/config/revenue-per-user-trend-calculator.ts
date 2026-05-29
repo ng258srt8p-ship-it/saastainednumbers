@@ -46,6 +46,14 @@ const config = {
       { question: "What actions can improve ARPU trend?", answer: "Introduce usage-based pricing tiers, launch premium add-on features, implement annual prepayment discounts that increase commitment, improve onboarding to drive faster value realization, and create upsell paths from free to paid and paid to premium tiers. Track ARPU trends per segment with [Baremetrics](https://baremetrics.com?via=saastainednumbers)." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "ARPU推移計算機",
+        description: "前月と今月のデータを比較してARPUの推移を追跡し、ユーザーあたり収益の増減を判定します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

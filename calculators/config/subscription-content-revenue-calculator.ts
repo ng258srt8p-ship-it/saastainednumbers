@@ -49,6 +49,14 @@ const config = {
       { question: "How can I grow my subscriber base faster?", answer: "Post consistently (daily if possible), engage with followers through DMs and comments, offer limited-time promotions (first month discount), collaborate with other creators, use social media platforms like [Twitter/X](https://x.com) and [Reddit](https://reddit.com) for promotion, create referral programs, and offer bundle deals (annual subscriptions at a discount). Analyze which content performs best and double down on that style." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "サブスクリプションコンテンツ収益計算機",
+        description: "OnlyFans、Patreon、FanCentroなどのサブスクリプション型コンテンツプラットフォームの収益を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

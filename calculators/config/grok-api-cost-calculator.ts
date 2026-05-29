@@ -46,6 +46,14 @@ const config = {
       { question: "Does Grok offer batch processing discounts?", answer: "xAI may offer batch processing discounts for high-volume, non-real-time workloads. Contact xAI enterprise sales for information about volume pricing, reserved capacity, and custom agreements." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Grok API費用計算機",
+        description: "トークン使用量、モデルバージョン、呼び出し数に基づくxAI Grok API費用を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

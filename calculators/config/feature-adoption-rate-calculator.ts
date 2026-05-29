@@ -45,6 +45,14 @@ const config = {
       { question: "What tools measure feature adoption?", answer: "Amplitude, Mixpanel, Heap, Pendo, PostHog, and Hotjar all offer feature adoption tracking. Most product analytics platforms allow you to tag features and track usage rates over time with cohort analysis and funnel visualization." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "機能採用率計算機",
+        description: "SaaSの機能採用率を計算し、目標採用率とのギャップを測定します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

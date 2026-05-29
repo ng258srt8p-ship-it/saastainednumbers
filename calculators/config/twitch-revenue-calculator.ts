@@ -50,6 +50,14 @@ const config = {
       { question: "How can I grow my Twitch revenue beyond the platform?", answer: "Diversify with [Patreon](https://patreon.com) for exclusive content, [Discord](https://discord.com) memberships, merchandise via [Printful](https://www.printful.com) or your own [Shopify](https://shopify.pxf.io/2R5Dza) store, and brand sponsorships via [SponsorSpot](https://sponsorspot.com). Many top streamers earn 50-70% of their income from sources outside Twitch. Build a YouTube channel for discoverability and edit streams into highlight compilations." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Twitch収益計算機",
+        description: "サブスクリプション、広告、Bits寄付からのTwitch配信収入を見積もります。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

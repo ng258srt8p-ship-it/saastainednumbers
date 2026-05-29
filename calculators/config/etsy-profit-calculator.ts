@@ -53,6 +53,14 @@ const config = {
       { question: "How does Etsy shipping work for profit calculations?", answer: "You can charge exact shipping, offer free shipping (building cost into price), or use calculated shipping (Etsy estimates based on buyer location). Calculated shipping is most accurate but can surprise buyers. Free shipping boosts conversion but requires careful pricing. Use [Pirate Ship](https://pirateship.com) for discounted labels." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Etsy利益率計算機",
+        description: "手数料、材料費、配送料、その他費用を差し引いたEtsyストアの利益率を計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

@@ -46,6 +46,14 @@ const config = {
       { question: "Can I use Perplexity API without web search?", answer: "Perplexity API is designed for search-augmented generation. If you don't need web search capabilities, a standard LLM API (Claude, GPT, Gemini) will be more cost-effective. Perplexity's value proposition is the integration of search and generation in a single API call with no additional infrastructure." },
     ],
   },
+  locales: {
+    ja: {
+      meta: {
+        title: "Perplexity API費用計算機",
+        description: "SonarおよびSonar ProモデルのPerplexity API費用をトークン数と使用量で計算します。",
+      },
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);
