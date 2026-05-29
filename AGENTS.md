@@ -2,9 +2,9 @@
 
 ## Current Build Status
 - TypeScript: ✅ Passes (0 errors)
-- Lint: ✅ Passes (0 errors, 0 warnings)
-- Build: ✅ Passes (Next.js 16.2.6, Turbopack)
-- Unit Tests: ✅ 258/258 (Vitest, 76 test files)
+- Lint: ✅ Passes (0 errors, 23 warnings — pre-existing)
+- Build: ✅ Passes (Next.js 16.2.6, Turbopack, static export)
+- Unit Tests: ✅ 355/355 (Vitest, 90 test files)
 
 ## Project Structure
 ```
@@ -188,9 +188,11 @@ npx wrangler pages secret put EMAIL_API_KEY
 - **`app/calculators/page.tsx`**: Switched from static `export const metadata` to dynamic `generateMetadata` with `getTranslations()`
 - **`app/embed/[slug]/page.tsx` + `EmbedClient.tsx`**: Added `locale` and `strings` props; thread locale to `InputSlider`/`ResultCard`; replaced hardcoded disclaimer with translated `strings.disclaimer`
 - **`lib/formatNumber.ts`**: Removed `"use client"` directive and `getLocale()` import — all functions are pure (use `Intl.NumberFormat` which works server-side) and accept explicit `locale` parameter; server components can now safely call `getCurrencySymbol(locale)`
-- **TypeScript**: 0 errors; **Lint**: 0 errors; **Build**: passes; **Tests**: 309/309 pass (89 files, up from 258/76)
+- **`build-static.sh` fixed**: Per-locale breakdown at script end tried `find "out/en"` but English files live at root (no `out/en/` directory). `find` returned non-zero exit code, which `set -e` caught — script exited with code 1 despite all 6 builds succeeding (1326 pages total). Fixed with `[ -d "out/${locale}" ]` guard.
+- **TypeScript**: 0 errors; **Lint**: 0 errors (23 pre-existing warnings); **Build**: passes (static export); **Tests**: 355/355 pass (90 files, up from 309/89)
 
 ### Key Stats
 - **12 of 13 page files** now call `getTranslations()` (only `legal/page.tsx` intentionally excluded)
 - **107 keys × 6 locales** = 642 translated strings (up from 17 real translations)
 - All 5 non-English locales now have natural, idiomatic translations for all UI sections
+- **1326 pages** generated per full build (221 pages × 6 locales)

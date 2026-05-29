@@ -77,8 +77,12 @@ find out -name "index.html" -type f 2>/dev/null | wc -l
 echo ""
 echo "Per-locale breakdown:"
 for locale in "${LOCALES[@]}"; do
-  count=$(find "out/${locale}" -name "index.html" -type f 2>/dev/null | wc -l)
-  echo "  ${locale}: ${count} pages"
+  if [ -d "out/${locale}" ]; then
+    count=$(find "out/${locale}" -name "index.html" -type f | wc -l)
+    echo "  ${locale}: ${count} pages"
+  else
+    echo "  ${locale}: 0 pages"
+  fi
 done
 echo ""
-echo "Root (English): $(find out -maxdepth 3 -name 'index.html' -type f 2>/dev/null | wc -l) pages"
+echo "Root (English): $(find out -maxdepth 3 -name 'index.html' -type f | wc -l) pages"
