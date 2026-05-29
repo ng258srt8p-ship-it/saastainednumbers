@@ -14,6 +14,10 @@ const locales: { code: Locale; label: string }[] = [
 ];
 
 function getCurrentLocale(): Locale {
+  const buildLocale = process.env.NEXT_PUBLIC_LOCALE as string | undefined;
+  if (buildLocale && ["en", "es", "de", "pt", "fr", "ja"].includes(buildLocale)) {
+    return buildLocale as Locale;
+  }
   if (typeof window !== "undefined") {
     const fromPath = detectLocaleFromPath(window.location.pathname);
     if (fromPath !== "en") return fromPath;
@@ -27,7 +31,7 @@ function getCurrentLocale(): Locale {
 
 export function LocaleSwitcher() {
   const [open, setOpen] = useState(false);
-  const current = useMemo(getCurrentLocale, []);
+  const current = useMemo(() => getCurrentLocale(), []);
 
   const switchLocale = useCallback((code: Locale) => {
     document.cookie = `locale=${code};path=/;max-age=31536000;SameSite=Lax`;
