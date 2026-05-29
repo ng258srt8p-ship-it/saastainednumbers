@@ -1,6 +1,7 @@
 "use client";
 
 import { formatCurrency, formatNumber, formatPercent, formatRatio } from "@/lib/formatNumber";
+import { useCurrency } from "@/components/CurrencyProvider";
 import type { Locale } from "@/lib/useLocale";
 
 export type DeltaMode = "absolute" | "percent" | "both";
@@ -13,10 +14,10 @@ interface DeltaBadgeProps {
   locale?: Locale;
 }
 
-function formatValue(val: number, type: string, locale?: Locale): string {
+function formatValue(val: number, type: string, locale?: Locale, currency?: string): string {
   switch (type) {
     case "currency":
-      return formatCurrency(val, locale);
+      return formatCurrency(val, locale, currency);
     case "percentage":
       return formatPercent(val, locale);
     case "ratio":
@@ -27,6 +28,7 @@ function formatValue(val: number, type: string, locale?: Locale): string {
 }
 
 export function DeltaBadge({ valueA, valueB, type, mode, locale }: DeltaBadgeProps) {
+  const { currency } = useCurrency();
   if (type === "text") return null;
 
   const diff = valueB - valueA;
@@ -45,7 +47,7 @@ export function DeltaBadge({ valueA, valueB, type, mode, locale }: DeltaBadgePro
     <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-semibold leading-tight ${colorClass}`}>
       {!isNeutral && <span>{arrow}</span>}
       {mode === "absolute" || mode === "both" ? (
-        <span>{isPositive ? "+" : ""}{formatValue(Math.abs(diff), type, locale)}</span>
+        <span>{isPositive ? "+" : ""}{formatValue(Math.abs(diff), type, locale, currency)}</span>
       ) : null}
       {mode === "both" && <span className="opacity-50">|</span>}
       {mode === "percent" || mode === "both" ? (

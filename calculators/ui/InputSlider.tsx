@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { getCurrencySymbol } from "@/lib/formatNumber";
+import { useCurrency } from "@/components/CurrencyProvider";
 import type { Locale } from "@/lib/useLocale";
 
 interface InputSliderProps {
@@ -43,7 +44,8 @@ export function InputSlider({
     [onChange]
   );
 
-  const currencySymbol = useMemo(() => getCurrencySymbol(locale), [locale]);
+  const { currency } = useCurrency();
+  const currencySymbol = useMemo(() => getCurrencySymbol(locale, currency), [locale, currency]);
   const prefix = type === "currency" ? currencySymbol : "";
   const suffix = type === "percentage" ? "%" : "";
 

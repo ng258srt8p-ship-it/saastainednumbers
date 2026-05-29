@@ -4,6 +4,10 @@ import type { NextRequest } from "next/server";
 const LOCALES = ["en", "es", "de", "pt", "fr", "ja"];
 const DEFAULT_LOCALE = "en";
 
+const LOCALE_DEFAULT_CURRENCY: Record<string, string> = {
+  en: "USD", es: "EUR", de: "EUR", pt: "EUR", fr: "EUR", ja: "JPY",
+};
+
 function detectLocale(request: NextRequest): string {
   const cookie = request.cookies.get("locale")?.value;
   if (cookie && LOCALES.includes(cookie)) return cookie;
@@ -21,9 +25,19 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const response = NextResponse.next();
 
+  const locale = request.cookies.get("locale")?.value ?? detectLocale(request);
+
   if (!request.cookies.has("locale")) {
-    const locale = detectLocale(request);
     response.cookies.set("locale", locale, {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 365,
+      sameSite: "lax",
+    });
+  }
+
+  if (!request.cookies.has("currency")) {
+    const defaultCurrency = LOCALE_DEFAULT_CURRENCY[locale] ?? "USD";
+    response.cookies.set("currency", defaultCurrency, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365,
       sameSite: "lax",

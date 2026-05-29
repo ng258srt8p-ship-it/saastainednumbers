@@ -1,20 +1,12 @@
 import type { Locale } from "./useLocale";
+import { getDefaultCurrency } from "./currencies";
 
 function resolveLocale(locale?: Locale): Locale {
   return locale ?? "en";
 }
 
-const LOCALE_CURRENCY: Record<Locale, string> = {
-  en: "USD",
-  es: "EUR",
-  de: "EUR",
-  pt: "EUR",
-  fr: "EUR",
-  ja: "JPY",
-};
-
 export function getLocaleCurrency(locale?: Locale): string {
-  return LOCALE_CURRENCY[resolveLocale(locale)] ?? "USD";
+  return getDefaultCurrency(resolveLocale(locale));
 }
 
 export function formatCurrency(n: number, locale?: Locale, currency?: string): string {
@@ -49,8 +41,8 @@ export function formatRatio(n: number, locale?: Locale): string {
   }).format(n);
 }
 
-export function getCurrencySymbol(locale?: Locale): string {
-  const cur = getLocaleCurrency(locale);
+export function getCurrencySymbol(locale?: Locale, currency?: string): string {
+  const cur = currency ?? getLocaleCurrency(locale);
   return (
     new Intl.NumberFormat(resolveLocale(locale), {
       style: "currency",

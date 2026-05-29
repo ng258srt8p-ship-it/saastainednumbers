@@ -1,3 +1,5 @@
+import { getCurrencySymbolStatic } from "./currencies";
+
 interface InputValue {
   id: string;
   label: string;
@@ -19,15 +21,19 @@ interface InsightContext {
   category: string;
   inputs?: InputValue[];
   outputs?: OutputValue[];
+  currency?: string;
 }
+
+let _fmtCurrency = "USD";
 
 function fmt(val: string | number, type: string): string {
   if (typeof val === "string") return val;
   if (typeof val !== "number" || isNaN(val) || !isFinite(val)) return "N/A";
   if (type === "currency") {
-    if (val >= 1_000_000) return `$${(val / 1_000_000).toFixed(1)}M`;
-    if (val >= 1_000) return `$${(val / 1_000).toFixed(0)}K`;
-    return `$${val.toLocaleString()}`;
+    const sym = getCurrencySymbolStatic(_fmtCurrency);
+    if (val >= 1_000_000) return `${sym}${(val / 1_000_000).toFixed(1)}M`;
+    if (val >= 1_000) return `${sym}${(val / 1_000).toFixed(0)}K`;
+    return `${sym}${Math.round(val).toLocaleString()}`;
   }
   if (type === "percentage") return `${val.toFixed(1)}%`;
   if (type === "ratio") return `${val.toFixed(2)}x`;
@@ -1020,6 +1026,7 @@ function insightSummary(ctx: InsightContext): string[] {
 }
 
 export function generateInsights(ctx: InsightContext): string {
+  _fmtCurrency = ctx.currency ?? "USD";
   try {
     if (!ctx) {
       return "No data available. Enter your information and try again.";

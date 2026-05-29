@@ -4,8 +4,8 @@ import { resolveLocaleConfig } from "@/lib/resolve-calculator-locale";
 import type { SupportedLocale } from "@/calculators/config/calculator-schema";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { CurrencyHeroValue } from "@/components/CurrencyHeroValue";
 import { getTranslations } from "@/lib/getTranslations";
-import { getCurrencySymbol } from "@/lib/formatNumber";
 import type { Locale } from "@/lib/useLocale";
 
 import "@/calculators/config/_all";
@@ -34,7 +34,6 @@ export default async function Home() {
   const calcBySlug = Object.fromEntries(calculators.map((c) => [`${c.category}/${c.slug}`, c]));
   const totalCount = calculators.length;
   const countByCategory = (slug: string) => calculators.filter((c) => c.category === slug).length;
-  const currencySymbol = getCurrencySymbol(locale as Locale);
 
   const heroLine1 = t("home.heroLine1");
   const heroLine1First = heroLine1.split(" ")[0];
@@ -101,7 +100,7 @@ export default async function Home() {
               <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">{t("home.categories")}</p>
             </div>
             <div>
-              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">{currencySymbol}0</p>
+              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl "><CurrencyHeroValue locale={locale as Locale} /></p>
               <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">{t("home.toStart")}</p>
             </div>
           </div>
@@ -248,7 +247,7 @@ export default async function Home() {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.industryStandardData")}</p>
             </div>
             <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
-              <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">{currencySymbol}0</p>
+              <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100"><CurrencyHeroValue locale={locale as Locale} /></p>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.alwaysFree")}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.noPaywalls")}</p>
             </div>

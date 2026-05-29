@@ -3,6 +3,7 @@
 import type { HealthStatus } from "@/lib/benchmarks";
 import { getHealthLabel, getHealthColor, getHealthStatus, getBarColor, getGradientPercent } from "@/lib/benchmarks";
 import { formatCurrency, formatNumber, formatPercent, formatRatio } from "@/lib/formatNumber";
+import { useCurrency } from "@/components/CurrencyProvider";
 import type { Locale } from "@/lib/useLocale";
 
 interface ResultCardProps {
@@ -18,13 +19,13 @@ interface ResultCardProps {
   locale?: Locale;
 }
 
-function formatResult(value: string, type: string, locale?: Locale): string {
+function formatResult(value: string, type: string, locale?: Locale, currency?: string): string {
   const num = parseFloat(value.replace(/[$,%]/g, ""));
   if (isNaN(num)) return value;
 
   switch (type) {
     case "currency":
-      return formatCurrency(num, locale);
+      return formatCurrency(num, locale, currency);
     case "percentage":
       return formatPercent(num, locale);
     case "ratio":
@@ -37,7 +38,8 @@ function formatResult(value: string, type: string, locale?: Locale): string {
 }
 
 export function ResultCard({ label, value, type, isPrimary, prefix, suffix, metricKey, rawValue, stage = "series-a", locale }: ResultCardProps) {
-  const formatted = formatResult(value, type, locale);
+  const { currency } = useCurrency();
+  const formatted = formatResult(value, type, locale, currency);
 
   const health: HealthStatus | null = metricKey && rawValue !== undefined ? getHealthStatus(metricKey, rawValue, stage) : null;
 

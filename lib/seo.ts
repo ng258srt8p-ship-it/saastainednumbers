@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { CalculatorConfig, FAQItem } from "@/calculators/config/calculator-schema";
 import { alternateLanguages, localeUrl } from "@/lib/locale-url";
+import { getDefaultCurrency } from "@/lib/currencies";
 
 export function generateMetadata(config: CalculatorConfig): Metadata {
   const path = `/${config.category}/${config.slug}`;
@@ -20,7 +21,7 @@ export function generateMetadata(config: CalculatorConfig): Metadata {
   };
 }
 
-export function generateWebApplicationSchema(slug: string, config: CalculatorConfig) {
+export function generateWebApplicationSchema(slug: string, config: CalculatorConfig, locale?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -28,7 +29,7 @@ export function generateWebApplicationSchema(slug: string, config: CalculatorCon
     applicationCategory: "BusinessApplication",
     operatingSystem: "Any",
     browserRequirements: "Requires JavaScript",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    offers: { "@type": "Offer", price: "0", priceCurrency: getDefaultCurrency(locale ?? "en") },
     featureList: config.outputs.map((o) => `Calculate ${o.label}`),
   };
 }
@@ -57,9 +58,9 @@ export function generateFAQPageSchema(faqItems: FAQItem[]) {
   };
 }
 
-export function generateJsonLd(slug: string, config: CalculatorConfig, faqItems: FAQItem[]) {
+export function generateJsonLd(slug: string, config: CalculatorConfig, faqItems: FAQItem[], locale?: string) {
   const schemas = [
-    generateWebApplicationSchema(slug, config),
+    generateWebApplicationSchema(slug, config, locale),
     generateBreadcrumbListSchema(config.category, slug),
     generateFAQPageSchema(faqItems),
   ];

@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { CurrencySwitcher } from "./CurrencySwitcher";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 
 
 type MobileNavProps = {
@@ -167,6 +169,10 @@ export function MobileNav({ t }: MobileNavProps) {
               })}
             </ul>
           </nav>
+          <div className="flex items-center gap-1 px-3">
+            <CurrencySwitcher />
+            <LocaleSwitcher locale="en" />
+          </div>
         </div>
       </div>
     </>

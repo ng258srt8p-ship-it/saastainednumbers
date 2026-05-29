@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { generateInsights } from "@/lib/insights-engine";
+import { useCurrency } from "@/components/CurrencyProvider";
 
 interface InputValue {
   id: string;
@@ -50,6 +51,7 @@ function ThinkingAnimation() {
 }
 
 export function Insights({ title, description, category, inputs, outputs }: InsightsProps) {
+  const { currency } = useCurrency();
   const [insights, setInsights] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -63,7 +65,7 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
     setVisible(false);
 
     try {
-      const insights = generateInsights({ title, description, category, inputs, outputs });
+      const insights = generateInsights({ title, description, category, inputs, outputs, currency });
 
       await new Promise((r) => setTimeout(r, 300));
 

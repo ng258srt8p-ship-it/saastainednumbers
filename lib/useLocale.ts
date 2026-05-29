@@ -37,6 +37,18 @@ export function setLocaleCookie(locale: Locale) {
   document.cookie = `locale=${locale};path=/;max-age=31536000;SameSite=Lax`;
 }
 
+export function getCurrencyCookie(): string {
+  if (typeof document === "undefined") return "";
+  const cookie = document.cookie
+    .split("; ")
+    .find((r) => r.startsWith("currency="));
+  return cookie ? cookie.split("=")[1] : "";
+}
+
+export function setCurrencyCookie(currency: string) {
+  document.cookie = `currency=${currency};path=/;max-age=31536000;SameSite=Lax`;
+}
+
 function getNestedValue(obj: NestedKeyValue, path: string): string {
   const keys = path.split(".");
   let current: string | NestedKeyValue = obj;

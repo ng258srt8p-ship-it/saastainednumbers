@@ -6,6 +6,7 @@ import { InputSlider } from "@/calculators/ui/InputSlider";
 import { engines } from "@/lib/engine-registry";
 import { Insights } from "@/components/Insights";
 import { formatCurrency, formatNumber, formatPercent, getCurrencySymbol } from "@/lib/formatNumber";
+import { useCurrency } from "@/components/CurrencyProvider";
 import type { Locale } from "@/lib/useLocale";
 
 interface DashboardWidgetProps {
@@ -24,13 +25,13 @@ function formatCompact(n: number): string {
   return formatNumber(n);
 }
 
-function formatOutput(value: number | string, type: string, locale?: Locale): string {
+function formatOutput(value: number | string, type: string, locale?: Locale, currency?: string): string {
   if (type === "text") return String(value);
   if (typeof value !== "number") return String(value);
   if (!Number.isFinite(value)) return "—";
   switch (type) {
     case "currency":
-      return formatCurrency(value, locale);
+      return formatCurrency(value, locale, currency);
     case "percentage":
       return formatPercent(value, locale);
     case "ratio":
@@ -41,6 +42,7 @@ function formatOutput(value: number | string, type: string, locale?: Locale): st
 }
 
 export function DashboardWidget({ config, values, onChange, wiredValues, slug, locale }: DashboardWidgetProps) {
+  const { currency } = useCurrency();
   const [expanded, setExpanded] = useState(false);
 
   const results = useMemo(() => {
@@ -68,19 +70,19 @@ export function DashboardWidget({ config, values, onChange, wiredValues, slug, l
       }
       let displayPrimary: string | undefined;
       if (primaryValue !== undefined) {
-        displayPrimary = formatOutput(primaryValue, primaryType, locale);
+        displayPrimary = formatOutput(primaryValue, primaryType, locale, currency);
       } else {
         const first = config.outputs[0];
         if (first) {
           const fv = outputs[first.id];
-          displayPrimary = fv !== undefined ? formatOutput(fv, first.type, locale) : undefined;
+          displayPrimary = fv !== undefined ? formatOutput(fv, first.type, locale, currency) : undefined;
         }
       }
       return { outputs, displayPrimary };
     } catch {
       return { outputs: {} as Record<string, number | string>, displayPrimary: undefined };
     }
-  }, [values, wiredValues, config, slug, locale]);
+  }, [values, wiredValues, config, slug, locale, currency]);
 
   const wiredInputs = useMemo(() => new Set(Object.keys(wiredValues)), [wiredValues]);
 
@@ -157,7 +159,7 @@ export function DashboardWidget({ config, values, onChange, wiredValues, slug, l
                     </div>
                     <div className="flex items-center justify-between rounded-xl border border-brand-200 dark:border-brand-800 bg-brand-50/50 dark:bg-brand-950/20 px-3 py-2.5 text-sm text-gray-700 dark:text-gray-300">
                       <span className="font-medium">{wiredValues[input.id] ?? values[input.id] ?? input.defaultValue}</span>
-                      {input.type === "currency" && <span className="text-gray-400">{getCurrencySymbol(locale)}</span>}
+                      {input.type === "currency" && <span className="text-gray-400">{getCurrencySymbol(locale, currency)}</span>}
                     </div>
                   </div>
                 ) : (
@@ -193,7 +195,7 @@ export function DashboardWidget({ config, values, onChange, wiredValues, slug, l
                         : "text-gray-900 dark:text-gray-100"
                     }`}
                   >
-                    {formatOutput(val, output.type, locale)}
+                    {formatOutput(val, output.type, locale, currency)}
                   </span>
                 </div>
               );

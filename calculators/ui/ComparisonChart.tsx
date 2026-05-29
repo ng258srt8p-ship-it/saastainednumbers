@@ -1,6 +1,8 @@
 "use client";
 
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid } from "recharts";
+import { useCurrency } from "@/components/CurrencyProvider";
+import { getCurrencySymbolStatic } from "@/lib/currencies";
 
 interface ChartDatum {
   label: string;
@@ -11,17 +13,21 @@ interface ChartDatum {
 
 interface ComparisonChartProps {
   data: ChartDatum[];
+  locale?: string;
 }
 
-function formatVal(val: number, type: string): string {
+function formatVal(val: number, type: string, currency?: string): string {
   switch (type) {
-    case "currency": return `$${val.toLocaleString()}`;
+    case "currency": {
+      const sym = getCurrencySymbolStatic(currency ?? "USD");
+      return `${sym}${val.toLocaleString()}`;
+    }
     case "percentage": return `${val.toFixed(1)}%`;
     default: return val.toLocaleString();
   }
 }
 
-function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<Record<string, unknown>>; label?: string }) {
+function CustomTooltip({ active, payload, label, currency }: { active?: boolean; payload?: Array<Record<string, unknown>>; label?: string; currency?: string }) {
   if (!active || !payload || payload.length === 0) return null;
   const itemType = (payload[0]?.payload as Record<string, string>)?._type ?? "number";
   return (
@@ -29,14 +35,15 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
       <p className="font-medium text-gray-800 dark:text-gray-200 mb-1">{label}</p>
       {payload.map((entry, i) => (
         <p key={i} className="text-gray-600 dark:text-gray-400">
-          <span className="font-medium" style={{ color: entry.dataKey === "Scenario A" ? "#008387" : "#143562" }}>{entry.name as string}:</span> {formatVal(entry.value as number, itemType)}
+          <span className="font-medium" style={{ color: entry.dataKey === "Scenario A" ? "#008387" : "#143562" }}>{entry.name as string}:</span> {formatVal(entry.value as number, itemType, currency)}
         </p>
       ))}
     </div>
   );
 }
 
-export function ComparisonChart({ data }: ComparisonChartProps) {
+export function ComparisonChart({ data, locale }: ComparisonChartProps) {
+  const { currency } = useCurrency();
   if (data.length === 0) return null;
 
   const chartData = data.map((d) => ({
@@ -54,7 +61,7 @@ export function ComparisonChart({ data }: ComparisonChartProps) {
           <CartesianGrid strokeDasharray="3 3" stroke="currentColor" className="stroke-gray-200 dark:stroke-gray-700" />
           <XAxis type="number" stroke="currentColor" className="text-gray-500 dark:text-gray-400" tick={{ fontSize: 11 }} />
           <YAxis type="category" dataKey="name" stroke="currentColor" className="text-gray-500 dark:text-gray-400" tick={{ fontSize: 10 }} width={90} />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip currency={currency} />} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
           <Bar dataKey="Scenario A" fill="#008387" radius={[0, 4, 4, 0]} />
           <Bar dataKey="Scenario B" fill="#143562" radius={[0, 4, 4, 0]} />

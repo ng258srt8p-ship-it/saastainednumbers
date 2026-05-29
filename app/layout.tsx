@@ -5,9 +5,11 @@ import Script from "next/script";
 import { AdScript } from "@/components/AdScript";
 import { ShowWhenNotEmbed } from "@/components/ShowWhenNotEmbed";
 import { Nav } from "@/components/Nav";
+import { CurrencyProvider } from "@/components/CurrencyProvider";
 import { getTranslations } from "@/lib/getTranslations";
 import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 import { getAllKnownCategories, getCategoryTranslationKey } from "@/lib/registry";
+import type { Locale } from "@/lib/useLocale";
 import "./globals.css";
 
 const inter = Inter({
@@ -77,6 +79,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
+        <CurrencyProvider locale={locale as Locale}>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-BHDH2PETBK" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
@@ -183,6 +186,7 @@ export default async function RootLayout({
             }),
           }}
         />
+      </CurrencyProvider>
       </body>
     </html>
   );
