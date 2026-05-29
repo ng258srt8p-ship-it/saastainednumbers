@@ -18,6 +18,10 @@ const messages: Record<Locale, () => Promise<NestedKeyValue>> = {
 };
 
 export function getLocale(): Locale {
+  const buildLocale = process.env.NEXT_PUBLIC_LOCALE as string | undefined;
+  if (buildLocale && ["en", "es", "de", "pt", "fr", "ja"].includes(buildLocale)) {
+    return buildLocale as Locale;
+  }
   if (typeof document === "undefined") return "en";
   const cookie = document.cookie
     .split("; ")

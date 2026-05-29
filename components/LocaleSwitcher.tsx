@@ -18,7 +18,11 @@ export function LocaleSwitcher({ locale: current }: { locale: Locale }) {
 
   const switchLocale = useCallback((code: Locale) => {
     document.cookie = `locale=${code};path=/;max-age=31536000;SameSite=Lax`;
-    window.location.href = switchLocalePath(window.location.pathname, code);
+    if (process.env.NEXT_PUBLIC_LOCALE) {
+      window.location.href = switchLocalePath(window.location.pathname, code);
+    } else {
+      window.location.reload();
+    }
   }, []);
 
   return (
