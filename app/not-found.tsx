@@ -8,7 +8,7 @@ export default async function NotFound() {
       <div className="text-center">
         <p className="font-heading text-8xl font-bold text-gray-500 dark:text-gray-400">404</p>
         <h1 className="mt-4 font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">{t("error.pageNotFound")}</h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-400">The page you&apos;re looking for doesn&apos;t exist.</p>
+        <p className="mt-2 text-gray-600 dark:text-gray-400">{t("error.notFoundDescription")}</p>
         <div className="mt-8 flex items-center justify-center gap-4">
           <Link
             href="/"

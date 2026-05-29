@@ -8,13 +8,18 @@ import { useComparisonState } from "@/lib/useComparisonState";
 import { engines } from "@/lib/engine-registry";
 import { Insights } from "@/components/Insights";
 import type { CalculatorConfig } from "@/calculators/config/calculator-schema";
+import type { Locale } from "@/lib/useLocale";
 
 interface Props {
   slug: string;
   config: CalculatorConfig;
+  locale: Locale;
+  strings: {
+    disclaimer: string;
+  };
 }
 
-export function EmbedClient({ slug, config }: Props) {
+export function EmbedClient({ slug, config, locale, strings }: Props) {
   const searchParams = useSearchParams();
   const theme = searchParams.get("theme") ?? "light";
   const embedHeight = Number(searchParams.get("height")) || 600;
@@ -110,12 +115,13 @@ export function EmbedClient({ slug, config }: Props) {
             type={input.type}
             value={valuesA[input.id] ?? 0}
             onChange={(val) => setValue("a", input.id, val)}
+            locale={locale}
           />
         ))}
       </div>
       <div className="mt-4 space-y-3">
         {resultsA.map((r) => (
-          <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} />
+          <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} locale={locale} />
         ))}
       </div>
       <Insights
@@ -153,7 +159,7 @@ export function EmbedClient({ slug, config }: Props) {
         </a>
       </div>
       <p className="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center px-2">
-        Disclaimer: Results are for informational purposes only and should not be considered financial advice.
+        {strings.disclaimer}
       </p>
     </div>
   );

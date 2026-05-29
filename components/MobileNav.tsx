@@ -96,7 +96,7 @@ export function MobileNav({ t }: MobileNavProps) {
   }, [open]);
 
   const items = [
-    { href: "/calculators", label: "Calculators" },
+    { href: "/calculators", label: t.calculators },
     { href: "/dashboard", label: t.dashboard },
     { href: "/pricing", label: t.pricing },
     { href: "/blog", label: t.blog },
@@ -106,7 +106,7 @@ export function MobileNav({ t }: MobileNavProps) {
     <>
       <div className="hidden md:flex items-center gap-5 text-sm text-gray-500 dark:text-gray-400">
         <Link href="/calculators" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
-          Calculators
+          {t.calculators}
         </Link>
         <Link href="/dashboard" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
           {t.dashboard}

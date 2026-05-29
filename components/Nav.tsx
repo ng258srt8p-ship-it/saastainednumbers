@@ -11,6 +11,7 @@ export async function Nav() {
     dashboard: t("nav.dashboard"),
     pricing: t("nav.pricing"),
     blog: t("nav.blog"),
+    calculators: t("nav.calculators"),
   };
 
   return (

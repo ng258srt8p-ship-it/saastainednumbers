@@ -53,3 +53,19 @@ export function getCategories(): string[] {
 export function getAllKnownCategories(): string[] {
   return Array.from(KNOWN_CATEGORIES);
 }
+
+const CATEGORY_SLUG_TO_KEY: Record<string, string> = {
+  revenue: "revenue",
+  "unit-economics": "unitEconomics",
+  "churn-retention": "churnRetention",
+  "growth-efficiency": "growthEfficiency",
+  "ai-cost": "aiCost",
+  "side-hustle": "sideHustle",
+  "personal-finance": "personalFinance",
+  "general-business": "generalBusiness",
+  "saas-deepen": "saasDeepen",
+};
+
+export function getCategoryTranslationKey(slug: string): string {
+  return CATEGORY_SLUG_TO_KEY[slug] ?? slug;
+}

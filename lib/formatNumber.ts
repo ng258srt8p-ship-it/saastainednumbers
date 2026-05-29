@@ -1,15 +1,7 @@
-"use client";
-
-import { getLocale } from "./useLocale";
 import type { Locale } from "./useLocale";
 
 function resolveLocale(locale?: Locale): Locale {
-  if (locale) return locale;
-  try {
-    return getLocale();
-  } catch {
-    return "en";
-  }
+  return locale ?? "en";
 }
 
 const LOCALE_CURRENCY: Record<Locale, string> = {

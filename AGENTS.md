@@ -175,17 +175,22 @@ npx wrangler pages secret put EMAIL_API_KEY
 - Account pages show "sign in is currently disabled" when not authenticated
 - All calculators fully functional without sign-in
 
-## Session Summary (May 25, 2026)
+## Session Summary (May 29, 2026)
 
 ### Done
-- **Footer centering**: Changed footer from `grid grid-cols-3` to `flex flex-wrap justify-center` with gap-based spacing for centered 3-column layout
-- **Search icon**: Replaced emoji 🔍 with Material Symbols "search" icon
-- **Content currency audit**: Comprehensive audit (32 items across 5 phases + 4 deployment)
-- **Phase 1-6 implementation**:
-  - Pricing page metadata, language support text, meta description expansion
-  - 401k defaults, side-income-tax config, benchmarks update
-  - Removed AnalyticsClient, cleaned AGENTS.md
-  - Cleaned translation keys from all 6 locale files, removed dead i18n code
-  - Removed dead AI code from insights route, cleaned i18n.ts
-  - Updated deploy workflow
-- **Git email fix**: Rebated 18 commits to replace `privaterelay.appleid.com` with `users.noreply.github.com`; force-pushed to remote
+- **Root cause identified**: All 5 non-English locale files were ~96% English copies (only 3-5 of 107 keys actually translated per locale). Calculator pages appeared to work because they use separate locale overrides in `resolverLocaleConfig()`, not `getTranslations()`.
+- **Natural translations generated**: All 107 i18n keys × 5 locales (ES, DE, FR, PT, JA) — idiomatic translations for nav, common, calculator, category, home, pricing, dashboard, feedback, email, calculators, error, and blog sections
+- **`app/pricing/page.tsx`**: Added `getTranslations()`, `generateMetadata` with translations, replaced all 8 hardcoded strings with `t()` calls (heading, subtitle, features, CTA) — total 15 new translation keys across all 6 locales
+- **`app/blog/page.tsx`**: Added `getTranslations()`, `generateMetadata` with translations, replaced hardcoded "Blog", "Featured Post", "All Articles", "Read article →", "Read more →" with `t()` calls — 7 new blog translation keys across all 6 locales
+- **`app/blog/[slug]/page.tsx`**: Added `getTranslations()`, replaced "← Back to Blog" with `t("blog.backToBlog")`
+- **`app/page.tsx` (homepage)**: Replaced hardcoded hero title with `t("home.heroLine1")`/`t("home.heroLine2")` keys with `font-numbers` span styling; replaced hardcoded `$0` with `getCurrencySymbol(locale) + "0"` (removed `"use client"` from `formatNumber.ts` to allow server-side use); replaced hardcoded "categories, calculators. Pick your path." with `t("home.categoriesSubtitle")`; replaced hardcoded "New" badge with `t("common.new")`
+- **`app/[category]/page.tsx`**: Made `generateMetadata` use `getTranslations()` for category name; updated h1 to use translated category name + `category.calculatorsLabel` suffix
+- **`app/calculators/page.tsx`**: Switched from static `export const metadata` to dynamic `generateMetadata` with `getTranslations()`
+- **`app/embed/[slug]/page.tsx` + `EmbedClient.tsx`**: Added `locale` and `strings` props; thread locale to `InputSlider`/`ResultCard`; replaced hardcoded disclaimer with translated `strings.disclaimer`
+- **`lib/formatNumber.ts`**: Removed `"use client"` directive and `getLocale()` import — all functions are pure (use `Intl.NumberFormat` which works server-side) and accept explicit `locale` parameter; server components can now safely call `getCurrencySymbol(locale)`
+- **TypeScript**: 0 errors; **Lint**: 0 errors; **Build**: passes; **Tests**: 309/309 pass (89 files, up from 258/76)
+
+### Key Stats
+- **12 of 13 page files** now call `getTranslations()` (only `legal/page.tsx` intentionally excluded)
+- **107 keys × 6 locales** = 642 translated strings (up from 17 real translations)
+- All 5 non-English locales now have natural, idiomatic translations for all UI sections

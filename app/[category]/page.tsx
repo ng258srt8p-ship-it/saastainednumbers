@@ -1,4 +1,6 @@
-import { getCalculatorsByCategory, getCategories, CATEGORY_META, getAllKnownCategories, KNOWN_CATEGORIES } from "@/lib/registry";
+import { getCalculatorsByCategory, getCategories, CATEGORY_META, getAllKnownCategories, getCategoryTranslationKey } from "@/lib/registry";
+import { resolveLocaleConfig } from "@/lib/resolve-calculator-locale";
+import type { SupportedLocale } from "@/calculators/config/calculator-schema";
 import Link from "next/link";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -20,12 +22,14 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const { category } = await params;
+  const { t } = await getTranslations();
   const meta = CATEGORY_META[category];
-  const name = meta?.name ?? category.charAt(0).toUpperCase() + category.slice(1);
+  const name = t("category." + getCategoryTranslationKey(category));
+  const calculatorsLabel = t("category.calculatorsLabel");
 
   const desc = meta?.description ?? `Browse our collection of ${category} calculators.`;
   return {
-    title: `${name} Calculators`,
+    title: `${name} ${calculatorsLabel}`,
     description: desc,
     alternates: {
       canonical: localeUrl(`/${category}`),
@@ -85,16 +89,17 @@ specific, actionable levers to improve their business performance.`,
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
-  const { t } = await getTranslations();
+  const { t, locale } = await getTranslations();
   const calculators = getCalculatorsByCategory(category);
   const meta = CATEGORY_META[category];
-  const categoryName = meta?.name ?? category.charAt(0).toUpperCase() + category.slice(1);
+  const categoryName = t(`category.${category}`);
+  const calculatorsLabel = t("category.calculatorsLabel");
   const editorial = CATEGORY_EDITORIAL[category];
 
   if (calculators.length === 0) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-12">
-        <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} Calculators</h1>
+        <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} {calculatorsLabel}</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-8">{meta?.description}</p>
         <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 p-12 text-center">
           <p className="text-lg text-gray-600 dark:text-gray-400">{t("category.comingSoon")}</p>
@@ -110,7 +115,7 @@ export default async function CategoryPage({ params }: PageProps) {
   const webAppSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: `${categoryName} Calculators`,
+    name: `${categoryName} {calculatorsLabel}`,
     description: meta?.description ?? `${categoryName} calculators for SaaS and business metrics.`,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
@@ -125,7 +130,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const itemListSchema = {
     "@type": "ItemList",
-    name: `${categoryName} Calculators`,
+    name: `${categoryName} {calculatorsLabel}`,
     description: meta?.description ?? "",
     url: `https://saastainednumbers.com/${category}`,
     numberOfItems: calculators.length,
@@ -153,7 +158,7 @@ export default async function CategoryPage({ params }: PageProps) {
           { label: t("common.home"), href: "/" },
           { label: categoryName, href: `/${category}` },
         ]} />
-        <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} Calculators</h1>
+        <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} {calculatorsLabel}</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-2">{meta?.description}</p>
         <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 dark:bg-brand-950/50 px-3 py-1 text-xs font-medium text-brand-700 dark:text-brand-300 mb-6">
           <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20" }}>verified</span>
@@ -168,34 +173,42 @@ export default async function CategoryPage({ params }: PageProps) {
         )}
         <div className="mb-8">
           <CalculatorSearch
-            calculators={calculators.map((c) => ({
-              slug: c.slug,
-              category: c.category,
-              title: c.meta.title,
-              description: c.meta.description,
-            }))}
+            calculators={calculators.map((c) => {
+              const resolved = resolveLocaleConfig(c, locale as SupportedLocale);
+              return {
+                slug: c.slug,
+                category: c.category,
+                title: resolved.meta.title,
+                description: resolved.meta.description,
+              };
+            })}
             placeholder={t("category.searchPlaceholder")}
+            ariaLabel={t("search.ariaLabel")}
+            resultsLabel={t("search.resultsFound")}
           />
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
-          {calculators.map((calc) => (
+          {calculators.map((calc) => {
+            const resolved = resolveLocaleConfig(calc, locale as SupportedLocale);
+            return (
             <Link
               key={calc.slug}
               href={`/${calc.category}/${calc.slug}`}
               className="group rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
             >
               <div className="flex items-center justify-between">
-                <h2 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 transition-colors">{calc.meta.title}</h2>
+                <h2 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 transition-colors">{resolved.meta.title}</h2>
                 {calc.isNew && (
                   <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300 shrink-0">
                     <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20" }}>star</span>
-                    New
+                    {t("common.new")}
                   </span>
                 )}
               </div>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{calc.meta.description}</p>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{resolved.meta.description}</p>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </>

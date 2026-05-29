@@ -14,9 +14,11 @@ interface CalculatorItem {
 interface Props {
   calculators: CalculatorItem[];
   placeholder?: string;
+  ariaLabel?: string;
+  resultsLabel?: string;
 }
 
-export function CalculatorSearch({ calculators, placeholder = "Search calculators..." }: Props) {
+export function CalculatorSearch({ calculators, placeholder = "Search calculators...", ariaLabel = "Search calculators", resultsLabel }: Props) {
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
@@ -43,7 +45,7 @@ export function CalculatorSearch({ calculators, placeholder = "Search calculator
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
-        aria-label="Search calculators"
+        aria-label={ariaLabel}
         aria-autocomplete="list"
         aria-controls="search-results"
         className="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-2.5 pl-10 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-400"
@@ -52,7 +54,7 @@ export function CalculatorSearch({ calculators, placeholder = "Search calculator
         search
       </span>
       <span aria-live="polite" className="sr-only">
-        {filtered.length > 0 ? `${filtered.length} calculator${filtered.length === 1 ? "" : "s"} found` : ""}
+        {filtered.length > 0 ? (resultsLabel ?? `${filtered.length} calculator${filtered.length === 1 ? "" : "s"} found`) : ""}
       </span>
       {filtered.length > 0 && (
         <div

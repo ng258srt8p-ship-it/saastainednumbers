@@ -3,6 +3,10 @@ import { getAllCalculators } from "@/lib/registry";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { EmbedClient } from "./EmbedClient";
+import { getTranslations } from "@/lib/getTranslations";
+import { resolveLocaleConfig } from "@/lib/resolve-calculator-locale";
+import type { SupportedLocale } from "@/calculators/config/calculator-schema";
+import type { Locale } from "@/lib/useLocale";
 
 // Import all calculator configs to register them in the registry
 import "@/calculators/config/_all";
@@ -36,9 +40,19 @@ export default async function EmbedPage({ params }: PageProps) {
   const config = calculators.find((c) => c.slug === slug);
   if (!config) notFound();
 
+  const { t, locale } = await getTranslations();
+  const resolved = resolveLocaleConfig(config, locale as SupportedLocale);
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <EmbedClient slug={slug} config={config} />
+    <Suspense fallback={<div>{t("common.loading")}</div>}>
+      <EmbedClient
+        slug={slug}
+        config={resolved}
+        locale={locale as Locale}
+        strings={{
+          disclaimer: t("calculator.disclaimer"),
+        }}
+      />
     </Suspense>
   );
 }

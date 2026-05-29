@@ -2,12 +2,14 @@
   "nav": {
     "dashboard": "Dashboard",
     "pricing": "Pricing",
-    "blog": "Blog"
+    "blog": "Blog",
+    "calculators": "Calculators"
   },
   "common": {
     "home": "Home",
     "loading": "Loading...",
-    "new": "New"
+    "new": "New",
+    "skipToContent": "Skip to content"
   },
   "calculator": {
     "howToUse": "How to Use This Calculator",
@@ -50,7 +52,8 @@
     "comingSoon": "Calculators in this category are coming soon.",
     "buildingNow": "We are building them now. Check back soon!",
     "browseAll": "Browse all categories →",
-    "searchPlaceholder": "Search calculators..."
+    "searchPlaceholder": "Search calculators...",
+    "calculatorsLabel": "Calculators"
   },
   "home": {
     "startCalculating": "Start Calculating",
@@ -73,7 +76,8 @@
     "theLedger": "The ledger",
     "startBuilding": "Start building.",
     "allFree": "All {n} calculators are completely free. No subscriptions, no signups.",
-    "heroTitle": "Know your numbers. Sustain your growth.",
+    "heroLine1": "Know your numbers.",
+    "heroLine2": "Sustain your growth.",
     "heroSubtitle": "calculators for builders, operators, and creators. Enter your numbers — get an answer in your browser. All free, all private.",
     "freeCalculators": "free calculators",
     "categories": "categories",
@@ -87,7 +91,15 @@
     "browseCalculators": "Browse Calculators"
   },
   "pricing": {
-    "allFree": "All calculators are completely free. No subscriptions, no paywalls, no account required."
+    "allFree": "All calculators are completely free. No subscriptions, no paywalls, no account required.",
+    "everythingFree": "Everything is Free",
+    "subtitle": "No subscriptions, no paywalls. All {n} calculators are completely free to use.",
+    "forever": "forever",
+    "feature1": "All {n} calculators — no limits",
+    "feature2": "Real-time results with benchmark comparisons",
+    "feature3": "Stage-based growth insights (Seed to Series C+)",
+    "feature4": "Unlimited embeds for your website",
+    "feature5": "URL sharing for collaboration"
   },
   "dashboard": {
     "title": "Dashboard",
@@ -114,6 +126,15 @@
     "success": "You're subscribed!",
     "error": "Something went wrong. Try again."
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "SaaS metrics insights, tutorials, and industry benchmarks.",
+    "featuredPost": "Featured Post",
+    "allArticles": "All Articles",
+    "readArticle": "Read article →",
+    "readMore": "Read more →",
+    "backToBlog": "← Back to Blog"
+  },
   "calculators": {
     "browseCollection": "Browse our complete collection of {n} calculators across {m} categories.",
     "editorial": "Free, instant calculators for the metrics that matter. From SaaS revenue and unit economics to AI costs, side hustle income, and personal finance — every calculator is 100% free with no account required. Results update live as you type, and nothing leaves your device. Built for founders, operators, creators, and anyone who needs answers fast.",
@@ -126,6 +147,23 @@
     "goHome": "Go Home",
     "oops": "Oops",
     "somethingWentWrong": "Something went wrong",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "notFoundDescription": "The page you're looking for doesn't exist."
+  },
+  "search": {
+    "placeholder": "Search calculators...",
+    "ariaLabel": "Search calculators",
+    "resultsFound": "{n} calculator(s) found"
+  },
+  "footer": {
+    "product": "Product",
+    "categories": "Categories",
+    "resources": "Resources",
+    "legal": "Legal",
+    "disclaimer": "Disclaimer",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "copyright": "SaaStainedNumbers"
   }
 }

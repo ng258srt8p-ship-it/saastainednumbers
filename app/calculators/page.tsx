@@ -1,4 +1,7 @@
-import { getAllCalculators, getAllKnownCategories, CATEGORY_META, getCalculatorsByCategory } from "@/lib/registry";
+import type { Metadata } from "next";
+import { getAllCalculators, getAllKnownCategories, CATEGORY_META, getCalculatorsByCategory, getCategoryTranslationKey } from "@/lib/registry";
+import { resolveLocaleConfig } from "@/lib/resolve-calculator-locale";
+import type { SupportedLocale } from "@/calculators/config/calculator-schema";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import Link from "next/link";
@@ -7,28 +10,37 @@ import { getTranslations } from "@/lib/getTranslations";
 
 import "@/calculators/config/_all";
 
-export const metadata = {
-  title: "All Calculators  -  SaaStainedNumbers",
-  description: "Browse all free calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account required.",
-  alternates: {
-    canonical: localeUrl("/calculators"),
-    languages: alternateLanguages("/calculators"),
-  },
-  openGraph: {
-    title: "All Calculators  -  SaaStainedNumbers",
-    description: "Browse all free calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account required.",
-    images: ["/api/og?title=All+Calculators&category=home"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "All Calculators  -  SaaStainedNumbers",
-    description: "Browse all free calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account required.",
-    images: ["/api/og?title=All+Calculators&category=home"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  const calculators = getAllCalculators();
+  const categories = getAllKnownCategories();
+  const title = `${t("category.all")} — SaaStainedNumbers`;
+  const description = t("calculators.browseCollection")
+    .replace("{n}", String(calculators.length))
+    .replace("{m}", String(categories.length));
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: localeUrl("/calculators"),
+      languages: alternateLanguages("/calculators"),
+    },
+    openGraph: {
+      title,
+      description,
+      images: ["/api/og?title=All+Calculators&category=home"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/api/og?title=All+Calculators&category=home"],
+    },
+  };
+}
 
 export default async function CalculatorsPage() {
-  const { t } = await getTranslations();
+  const { t, locale } = await getTranslations();
   const calculators = getAllCalculators();
   const categories = getAllKnownCategories();
 
@@ -78,13 +90,18 @@ export default async function CalculatorsPage() {
       </p>
       <div className="mb-10">
         <CalculatorSearch
-          calculators={calculators.map((c) => ({
-            slug: c.slug,
-            category: c.category,
-            title: c.meta.title,
-            description: c.meta.description,
-          }))}
+          calculators={calculators.map((c) => {
+            const resolved = resolveLocaleConfig(c, locale as SupportedLocale);
+            return {
+              slug: c.slug,
+              category: c.category,
+              title: resolved.meta.title,
+              description: resolved.meta.description,
+            };
+          })}
           placeholder={t("calculators.searchPlaceholder")}
+          ariaLabel={t("search.ariaLabel")}
+          resultsLabel={t("search.resultsFound")}
         />
       </div>
 
@@ -99,7 +116,7 @@ export default async function CalculatorsPage() {
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
                   <CategoryIcon identifier={meta?.icon} className="w-6 h-6" />
-                  {meta?.name ?? cat}
+                  {t("category." + getCategoryTranslationKey(cat))}
                 </h2>
                 <Link href={`/${cat}`} className="text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300">
                   {t("calculators.viewAll")}
@@ -107,24 +124,27 @@ export default async function CalculatorsPage() {
               </div>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{meta?.description}</p>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {catCalcs.map((calc) => (
+                {catCalcs.map((calc) => {
+                  const resolved = resolveLocaleConfig(calc, locale as SupportedLocale);
+                  return (
                   <Link
                     key={calc.slug}
                     href={`/${calc.category}/${calc.slug}`}
                     className="group rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
                   >
                     <h3 className="font-heading text-base font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors flex items-center gap-2">
-                      {calc.meta.title}
+                      {resolved.meta.title}
                       {calc.isNew && (
                         <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300 shrink-0">
                           <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20" }}>star</span>
-                          New
+                          {t("common.new")}
                         </span>
                       )}
                     </h3>
-                    <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{calc.meta.description}</p>
+                    <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{resolved.meta.description}</p>
                   </Link>
-                ))}
+                  );
+                })}
               </div>
             </section>
           );

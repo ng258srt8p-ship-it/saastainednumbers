@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SidekickAd } from "@/components/SidekickAd";
 import { alternateLanguages, localeUrl } from "@/lib/locale-url";
+import { getTranslations } from "@/lib/getTranslations";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -45,6 +46,8 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = getAllPosts().find((p) => p.slug === slug);
   if (!post) notFound();
 
+  const { t } = await getTranslations();
+
   const blogPosting = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -66,7 +69,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
       <div className="mx-auto max-w-3xl px-4 py-12">
         <Link href="/blog" className="text-sm text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 mb-4 inline-block">
-          &larr; Back to Blog
+          {t("blog.backToBlog")}
         </Link>
         <article>
           <header className="mb-8">

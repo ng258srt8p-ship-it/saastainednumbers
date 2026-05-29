@@ -238,7 +238,6 @@ export function DashboardClient({ strings }: DashboardClientProps) {
 
       <div className="mb-6 space-y-6">
         <DashboardTotalWidget allOutputs={allResults} locale={strings.locale as Locale} />
-        <SidekickAd />
       </div>
 
       {selectedConfigs.length === 0 ? (
@@ -307,16 +306,8 @@ export function DashboardClient({ strings }: DashboardClientProps) {
         </div>
       )}
 
-      <div className="mt-8 flex items-center justify-center">
-        <a
-          rel="sponsored"
-          href="https://shopify.pxf.io/c/7346865/3797165/13624"
-          target="_blank"
-          className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-br from-brand-600 to-brand-900 px-3 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:from-brand-500 hover:to-brand-800"
-        >
-          <img src="/shopify-icon.png" alt="" className="w-4 h-4" aria-hidden />
-          <span>Shopify</span>
-        </a>
+      <div className="mb-6">
+        <SidekickAd />
       </div>
 
       {pickerOpen && (

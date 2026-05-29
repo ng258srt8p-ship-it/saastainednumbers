@@ -1,34 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllCalculators, getAllKnownCategories, CATEGORY_META } from "@/lib/registry";
+import { getAllCalculators, getAllKnownCategories, CATEGORY_META, getCategoryTranslationKey } from "@/lib/registry";
+import { resolveLocaleConfig } from "@/lib/resolve-calculator-locale";
+import type { SupportedLocale } from "@/calculators/config/calculator-schema";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
-import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 import { getTranslations } from "@/lib/getTranslations";
-
-const CALC_COUNT = getAllCalculators().length;
-const CAT_COUNT = getAllKnownCategories().length;
-
-export const metadata: Metadata = {
-  title: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
-  description: `${CALC_COUNT} free, instant calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account or sign-up required.`,
-  alternates: {
-    canonical: localeUrl("/"),
-    languages: alternateLanguages("/"),
-  },
-  openGraph: {
-    title: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
-    description: `${CALC_COUNT} free, instant calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account or sign-up required.`,
-    images: ["/api/og?title=SaaStainedNumbers&category=home"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
-    description: `${CALC_COUNT} free, instant calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account or sign-up required.`,
-    images: ["/api/og?title=SaaStainedNumbers&category=home"],
-  },
-};
-
+import { getCurrencySymbol } from "@/lib/formatNumber";
+import type { Locale } from "@/lib/useLocale";
 
 import "@/calculators/config/_all";
 
@@ -50,12 +28,21 @@ const popularCalculators = [
 ];
 
 export default async function Home() {
-  const { t } = await getTranslations();
+  const { t, locale } = await getTranslations();
   const calculators = getAllCalculators();
   const categories = getAllKnownCategories();
   const calcBySlug = Object.fromEntries(calculators.map((c) => [`${c.category}/${c.slug}`, c]));
   const totalCount = calculators.length;
   const countByCategory = (slug: string) => calculators.filter((c) => c.category === slug).length;
+  const currencySymbol = getCurrencySymbol(locale as Locale);
+
+  const heroLine1 = t("home.heroLine1");
+  const heroLine1First = heroLine1.split(" ")[0];
+  const heroLine1Rest = heroLine1.split(" ").slice(1).join(" ");
+
+  const heroLine2 = t("home.heroLine2");
+  const heroLine2First = heroLine2.split(" ").slice(0, -1).join(" ");
+  const heroLine2Last = heroLine2.split(" ").pop() || "";
 
   return (
     <div className="flex flex-col flex-1">
@@ -65,11 +52,11 @@ export default async function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#00838720,_transparent_50%)]" />
         <div className="relative mx-auto max-w-5xl text-center">
           <h1 className="font-heading text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            <span className="font-numbers">Know</span> your numbers.
+            <span className="font-numbers">{heroLine1First}</span> {heroLine1Rest}
             <br />
-              <span className="bg-gradient-to-r from-brand-300 to-brand-400 bg-clip-text text-transparent">
-                Sustain your <span className="font-numbers">growth</span>.
-              </span>
+            <span className="bg-gradient-to-r from-brand-300 to-brand-400 bg-clip-text text-transparent">
+              {heroLine2First} <span className="font-numbers">{heroLine2Last}</span>
+            </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-brand-300">
             <span className="font-numbers">{totalCount}</span> {t("home.heroSubtitle")}
@@ -90,12 +77,18 @@ export default async function Home() {
           </div>
           <div className="mt-8 flex justify-center">
             <CalculatorSearch
-              calculators={calculators.map((c) => ({
-                slug: c.slug,
-                category: c.category,
-                title: c.meta.title,
-                description: c.meta.description,
-              }))}
+              calculators={calculators.map((c) => {
+                const resolved = resolveLocaleConfig(c, locale as SupportedLocale);
+                return {
+                  slug: c.slug,
+                  category: c.category,
+                  title: resolved.meta.title,
+                  description: resolved.meta.description,
+                };
+              })}
+              placeholder={t("category.searchPlaceholder")}
+              ariaLabel={t("search.ariaLabel")}
+              resultsLabel={t("search.resultsFound")}
             />
           </div>
           <div className="mt-16 grid grid-cols-3 gap-8 border-t border-brand-800/50 pt-10">
@@ -108,7 +101,7 @@ export default async function Home() {
               <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">{t("home.categories")}</p>
             </div>
             <div>
-              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">$0</p>
+              <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">{currencySymbol}0</p>
               <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">{t("home.toStart")}</p>
             </div>
           </div>
@@ -126,6 +119,7 @@ export default async function Home() {
             {popularCalculators.map(({ slug, category }) => {
               const calc = calcBySlug[`${category}/${slug}`];
               if (!calc) return null;
+              const resolved = resolveLocaleConfig(calc, locale as SupportedLocale);
               return (
                 <Link
                   key={slug}
@@ -133,18 +127,18 @@ export default async function Home() {
                   className="group rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
                 >
                   <span className="text-xs font-medium uppercase tracking-wider text-brand-500 dark:text-brand-400">
-                    {CATEGORY_META[calc.category]?.name ?? calc.category}
+                    {t("category." + getCategoryTranslationKey(calc.category))}
                   </span>
                   <h3 className="mt-2 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 transition-colors flex items-center gap-2">
-                    {calc.meta.title}
+                    {resolved.meta.title}
                     {calc.isNew && (
                       <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300 shrink-0">
                         <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20" }}>star</span>
-                        New
+                        {t("common.new")}
                       </span>
                     )}
                   </h3>
-                  <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{calc.meta.description}</p>
+                  <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{resolved.meta.description}</p>
                   <span className="mt-4 inline-flex items-center text-sm font-medium text-brand-600 dark:text-brand-400 opacity-0 transition-opacity group-hover:opacity-100">
                     {t("home.openCalculator")}
                   </span>
@@ -161,7 +155,7 @@ export default async function Home() {
           <SectionLabel num={2} />
           <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">{t("home.browseByCategory")}</h2>
           <p className="mt-3 text-gray-500 dark:text-gray-400">
-            <span className="font-numbers">{categories.length}</span> categories, <span className="font-numbers">{totalCount}</span> calculators. Pick your path.
+            {t("home.categoriesSubtitle")}
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((cat) => {
@@ -175,7 +169,7 @@ export default async function Home() {
                 >
                   <CategoryIcon identifier={meta?.icon} className="w-10 h-10" />
                   <div className="mt-4 flex items-center justify-between">
-                    <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">{meta?.name ?? cat}</h3>
+                    <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">{t("category." + getCategoryTranslationKey(cat))}</h3>
                     <span className="rounded-full bg-brand-50 dark:bg-brand-900/40 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:text-brand-300">
                       <span className="font-numbers">{count}</span>
                     </span>
@@ -254,7 +248,7 @@ export default async function Home() {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.industryStandardData")}</p>
             </div>
             <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
-              <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">$0</p>
+              <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">{currencySymbol}0</p>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.alwaysFree")}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.noPaywalls")}</p>
             </div>
@@ -280,7 +274,6 @@ export default async function Home() {
             >
               {t("home.browseCalculators")}
             </Link>
-
           </div>
         </div>
       </section>

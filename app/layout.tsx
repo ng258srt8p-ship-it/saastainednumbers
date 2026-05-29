@@ -7,6 +7,7 @@ import { ShowWhenNotEmbed } from "@/components/ShowWhenNotEmbed";
 import { Nav } from "@/components/Nav";
 import { getTranslations } from "@/lib/getTranslations";
 import { alternateLanguages, localeUrl } from "@/lib/locale-url";
+import { getAllKnownCategories, getCategoryTranslationKey } from "@/lib/registry";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,46 +29,51 @@ const permanentMarker = Permanent_Marker({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
+export async function generateMetadata(): Promise<Metadata> {
+  const title = {
     template: "%s | SaaStainedNumbers",
     default: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
-  },
-  description:
-    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account or sign-up required.",
-  metadataBase: new URL("https://saastainednumbers.com"),
-  icons: {
-    icon: "/favicon.png",
-    apple: "/apple-touch-icon.png",
-  },
-  openGraph: {
-    type: "website",
-    siteName: "SaaStainedNumbers",
-    images: ["/api/og?title=SaaStainedNumbers"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "SaaStainedNumbers",
-    description:
-      "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account or sign-up required.",
-    images: ["/api/og?title=SaaStainedNumbers"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: localeUrl("/"),
-    languages: alternateLanguages("/"),
-  },
-};
+  };
+  const description = "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account or sign-up required.";
+  return {
+    title,
+    description,
+    metadataBase: new URL("https://saastainednumbers.com"),
+    icons: {
+      icon: "/favicon.png",
+      apple: "/apple-touch-icon.png",
+    },
+    openGraph: {
+      type: "website",
+      siteName: "SaaStainedNumbers",
+      images: ["/api/og?title=SaaStainedNumbers"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "SaaStainedNumbers",
+      description,
+      images: ["/api/og?title=SaaStainedNumbers"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: localeUrl("/"),
+      languages: alternateLanguages("/"),
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { locale } = await getTranslations();
+  const { t, locale } = await getTranslations();
+
+  const categorySlugs = getAllKnownCategories();
+
   return (
     <html lang={locale} className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
@@ -87,7 +93,7 @@ export default async function RootLayout({
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
         >
-          Skip to content
+          {t("common.skipToContent")}
         </a>
           <ShowWhenNotEmbed><Nav /></ShowWhenNotEmbed>
           <main id="main-content" className="flex-1">
@@ -97,41 +103,39 @@ export default async function RootLayout({
           <div className="mx-auto max-w-6xl px-4 py-10">
             <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-6 sm:gap-8 lg:gap-12">
               <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Product</h3>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("footer.product")}</h3>
                 <ul className="mt-3 space-y-2">
-                  <li><Link href="/" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Home</Link></li>
-                  <li><Link href="/calculators" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">All Calculators</Link></li>
-                  <li><Link href="/pricing" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Pricing</Link></li>
-                  <li><Link href="/dashboard" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Dashboard</Link></li>
+                  <li><Link href="/" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("common.home")}</Link></li>
+                  <li><Link href="/calculators" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("category.all")}</Link></li>
+                  <li><Link href="/pricing" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.pricing")}</Link></li>
+                  <li><Link href="/dashboard" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.dashboard")}</Link></li>
                 </ul>
               </div>
               <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">Categories</h3>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.categories")}</h3>
                 <ul className="mt-3 space-y-2">
-                  <li><Link href="/revenue" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Revenue</Link></li>
-                  <li><Link href="/unit-economics" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Unit Economics</Link></li>
-                  <li><Link href="/growth-efficiency" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Growth & Efficiency</Link></li>
-                  <li><Link href="/churn-retention" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Churn & Retention</Link></li>
-                  <li><Link href="/ai-cost" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">AI Cost</Link></li>
-                  <li><Link href="/side-hustle" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Side Hustle</Link></li>
-                  <li><Link href="/personal-finance" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Personal Finance</Link></li>
-                  <li><Link href="/general-business" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">General Business</Link></li>
-                  <li><Link href="/saas-deepen" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">SaaS Deepen</Link></li>
+                  {categorySlugs.map((slug) => (
+                    <li key={slug}>
+                      <Link href={`/${slug}`} className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">
+                        {t(`category.${getCategoryTranslationKey(slug)}`)}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">Resources</h3>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.resources")}</h3>
                 <ul className="mt-3 space-y-2">
-                  <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Blog</Link></li>
+                  <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.blog")}</Link></li>
                 </ul>
               </div>
               <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">Legal</h3>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.legal")}</h3>
                 <ul className="mt-3 space-y-2">
-                  <li><Link href="/legal#disclaimer" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Disclaimer</Link></li>
-                  <li><Link href="/legal#privacy" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Privacy Policy</Link></li>
-                  <li><Link href="/legal#terms" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Terms of Service</Link></li>
-                  <li><Link href="/legal#cookies" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">Cookie Policy</Link></li>
+                  <li><Link href="/legal#disclaimer" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.disclaimer")}</Link></li>
+                  <li><Link href="/legal#privacy" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.privacyPolicy")}</Link></li>
+                  <li><Link href="/legal#terms" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.termsOfService")}</Link></li>
+                  <li><Link href="/legal#cookies" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.cookiePolicy")}</Link></li>
                 </ul>
               </div>
             </div>
@@ -141,11 +145,10 @@ export default async function RootLayout({
                   <polygon points="20,70 60,70 40,40" fill="#008387" stroke="#008387" strokeWidth="5" strokeLinejoin="round"/>
                   <polygon points="26,32 54,32 40,10" fill="#143562" stroke="#143562" strokeWidth="5" strokeLinejoin="round"/>
                 </svg>
-                <p className="text-xs text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} SaaStainedNumbers.</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} {t("footer.copyright")}.</p>
               </div>
               <div className="flex gap-4">
-                <Link href="/blog" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">Blog</Link>
-
+                <Link href="/blog" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("nav.blog")}</Link>
               </div>
             </div>
           </div>

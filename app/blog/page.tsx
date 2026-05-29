@@ -3,28 +3,33 @@ import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
 import { SidekickAd } from "@/components/SidekickAd";
 import { alternateLanguages, localeUrl } from "@/lib/locale-url";
+import { getTranslations } from "@/lib/getTranslations";
 
-export const metadata: Metadata = {
-  title: "Blog  -  SaaStainedNumbers",
-  description: "SaaS metrics insights, tutorials, and industry benchmarks. Learn how to calculate and improve MRR, CAC, LTV, churn, and more.",
-  alternates: {
-    canonical: localeUrl("/blog"),
-    languages: alternateLanguages("/blog"),
-  },
-  openGraph: {
-    title: "Blog  -  SaaStainedNumbers",
-    description: "SaaS metrics insights, tutorials, and industry benchmarks. Learn how to calculate and improve MRR, CAC, LTV, churn, and more.",
-    images: ["/api/og?title=Blog&category=home"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog  -  SaaStainedNumbers",
-    description: "SaaS metrics insights, tutorials, and industry benchmarks. Learn how to calculate and improve MRR, CAC, LTV, churn, and more.",
-    images: ["/api/og?title=Blog&category=home"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  return {
+    title: `${t("blog.title")} — SaaStainedNumbers`,
+    description: t("blog.subtitle"),
+    alternates: {
+      canonical: localeUrl("/blog"),
+      languages: alternateLanguages("/blog"),
+    },
+    openGraph: {
+      title: `${t("blog.title")} — SaaStainedNumbers`,
+      description: t("blog.subtitle"),
+      images: ["/api/og?title=Blog&category=home"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t("blog.title")} — SaaStainedNumbers`,
+      description: t("blog.subtitle"),
+      images: ["/api/og?title=Blog&category=home"],
+    },
+  };
+}
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const { t } = await getTranslations();
   const posts = getAllPosts();
 
   const [featured, ...rest] = posts;
@@ -32,9 +37,9 @@ export default function BlogPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
       <div className="mb-12">
-        <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">Blog</h1>
+        <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">{t("blog.title")}</h1>
         <p className="mt-2 text-gray-500 dark:text-gray-400">
-          SaaS metrics insights, tutorials, and industry benchmarks.
+          {t("blog.subtitle")}
         </p>
       </div>
 
@@ -44,7 +49,7 @@ export default function BlogPage() {
 
       {featured && (
         <section className="mb-16">
-          <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Featured Post</h2>
+          <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">{t("blog.featuredPost")}</h2>
           <Link
             href={`/blog/${featured.slug}`}
             className="group block rounded-2xl border border-gray-100 dark:border-gray-700 bg-gradient-to-br from-brand-50 dark:from-brand-900/30 to-white dark:to-gray-800 p-8 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
@@ -55,7 +60,7 @@ export default function BlogPage() {
             </h3>
             <p className="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">{featured.description}</p>
             <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand-600 dark:text-brand-400">
-              Read article <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+              {t("blog.readArticle")}
             </span>
           </Link>
         </section>
@@ -63,7 +68,7 @@ export default function BlogPage() {
 
       {rest.length > 0 && (
         <section>
-          <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">All Articles</h2>
+          <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">{t("blog.allArticles")}</h2>
           <div className="grid gap-6 sm:grid-cols-2">
             {rest.map((post) => (
               <Link
@@ -77,7 +82,7 @@ export default function BlogPage() {
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">{post.description}</p>
                 <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-brand-600 dark:text-brand-400 opacity-0 transition-opacity group-hover:opacity-100">
-                  Read more <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+                  {t("blog.readMore")}
                 </span>
               </Link>
             ))}
