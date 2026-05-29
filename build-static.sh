@@ -53,6 +53,11 @@ for locale in "${LOCALES[@]}"; do
       cp "$file" "$dest"
     done
 
+    # Copy _next/static assets so locale HTML can find its CSS/JS chunks
+    if [ -d "out/_next" ]; then
+      cp -r out/_next out-final/
+    fi
+
     # Copy .nojekyll and root metadata files
     for f in out/.nojekyll out/robots.txt; do
       if [ -f "$f" ]; then
