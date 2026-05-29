@@ -306,7 +306,7 @@ export function DashboardClient({ strings }: DashboardClientProps) {
         </div>
       )}
 
-      <div className="mb-6">
+      <div className="mt-10 mb-6">
         <SidekickAd />
       </div>
 
