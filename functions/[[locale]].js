@@ -1,7 +1,7 @@
 const LOCALES = ["en", "es", "de", "pt", "fr", "ja"];
 
 export async function onRequest(context) {
-  const { request, next, env } = context;
+  const { request, next } = context;
   const url = new URL(request.url);
   const { pathname } = url;
 
@@ -14,24 +14,17 @@ export async function onRequest(context) {
     return next();
   }
 
-  const parts = pathname.split("/").filter(Boolean);
-  const first = parts[0];
+  const first = pathname.split("/").filter(Boolean)[0];
 
-  // If path starts with a known locale, strip prefix and set cookie
+  // Locale-prefixed URLs: serve the pre-built static file directly (already at this path)
+  // and set the locale cookie for client-side detection
   if (first && LOCALES.includes(first)) {
-    const locale = first;
-    const restPath = "/" + parts.slice(1).join("/");
-
-    // Fetch static file from the unprefixed path
-    const assetUrl = new URL(restPath, url.origin);
-    const response = await env.ASSETS.fetch(assetUrl);
-
+    const response = await context.env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
     headers.set(
       "Set-Cookie",
-      `locale=${locale};path=/;max-age=31536000;SameSite=Lax`
+      `locale=${first};path=/;max-age=31536000;SameSite=Lax`
     );
-
     return new Response(response.body, {
       status: response.status,
       statusText: response.statusText,

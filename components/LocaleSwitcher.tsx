@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { Locale } from "@/lib/useLocale";
+import { detectLocaleFromPath, switchLocalePath } from "@/lib/locale-url";
 
 const locales: { code: Locale; label: string }[] = [
   { code: "en", label: "English" },
@@ -12,23 +13,25 @@ const locales: { code: Locale; label: string }[] = [
   { code: "ja", label: "日本語" },
 ];
 
-function getCurrentFromCookie(): Locale {
-  if (typeof document === "undefined") return "en";
-  const match = document.cookie.match(/(?:^|;\s*)locale=([^;]*)/);
-  if (match && ["en", "es", "de", "pt", "fr", "ja"].includes(match[1])) {
-    return match[1] as Locale;
+function getCurrentLocale(): Locale {
+  if (typeof window !== "undefined") {
+    const fromPath = detectLocaleFromPath(window.location.pathname);
+    if (fromPath !== "en") return fromPath;
+    const match = document.cookie.match(/(?:^|;\s*)locale=([^;]*)/);
+    if (match && ["en", "es", "de", "pt", "fr", "ja"].includes(match[1])) {
+      return match[1] as Locale;
+    }
   }
   return "en";
 }
 
 export function LocaleSwitcher() {
   const [open, setOpen] = useState(false);
-  const [current, setCurrent] = useState<Locale>(getCurrentFromCookie);
+  const current = useMemo(getCurrentLocale, []);
 
   const switchLocale = useCallback((code: Locale) => {
     document.cookie = `locale=${code};path=/;max-age=31536000;SameSite=Lax`;
-    setCurrent(code);
-    window.location.reload();
+    window.location.href = switchLocalePath(window.location.pathname, code);
   }, []);
 
   return (

@@ -29,7 +29,7 @@ function getNestedValue(obj: Messages, path: string): string {
 }
 
 export async function getTranslations() {
-  let locale = "en";
+  let locale = (process.env.NEXT_PUBLIC_LOCALE as string) || "en";
   try {
     const cookieStore = await cookies();
     const localeCookie = cookieStore.get("locale")?.value;
