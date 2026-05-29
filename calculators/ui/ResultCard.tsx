@@ -3,6 +3,7 @@
 import type { HealthStatus } from "@/lib/benchmarks";
 import { getHealthLabel, getHealthColor, getHealthStatus, getBarColor, getGradientPercent } from "@/lib/benchmarks";
 import { formatCurrency, formatNumber, formatPercent, formatRatio } from "@/lib/formatNumber";
+import type { Locale } from "@/lib/useLocale";
 
 interface ResultCardProps {
   label: string;
@@ -14,28 +15,29 @@ interface ResultCardProps {
   metricKey?: string;
   rawValue?: number;
   stage?: "seed" | "series-a" | "series-b" | "series-c" | "growth";
+  locale?: Locale;
 }
 
-function formatResult(value: string, type: string): string {
+function formatResult(value: string, type: string, locale?: Locale): string {
   const num = parseFloat(value.replace(/[$,%]/g, ""));
   if (isNaN(num)) return value;
 
   switch (type) {
     case "currency":
-      return formatCurrency(num);
+      return formatCurrency(num, locale);
     case "percentage":
-      return formatPercent(num);
+      return formatPercent(num, locale);
     case "ratio":
-      return formatRatio(num);
+      return formatRatio(num, locale);
     case "text":
       return value;
     default:
-      return formatNumber(num);
+      return formatNumber(num, locale);
   }
 }
 
-export function ResultCard({ label, value, type, isPrimary, prefix, suffix, metricKey, rawValue, stage = "series-a" }: ResultCardProps) {
-  const formatted = formatResult(value, type);
+export function ResultCard({ label, value, type, isPrimary, prefix, suffix, metricKey, rawValue, stage = "series-a", locale }: ResultCardProps) {
+  const formatted = formatResult(value, type, locale);
 
   const health: HealthStatus | null = metricKey && rawValue !== undefined ? getHealthStatus(metricKey, rawValue, stage) : null;
 

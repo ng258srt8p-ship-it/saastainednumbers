@@ -1,6 +1,7 @@
 "use client";
 
 import { formatCurrency } from "@/lib/formatNumber";
+import type { Locale } from "@/lib/useLocale";
 
 interface TotalMetric {
   label: string;
@@ -8,7 +9,7 @@ interface TotalMetric {
   type: "revenue" | "cost" | "ratio" | "metric";
 }
 
-export function DashboardTotalWidget({ allOutputs }: { allOutputs: Map<string, Record<string, number>> }) {
+export function DashboardTotalWidget({ allOutputs, locale }: { allOutputs: Map<string, Record<string, number>>; locale?: Locale }) {
   let totalMRR = 0;
   let totalARR = 0;
   let totalCAC = 0;
@@ -51,22 +52,22 @@ export function DashboardTotalWidget({ allOutputs }: { allOutputs: Map<string, R
   const metrics: TotalMetric[] = [];
 
   if (totalMRR > 0) {
-    metrics.push({ label: "Total MRR", value: formatCurrency(totalMRR), type: "revenue" });
+    metrics.push({ label: "Total MRR", value: formatCurrency(totalMRR, locale), type: "revenue" });
   }
   if (totalARR > 0) {
-    metrics.push({ label: "Total ARR", value: formatCurrency(totalARR), type: "revenue" });
+    metrics.push({ label: "Total ARR", value: formatCurrency(totalARR, locale), type: "revenue" });
   }
   if (totalRevenue > 0) {
-    metrics.push({ label: "Total Revenue", value: formatCurrency(totalRevenue), type: "revenue" });
+    metrics.push({ label: "Total Revenue", value: formatCurrency(totalRevenue, locale), type: "revenue" });
   }
   if (totalCAC > 0) {
-    metrics.push({ label: "Total CAC", value: formatCurrency(totalCAC), type: "cost" });
+    metrics.push({ label: "Total CAC", value: formatCurrency(totalCAC, locale), type: "cost" });
   }
   if (totalCosts > 0) {
-    metrics.push({ label: "Total Costs", value: formatCurrency(totalCosts), type: "cost" });
+    metrics.push({ label: "Total Costs", value: formatCurrency(totalCosts, locale), type: "cost" });
   }
   if (ltvCount > 0) {
-    metrics.push({ label: "Avg LTV", value: formatCurrency(ltvSum / ltvCount), type: "revenue" });
+    metrics.push({ label: "Avg LTV", value: formatCurrency(ltvSum / ltvCount, locale), type: "revenue" });
   }
   if (bestLtvCac > 0) {
     metrics.push({ label: "LTV:CAC", value: bestLtvCac.toFixed(1) + "x", type: "ratio" });

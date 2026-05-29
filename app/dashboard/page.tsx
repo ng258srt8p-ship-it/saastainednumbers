@@ -26,10 +26,11 @@ function DashboardSkeleton() {
 }
 
 export default async function DashboardPage() {
-  const { t } = await getTranslations();
+  const { t, locale } = await getTranslations();
   return (
     <Suspense fallback={<DashboardSkeleton />}>
       <DashboardClient strings={{
+        locale,
         heading: t("dashboard.heading"),
         subtitle: t("dashboard.subtitle"),
         share: t("dashboard.share"),

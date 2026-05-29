@@ -5,7 +5,8 @@ import type { CalculatorConfig } from "@/calculators/config/calculator-schema";
 import { InputSlider } from "@/calculators/ui/InputSlider";
 import { engines } from "@/lib/engine-registry";
 import { Insights } from "@/components/Insights";
-import { formatCurrency, formatNumber, formatPercent } from "@/lib/formatNumber";
+import { formatCurrency, formatNumber, formatPercent, getCurrencySymbol } from "@/lib/formatNumber";
+import type { Locale } from "@/lib/useLocale";
 
 interface DashboardWidgetProps {
   config: CalculatorConfig;
@@ -13,6 +14,7 @@ interface DashboardWidgetProps {
   onChange: (id: string, value: number) => void;
   wiredValues: Record<string, number>;
   slug: string;
+  locale?: Locale;
 }
 
 function formatCompact(n: number): string {
@@ -22,15 +24,15 @@ function formatCompact(n: number): string {
   return formatNumber(n);
 }
 
-function formatOutput(value: number | string, type: string): string {
+function formatOutput(value: number | string, type: string, locale?: Locale): string {
   if (type === "text") return String(value);
   if (typeof value !== "number") return String(value);
   if (!Number.isFinite(value)) return "—";
   switch (type) {
     case "currency":
-      return formatCurrency(value);
+      return formatCurrency(value, locale);
     case "percentage":
-      return formatPercent(value);
+      return formatPercent(value, locale);
     case "ratio":
       return value.toFixed(1);
     default:
@@ -38,7 +40,7 @@ function formatOutput(value: number | string, type: string): string {
   }
 }
 
-export function DashboardWidget({ config, values, onChange, wiredValues, slug }: DashboardWidgetProps) {
+export function DashboardWidget({ config, values, onChange, wiredValues, slug, locale }: DashboardWidgetProps) {
   const [expanded, setExpanded] = useState(false);
 
   const results = useMemo(() => {
@@ -66,19 +68,19 @@ export function DashboardWidget({ config, values, onChange, wiredValues, slug }:
       }
       let displayPrimary: string | undefined;
       if (primaryValue !== undefined) {
-        displayPrimary = formatOutput(primaryValue, primaryType);
+        displayPrimary = formatOutput(primaryValue, primaryType, locale);
       } else {
         const first = config.outputs[0];
         if (first) {
           const fv = outputs[first.id];
-          displayPrimary = fv !== undefined ? formatOutput(fv, first.type) : undefined;
+          displayPrimary = fv !== undefined ? formatOutput(fv, first.type, locale) : undefined;
         }
       }
       return { outputs, displayPrimary };
     } catch {
       return { outputs: {} as Record<string, number | string>, displayPrimary: undefined };
     }
-  }, [values, wiredValues, config, slug]);
+  }, [values, wiredValues, config, slug, locale]);
 
   const wiredInputs = useMemo(() => new Set(Object.keys(wiredValues)), [wiredValues]);
 
@@ -155,7 +157,7 @@ export function DashboardWidget({ config, values, onChange, wiredValues, slug }:
                     </div>
                     <div className="flex items-center justify-between rounded-xl border border-brand-200 dark:border-brand-800 bg-brand-50/50 dark:bg-brand-950/20 px-3 py-2.5 text-sm text-gray-700 dark:text-gray-300">
                       <span className="font-medium">{wiredValues[input.id] ?? values[input.id] ?? input.defaultValue}</span>
-                      {input.type === "currency" && <span className="text-gray-400">$</span>}
+                      {input.type === "currency" && <span className="text-gray-400">{getCurrencySymbol(locale)}</span>}
                     </div>
                   </div>
                 ) : (
@@ -168,6 +170,7 @@ export function DashboardWidget({ config, values, onChange, wiredValues, slug }:
                     min={input.min}
                     max={input.max}
                     placeholder={input.placeholder}
+                    locale={locale}
                   />
                 )}
               </div>
@@ -190,7 +193,7 @@ export function DashboardWidget({ config, values, onChange, wiredValues, slug }:
                         : "text-gray-900 dark:text-gray-100"
                     }`}
                   >
-                    {formatOutput(val, output.type)}
+                    {formatOutput(val, output.type, locale)}
                   </span>
                 </div>
               );

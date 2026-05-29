@@ -3,6 +3,7 @@
 import type { CalculatorConfig } from "@/calculators/config/calculator-schema";
 import { CalculatorShell } from "@/calculators/ui/CalculatorShell";
 import { InputSlider } from "@/calculators/ui/InputSlider";
+import type { Locale } from "@/lib/useLocale";
 import { ResultCard } from "@/calculators/ui/ResultCard";
 import { CompareToggle } from "@/calculators/ui/CompareToggle";
 import { ComparisonChart } from "@/calculators/ui/ComparisonChart";
@@ -32,6 +33,7 @@ interface Props {
   relatedCalculators?: RelatedCalc[];
   hideContent?: boolean;
   strings?: {
+    locale: string;
     sectionHowToUse: string;
     sectionFormula: string;
     sectionBenchmarks: string;
@@ -315,6 +317,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
                 type={input.type}
                 value={valuesA[input.id] ?? 0}
                 onChange={(val) => setValue("a", input.id, val)}
+                locale={strings?.locale as Locale | undefined}
               />
             ))}
           </div>
@@ -331,6 +334,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
                 type={input.type}
                 value={valuesB[input.id] ?? 0}
                 onChange={(val) => setValue("b", input.id, val)}
+                locale={strings?.locale as Locale | undefined}
               />
             ))}
           </div>
@@ -346,6 +350,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
                 type={input.type}
                 value={valuesA[input.id] ?? 0}
                 onChange={(val) => setValue("a", input.id, val)}
+                locale={strings?.locale as Locale | undefined}
               />
             ))}
             <button
@@ -358,7 +363,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
           </div>
           <div className="flex-1 space-y-3" aria-live="polite" aria-label="Calculation results">
             {resultsA.map((r) => (
-              <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} />
+              <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} locale={strings?.locale as Locale | undefined} />
             ))}
           </div>
         </div>
@@ -400,7 +405,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">{strings?.scenarioA ?? "Scenario A"}</span>
               </div>
               {resultsA.map((r) => (
-                <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} />
+                <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} locale={strings?.locale as Locale | undefined} />
               ))}
             </div>
             <div className="flex-1 space-y-3">
@@ -412,10 +417,10 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
                 const other = resultsA.find((ra) => ra.id === r.id);
                 return (
                   <div key={r.id} className="relative">
-                    <ResultCard value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} />
+                    <ResultCard value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} locale={strings?.locale as Locale | undefined} />
                     {other && (
                       <div className="mt-1 flex justify-center">
-                        <DeltaBadge valueA={typeof other.value === "number" ? other.value : 0} valueB={typeof r.value === "number" ? r.value : 0} type={r.type} mode={deltaMode} />
+                        <DeltaBadge valueA={typeof other.value === "number" ? other.value : 0} valueB={typeof r.value === "number" ? r.value : 0} type={r.type} mode={deltaMode} locale={strings?.locale as Locale | undefined} />
                       </div>
                     )}
                   </div>

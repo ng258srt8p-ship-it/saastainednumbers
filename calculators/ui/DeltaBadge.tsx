@@ -1,6 +1,7 @@
 "use client";
 
 import { formatCurrency, formatNumber, formatPercent, formatRatio } from "@/lib/formatNumber";
+import type { Locale } from "@/lib/useLocale";
 
 export type DeltaMode = "absolute" | "percent" | "both";
 
@@ -9,22 +10,23 @@ interface DeltaBadgeProps {
   valueB: number;
   type: "currency" | "percentage" | "number" | "ratio" | "text";
   mode: DeltaMode;
+  locale?: Locale;
 }
 
-function formatValue(val: number, type: string): string {
+function formatValue(val: number, type: string, locale?: Locale): string {
   switch (type) {
     case "currency":
-      return formatCurrency(val);
+      return formatCurrency(val, locale);
     case "percentage":
-      return formatPercent(val);
+      return formatPercent(val, locale);
     case "ratio":
-      return formatRatio(val);
+      return formatRatio(val, locale);
     default:
-      return formatNumber(val);
+      return formatNumber(val, locale);
   }
 }
 
-export function DeltaBadge({ valueA, valueB, type, mode }: DeltaBadgeProps) {
+export function DeltaBadge({ valueA, valueB, type, mode, locale }: DeltaBadgeProps) {
   if (type === "text") return null;
 
   const diff = valueB - valueA;
@@ -43,7 +45,7 @@ export function DeltaBadge({ valueA, valueB, type, mode }: DeltaBadgeProps) {
     <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-semibold leading-tight ${colorClass}`}>
       {!isNeutral && <span>{arrow}</span>}
       {mode === "absolute" || mode === "both" ? (
-        <span>{isPositive ? "+" : ""}{formatValue(Math.abs(diff), type)}</span>
+        <span>{isPositive ? "+" : ""}{formatValue(Math.abs(diff), type, locale)}</span>
       ) : null}
       {mode === "both" && <span className="opacity-50">|</span>}
       {mode === "percent" || mode === "both" ? (

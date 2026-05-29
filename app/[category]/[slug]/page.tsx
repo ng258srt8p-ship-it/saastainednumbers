@@ -62,6 +62,7 @@ export default async function CalculatorPage({ params }: PageProps) {
   const related = getRelatedCalculators(slug, 4);
 
   const strings = {
+    locale,
     sectionHowToUse: t("calculator.howToUse"),
     sectionFormula: t("calculator.formulaAndExample"),
     sectionBenchmarks: t("calculator.industryBenchmarks"),

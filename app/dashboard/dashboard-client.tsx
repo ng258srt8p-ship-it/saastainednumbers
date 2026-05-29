@@ -6,6 +6,7 @@ import { DashboardWidget } from "@/components/DashboardWidget";
 import { DashboardTotalWidget } from "@/components/DashboardTotalWidget";
 import { DashboardCalculatorPicker } from "@/components/DashboardCalculatorPicker";
 import { SidekickAd } from "@/components/SidekickAd";
+import type { Locale } from "@/lib/useLocale";
 import { getAllCalculators } from "@/lib/registry";
 import { getCalculator } from "@/lib/registry";
 import { engines } from "@/lib/engine-registry";
@@ -13,6 +14,7 @@ import { findInputWiring, TEMPLATES } from "@/lib/dashboard-wiring";
 import "@/calculators/config/_all";
 
 interface DashboardStrings {
+  locale: string;
   heading: string;
   subtitle: string;
   share: string;
@@ -235,7 +237,7 @@ export function DashboardClient({ strings }: DashboardClientProps) {
       </div>
 
       <div className="mb-6 space-y-6">
-        <DashboardTotalWidget allOutputs={allResults} />
+        <DashboardTotalWidget allOutputs={allResults} locale={strings.locale as Locale} />
         <SidekickAd />
       </div>
 
@@ -275,6 +277,7 @@ export function DashboardClient({ strings }: DashboardClientProps) {
                 values={inputValuesBySlug[config.slug] ?? {}}
                 onChange={(id, value) => setInput(config.slug, id, value)}
                 wiredValues={wiredValuesBySlug[config.slug] ?? {}}
+                locale={strings.locale as Locale}
               />
             </WidgetErrorBoundary>
           ))}
