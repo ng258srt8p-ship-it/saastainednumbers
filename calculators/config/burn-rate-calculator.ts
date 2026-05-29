@@ -46,6 +46,98 @@ const config = {
       { question: "How can I improve my burn multiple?", answer: "Reduce non-essential spend, focus on higher-margin revenue streams, improve pricing, reduce churn (which boosts net new ARR without additional spend), and prioritize features that drive retention." },
     ],
   },
+  locales: {
+    es: {
+      meta: {
+        title: "Calculadora de Tasa de Consumo y Múltiplo de Consumo",
+        description: "Calcula tu tasa de consumo bruto mensual, tasa de consumo neto, pista de efectivo y múltiplo de consumo para entender tu eficiencia de capital.",
+      },
+      inputs: [
+        { id: "monthlyExpenses", label: "Gastos Operativos Mensuales" },
+        { id: "monthlyRevenue", label: "Ingresos Mensuales" },
+        { id: "netNewARR", label: "Nuevo ARR Neto (Mensual)" },
+        { id: "cashReserves", label: "Reservas de Efectivo" },
+      ],
+      outputs: [
+        { id: "netBurnRate", label: "Tasa de Consumo Neta" },
+        { id: "burnMultiple", label: "Múltiplo de Consumo" },
+        { id: "grossBurnRate", label: "Tasa de Consumo Bruta" },
+        { id: "runwayMonths", label: "Pista de Efectivo" },
+      ],
+    },
+    de: {
+      meta: {
+        title: "Burn Rate & Burn Multiple Rechner",
+        description: "Berechnen Sie Ihre monatliche Brutto-Burn-Rate, Netto-Burn-Rate, Cash-Runway und Burn Multiple, um Ihre Kapitaleffizienz zu verstehen.",
+      },
+      inputs: [
+        { id: "monthlyExpenses", label: "Monatliche Betriebsausgaben" },
+        { id: "monthlyRevenue", label: "Monatliche Einnahmen" },
+        { id: "netNewARR", label: "Netto-Neues ARR (Monatlich)" },
+        { id: "cashReserves", label: "Barreserven" },
+      ],
+      outputs: [
+        { id: "netBurnRate", label: "Netto-Burn-Rate" },
+        { id: "burnMultiple", label: "Burn Multiple" },
+        { id: "grossBurnRate", label: "Brutto-Burn-Rate" },
+        { id: "runwayMonths", label: "Liquiditätsspanne" },
+      ],
+    },
+    pt: {
+      meta: {
+        title: "Calculadora de Taxa de Consumo e Múltiplo de Consumo",
+        description: "Calcule seu consumo bruto mensal, consumo líquido, pista de caixa e múltiplo de consumo para entender sua eficiência de capital.",
+      },
+      inputs: [
+        { id: "monthlyExpenses", label: "Despesas Operacionais Mensais" },
+        { id: "monthlyRevenue", label: "Receita Mensal" },
+        { id: "netNewARR", label: "Novo ARR Líquido (Mensal)" },
+        { id: "cashReserves", label: "Reservas de Caixa" },
+      ],
+      outputs: [
+        { id: "netBurnRate", label: "Taxa de Consumo Líquida" },
+        { id: "burnMultiple", label: "Múltiplo de Consumo" },
+        { id: "grossBurnRate", label: "Taxa de Consumo Bruta" },
+        { id: "runwayMonths", label: "Pista de Caixa" },
+      ],
+    },
+    fr: {
+      meta: {
+        title: "Calculateur de Taux de Combustion et Multiple de Combustion",
+        description: "Calculez votre taux de combustion brut mensuel, taux de combustion net, piste de trésorerie et multiple de combustion pour comprendre votre efficacité capitalistique.",
+      },
+      inputs: [
+        { id: "monthlyExpenses", label: "Dépenses d'Exploitation Mensuelles" },
+        { id: "monthlyRevenue", label: "Revenus Mensuels" },
+        { id: "netNewARR", label: "Nouveau NRR Net (Mensuel)" },
+        { id: "cashReserves", label: "Réserves de Trésorerie" },
+      ],
+      outputs: [
+        { id: "netBurnRate", label: "Taux de Combustion Net" },
+        { id: "burnMultiple", label: "Multiple de Combustion" },
+        { id: "grossBurnRate", label: "Taux de Combustion Brut" },
+        { id: "runwayMonths", label: "Piste de Trésorerie" },
+      ],
+    },
+    ja: {
+      meta: {
+        title: "バーンレート＆バーンマルチプル計算ツール",
+        description: "月間グロスバーン、ネットバーン、キャッシュランヤード、バーンマルチプルを計算し、資本効率を把握します。",
+      },
+      inputs: [
+        { id: "monthlyExpenses", label: "月間運営費" },
+        { id: "monthlyRevenue", label: "月間収益" },
+        { id: "netNewARR", label: "純新規ARR（月間）" },
+        { id: "cashReserves", label: "現金準備金" },
+      ],
+      outputs: [
+        { id: "netBurnRate", label: "ネットバーンレート" },
+        { id: "burnMultiple", label: "バーンマルチプル" },
+        { id: "grossBurnRate", label: "グロスバーンレート" },
+        { id: "runwayMonths", label: "キャッシュランヤード" },
+      ],
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

@@ -2,6 +2,7 @@ import { getTranslations } from "@/lib/getTranslations";
 import Link from "next/link";
 import { MobileNav } from "./MobileNav";
 import { ThemeToggle } from "./ThemeToggle";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 
 export async function Nav() {
   const { t } = await getTranslations();
@@ -24,6 +25,7 @@ export async function Nav() {
           </span>
         </Link>
         <div className="flex items-center gap-1">
+          <LocaleSwitcher />
           <ThemeToggle />
           <MobileNav t={links} />
         </div>

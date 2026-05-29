@@ -5,6 +5,8 @@ import Script from "next/script";
 import { AdScript } from "@/components/AdScript";
 import { ShowWhenNotEmbed } from "@/components/ShowWhenNotEmbed";
 import { Nav } from "@/components/Nav";
+import { getTranslations } from "@/lib/getTranslations";
+import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 import "./globals.css";
 
 const inter = Inter({
@@ -54,15 +56,20 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: localeUrl("/"),
+    languages: alternateLanguages("/"),
+  },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { locale } = await getTranslations();
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
+    <html lang={locale} className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-BHDH2PETBK" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">

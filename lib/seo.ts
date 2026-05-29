@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import type { CalculatorConfig, FAQItem } from "@/calculators/config/calculator-schema";
+import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 
 export function generateMetadata(config: CalculatorConfig): Metadata {
+  const path = `/${config.category}/${config.slug}`;
   return {
     title: config.meta.title,
     description: config.meta.description,
     keywords: config.meta.keywords,
+    alternates: {
+      canonical: localeUrl(path),
+      languages: alternateLanguages(path),
+    },
     openGraph: {
       title: config.meta.title,
       description: config.meta.description,

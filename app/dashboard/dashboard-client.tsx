@@ -12,6 +12,22 @@ import { engines } from "@/lib/engine-registry";
 import { findInputWiring, TEMPLATES } from "@/lib/dashboard-wiring";
 import "@/calculators/config/_all";
 
+interface DashboardStrings {
+  heading: string;
+  subtitle: string;
+  share: string;
+  copied: string;
+  addCalculator: string;
+  noCalculatorsSelected: string;
+  browseCalculators: string;
+  calculatorsActive: string;
+  remove: string;
+}
+
+interface DashboardClientProps {
+  strings: DashboardStrings;
+}
+
 class WidgetErrorBoundary extends React.Component<{ children: React.ReactNode; title: string }, { hasError: boolean }> {
   state = { hasError: false };
   static getDerivedStateFromError() {
@@ -29,7 +45,7 @@ class WidgetErrorBoundary extends React.Component<{ children: React.ReactNode; t
   }
 }
 
-export function DashboardClient() {
+export function DashboardClient({ strings }: DashboardClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -174,10 +190,10 @@ export function DashboardClient() {
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
         <div>
           <h1 className="font-heading text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">
-            Mission Control
+            {strings.heading}
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Build your own dashboard. Add the calculators you need, enter data once, see everything connect.
+            {strings.subtitle}
           </p>
         </div>
         <button
@@ -188,7 +204,7 @@ export function DashboardClient() {
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
           </svg>
-          {copied ? "Copied!" : "Share"}
+          {copied ? strings.copied : strings.share}
         </button>
       </div>
 
@@ -201,7 +217,7 @@ export function DashboardClient() {
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
-          Add Calculator
+          {strings.addCalculator}
         </button>
 
         <div className="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-1 hidden sm:block" />
@@ -239,14 +255,14 @@ export function DashboardClient() {
             />
           </svg>
           <p className="text-gray-500 dark:text-gray-400 mb-4">
-            No calculators selected. Pick a template or add individual calculators.
+            {strings.noCalculatorsSelected}
           </p>
           <button
             type="button"
             onClick={() => setPickerOpen(true)}
             className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 transition-colors"
           >
-            Browse Calculators
+            {strings.browseCalculators}
           </button>
         </div>
       ) : (
@@ -268,7 +284,7 @@ export function DashboardClient() {
       {selectedConfigs.length > 0 && (
         <div className="mt-6">
           <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-            {selectedConfigs.length} calculator{selectedConfigs.length !== 1 ? "s" : ""} active
+            {selectedConfigs.length} {strings.calculatorsActive}{selectedConfigs.length !== 1 ? "s" : ""}
           </p>
           <div className="flex flex-wrap gap-2">
             {selectedConfigs.map((c) => (

@@ -44,6 +44,88 @@ const config = {
       { question: "Can NPS be manipulated?", answer: "Yes. Survey timing, question phrasing, and incentive structure can bias results. Use consistent methodology and benchmark against industry standards for accuracy." },
     ],
   },
+  locales: {
+    es: {
+      meta: {
+        title: "Calculadora de Net Promoter Score (NPS)",
+        description: "Calcula tu Net Promoter Score a partir de respuestas de encuestas — mide la lealtad del cliente y predice el crecimiento.",
+      },
+      inputs: [
+        { id: "promoters", label: "Promotores (puntuación 9-10)" },
+        { id: "passives", label: "Pasivos (puntuación 7-8)" },
+        { id: "detractors", label: "Detractores (puntuación 0-6)" },
+      ],
+      outputs: [
+        { id: "nps", label: "Net Promoter Score" },
+        { id: "totalResponses", label: "Total de Respuestas" },
+        { id: "promoterPct", label: "% de Promotores" },
+      ],
+    },
+    de: {
+      meta: {
+        title: "Net Promoter Score (NPS) Rechner",
+        description: "Berechnen Sie Ihren Net Promoter Score aus Umfrageantworten — messen Sie die Kundentreue und prognostizieren Sie das Wachstum.",
+      },
+      inputs: [
+        { id: "promoters", label: "Promotoren (Bewertung 9-10)" },
+        { id: "passives", label: "Passive (Bewertung 7-8)" },
+        { id: "detractors", label: "Kritiker (Bewertung 0-6)" },
+      ],
+      outputs: [
+        { id: "nps", label: "Net Promoter Score" },
+        { id: "totalResponses", label: "Antworten insgesamt" },
+        { id: "promoterPct", label: "Promotorenanteil" },
+      ],
+    },
+    pt: {
+      meta: {
+        title: "Calculadora de Net Promoter Score (NPS)",
+        description: "Calcule seu Net Promoter Score a partir de respostas de pesquisa — meça a fidelidade do cliente e preveja o crescimento.",
+      },
+      inputs: [
+        { id: "promoters", label: "Promotores (nota 9-10)" },
+        { id: "passives", label: "Passivos (nota 7-8)" },
+        { id: "detractors", label: "Detratores (nota 0-6)" },
+      ],
+      outputs: [
+        { id: "nps", label: "Net Promoter Score" },
+        { id: "totalResponses", label: "Total de Respostas" },
+        { id: "promoterPct", label: "% de Promotores" },
+      ],
+    },
+    fr: {
+      meta: {
+        title: "Calculateur de Net Promoter Score (NPS)",
+        description: "Calculez votre Net Promoter Score à partir des réponses à l'enquête — mesurez la fidélité client et prévoyez la croissance.",
+      },
+      inputs: [
+        { id: "promoters", label: "Promoteurs (score 9-10)" },
+        { id: "passives", label: "Passifs (score 7-8)" },
+        { id: "detractors", label: "Détracteurs (score 0-6)" },
+      ],
+      outputs: [
+        { id: "nps", label: "Net Promoter Score" },
+        { id: "totalResponses", label: "Total des Réponses" },
+        { id: "promoterPct", label: "% de Promoteurs" },
+      ],
+    },
+    ja: {
+      meta: {
+        title: "ネットプロモータースコア（NPS）計算ツール",
+        description: "アンケート回答からネットプロモータースコアを計算 — 顧客ロイヤルティを測定し、成長を予測します。",
+      },
+      inputs: [
+        { id: "promoters", label: "推奨者（スコア9-10）" },
+        { id: "passives", label: "受動的満足者（スコア7-8）" },
+        { id: "detractors", label: "批判者（スコア0-6）" },
+      ],
+      outputs: [
+        { id: "nps", label: "ネットプロモータースコア" },
+        { id: "totalResponses", label: "総回答数" },
+        { id: "promoterPct", label: "推奨者率" },
+      ],
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

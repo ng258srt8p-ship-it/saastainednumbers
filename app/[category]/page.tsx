@@ -2,6 +2,8 @@ import { getCalculatorsByCategory, getCategories, CATEGORY_META, getAllKnownCate
 import Link from "next/link";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { alternateLanguages, localeUrl } from "@/lib/locale-url";
+import { getTranslations } from "@/lib/getTranslations";
 
 import "@/calculators/config/_all";
 
@@ -26,7 +28,8 @@ export async function generateMetadata({ params }: PageProps) {
     title: `${name} Calculators`,
     description: desc,
     alternates: {
-      canonical: `https://saastainednumbers.com/${category}`,
+      canonical: localeUrl(`/${category}`),
+      languages: alternateLanguages(`/${category}`),
     },
     openGraph: {
       title: `${name} Calculators`,
@@ -82,6 +85,7 @@ specific, actionable levers to improve their business performance.`,
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
+  const { t } = await getTranslations();
   const calculators = getCalculatorsByCategory(category);
   const meta = CATEGORY_META[category];
   const categoryName = meta?.name ?? category.charAt(0).toUpperCase() + category.slice(1);
@@ -93,10 +97,10 @@ export default async function CategoryPage({ params }: PageProps) {
         <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} Calculators</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-8">{meta?.description}</p>
         <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 p-12 text-center">
-          <p className="text-lg text-gray-600 dark:text-gray-400">Calculators in this category are coming soon.</p>
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">We are building them now. Check back soon!</p>
+          <p className="text-lg text-gray-600 dark:text-gray-400">{t("category.comingSoon")}</p>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{t("category.buildingNow")}</p>
           <Link href="/" className="mt-6 inline-block text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 underline">
-            Browse all categories &rarr;
+            {t("category.browseAll")}
           </Link>
         </div>
       </div>
@@ -146,14 +150,14 @@ export default async function CategoryPage({ params }: PageProps) {
       />
       <div className="mx-auto max-w-6xl px-4 py-12">
         <Breadcrumb items={[
-          { label: "Home", href: "/" },
+          { label: t("common.home"), href: "/" },
           { label: categoryName, href: `/${category}` },
         ]} />
         <h1 className="font-heading text-3xl font-bold mb-2">{categoryName} Calculators</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-2">{meta?.description}</p>
         <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 dark:bg-brand-950/50 px-3 py-1 text-xs font-medium text-brand-700 dark:text-brand-300 mb-6">
           <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20" }}>verified</span>
-          No signup. No email. No catch.
+          {t("category.noSignup")}
         </div>
         {editorial && (
           <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed max-w-3xl">
@@ -170,7 +174,7 @@ export default async function CategoryPage({ params }: PageProps) {
               title: c.meta.title,
               description: c.meta.description,
             }))}
-            placeholder={`Search ${categoryName.toLowerCase()} calculators...`}
+            placeholder={t("category.searchPlaceholder")}
           />
         </div>
         <div className="grid gap-6 sm:grid-cols-2">

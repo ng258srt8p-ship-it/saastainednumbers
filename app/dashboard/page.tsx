@@ -1,25 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { DashboardClient } from "./dashboard-client";
-
-export const metadata: Metadata = {
-  title: "Dashboard  -  SaaStainedNumbers",
-  description: "Build your own SaaS metrics dashboard. Add any calculator, enter data once, and see interconnected metrics update live. Free, no sign-up.",
-  alternates: {
-    canonical: "https://saastainednumbers.com/dashboard",
-  },
-  openGraph: {
-    title: "Dashboard  -  SaaStainedNumbers",
-    description: "Build your own SaaS metrics dashboard. Add any calculator, enter data once, and see interconnected metrics update live. Free, no sign-up.",
-    images: ["/api/og?title=Dashboard&category=home"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dashboard  -  SaaStainedNumbers",
-    description: "Build your own SaaS metrics dashboard. Add any calculator, enter data once, and see interconnected metrics update live. Free, no sign-up.",
-    images: ["/api/og?title=Dashboard&category=home"],
-  },
-};
+import { alternateLanguages, localeUrl } from "@/lib/locale-url";
+import { getTranslations } from "@/lib/getTranslations";
 
 function DashboardSkeleton() {
   return (
@@ -42,10 +25,21 @@ function DashboardSkeleton() {
   );
 }
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const { t } = await getTranslations();
   return (
     <Suspense fallback={<DashboardSkeleton />}>
-      <DashboardClient />
+      <DashboardClient strings={{
+        heading: t("dashboard.heading"),
+        subtitle: t("dashboard.subtitle"),
+        share: t("dashboard.share"),
+        copied: t("dashboard.copied"),
+        addCalculator: t("dashboard.addCalculators"),
+        noCalculatorsSelected: t("dashboard.noCalculatorsSelected"),
+        browseCalculators: t("dashboard.browseCalculators"),
+        calculatorsActive: t("dashboard.calculatorsActive"),
+        remove: t("dashboard.remove"),
+      }} />
     </Suspense>
   );
 }

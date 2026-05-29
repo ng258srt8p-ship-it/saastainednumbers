@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCalculators } from "@/lib/registry";
+import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 
 import "@/calculators/config/_all";
 
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
   title: "Pricing  -  SaaStainedNumbers",
   description: `All ${calculatorCount} calculators are completely free. No subscriptions, no paywalls, no account required.`,
   alternates: {
-    canonical: "https://saastainednumbers.com/pricing",
+    canonical: localeUrl("/pricing"),
+    languages: alternateLanguages("/pricing"),
   },
   openGraph: {
     title: "Pricing  -  SaaStainedNumbers",

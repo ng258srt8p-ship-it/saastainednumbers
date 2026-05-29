@@ -1,10 +1,14 @@
+"use client";
+
+import { formatNumber } from "@/lib/formatNumber";
+
 interface LiveCounterProps {
   count?: number;
   growth?: number;
 }
 
 export function LiveCounter({ count = 1234, growth = 38 }: LiveCounterProps) {
-  const formatted = new Intl.NumberFormat("en-US").format(count);
+  const formatted = formatNumber(count);
 
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-800 px-4 py-1.5 text-sm text-brand-200">

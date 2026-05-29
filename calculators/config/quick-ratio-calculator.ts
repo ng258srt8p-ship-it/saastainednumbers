@@ -45,6 +45,93 @@ const config = {
       { question: "What is the relationship between quick ratio and growth rate?", answer: "Higher quick ratios enable faster growth. If quick ratio is 4.0, you can grow 4x faster than if quick ratio is 1.0 given the same acquisition spending." },
     ],
   },
+  locales: {
+    es: {
+      meta: {
+        title: "Calculadora de Quick Ratio",
+        description: "Calcula tu quick ratio SaaS para medir la eficiencia de crecimiento – la relación entre el MRR nuevo + expansión y el MRR perdido por cancelaciones + contracciones.",
+      },
+      inputs: [
+        { id: "newMrr", label: "MRR Nuevo (nuevos clientes)" },
+        { id: "expansionMrr", label: "MRR de Expansión (mejoras)" },
+        { id: "churnedMrr", label: "MRR Perdido (cancelaciones)" },
+        { id: "contractionMrr", label: "MRR por Contracción (degradaciones)" },
+      ],
+      outputs: [
+        { id: "quickRatio", label: "Quick Ratio" },
+        { id: "growthMrr", label: "MRR de Crecimiento (Nuevo + Expansión)" },
+        { id: "lostMrr", label: "MRR Perdido (Cancelaciones + Contracción)" },
+      ],
+    },
+    de: {
+      meta: {
+        title: "Quick-Ratio-Rechner",
+        description: "Berechne deine SaaS-Quick-Ratio zur Messung der Wachstumseffizienz – das Verhältnis von neuem + expansionsbedingtem MRR zu abgewandertem + rückläufigem MRR.",
+      },
+      inputs: [
+        { id: "newMrr", label: "Neuer MRR (Neukunden)" },
+        { id: "expansionMrr", label: "Expansions-MRR (Upgrades)" },
+        { id: "churnedMrr", label: "Abgewanderter MRR (Kündigungen)" },
+        { id: "contractionMrr", label: "Rückläufiger MRR (Downgrades)" },
+      ],
+      outputs: [
+        { id: "quickRatio", label: "Quick Ratio" },
+        { id: "growthMrr", label: "Wachstums-MRR (Neu + Expansion)" },
+        { id: "lostMrr", label: "Verlorener MRR (Abwanderung + Rückgang)" },
+      ],
+    },
+    pt: {
+      meta: {
+        title: "Calculadora de Quick Ratio",
+        description: "Calcule seu quick ratio SaaS para medir a eficiência de crescimento – a relação entre o MRR novo + expansão e o MRR perdido por cancelamentos + contrações.",
+      },
+      inputs: [
+        { id: "newMrr", label: "Novo MRR (novos clientes)" },
+        { id: "expansionMrr", label: "MRR de Expansão (upgrades)" },
+        { id: "churnedMrr", label: "MRR Perdido (cancelamentos)" },
+        { id: "contractionMrr", label: "MRR por Contração (rebaixamentos)" },
+      ],
+      outputs: [
+        { id: "quickRatio", label: "Quick Ratio" },
+        { id: "growthMrr", label: "MRR de Crescimento (Novo + Expansão)" },
+        { id: "lostMrr", label: "MRR Perdido (Cancelamentos + Contração)" },
+      ],
+    },
+    fr: {
+      meta: {
+        title: "Calculateur de Quick Ratio",
+        description: "Calculez votre quick ratio SaaS pour mesurer l'efficacité de croissance – le rapport entre le nouveau MRR + l'expansion et le MRR perdu par désabonnement + contraction.",
+      },
+      inputs: [
+        { id: "newMrr", label: "Nouveau MRR (nouveaux clients)" },
+        { id: "expansionMrr", label: "MRR d'Expansion (upgrades)" },
+        { id: "churnedMrr", label: "MRR Perdu (annulations)" },
+        { id: "contractionMrr", label: "MRR de Contraction (rétrogradations)" },
+      ],
+      outputs: [
+        { id: "quickRatio", label: "Quick Ratio" },
+        { id: "growthMrr", label: "MRR de Croissance (Nouveau + Expansion)" },
+        { id: "lostMrr", label: "MRR Perdu (Annulations + Contraction)" },
+      ],
+    },
+    ja: {
+      meta: {
+        title: "クイックレシオ計算機",
+        description: "SaaSのクイックレシオを計算して成長効率を測定 – 新規MRR＋拡張MRRと解約MRR＋縮小MRRの比率です。",
+      },
+      inputs: [
+        { id: "newMrr", label: "新規MRR（新規顧客）" },
+        { id: "expansionMrr", label: "拡張MRR（アップグレード）" },
+        { id: "churnedMrr", label: "解約MRR（キャンセル）" },
+        { id: "contractionMrr", label: "縮小MRR（ダウングレード）" },
+      ],
+      outputs: [
+        { id: "quickRatio", label: "クイックレシオ" },
+        { id: "growthMrr", label: "成長MRR（新規＋拡張）" },
+        { id: "lostMrr", label: "損失MRR（解約＋縮小）" },
+      ],
+    },
+  },
 } satisfies CalculatorConfig;
 
 registerCalculator(config);

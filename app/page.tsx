@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getAllCalculators, getAllKnownCategories, CATEGORY_META } from "@/lib/registry";
 import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { alternateLanguages, localeUrl } from "@/lib/locale-url";
+import { getTranslations } from "@/lib/getTranslations";
 
 const CALC_COUNT = getAllCalculators().length;
 const CAT_COUNT = getAllKnownCategories().length;
@@ -11,7 +13,8 @@ export const metadata: Metadata = {
   title: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
   description: `${CALC_COUNT} free, instant calculators for SaaS metrics, AI costs, side hustle income, personal finance, and more. No account or sign-up required.`,
   alternates: {
-    canonical: "https://saastainednumbers.com",
+    canonical: localeUrl("/"),
+    languages: alternateLanguages("/"),
   },
   openGraph: {
     title: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
@@ -46,7 +49,8 @@ const popularCalculators = [
   { slug: "burn-rate-calculator", category: "unit-economics" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const { t } = await getTranslations();
   const calculators = getAllCalculators();
   const categories = getAllKnownCategories();
   const calcBySlug = Object.fromEntries(calculators.map((c) => [`${c.category}/${c.slug}`, c]));
@@ -68,21 +72,20 @@ export default function Home() {
               </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-brand-300">
-            <span className="font-numbers">{totalCount}</span> calculators for builders, operators, and creators.
-            Enter your numbers  -  get an answer in your browser. All free, all private.
+            <span className="font-numbers">{totalCount}</span> {t("home.heroSubtitle")}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/revenue/mrr-calculator"
               className="rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:shadow-xl hover:shadow-brand-500/30 hover:scale-105"
             >
-              Start Calculating
+              {t("home.startCalculating")}
             </Link>
             <Link
               href="/calculators"
               className="rounded-xl border border-brand-400/30 bg-white/5 px-8 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10"
             >
-              Browse All &rarr;
+              {t("home.browseAll")}
             </Link>
           </div>
           <div className="mt-8 flex justify-center">
@@ -98,15 +101,15 @@ export default function Home() {
           <div className="mt-16 grid grid-cols-3 gap-8 border-t border-brand-800/50 pt-10">
             <div>
               <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">{totalCount}</p>
-              <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">free calculators</p>
+              <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">{t("home.freeCalculators")}</p>
             </div>
             <div>
               <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">{categories.length}</p>
-              <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">categories</p>
+              <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">{t("home.categories")}</p>
             </div>
             <div>
               <p className="font-numbers text-5xl font-extrabold tracking-tight text-white sm:text-6xl ">$0</p>
-              <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">to start</p>
+              <p className="mt-1 text-sm font-medium uppercase tracking-wider text-brand-300">{t("home.toStart")}</p>
             </div>
           </div>
         </div>
@@ -117,8 +120,8 @@ export default function Home() {
       <section className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <SectionLabel num={1} />
-          <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">Popular calculators</h2>
-          <p className="mt-3 text-gray-500 dark:text-gray-400">Top picks to get you started.</p>
+          <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">{t("home.popularCalculators")}</h2>
+          <p className="mt-3 text-gray-500 dark:text-gray-400">{t("home.popularSubtitle")}</p>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {popularCalculators.map(({ slug, category }) => {
               const calc = calcBySlug[`${category}/${slug}`];
@@ -143,7 +146,7 @@ export default function Home() {
                   </h3>
                   <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{calc.meta.description}</p>
                   <span className="mt-4 inline-flex items-center text-sm font-medium text-brand-600 dark:text-brand-400 opacity-0 transition-opacity group-hover:opacity-100">
-                    Open calculator &rarr;
+                    {t("home.openCalculator")}
                   </span>
                 </Link>
               );
@@ -156,7 +159,7 @@ export default function Home() {
       <section className="bg-gray-50 dark:bg-gray-900/50 px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <SectionLabel num={2} />
-          <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">Browse by category</h2>
+          <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">{t("home.browseByCategory")}</h2>
           <p className="mt-3 text-gray-500 dark:text-gray-400">
             <span className="font-numbers">{categories.length}</span> categories, <span className="font-numbers">{totalCount}</span> calculators. Pick your path.
           </p>
@@ -187,7 +190,7 @@ export default function Home() {
               href="/calculators"
               className="inline-flex items-center gap-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
             >
-              See all <span className="font-numbers">{totalCount}</span> calculators &rarr;
+              {t("home.seeAllCalculators").replace("{n}", String(totalCount))}
             </Link>
           </div>
         </div>
@@ -198,34 +201,34 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <SectionLabel num={3} />
           <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Three steps. No friction.
+            {t("home.threeSteps")}
           </h2>
           <div className="mt-14 grid gap-10 md:grid-cols-3">
             <div className="text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/40 text-xl font-bold text-brand-600 dark:text-brand-300">
                 <span className="font-numbers">I</span>
               </div>
-              <h3 className="mt-6 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">Pick a calculator</h3>
+              <h3 className="mt-6 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">{t("home.stepPick")}</h3>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                From AI costs to FIRE plans  -  all <span className="font-numbers">{totalCount}</span> are free to use. No signup gate.
+                {t("home.pickDescription").replace("{n}", String(totalCount))}
               </p>
             </div>
             <div className="text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/40 text-xl font-bold text-brand-600 dark:text-brand-300">
                 <span className="font-numbers">II</span>
               </div>
-              <h3 className="mt-6 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">Type your numbers</h3>
+              <h3 className="mt-6 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">{t("home.stepType")}</h3>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                Results update live in your browser as you type. Nothing leaves your device.
+                {t("home.typeDescription")}
               </p>
             </div>
             <div className="text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/40 text-xl font-bold text-brand-600 dark:text-brand-300">
                 <span className="font-numbers">III</span>
               </div>
-              <h3 className="mt-6 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">Act on it</h3>
+              <h3 className="mt-6 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">{t("home.stepAct")}</h3>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                Save results, embed on your site, or share with your team. No account needed.
+                {t("home.actDescription")}
               </p>
             </div>
           </div>
@@ -237,23 +240,23 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <SectionLabel num={4} />
           <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
-            The ledger
+            {t("home.theLedger")}
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">{totalCount}</p>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">calculators in catalog</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">across <span className="font-numbers">{categories.length}</span> categories</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.calculatorsInCatalog")}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.acrossCategories")} <span className="font-numbers">{categories.length}</span> {t("home.categories").toLowerCase()}</p>
             </div>
             <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">{totalCount * 4}</p>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">calculation benchmarks</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">industry-standard data</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.calculationBenchmarks")}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.industryStandardData")}</p>
             </div>
             <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">$0</p>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">always free</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">no paywalls, no tiers</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.alwaysFree")}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.noPaywalls")}</p>
             </div>
           </div>
         </div>
@@ -265,17 +268,17 @@ export default function Home() {
         <div className="mx-auto max-w-3xl text-center">
           <SectionLabel num={5} />
           <h2 className="font-heading mt-2 text-3xl font-bold text-white">
-            Start building.
+            {t("home.startBuilding")}
           </h2>
           <p className="mt-4 text-brand-300">
-            All <span className="font-numbers">{totalCount}</span> calculators are completely free. No subscriptions, no signups.
+            {t("home.allFree").replace("{n}", String(totalCount))}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/calculators"
               className="rounded-xl bg-white dark:bg-gray-800 px-8 py-3 text-sm font-semibold text-brand-800 dark:text-brand-200 shadow-lg transition-all hover:shadow-xl hover:scale-105"
             >
-              Browse Calculators
+              {t("home.browseCalculators")}
             </Link>
 
           </div>

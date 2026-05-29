@@ -1,3 +1,5 @@
+export type SupportedLocale = "en" | "es" | "de" | "pt" | "fr" | "ja";
+
 export interface CalculatorConfig {
   slug: string;
   category: "revenue" | "unit-economics" | "churn-retention" | "growth-efficiency" | "ai-cost" | "side-hustle" | "personal-finance" | "general-business" | "saas-deepen";
@@ -12,6 +14,20 @@ export interface CalculatorConfig {
   content: CalculatorContent;
 
   benchmarkMetric?: string;
+
+  locales?: Partial<Record<SupportedLocale, {
+    meta?: { title?: string; description?: string; keywords?: string[] };
+    inputs?: { id: string; label?: string }[];
+    outputs?: { id: string; label?: string }[];
+    content?: {
+      intro?: string;
+      howToUse?: string;
+      formulaExplanation?: string;
+      benchmarks?: string;
+      benchmarkData?: { metric: string; value: string; source: string }[];
+      faq?: { question: string; answer: string }[];
+    };
+  }>>;
 }
 
 export interface CalculatorInput {

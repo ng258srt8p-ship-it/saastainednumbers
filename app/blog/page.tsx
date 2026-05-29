@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
 import { SidekickAd } from "@/components/SidekickAd";
+import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 
 export const metadata: Metadata = {
   title: "Blog  -  SaaStainedNumbers",
   description: "SaaS metrics insights, tutorials, and industry benchmarks. Learn how to calculate and improve MRR, CAC, LTV, churn, and more.",
   alternates: {
-    canonical: "https://saastainednumbers.com/blog",
+    canonical: localeUrl("/blog"),
+    languages: alternateLanguages("/blog"),
   },
   openGraph: {
     title: "Blog  -  SaaStainedNumbers",

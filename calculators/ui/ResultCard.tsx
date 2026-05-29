@@ -2,6 +2,7 @@
 
 import type { HealthStatus } from "@/lib/benchmarks";
 import { getHealthLabel, getHealthColor, getHealthStatus, getBarColor, getGradientPercent } from "@/lib/benchmarks";
+import { formatCurrency, formatNumber, formatPercent, formatRatio } from "@/lib/formatNumber";
 
 interface ResultCardProps {
   label: string;
@@ -21,20 +22,15 @@ function formatResult(value: string, type: string): string {
 
   switch (type) {
     case "currency":
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }).format(num);
+      return formatCurrency(num);
     case "percentage":
-      return `${num.toFixed(1)}%`;
+      return formatPercent(num);
     case "ratio":
-      return num.toFixed(2);
+      return formatRatio(num);
     case "text":
       return value;
     default:
-      return new Intl.NumberFormat("en-US").format(num);
+      return formatNumber(num);
   }
 }
 

@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency, formatNumber, formatPercent, formatRatio } from "@/lib/formatNumber";
+
 export type DeltaMode = "absolute" | "percent" | "both";
 
 interface DeltaBadgeProps {
@@ -12,13 +14,13 @@ interface DeltaBadgeProps {
 function formatValue(val: number, type: string): string {
   switch (type) {
     case "currency":
-      return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(val);
+      return formatCurrency(val);
     case "percentage":
-      return `${val.toFixed(1)}%`;
+      return formatPercent(val);
     case "ratio":
-      return val.toFixed(2);
+      return formatRatio(val);
     default:
-      return new Intl.NumberFormat("en-US").format(val);
+      return formatNumber(val);
   }
 }
 

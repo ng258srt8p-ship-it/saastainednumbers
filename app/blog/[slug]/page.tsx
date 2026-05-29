@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SidekickAd } from "@/components/SidekickAd";
+import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -20,7 +21,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: post.title,
     description: post.description,
     alternates: {
-      canonical: `https://saastainednumbers.com/blog/${slug}`,
+      canonical: localeUrl(`/blog/${slug}`),
+      languages: alternateLanguages(`/blog/${slug}`),
     },
     openGraph: {
       title: post.title,

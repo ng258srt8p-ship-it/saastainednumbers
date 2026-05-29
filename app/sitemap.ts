@@ -4,6 +4,17 @@ import "@/calculators/config/_all";
 
 export const dynamic = "force-static";
 
+const LOCALES = ["en", "es", "de", "pt", "fr", "ja"];
+const BASE = "https://saastainednumbers.com";
+
+function localeUrl(path: string, locale: string): string {
+  return locale === "en" ? `${BASE}${path}` : `${BASE}/${locale}${path}`;
+}
+
+function alternateLanguages(path: string): Record<string, string> {
+  return Object.fromEntries(LOCALES.map((l) => [l, localeUrl(path, l)]));
+}
+
 export default async function sitemap() {
   const calculators = getAllCalculators();
   const registered = getCategories();
@@ -11,42 +22,66 @@ export default async function sitemap() {
   const categories = Array.from(new Set([...registered, ...known]));
   const posts = getAllPosts();
 
-  const calculatorPages = calculators.map((calc) => ({
-    url: `https://saastainednumbers.com/${calc.category}/${calc.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+  const calculatorPages = calculators.map((calc) => {
+    const path = `/${calc.category}/${calc.slug}`;
+    return {
+      url: localeUrl(path, "en"),
+      alternates: { languages: alternateLanguages(path) },
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    };
+  });
 
-  const categoryPages = categories.map((cat) => ({
-    url: `https://saastainednumbers.com/${cat}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
+  const categoryPages = categories.map((cat) => {
+    const path = `/${cat}`;
+    return {
+      url: localeUrl(path, "en"),
+      alternates: { languages: alternateLanguages(path) },
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    };
+  });
 
-  const embedPages = calculators.map((calc) => ({
-    url: `https://saastainednumbers.com/embed/${calc.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.3,
-  }));
+  const embedPages = calculators.map((calc) => {
+    const path = `/embed/${calc.slug}`;
+    return {
+      url: localeUrl(path, "en"),
+      alternates: { languages: alternateLanguages(path) },
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.3,
+    };
+  });
 
-  const blogPages = posts.map((post) => ({
-    url: `https://saastainednumbers.com/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  const blogPages = posts.map((post) => {
+    const path = `/blog/${post.slug}`;
+    return {
+      url: localeUrl(path, "en"),
+      alternates: { languages: alternateLanguages(path) },
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    };
+  });
 
-  const staticPages = [
-    { url: "https://saastainednumbers.com/", lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1.0 },
-    { url: "https://saastainednumbers.com/dashboard", lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 },
-    { url: "https://saastainednumbers.com/blog", lastModified: new Date(), changeFrequency: "daily" as const, priority: 0.6 },
-    { url: "https://saastainednumbers.com/pricing", lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
-    { url: "https://saastainednumbers.com/calculators", lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
-    { url: "https://saastainednumbers.com/legal", lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.3 },
+  const staticPageDefs = [
+    { path: "/", pri: 1.0, freq: "weekly" as const },
+    { path: "/dashboard", pri: 0.7, freq: "weekly" as const },
+    { path: "/blog", pri: 0.6, freq: "daily" as const },
+    { path: "/pricing", pri: 0.5, freq: "monthly" as const },
+    { path: "/calculators", pri: 0.8, freq: "weekly" as const },
+    { path: "/legal", pri: 0.3, freq: "monthly" as const },
   ];
+
+  const staticPages = staticPageDefs.map(({ path, pri, freq }) => ({
+    url: localeUrl(path, "en"),
+    alternates: { languages: alternateLanguages(path) },
+    lastModified: new Date(),
+    changeFrequency: freq,
+    priority: pri,
+  }));
 
   return [...staticPages, ...categoryPages, ...calculatorPages, ...embedPages, ...blogPages];
 }

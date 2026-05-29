@@ -31,6 +31,36 @@ interface Props {
   config: CalculatorConfig;
   relatedCalculators?: RelatedCalc[];
   hideContent?: boolean;
+  strings?: {
+    sectionHowToUse: string;
+    sectionFormula: string;
+    sectionBenchmarks: string;
+    sectionFaq: string;
+    tableMetric: string;
+    tableValue: string;
+    tableSource: string;
+    resetAll: string;
+    addScenario: string;
+    backToSingle: string;
+    resetBoth: string;
+    scenarioA: string;
+    scenarioB: string;
+    resultsComparison: string;
+    embed: string;
+    disclaimer: string;
+    stageSeed: string;
+    stageSeriesA: string;
+    stageSeriesB: string;
+    stageSeriesC: string;
+    stageGrowth: string;
+    deltaAbsolute: string;
+    deltaPercent: string;
+    deltaBoth: string;
+    feedbackHelpful: string;
+    feedbackYes: string;
+    feedbackNo: string;
+    feedbackThanks: string;
+  };
 }
 
 
@@ -41,7 +71,7 @@ function runEngine(slug: string, params: Record<string, number>): Record<string,
   try { return engine(params); } catch { return {}; }
 }
 
-export function CalculatorClient({ config, relatedCalculators, hideContent }: Props) {
+export function CalculatorClient({ config, relatedCalculators, hideContent, strings }: Props) {
   const [embedOpen, setEmbedOpen] = useState(false);
   const [stage, setStage] = useState<Stage>("series-a");
   const [compareMode, setCompareMode] = useState(false);
@@ -133,7 +163,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
               }`}
             >
-              {s === "series-a" ? "Series A" : s === "series-b" ? "Series B" : s === "series-c" ? "Series C" : s.charAt(0).toUpperCase() + s.slice(1)}
+              {s === "seed" ? (strings?.stageSeed ?? "Seed") : s === "series-a" ? (strings?.stageSeriesA ?? "Series A") : s === "series-b" ? (strings?.stageSeriesB ?? "Series B") : s === "series-c" ? (strings?.stageSeriesC ?? "Series C") : (strings?.stageGrowth ?? "Growth")}
             </button>
           ))}
         </div>
@@ -154,7 +184,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
             deltaMode === m ? "text-brand-700 dark:text-brand-600 bg-brand-50 dark:bg-brand-950" : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
           }`}
         >
-          {m === "absolute" ? "$" : m === "percent" ? "%" : "Both"}
+          {m === "absolute" ? (strings?.deltaAbsolute ?? "$") : m === "percent" ? (strings?.deltaPercent ?? "%") : (strings?.deltaBoth ?? "Both")}
         </button>
       ))}
     </div>
@@ -166,7 +196,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
       title={config.meta.title}
       description={config.meta.description}
       stageSelector={stageSelector}
-      feedbackWidget={<FeedbackWidget slug={config.slug} />}
+      feedbackWidget={<FeedbackWidget slug={config.slug} strings={strings ? { wasThisHelpful: strings.feedbackHelpful, yes: strings.feedbackYes, no: strings.feedbackNo, thanks: strings.feedbackThanks } : undefined} />}
       sidebarAd={<SidekickAd />}
       afterContentAd={hideContent ? undefined : <AdUnit slot="calculator-below-content" />}
       contentSection={hideContent ? undefined : (
@@ -176,7 +206,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">How to Use This Calculator</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{strings?.sectionHowToUse ?? "How to Use This Calculator"}</h2>
             <ol className="list-decimal pl-5 space-y-2">
               {config.content.howToUse.split(". ").filter(Boolean).map((step, i) => (
                 <li key={i} className="text-gray-600 dark:text-gray-400">{step.trim()}.</li>
@@ -185,7 +215,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
           </section>
 
           <section className="rounded-xl bg-brand-50 dark:bg-brand-950/40 border border-brand-200 dark:border-brand-800/50 p-6">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Formula & Worked Example</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">{strings?.sectionFormula ?? "Formula & Worked Example"}</h2>
             <div className="font-mono text-sm bg-gray-100/50 dark:bg-gray-800/50 rounded-lg p-4 border border-brand-200 dark:border-brand-800/30 mb-4">
               {config.content.formulaExplanation.split(". ").map((part, i) => (
                 <p key={i} className="mb-1 text-gray-700 dark:text-gray-300">{part}{i === 0 ? ":" : "."}</p>
@@ -195,16 +225,16 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
 
           {config.content.benchmarks && (
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Industry Benchmarks</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">{strings?.sectionBenchmarks ?? "Industry Benchmarks"}</h2>
               <div className="text-gray-700 dark:text-gray-300 mb-4">{renderContent(config.content.benchmarks, config.slug)}</div>
               {config.content.benchmarkData && config.content.benchmarkData.length > 0 && (
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th className="text-left py-2 font-medium text-gray-500 dark:text-gray-400">Metric</th>
-                        <th className="text-left py-2 font-medium text-gray-500 dark:text-gray-400">Value</th>
-                        <th className="text-left py-2 font-medium text-gray-500 dark:text-gray-400">Source</th>
+                        <th className="text-left py-2 font-medium text-gray-500 dark:text-gray-400">{strings?.tableMetric ?? "Metric"}</th>
+                        <th className="text-left py-2 font-medium text-gray-500 dark:text-gray-400">{strings?.tableValue ?? "Value"}</th>
+                        <th className="text-left py-2 font-medium text-gray-500 dark:text-gray-400">{strings?.tableSource ?? "Source"}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -247,7 +277,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
             onClick={() => setEmbedOpen(true)}
             className="rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 transition-colors"
           >
-            Embed
+            {strings?.embed ?? "Embed"}
           </button>
         </div>
       }
@@ -275,7 +305,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
           <div className="flex-1 space-y-4">
             <div className="flex items-center gap-2">
               <span className="inline-block h-3 w-3 rounded-full bg-[#008387]" aria-hidden />
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-[#008387]">Scenario A</h3>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-[#008387]">{strings?.scenarioA ?? "Scenario A"}</h3>
             </div>
             {config.inputs.map((input) => (
               <InputSlider
@@ -291,7 +321,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
           <div className="flex-1 space-y-4">
             <div className="flex items-center gap-2">
               <span className="inline-block h-3 w-3 rounded-full bg-[#143562]" aria-hidden />
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-[#143562]">Scenario B</h3>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-[#143562]">{strings?.scenarioB ?? "Scenario B"}</h3>
             </div>
             {config.inputs.map((input) => (
               <InputSlider
@@ -323,7 +353,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
               onClick={reset}
               className="text-sm text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 underline"
             >
-              Reset all values
+              {strings?.resetAll ?? "Reset all values"}
             </button>
           </div>
           <div className="flex-1 space-y-3" aria-live="polite" aria-label="Calculation results">
@@ -344,7 +374,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
             <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
               <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
-            Add Scenario B to compare
+            {strings?.addScenario ?? "Add Scenario B to compare"}
           </button>
           <Insights
             title={config.meta.title}
@@ -359,7 +389,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
       {compareMode && (
         <div className="mt-8 space-y-6 border-t border-gray-200 dark:border-gray-700/50 pt-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">Results Comparison</h3>
+            <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">{strings?.resultsComparison ?? "Results Comparison"}</h3>
             {deltaModeToggle}
           </div>
 
@@ -367,7 +397,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-1.5">
                 <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#008387]" aria-hidden />
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">Scenario A</span>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">{strings?.scenarioA ?? "Scenario A"}</span>
               </div>
               {resultsA.map((r) => (
                 <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} />
@@ -376,7 +406,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-1.5">
                 <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#143562]" aria-hidden />
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">Scenario B</span>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">{strings?.scenarioB ?? "Scenario B"}</span>
               </div>
               {resultsB.map((r) => {
                 const other = resultsA.find((ra) => ra.id === r.id);
@@ -402,22 +432,21 @@ export function CalculatorClient({ config, relatedCalculators, hideContent }: Pr
               onClick={() => setCompareMode(false)}
               className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 transition-colors"
             >
-              Back to single view
+              {strings?.backToSingle ?? "Back to single view"}
             </button>
             <button
               type="button"
               onClick={reset}
               className="text-sm text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 underline"
             >
-              Reset both scenarios
+              {strings?.resetBoth ?? "Reset both scenarios"}
             </button>
           </div>
         </div>
       )}
 
       <p className="mt-8 text-xs text-gray-600 dark:text-gray-400 text-center px-4">
-        Disclaimer: Results are for informational purposes only and should not be considered financial advice.
-        SaaStainedNumbers is not responsible for any decisions made based on these calculations.
+        {strings?.disclaimer ?? "Disclaimer: Results are for informational purposes only and should not be considered financial advice. SaaStainedNumbers is not responsible for any decisions made based on these calculations."}
       </p>
       <EmbedModal
         slug={config.slug}

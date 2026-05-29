@@ -5,6 +5,7 @@ import type { CalculatorConfig } from "@/calculators/config/calculator-schema";
 import { InputSlider } from "@/calculators/ui/InputSlider";
 import { engines } from "@/lib/engine-registry";
 import { Insights } from "@/components/Insights";
+import { formatCurrency, formatNumber, formatPercent } from "@/lib/formatNumber";
 
 interface DashboardWidgetProps {
   config: CalculatorConfig;
@@ -14,26 +15,11 @@ interface DashboardWidgetProps {
   slug: string;
 }
 
-function formatCurrency(n: number): string {
-  if (!Number.isFinite(n)) return "$0";
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(n);
-}
-
-function formatPercent(n: number): string {
-  if (!Number.isFinite(n)) return "0%";
-  return `${Number(n.toFixed(1))}%`;
-}
-
-function formatNumber(n: number): string {
+function formatCompact(n: number): string {
   if (!Number.isFinite(n)) return "0";
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
   if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
-  return n.toLocaleString();
+  return formatNumber(n);
 }
 
 function formatOutput(value: number | string, type: string): string {
@@ -48,7 +34,7 @@ function formatOutput(value: number | string, type: string): string {
     case "ratio":
       return value.toFixed(1);
     default:
-      return formatNumber(value);
+      return formatCompact(value);
   }
 }
 
@@ -169,7 +155,7 @@ export function DashboardWidget({ config, values, onChange, wiredValues, slug }:
                     </div>
                     <div className="flex items-center justify-between rounded-xl border border-brand-200 dark:border-brand-800 bg-brand-50/50 dark:bg-brand-950/20 px-3 py-2.5 text-sm text-gray-700 dark:text-gray-300">
                       <span className="font-medium">{wiredValues[input.id] ?? values[input.id] ?? input.defaultValue}</span>
-                      {input.type === "currency" && <span className="text-gray-400">USD</span>}
+                      {input.type === "currency" && <span className="text-gray-400">$</span>}
                     </div>
                   </div>
                 ) : (

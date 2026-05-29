@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
+import { getCurrencySymbol } from "@/lib/formatNumber";
 
 interface InputSliderProps {
   id: string;
@@ -39,7 +40,8 @@ export function InputSlider({
     [onChange]
   );
 
-  const prefix = type === "currency" ? "$" : "";
+  const currencySymbol = useMemo(() => getCurrencySymbol(), []);
+  const prefix = type === "currency" ? currencySymbol : "";
   const suffix = type === "percentage" ? "%" : "";
 
   return (

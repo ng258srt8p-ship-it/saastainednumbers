@@ -5,20 +5,26 @@ import { useState } from "react";
 
 interface FeedbackWidgetProps {
   slug: string;
+  strings?: {
+    wasThisHelpful: string;
+    yes: string;
+    no: string;
+    thanks: string;
+  };
 }
 
-export function FeedbackWidget({ slug }: FeedbackWidgetProps) {
+export function FeedbackWidget({ slug, strings }: FeedbackWidgetProps) {
   const [submitted, setSubmitted] = useState(false);
 
   if (submitted) {
     return (
-      <p className="text-xs text-gray-600 dark:text-gray-500">Thanks for your feedback!</p>
+      <p className="text-xs text-gray-600 dark:text-gray-500">{strings?.thanks ?? "Thanks for your feedback!"}</p>
     );
   }
 
   return (
     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-      <span>Was this helpful?</span>
+      <span>{strings?.wasThisHelpful ?? "Was this helpful?"}</span>
       <button
         type="button"
         onClick={() => {
@@ -28,7 +34,7 @@ export function FeedbackWidget({ slug }: FeedbackWidgetProps) {
         className="rounded px-2 py-0.5 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
         aria-label="Yes, helpful"
       >
-        Yes
+        {strings?.yes ?? "Yes"}
       </button>
       <button
         type="button"
@@ -39,7 +45,7 @@ export function FeedbackWidget({ slug }: FeedbackWidgetProps) {
         className="rounded px-2 py-0.5 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
         aria-label="No, not helpful"
       >
-        No
+        {strings?.no ?? "No"}
       </button>
     </div>
   );
