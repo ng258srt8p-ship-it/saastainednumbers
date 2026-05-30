@@ -28,10 +28,12 @@ export async function Nav() {
           </span>
         </Link>
         <div className="flex items-center gap-1">
-          <CurrencySwitcher />
-          <LocaleSwitcher locale={locale as Locale} />
+          <div className="hidden md:flex items-center gap-1">
+            <CurrencySwitcher />
+            <LocaleSwitcher locale={locale as Locale} />
+          </div>
           <ThemeToggle />
-          <MobileNav t={links} />
+          <MobileNav t={links} locale={locale as Locale} />
         </div>
       </div>
     </nav>

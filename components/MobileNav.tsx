@@ -5,13 +5,15 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CurrencySwitcher } from "./CurrencySwitcher";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import type { Locale } from "@/lib/useLocale";
 
 
 type MobileNavProps = {
   t: Record<string, string>;
+  locale: Locale;
 };
 
-export function MobileNav({ t }: MobileNavProps) {
+export function MobileNav({ t, locale }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const hamburgerRef = useRef<HTMLButtonElement>(null);
@@ -169,9 +171,13 @@ export function MobileNav({ t }: MobileNavProps) {
               })}
             </ul>
           </nav>
-          <div className="flex items-center gap-1 px-3">
-            <CurrencySwitcher />
-            <LocaleSwitcher locale="en" />
+          <div className="flex flex-col border-b border-gray-100 dark:border-gray-700">
+            <div className="px-3 py-3 border-b border-gray-100 dark:border-gray-700">
+              <CurrencySwitcher />
+            </div>
+            <div className="px-3 py-3">
+              <LocaleSwitcher locale={locale} />
+            </div>
           </div>
         </div>
       </div>

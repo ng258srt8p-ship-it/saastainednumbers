@@ -25,7 +25,7 @@ export function CurrencySwitcher() {
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden />
           <div
-            className="absolute right-0 z-50 mt-1 min-w-[140px] max-h-[300px] overflow-y-auto rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg py-1"
+            className="absolute left-0 z-50 mt-1 min-w-[140px] max-h-[300px] overflow-y-auto rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg py-1"
             role="listbox"
             aria-label="Select currency"
           >
