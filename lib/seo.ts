@@ -14,6 +14,7 @@ export function generateMetadata(config: CalculatorConfig): Metadata {
       languages: alternateLanguages(path),
     },
     openGraph: {
+      type: "website",
       title: config.meta.title,
       description: config.meta.description,
       images: [`/api/og?title=${encodeURIComponent(config.meta.title)}&category=${encodeURIComponent(config.category)}&description=${encodeURIComponent(config.meta.description)}`],

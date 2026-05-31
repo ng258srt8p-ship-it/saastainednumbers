@@ -28,6 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
+      type: "website",
       images: ["/api/og?title=All+Calculators&category=home"],
     },
     twitter: {

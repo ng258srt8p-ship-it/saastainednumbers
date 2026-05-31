@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title: `${name} Calculators`,
       description: desc,
+      type: "website",
       images: [`/api/og?title=${encodeURIComponent(name)}&category=${category}&description=${encodeURIComponent(desc)}`],
     },
     twitter: {
@@ -92,7 +93,7 @@ export default async function CategoryPage({ params }: PageProps) {
   const { t, locale } = await getTranslations();
   const calculators = getCalculatorsByCategory(category);
   const meta = CATEGORY_META[category];
-  const categoryName = t(`category.${category}`);
+  const categoryName = t("category." + getCategoryTranslationKey(category));
   const calculatorsLabel = t("category.calculatorsLabel");
   const editorial = CATEGORY_EDITORIAL[category];
 

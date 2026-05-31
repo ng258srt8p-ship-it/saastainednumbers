@@ -29,6 +29,43 @@ jobs:
       - name: Unit tests
         run: npx vitest run
 
+  e2e-tests:
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+      - name: Build static export
+        run: ./build-static.sh
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      - name: Start server and run E2E tests
+        run: |
+          npx serve out -l 3000 &
+          SERVER_PID=$!
+          sleep 3
+          npx playwright test --reporter=html
+          E2E_EXIT=$?
+          kill $SERVER_PID 2>/dev/null
+          exit $E2E_EXIT
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+
   deploy:
     needs: quality
     runs-on: ubuntu-latest

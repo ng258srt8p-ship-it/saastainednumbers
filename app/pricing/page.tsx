@@ -20,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: `${t("pricing.everythingFree")} — SaaStainedNumbers`,
       description: t("pricing.allFree"),
+      type: "website",
       images: ["/api/og?title=Pricing&category=home"],
     },
     twitter: {

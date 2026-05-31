@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: `${t("blog.title")} — SaaStainedNumbers`,
       description: t("blog.subtitle"),
+      type: "website",
       images: ["/api/og?title=Blog&category=home"],
     },
     twitter: {

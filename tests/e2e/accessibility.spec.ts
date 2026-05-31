@@ -38,7 +38,7 @@ const PAGE_TYPES = [
 test.describe("Accessibility audit (Section 508 / WCAG 2.1 AA)", () => {
   for (const { path, label } of PAGE_TYPES) {
     test(`${label} (${path})`, async ({ page }) => {
-      const resp = await page.goto(path, { waitUntil: "networkidle" });
+      const resp = await page.goto(path, { waitUntil: "load" });
       expect(resp?.status()).toBe(200);
 
       const results = await new AxeBuilder({ page })

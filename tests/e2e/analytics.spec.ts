@@ -4,7 +4,7 @@ const GA_MEASUREMENT_ID = "G-BHDH2PETBK";
 
 test.describe("Google Analytics 4 — script injection", () => {
   test("GA4 gtag script loads on a calculator page", async ({ page }) => {
-    await page.goto("/revenue/mrr-calculator", { waitUntil: "networkidle" });
+    await page.goto("/revenue/mrr-calculator", { waitUntil: "load" });
 
     const gtagScript = page.locator(`script[src*="googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"]`);
     await expect(gtagScript).toBeAttached();
@@ -16,7 +16,7 @@ test.describe("Google Analytics 4 — script injection", () => {
   });
 
   test("GA4 config event fires on page load", async ({ page }) => {
-    await page.goto("/revenue/mrr-calculator", { waitUntil: "networkidle" });
+    await page.goto("/revenue/mrr-calculator", { waitUntil: "load" });
 
     const configFired = await page.evaluate(() => {
       const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
@@ -29,7 +29,7 @@ test.describe("Google Analytics 4 — script injection", () => {
   });
 
   test("GA4 loads on embed pages (embed layout nested under root layout with GA)", async ({ page }) => {
-    await page.goto("/embed/mrr-calculator", { waitUntil: "networkidle" });
+    await page.goto("/embed/mrr-calculator", { waitUntil: "load" });
 
     const gtagScript = page.locator(`script[src*="googletagmanager.com/gtag/js"]`);
     await expect(gtagScript).toBeAttached();
@@ -42,14 +42,14 @@ test.describe("Google Analytics 4 — script injection", () => {
   });
 
   test("GA4 loads on category and homepage", async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "load" });
     const homepageLoaded = await page.evaluate(() => {
       const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
       return dl?.some((entry) => entry[0] === "config");
     });
     expect(homepageLoaded).toBe(true);
 
-    await page.goto("/revenue", { waitUntil: "networkidle" });
+    await page.goto("/revenue", { waitUntil: "load" });
     const categoryLoaded = await page.evaluate(() => {
       const dl = window.dataLayer as Array<Record<string, unknown>> | undefined;
       return dl?.some((entry) => entry[0] === "config");
@@ -60,7 +60,7 @@ test.describe("Google Analytics 4 — script injection", () => {
 
 test.describe("Google Analytics 4 — custom events", () => {
   test("calculate_tool event fires when calculator produces a result", async ({ page }) => {
-    await page.goto("/revenue/mrr-calculator", { waitUntil: "networkidle" });
+    await page.goto("/revenue/mrr-calculator", { waitUntil: "load" });
 
     // Wait for hydration + 500ms debounce in CalculatorClient
     await page.waitForTimeout(2000);
@@ -76,7 +76,7 @@ test.describe("Google Analytics 4 — custom events", () => {
   });
 
   test("share_tool event fires when share button clicked", async ({ page }) => {
-    await page.goto("/revenue/mrr-calculator", { waitUntil: "networkidle" });
+    await page.goto("/revenue/mrr-calculator", { waitUntil: "load" });
     await page.waitForTimeout(500);
 
     const shareButton = page.locator("button:has(svg)").filter({ hasText: /share/i }).first();
@@ -95,7 +95,7 @@ test.describe("Google Analytics 4 — custom events", () => {
   });
 
   test("search event fires when search is used", async ({ page }) => {
-    await page.goto("/revenue", { waitUntil: "networkidle" });
+    await page.goto("/revenue", { waitUntil: "load" });
 
     const searchInput = page.locator("input[aria-label='Search calculators']");
     if (await searchInput.isVisible()) {
@@ -115,7 +115,7 @@ test.describe("Google Analytics 4 — custom events", () => {
 
 test.describe("Google Analytics 4 — events cross-page", () => {
   test("dashboard page also fires calculate events", async ({ page }) => {
-    await page.goto("/dashboard", { waitUntil: "networkidle" });
+    await page.goto("/dashboard", { waitUntil: "load" });
     await page.waitForTimeout(1000);
 
     const configFired = await page.evaluate(() => {
@@ -128,13 +128,13 @@ test.describe("Google Analytics 4 — events cross-page", () => {
   });
 
   test("blog page loads GA4", async ({ page }) => {
-    await page.goto("/blog", { waitUntil: "networkidle" });
+    await page.goto("/blog", { waitUntil: "load" });
     const hasGA = await page.evaluate(() => Array.isArray(window.dataLayer));
     expect(hasGA).toBe(true);
   });
 
   test("GA dataLayer is accessible globally", async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "load" });
 
     const gtagExists = await page.evaluate(() => typeof window.gtag === "function");
     expect(gtagExists).toBe(true);

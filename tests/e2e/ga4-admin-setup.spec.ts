@@ -25,7 +25,7 @@ test("GA4 admin config — user-assisted setup", async ({ page }) => {
   console.log("  URL: " + GA_ADMIN_URL);
   console.log("  Sign in with your Google account when prompted.\n");
 
-  await page.goto(GA_ADMIN_URL, { waitUntil: "networkidle" });
+  await page.goto(GA_ADMIN_URL, { waitUntil: "load" });
 
   console.log("  Waiting for you to log in and reach the admin panel...");
   console.log("  (You have 60 seconds to complete sign-in)\n");

@@ -88,6 +88,7 @@ export default async function RootLayout({
           gtag('config', 'G-BHDH2PETBK');`}
         </Script>
         <AdScript />
+        <Script src="https://s.skimresources.com/js/303938X1792076.skimlinks.js" strategy="afterInteractive" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

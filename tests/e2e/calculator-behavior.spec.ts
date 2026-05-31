@@ -36,7 +36,7 @@ const withoutMetricKey = [
 test.describe("Stage Selector", () => {
   for (const calc of withMetricKey) {
     test(`${calc.slug} shows stage selector with 5 buttons`, async ({ page }) => {
-      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "networkidle" });
+      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "load" });
       const stageDiv = page.locator("div.rounded-lg").filter({ hasText: /Seed/ });
       await expect(stageDiv).toBeVisible();
       for (const stage of calc.stages) {
@@ -45,7 +45,7 @@ test.describe("Stage Selector", () => {
     });
 
     test(`${calc.slug} stage selector changes active button on click`, async ({ page }) => {
-      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "networkidle" });
+      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "load" });
       for (const stage of calc.stages) {
         await page.locator(`button:has-text("${stage}")`).first().click();
         await page.waitForTimeout(200);
@@ -62,7 +62,7 @@ test.describe("Stage Selector", () => {
 
   for (const calc of withoutMetricKey) {
     test(`${calc.slug} does NOT show stage selector`, async ({ page }) => {
-      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "networkidle" });
+      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "load" });
       const stageDiv = page.locator("div.rounded-lg").filter({ hasText: /Seed/ });
       await expect(stageDiv).toHaveCount(0);
     });
@@ -72,7 +72,7 @@ test.describe("Stage Selector", () => {
 test.describe("Health Badges", () => {
   for (const calc of withMetricKey) {
     test(`${calc.slug} shows health badges that change with stage`, async ({ page }) => {
-      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "networkidle" });
+      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "load" });
 
       const badgesByStage: Record<string, string[]> = {};
       for (const stage of calc.stages) {
@@ -99,7 +99,7 @@ test.describe("Health Badges", () => {
 
 test.describe("Result Correctness", () => {
   test("churn calculator produces correct default result", async ({ page }) => {
-    await page.goto(`${BASE}/churn-retention/churn-calculator`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE}/churn-retention/churn-calculator`, { waitUntil: "load" });
     const primary = await page.evaluate(() => {
       const el = document.querySelector("p.font-heading");
       return el?.textContent?.trim();
@@ -108,7 +108,7 @@ test.describe("Result Correctness", () => {
   });
 
   test("MRR calculator produces correct default result (100 × $50 = $5,000)", async ({ page }) => {
-    await page.goto(`${BASE}/revenue/mrr-calculator`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE}/revenue/mrr-calculator`, { waitUntil: "load" });
     const primary = await page.evaluate(() => {
       const el = document.querySelector("p.font-heading");
       return el?.textContent?.trim();
@@ -117,7 +117,7 @@ test.describe("Result Correctness", () => {
   });
 
   test("CAC calculator produces correct result ($10K + $5K / 50 = $300)", async ({ page }) => {
-    await page.goto(`${BASE}/growth-efficiency/cac-calculator`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE}/growth-efficiency/cac-calculator`, { waitUntil: "load" });
     const primary = await page.evaluate(() => {
       const el = document.querySelector("p.font-heading");
       return el?.textContent?.trim();
@@ -138,9 +138,9 @@ test.describe("Default Values", () => {
 
   for (const calc of calcDefaults) {
     test(`${calc.slug} loads with correct default input values`, async ({ page }) => {
-      await page.goto(`${BASE}/${calc.category}/${calc.slug}?${calc.values.map((v, i) => `i${i}=${v}`).join("&")}`, { waitUntil: "networkidle" });
+      await page.goto(`${BASE}/${calc.category}/${calc.slug}?${calc.values.map((v, i) => `i${i}=${v}`).join("&")}`, { waitUntil: "load" });
       // Force default values by navigating clean
-      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "networkidle" });
+      await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "load" });
       await page.waitForTimeout(500);
       const inputs = page.locator('input[type="number"]');
       const count = await inputs.count();
@@ -159,7 +159,7 @@ test.describe("Content Sections", () => {
   ];
   for (const { slug, category } of slugs) {
     test(`${slug} renders How to Use, Formula, Benchmarks, and FAQ`, async ({ page }) => {
-      await page.goto(`${BASE}/${category}/${slug}`, { waitUntil: "networkidle" });
+      await page.goto(`${BASE}/${category}/${slug}`, { waitUntil: "load" });
       await expect(page.locator("text=How to Use This Calculator")).toBeVisible();
       await expect(page.locator("text=Formula & Worked Example")).toBeVisible();
       await expect(page.locator("text=Industry Benchmarks")).toBeVisible();
@@ -176,7 +176,7 @@ test.describe("FAQ Accordion", () => {
   ];
   for (const { slug, category } of slugs) {
     test(`${slug} FAQ accordion expands on click`, async ({ page }) => {
-      await page.goto(`${BASE}/${category}/${slug}`, { waitUntil: "networkidle" });
+      await page.goto(`${BASE}/${category}/${slug}`, { waitUntil: "load" });
       const details = page.locator("details").first();
       const answer = details.locator("div").last();
       await expect(answer).not.toBeVisible({ timeout: 3000 });
