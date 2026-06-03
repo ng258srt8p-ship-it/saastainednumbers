@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   const calculators = getAllCalculators();
   const categories = getAllKnownCategories();
-  const title = `${t("category.all")} — SaaStainedNumbers`;
+  const title = `${t("category.all")} - SaaStainedNumbers`;
   const description = t("calculators.browseCollection")
     .replace("{n}", String(calculators.length))
     .replace("{m}", String(categories.length));
@@ -29,12 +29,6 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      images: ["/api/og?title=All+Calculators&category=home"],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
       images: ["/api/og?title=All+Calculators&category=home"],
     },
   };

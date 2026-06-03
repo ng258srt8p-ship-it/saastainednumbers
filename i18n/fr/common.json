@@ -69,7 +69,7 @@
     "stepPick": "Choisis un calculateur",
     "stepType": "Entre tes chiffres",
     "stepAct": "Passe à l'action",
-    "pickDescription": "Des coûts IA aux plans FIRE — les {n} sont gratuites. Aucune inscription.",
+    "pickDescription": "Des coûts IA aux plans FIRE, les {n} sont gratuites. Aucune inscription.",
     "typeDescription": "Les résultats se mettent à jour en direct dans ton navigateur pendant que tu saisis. Rien ne quitte ton appareil.",
     "actDescription": "Enregistre les résultats, intègre-les sur ton site ou partage-les avec ton équipe. Aucun compte nécessaire.",
     "byTheNumbers": "En chiffres",
@@ -78,7 +78,7 @@
     "allFree": "Les {n} calculateurs sont entièrement gratuits. Sans abonnement, sans inscription.",
     "heroLine1": "Connais tes chiffres.",
     "heroLine2": "Pérennise ta croissance.",
-    "heroSubtitle": "calculateurs pour fondateurs, opérateurs et créateurs. Entre tes chiffres — obtiens une réponse dans ton navigateur. Tout gratuit, tout privé.",
+    "heroSubtitle": "calculateurs pour fondateurs, opérateurs et créateurs. Entre tes chiffres, obtiens une réponse dans ton navigateur. Tout gratuit, tout privé.",
     "freeCalculators": "calculateurs gratuits",
     "categories": "catégories",
     "toStart": "pour démarrer",
@@ -95,7 +95,7 @@
     "everythingFree": "Tout est gratuit",
     "subtitle": "Sans abonnement, sans paywall. Les {n} calculateurs sont tous entièrement gratuits.",
     "forever": "pour toujours",
-    "feature1": "Les {n} calculateurs — aucune limite",
+    "feature1": "Les {n} calculateurs : aucune limite",
     "feature2": "Résultats en temps réel avec comparaisons de référence",
     "feature3": "Analyses de croissance par étape (Seed à Série C+)",
     "feature4": "Intégrations illimitées pour ton site web",
@@ -137,7 +137,7 @@
   },
   "calculators": {
     "browseCollection": "Parcours notre collection complète de {n} calculateurs répartis dans {m} catégories.",
-    "editorial": "Des calculateurs gratuits et instantanés pour les métriques qui comptent. Des revenus SaaS et de l'économie unitaire aux coûts IA, en passant par les revenus complémentaires et les finances personnelles — chaque calculateur est 100 % gratuit, sans compte requis. Les résultats se mettent à jour en direct pendant que tu saisis, et rien ne quitte ton appareil. Conçus pour les fondateurs, les opérateurs, les créateurs et tous ceux qui ont besoin de réponses rapides.",
+    "editorial": "Des calculateurs gratuits et instantanés pour les métriques qui comptent. Des revenus SaaS et de l'économie unitaire aux coûts IA, en passant par les revenus complémentaires et les finances personnelles, chaque calculateur est 100 % gratuit, sans compte requis. Les résultats se mettent à jour en direct pendant que tu saisis, et rien ne quitte ton appareil. Conçus pour les fondateurs, les opérateurs, les créateurs et tous ceux qui ont besoin de réponses rapides.",
     "searchPlaceholder": "Rechercher tous les calculateurs...",
     "viewAll": "Tout voir →"
   },
@@ -155,10 +155,39 @@
     "ariaLabel": "Rechercher des calculateurs",
     "resultsFound": "{n} calculateur(s) trouvé(s)"
   },
+  "about": {
+    "title": "About",
+    "heading": "About SaaStainedNumbers",
+    "subtitle": "Free, private, instant calculators for the metrics that matter.",
+    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
+    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
+    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
+    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future, nothing is gated, no account is required, and your data never leaves your device.",
+    "contactLink": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Get in Touch",
+    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
+    "emailLabel": "Email us at",
+    "responseTime": "We aim to respond within 2 business days.",
+    "backToHome": "← Back to Home"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "heading": "Privacy Policy",
+    "subtitle": "How we handle your data."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "heading": "Terms of Service",
+    "subtitle": "The rules of the road."
+  },
   "footer": {
     "product": "Produit",
     "categories": "Catégories",
     "resources": "Ressources",
+    "about": "About",
     "legal": "Mentions légales",
     "disclaimer": "Avertissement",
     "privacyPolicy": "Politique de confidentialité",

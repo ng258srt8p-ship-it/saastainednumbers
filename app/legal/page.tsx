@@ -1,14 +1,75 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Legal  —  SaaStainedNumbers",
-  description:
-    "Disclaimer, privacy policy, terms of service, and other legal information for SaaStainedNumbers calculators.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Legal - SaaStainedNumbers",
+    description:
+      "Disclaimer, privacy policy, terms of service, and other legal information for SaaStainedNumbers calculators.",
+    alternates: {
+      canonical: "https://saastainednumbers.com/legal",
+      languages: {
+        en: "https://saastainednumbers.com/legal",
+        es: "https://saastainednumbers.com/es/legal",
+        de: "https://saastainednumbers.com/de/legal",
+        pt: "https://saastainednumbers.com/pt/legal",
+        fr: "https://saastainednumbers.com/fr/legal",
+        ja: "https://saastainednumbers.com/ja/legal",
+      },
+    },
+    openGraph: {
+      title: "Legal - SaaStainedNumbers",
+      description:
+        "Disclaimer, privacy policy, terms of service, and other legal information for SaaStainedNumbers calculators.",
+      type: "website",
+      images: ["/api/og?title=Legal"],
+      siteName: "SaaStainedNumbers",
+    },
+  };
+}
+
+const sections = [
+  {
+    id: "disclaimer",
+    title: "Disclaimer",
+    href: "/legal#disclaimer",
+    description: "Not financial, legal, or professional advice. Calculator results are for informational purposes only.",
+  },
+  {
+    id: "privacy",
+    title: "Privacy Policy",
+    href: "/privacy",
+     description: "How we handle your data. All calculations happen in your browser, nothing is stored on our servers.",
+  },
+  {
+    id: "terms",
+    title: "Terms of Service",
+    href: "/terms",
+    description: "The rules governing your use of SaaStainedNumbers calculators and content.",
+  },
+  {
+    id: "cookies",
+    title: "Cookie Policy",
+    href: "/legal#cookies",
+    description: "How we use localStorage and cookies for theme preferences and analytics.",
+  },
+  {
+    id: "acceptable-use",
+    title: "Acceptable Use Policy",
+    href: "/legal#acceptable-use",
+    description: "Guidelines for embedding calculators and using the service responsibly.",
+  },
+  {
+    id: "contact",
+    title: "Contact",
+    href: "/contact",
+    description: "Get in touch with us for questions, feedback, or legal inquiries.",
+  },
+];
 
 export default function LegalPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
+    <div className="mx-auto max-w-3xl px-4 py-16">
       <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
         Legal
       </h1>
@@ -17,6 +78,25 @@ export default function LegalPage() {
       </p>
 
       <hr className="my-8 border-gray-200 dark:border-gray-700" />
+
+      <div className="grid gap-6">
+        {sections.map((section) => (
+          <Link
+            key={section.id}
+            href={section.href}
+            className="group rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+          >
+            <h2 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 transition-colors">
+              {section.title}
+            </h2>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              {section.description}
+            </p>
+          </Link>
+        ))}
+      </div>
+
+      <hr className="my-10 border-gray-200 dark:border-gray-700" />
 
       {/* Disclaimer */}
       <section id="disclaimer" className="scroll-mt-20">
@@ -90,137 +170,6 @@ export default function LegalPage() {
 
       <hr className="my-10 border-gray-200 dark:border-gray-700" />
 
-      {/* Privacy Policy */}
-      <section id="privacy" className="scroll-mt-20">
-        <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
-          Privacy Policy
-        </h2>
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Last updated: May 26, 2026
-        </p>
-
-        <div className="prose prose-gray dark:prose-invert max-w-none mt-6">
-          <h3>Our Commitment to Privacy</h3>
-          <p>
-            SaaStainedNumbers is designed to respect your privacy. All calculator calculations
-            happen <strong>entirely in your browser</strong> — your input data never leaves your
-            device. We do not store, transmit, or process your calculator inputs on our servers.
-          </p>
-
-          <h3>What We Do NOT Collect</h3>
-          <ul>
-            <li>We do <strong>not</strong> collect or store your calculator inputs.</li>
-            <li>We do <strong>not</strong> sell, rent, or share your personal information with third parties.</li>
-            <li>We do <strong>not</strong> use your data for advertising personalization or profiling.</li>
-          </ul>
-
-          <h3>Cookies and Local Storage</h3>
-          <p>
-            We use <strong>localStorage</strong> in your browser to remember your theme preference
-            (light/dark mode). This data stays on your device and is not sent to our servers. See our{" "}
-            <a href="#cookies" className="text-brand-600 dark:text-brand-400 hover:underline">Cookie Policy</a> for details.
-          </p>
-
-          <h3>Third-Party Services</h3>
-          <p>We use the following third-party services:</p>
-          <ul>
-            <li><strong>Neon (PostgreSQL)</strong> — database hosting for user accounts and saved calculations (currently dormant — sign-in is disabled).</li>
-          </ul>
-
-          <h3>Your Rights</h3>
-          <p>
-            Depending on your jurisdiction, you may have the right to access, correct, delete, or
-            port your personal data. To exercise these rights, contact us at the email address
-            below. We will respond within the timeframe required by applicable law.
-          </p>
-
-          <h3>Data Retention</h3>
-          <p>
-            We do not retain any personal data. All calculator calculations happen entirely in your
-            browser and are never stored on our servers.
-          </p>
-        </div>
-      </section>
-
-      <hr className="my-10 border-gray-200 dark:border-gray-700" />
-
-      {/* Terms of Service */}
-      <section id="terms" className="scroll-mt-20">
-        <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
-          Terms of Service
-        </h2>
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Last updated: May 26, 2026
-        </p>
-
-        <div className="prose prose-gray dark:prose-invert max-w-none mt-6">
-          <h3>Acceptance of Terms</h3>
-          <p>
-            By using SaaStainedNumbers, you agree to these Terms of Service. If you do not agree,
-            please do not use the website.
-          </p>
-
-          <h3>Description of Service</h3>
-          <p>
-            SaaStainedNumbers provides free, browser-based financial and business calculators for
-            informational and educational purposes. All calculations are performed client-side. No
-            account is required to use the calculators.
-          </p>
-
-          <h3>User Responsibilities</h3>
-          <p>You agree not to:</p>
-          <ul>
-            <li>Use SaaStainedNumbers for any unlawful purpose or in violation of any applicable law.</li>
-            <li>Scrape, crawl, or otherwise automatically extract data from the website.</li>
-            <li>Interfere with the operation of the website or attempt to circumvent its security.</li>
-            <li>Misrepresent calculator results as your own or as professional advice.</li>
-            <li>Use the website in a way that could damage, disable, or impair our infrastructure.</li>
-          </ul>
-
-          <h3>Intellectual Property</h3>
-          <p>
-            The design, brand assets, and original text content on SaaStainedNumbers are the
-            property of SaaStainedNumbers unless otherwise noted. Calculator logic and formulas
-            are based on standard mathematical and financial concepts and are not proprietary.
-            Calculator results generated by you are yours to use freely.
-          </p>
-
-          <h3>Limitation of Liability</h3>
-          <p>
-            To the fullest extent permitted by law, SaaStainedNumbers and its operators shall not
-            be liable for any direct, indirect, incidental, consequential, or punitive damages
-            arising from or related to your use of the website, including but not limited to
-            financial losses, business decisions, or lost profits based on calculator results or
-            content.
-          </p>
-
-          <h3>Your Responsibility</h3>
-          <p>
-            You are responsible for how you use SaaStainedNumbers and any decisions you make
-            based on calculator results. We are not responsible for claims arising from your
-            misuse of the service.
-          </p>
-
-          <h3>Changes to Terms</h3>
-          <p>
-            We may update these terms from time to time. Changes will be posted on this page.
-          </p>
-
-          <h3>Governing Law</h3>
-          <p>
-            These terms are governed by the laws of Ontario, Canada.
-          </p>
-
-          <h3>Severability</h3>
-          <p>
-            If any provision of these terms is found to be unenforceable, the remaining provisions
-            shall remain in full force and effect.
-          </p>
-        </div>
-      </section>
-
-      <hr className="my-10 border-gray-200 dark:border-gray-700" />
-
       {/* Cookie Policy */}
       <section id="cookies" className="scroll-mt-20">
         <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
@@ -240,8 +189,15 @@ export default function LegalPage() {
           <h3>Local Storage</h3>
           <p>
             We use browser <strong>localStorage</strong> (not cookies) to store your theme
-            preference (light/dark mode). This data never leaves your device and is not accessible
-            to our servers or third parties.
+            preference (light/dark mode) and locale selection. This data never leaves your device
+            and is not accessible to our servers or third parties.
+          </p>
+
+          <h3>Analytics</h3>
+          <p>
+            We use Google Analytics (GA4) to understand aggregate traffic patterns. GA4 uses cookies
+            to distinguish unique visitors. You can opt out of Google Analytics by installing the
+            Google Analytics Opt-out Browser Add-on.
           </p>
         </div>
       </section>
@@ -274,7 +230,6 @@ export default function LegalPage() {
           <p>The following activities are strictly prohibited:</p>
           <ul>
             <li>Automated scraping, crawling, or data extraction of any kind.</li>
-
             <li>Using the service in a way that could overburden our infrastructure.</li>
             <li>Republishing calculator content or results as a substitute for professional advice.</li>
           </ul>
@@ -283,30 +238,6 @@ export default function LegalPage() {
           <p>
             We reserve the right to block, restrict, or disable access to any user or embed that
             violates this policy, without prior notice.
-          </p>
-        </div>
-      </section>
-
-      <hr className="my-10 border-gray-200 dark:border-gray-700" />
-
-      {/* Contact */}
-      <section id="contact" className="scroll-mt-20">
-        <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
-          Contact
-        </h2>
-
-        <div className="prose prose-gray dark:prose-invert max-w-none mt-6">
-          <p>
-            If you have questions about these policies, wish to exercise your data rights, or need
-            to report a legal concern, please contact us at:
-          </p>
-          <p>
-            <a
-              href="mailto:legal@saastainednumbers.com"
-              className="text-brand-600 dark:text-brand-400 hover:underline font-medium"
-            >
-              legal@saastainednumbers.com
-            </a>
           </p>
         </div>
       </section>

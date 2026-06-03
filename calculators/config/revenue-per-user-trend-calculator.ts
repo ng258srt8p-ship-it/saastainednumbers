@@ -32,7 +32,7 @@ const config = {
       { metric: "ARPU Growth (Stable)", value: "5 - 10% YoY", source: "SaaS Capital" },
       { metric: "SMB ARPU Range", value: "$50 - $150 / month", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Mid-Market ARPU Range", value: "$150 - $500 / month", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Enterprise ARPU Range", value: "$500 - $5,000+ / month", source: "OpenView" },
+      { metric: "Enterprise ARPU Range", value: "$500 - $5,000+ / month", source: "KeyBanc Capital Markets" },
     ],
     relatedCalculators: ["arpu-calculator", "mrr-growth-rate-calculator", "revenue-per-employee-calculator"],
     faq: [

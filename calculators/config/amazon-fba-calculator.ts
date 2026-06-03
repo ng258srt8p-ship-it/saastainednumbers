@@ -38,7 +38,7 @@ const config = {
       { metric: "FBA Fulfillment Fee (Large)", value: "$5-8 / unit", source: "Amazon 2025" },
       { metric: "Successful FBA Margin", value: "20-40%", source: "Jungle Scout 2025" },
       { metric: "Average Seller Net Margin", value: "15-25%", source: "Jungle Scout 2025" },
-      { metric: "Amazon Fee Share of Revenue", value: "25-35%", source: "Industry Average" },
+      { metric: "Amazon Fee Share of Revenue", value: "25-35%", source: "General benchmark" },
     ],
     relatedCalculators: ["etsy-profit-calculator", "break-even-calculator"],
     faq: [

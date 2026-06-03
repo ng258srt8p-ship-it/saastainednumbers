@@ -30,12 +30,12 @@ const config = {
     formulaExplanation: "Monthly Ad Revenue = (Pageviews ÷ 1,000) × RPM. Total Monthly = Ad Revenue + Affiliate + Sponsorships + Digital Products. Annual = Total × 12. RPM varies by niche: tech ($15-25), finance ($20-30), lifestyle ($5-15), entertainment ($3-8).",
     benchmarks: "Display ad RPM ranges from $3-30 depending on niche and traffic quality. Affiliate income typically equals 1-3x ad revenue for established blogs. Sponsorships pay $50-500 per 1,000 pageviews for a single post. Digital products (courses, templates, eBooks) have 80-95% margins and represent the highest-leverage revenue stream. Top blogs earn $50K-500K+/month through all four streams combined.",
     benchmarkData: [
-      { metric: "Tech/SaaS Blog RPM", value: "$15-25", source: "Industry Average" },
-      { metric: "Finance Blog RPM", value: "$20-30", source: "Industry Average" },
-      { metric: "Lifestyle Blog RPM", value: "$5-15", source: "Industry Average" },
-      { metric: "Affiliate Revenue Ratio", value: "1-3x ad revenue", source: "Industry Average" },
-      { metric: "Sponsorship Rate per 1K Views", value: "$50-500", source: "Industry Average" },
-      { metric: "Digital Product Margin", value: "80-95%", source: "Industry Average" },
+      { metric: "Tech/SaaS Blog RPM", value: "$15-25", source: "General benchmark" },
+      { metric: "Finance Blog RPM", value: "$20-30", source: "General benchmark" },
+      { metric: "Lifestyle Blog RPM", value: "$5-15", source: "General benchmark" },
+      { metric: "Affiliate Revenue Ratio", value: "1-3x ad revenue", source: "General benchmark" },
+      { metric: "Sponsorship Rate per 1K Views", value: "$50-500", source: "General benchmark" },
+      { metric: "Digital Product Margin", value: "80-95%", source: "General benchmark" },
     ],
     relatedCalculators: ["affiliate-income-calculator", "youtube-ad-revenue-calculator"],
     faq: [

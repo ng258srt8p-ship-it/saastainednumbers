@@ -30,8 +30,8 @@ const config = {
       { metric: "Hyper-Efficient", value: "4.0+", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Top Quartile", value: "5.0+", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Median", value: "3.5", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Needs Attention", value: "1.0 - 2.0", source: "Industry Standard" },
-      { metric: "Critical (Shrinking)", value: "< 1.0", source: "Industry Standard" },
+      { metric: "Needs Attention", value: "1.0 - 2.0", source: "General benchmark" },
+      { metric: "Critical (Shrinking)", value: "< 1.0", source: "General benchmark" },
     ],
     relatedCalculators: ["mrr-calculator", "nrr-calculator", "burn-rate-calculator"],
     faq: [

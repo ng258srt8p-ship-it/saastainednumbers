@@ -26,10 +26,10 @@ const config = {
     formulaExplanation: "Gross Profit Per Month = ARPU × (Gross Margin / 100). Payback Period (months) = CAC / Gross Profit Per Month. Payback Period (days) = Payback Months × 30.44. Example: CAC = $500, ARPU = $100, Gross Margin = 70%. Gross Profit = $70/month. Payback = $500 / $70 = 7.14 months (217 days). Total invested capital is recouped after 7.14 months, and the customer becomes profitable from that point forward.",
     benchmarks: "Best-in-class SaaS companies achieve a CAC payback period under 6 months. A payback period under 12 months is considered healthy and standard for most SaaS models. Periods between 12 and 18 months need monitoring and improvement. Payback over 18 months indicates inefficient acquisition or problematic pricing. According to KeyBanc 2025 SaaS Survey, the median SaaS company has a payback period of 12-18 months. Enterprise SaaS with high ARPU typically achieves faster payback than SMB SaaS with lower ARPU.",
     benchmarkData: [
-      { metric: "Excellent Payback Period", value: "< 6 months", source: "OpenView" },
+      { metric: "Excellent Payback Period", value: "< 6 months", source: "KeyBanc Capital Markets" },
       { metric: "Healthy Payback Period", value: "< 12 months", source: "SaaS Capital" },
       { metric: "Needs Monitoring", value: "12 - 18 months", source: "SaaS Capital" },
-      { metric: "Problematic Payback", value: "> 18 months", source: "OpenView" },
+      { metric: "Problematic Payback", value: "> 18 months", source: "KeyBanc Capital Markets" },
       { metric: "Median SaaS Payback Period", value: "12 - 18 months", source: "KeyBanc 2025 SaaS Survey" },
     ],
     relatedCalculators: ["cac-calculator", "payback-period-calculator", "gross-margin-calculator", "arpu-calculator"],

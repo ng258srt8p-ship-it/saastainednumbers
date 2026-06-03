@@ -104,6 +104,7 @@ export function MobileNav({ t, locale }: MobileNavProps) {
     { href: "/dashboard", label: t.dashboard },
     { href: "/pricing", label: t.pricing },
     { href: "/blog", label: t.blog },
+    { href: "/about", label: "About" },
   ];
 
   return (
@@ -120,6 +121,9 @@ export function MobileNav({ t, locale }: MobileNavProps) {
         </Link>
         <Link href="/blog" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
           {t.blog}
+        </Link>
+        <Link href="/about" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
+          About
         </Link>
       </div>
 

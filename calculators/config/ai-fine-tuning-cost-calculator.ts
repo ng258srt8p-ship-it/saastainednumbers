@@ -32,7 +32,7 @@ const config = {
       { metric: "GPT-3.5 Turbo Fine-Tuning", value: "$8.00 / 1M training tokens", source: "OpenAI 2025" },
       { metric: "GPT-4o Fine-Tuning", value: "$25.00 / 1M training tokens", source: "OpenAI 2025" },
       { metric: "Fine-Tuned GPT-3.5 Inference", value: "$3.00/$6.00 per 1M tokens", source: "OpenAI 2025" },
-      { metric: "Typical Dataset Size", value: "100K - 10M tokens", source: "Industry Standard" },
+      { metric: "Typical Dataset Size", value: "100K - 10M tokens", source: "General benchmark" },
       { metric: "Self-Hosted Llama 3 (A100)", value: "~$1-3 / hour GPU", source: "Cloud Providers" },
       { metric: "Recommended Epoch Range", value: "1-4 epochs", source: "OpenAI" },
     ],

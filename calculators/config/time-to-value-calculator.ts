@@ -30,7 +30,7 @@ const config = {
       { metric: "Self-Serve TTV (Best-in-Class)", value: "< 7 days", source: "Gainsight" },
       { metric: "Enterprise TTV (Good)", value: "< 14 days", source: "Gainsight" },
       { metric: "Enterprise TTV (Acceptable)", value: "< 30 days", source: "Customer Success Collective" },
-      { metric: "Instant-Value Products (Slack/Dropbox)", value: "< 5 minutes", source: "Industry Standard" },
+      { metric: "Instant-Value Products (Slack/Dropbox)", value: "< 5 minutes", source: "General benchmark" },
       { metric: "On-Track Percentage Target", value: "80%+", source: "Product School" },
     ],
     relatedCalculators: ["feature-adoption-rate-calculator", "activation-rate-calculator", "customer-health-score-calculator"],

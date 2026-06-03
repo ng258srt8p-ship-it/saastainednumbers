@@ -11,7 +11,7 @@ This guide covers everything you need to know about MRR growth rate in 2026: how
 
 ## What Is MRR Growth Rate?
 
-MRR growth rate measures the percentage change in your Monthly Recurring Revenue from one period to the next. It tells you whether your business is accelerating, maintaining momentum, or decelerating — often weeks before other metrics catch the signal.
+MRR growth rate measures the percentage change in your Monthly Recurring Revenue from one period to the next. It tells you whether your business is accelerating, maintaining momentum, or decelerating, often weeks before other metrics catch the signal.
 
 Unlike traditional revenue growth (which can be distorted by one-time fees, professional services, or hardware sales), MRR growth focuses exclusively on the recurring subscription revenue that defines a SaaS business. This makes it the single most important leading indicator of SaaS health.
 

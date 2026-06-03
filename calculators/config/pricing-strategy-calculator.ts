@@ -30,7 +30,7 @@ const config = {
     benchmarks: "SaaS gross margins target 70-85%. Physical products target 40-60%. Premium brands use value-based pricing (charging what the market will bear). Commodity products use cost-plus. Most successful companies use a hybrid: cost-plus as floor, value-based as ceiling, and competitive to calibrate. A price that's too low signals low quality; too high prices out the market. Test prices and measure conversion.",
     benchmarkData: [
       { metric: "SaaS Gross Margin Target", value: "70-85%", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Physical Product Margin Target", value: "40-60%", source: "Industry Average" },
+      { metric: "Physical Product Margin Target", value: "40-60%", source: "General benchmark" },
       { metric: "Premium Brand Markup vs Cost", value: "3-10x", source: "Luxury Goods" },
       { metric: "Optimal Price Testing Range", value: "3-5 price points", source: "Pricing Psychology" },
       { metric: "Revenue Impact of 1% Price Increase", value: "10-15% profit lift", source: "McKinsey" },

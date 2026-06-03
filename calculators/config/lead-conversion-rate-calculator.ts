@@ -25,9 +25,9 @@ const config = {
     benchmarkData: [
       { metric: "Top Quartile", value: "10%+", source: "HubSpot 2025 Sales Benchmarks" },
       { metric: "Median B2B", value: "2-5%", source: "HubSpot 2025 Sales Benchmarks" },
-      { metric: "Outbound-Driven", value: "1-3%", source: "Industry Standard" },
-      { metric: "Inbound/Content-Driven", value: "3-7%", source: "Industry Standard" },
-      { metric: "Enterprise (High Consideration)", value: "1-2%", source: "Industry Standard" },
+      { metric: "Outbound-Driven", value: "1-3%", source: "General benchmark" },
+      { metric: "Inbound/Content-Driven", value: "3-7%", source: "General benchmark" },
+      { metric: "Enterprise (High Consideration)", value: "1-2%", source: "General benchmark" },
     ],
     relatedCalculators: ["cac-calculator", "trial-to-paid-calculator", "activation-rate-calculator"],
     faq: [

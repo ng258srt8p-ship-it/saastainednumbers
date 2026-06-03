@@ -11,7 +11,7 @@ const config = {
   },
   inputs: [
     { id: "monthlyViews", label: "Monthly Views", type: "number" as const, defaultValue: 100000, min: 0 },
-    { id: "region", label: "Region", type: "currency" as const, defaultValue: 1, min: 0 },
+    { id: "region", label: "Region Multiplier", type: "number" as const, defaultValue: 1, min: 0 },
     { id: "engagementRate", label: "Engagement Rate (%)", type: "percentage" as const, defaultValue: 5, min: 0, max: 100 },
     { id: "avgVideoLengthSec", label: "Average Video Length (seconds)", type: "number" as const, defaultValue: 30, min: 0 },
   ],

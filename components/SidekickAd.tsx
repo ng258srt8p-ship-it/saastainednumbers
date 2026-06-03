@@ -13,7 +13,7 @@ export function SidekickAd() {
         Start your online store
       </p>
       <p className="text-xs text-white/70 mb-4 leading-relaxed">
-        Trusted by millions. Free trial — no credit card needed.
+        Trusted by millions. Free trial, no credit card needed.
       </p>
       <Link
         href={AFFILIATE_LINK}

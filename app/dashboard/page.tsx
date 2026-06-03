@@ -25,6 +25,25 @@ function DashboardSkeleton() {
   );
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  const heading = t("dashboard.heading");
+  return {
+    title: `${heading} - SaaStainedNumbers`,
+    description: "Interconnected SaaS dashboard with calculators, benchmarks, and insights.",
+    alternates: {
+      canonical: localeUrl("/dashboard"),
+      languages: alternateLanguages("/dashboard"),
+    },
+    openGraph: {
+      title: heading,
+      description: "Interconnected SaaS dashboard with calculators, benchmarks, and insights.",
+      type: "website",
+      images: ["/api/og?title=Dashboard&category=sdeepen"],
+    },
+  };
+}
+
 export default async function DashboardPage() {
   const { t, locale } = await getTranslations();
   return (

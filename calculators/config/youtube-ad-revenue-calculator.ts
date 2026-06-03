@@ -31,7 +31,7 @@ const config = {
       { metric: "US Audience Multiplier", value: "5-10x", source: "YouTube Analytics" },
       { metric: "Mid-Roll Ads Revenue Boost", value: "+20-40%", source: "YouTube Creator Academy" },
     ],
-    relatedCalculators: ["etsy-profit-calculator", "freelance-rate-calculator"],
+    relatedCalculators: ["tiktok-creator-fund-calculator", "twitch-revenue-calculator"],
     faq: [
       { question: "What is the difference between RPM and CPM?", answer: "RPM (Revenue Per Mille) is what you earn per 1,000 views after YouTube's cut (45%). CPM (Cost Per Mille) is what advertisers pay per 1,000 ad impressions. RPM is always lower than CPM because it accounts for YouTube's revenue share and the fact that not all views include ads. Focus on optimizing RPM." },
       { question: "How many views do I need to make $1,000/month?", answer: "At the average RPM of $3.50, you need approximately 285,000 monthly views to earn $1,000/month from ads. Finance channels (RPM $12) need only 83,000 views. Entertainment channels (RPM $1.50) need 667,000 views. Niche matters enormously." },

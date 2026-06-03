@@ -69,7 +69,7 @@
     "stepPick": "Elige una calculadora",
     "stepType": "Introduce tus datos",
     "stepAct": "Actúa",
-    "pickDescription": "Desde costes de IA hasta planes FIRE — las {n} son gratuitas. Sin registro.",
+    "pickDescription": "Desde costes de IA hasta planes FIRE, las {n} son gratuitas. Sin registro.",
     "typeDescription": "Los resultados se actualizan al instante mientras escribes. Nada sale de tu dispositivo.",
     "actDescription": "Guarda resultados, incrusta en tu web o comparte con tu equipo. Sin necesidad de cuenta.",
     "byTheNumbers": "En cifras",
@@ -78,7 +78,7 @@
     "allFree": "Las {n} calculadoras son completamente gratuitas. Sin suscripciones ni registros.",
     "heroLine1": "Conoce tus cifras.",
     "heroLine2": "Sostén tu crecimiento.",
-    "heroSubtitle": "calculadoras para fundadores, operadores y creadores. Introduce tus datos — obtén una respuesta al instante. Todo gratis, todo privado.",
+    "heroSubtitle": "calculadoras para fundadores, operadores y creadores. Introduce tus datos, obtén una respuesta al instante. Todo gratis, todo privado.",
     "freeCalculators": "calculadoras gratuitas",
     "categories": "categorías",
     "toStart": "para empezar",
@@ -95,7 +95,7 @@
     "everythingFree": "Todo es gratis",
     "subtitle": "Sin suscripciones ni muros de pago. Las {n} calculadoras son completamente gratuitas.",
     "forever": "para siempre",
-    "feature1": "Las {n} calculadoras — sin límites",
+    "feature1": "Las {n} calculadoras, sin límites",
     "feature2": "Resultados en tiempo real con referencias comparativas",
     "feature3": "Perspectivas de crecimiento por etapa (Semilla a Serie C+)",
     "feature4": "Incrustaciones ilimitadas para tu web",
@@ -137,7 +137,7 @@
   },
   "calculators": {
     "browseCollection": "Explora nuestra colección completa de {n} calculadoras en {m} categorías.",
-    "editorial": "Calculadoras gratuitas e instantáneas para las métricas que importan. Desde ingresos SaaS y economía unitaria hasta costes de IA, ingresos complementarios y finanzas personales — todas las calculadoras son 100% gratuitas, sin necesidad de cuenta. Los resultados se actualizan en vivo mientras escribes y nada sale de tu dispositivo. Creadas para fundadores, operadores, creadores y cualquier persona que necesite respuestas rápidas.",
+    "editorial": "Calculadoras gratuitas e instantáneas para las métricas que importan. Desde ingresos SaaS y economía unitaria hasta costes de IA, ingresos complementarios y finanzas personales, todas las calculadoras son 100% gratuitas, sin necesidad de cuenta. Los resultados se actualizan en vivo mientras escribes y nada sale de tu dispositivo. Creadas para fundadores, operadores, creadores y cualquier persona que necesite respuestas rápidas.",
     "searchPlaceholder": "Buscar todas las calculadoras...",
     "viewAll": "Ver todo →"
   },
@@ -155,10 +155,39 @@
     "ariaLabel": "Buscar calculadoras",
     "resultsFound": "{n} calculadora(s) encontrada(s)"
   },
+  "about": {
+    "title": "About",
+    "heading": "About SaaStainedNumbers",
+    "subtitle": "Free, private, instant calculators for the metrics that matter.",
+    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
+    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
+    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
+    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future. Nothing is gated, no account is required, and your data never leaves your device.",
+    "contactLink": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Get in Touch",
+    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
+    "emailLabel": "Email us at",
+    "responseTime": "We aim to respond within 2 business days.",
+    "backToHome": "← Back to Home"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "heading": "Privacy Policy",
+    "subtitle": "How we handle your data."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "heading": "Terms of Service",
+    "subtitle": "The rules of the road."
+  },
   "footer": {
     "product": "Producto",
     "categories": "Categorías",
     "resources": "Recursos",
+    "about": "About",
     "legal": "Legal",
     "disclaimer": "Aviso legal",
     "privacyPolicy": "Política de privacidad",

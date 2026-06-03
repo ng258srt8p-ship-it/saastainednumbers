@@ -31,8 +31,8 @@ const config = {
       { metric: "Small Business (Main Street) Multiple", value: "2-3x SDE", source: "BizBuySell 2025" },
       { metric: "Mid-Market EBITDA Multiple", value: "5-12x", source: "PitchBook 2025" },
       { metric: "SaaS Revenue Multiple", value: "4-10x ARR", source: "KeyBanc 2025" },
-      { metric: "Professional Services Multiple", value: "4-8x EBITDA", source: "Industry Average" },
-      { metric: "Manufacturing / Industrial Multiple", value: "3-6x EBITDA", source: "Industry Average" },
+      { metric: "Professional Services Multiple", value: "4-8x EBITDA", source: "General benchmark" },
+      { metric: "Manufacturing / Industrial Multiple", value: "3-6x EBITDA", source: "General benchmark" },
     ],
     relatedCalculators: ["roi-calculator", "cash-runway-calculator"],
     faq: [

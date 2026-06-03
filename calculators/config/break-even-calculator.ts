@@ -27,10 +27,10 @@ const config = {
     benchmarks: "Healthy SaaS companies aim for contribution margins above 70%. Physical products target 40-60% contribution margin. Service businesses often have 50-80% margins. A lower break-even point means less risk. Most startups target break-even within 12-18 months of launch. Use [QuickBooks](https://quickbooks.intuit.com) or [Wave](https://waveapps.com) for ongoing cost tracking.",
     benchmarkData: [
       { metric: "SaaS Contribution Margin", value: "70-85%", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Physical Product Margin", value: "40-60%", source: "Industry Average" },
-      { metric: "Service Business Margin", value: "50-80%", source: "Industry Average" },
+      { metric: "Physical Product Margin", value: "40-60%", source: "General benchmark" },
+      { metric: "Service Business Margin", value: "50-80%", source: "General benchmark" },
       { metric: "Typical Startup Break-Even Target", value: "12-18 months", source: "CB Insights" },
-      { metric: "Retail Break-Even Threshold", value: "60-70% sell-through", source: "Industry Average" },
+      { metric: "Retail Break-Even Threshold", value: "60-70% sell-through", source: "General benchmark" },
     ],
     relatedCalculators: ["roi-calculator", "fire-calculator"],
     faq: [

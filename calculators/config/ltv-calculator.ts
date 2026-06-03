@@ -24,9 +24,9 @@ const config = {
     formulaExplanation: "LTV = ARPU × Gross Margin % ÷ Monthly Churn Rate. For example: ARPU of $50/month with 80% gross margin and 5% monthly churn: Net profit per month = $50 × 0.80 = $40. Average customer lifetime = 1/0.05 = 20 months. LTV = $40 × 20 = $800.",
     benchmarks: "SaaS LTV varies widely by segment: SMB SaaS averages $500-5,000 LTV, mid-market averages $5,000-50,000, and enterprise averages $50,000-500,000+. A healthy LTV:CAC ratio is 3:1 or higher according to SaaS capital benchmarks. Companies with LTV:CAC below 1:1 are spending more to acquire customers than they'll ever earn back. Top-quartile public SaaS companies maintain LTV:CAC ratios of 5:1 or higher.",
     benchmarkData: [
-      { metric: "SMB SaaS LTV", value: "$500 - $5,000", source: "OpenView 2025" },
-      { metric: "Mid-Market SaaS LTV", value: "$5,000 - $50,000", source: "OpenView 2025" },
-      { metric: "Enterprise SaaS LTV", value: "$50,000 - $500,000+", source: "OpenView 2025" },
+      { metric: "SMB SaaS LTV", value: "$500 - $5,000", source: "Industry benchmarks" },
+      { metric: "Mid-Market SaaS LTV", value: "$5,000 - $50,000", source: "Industry benchmarks" },
+      { metric: "Enterprise SaaS LTV", value: "$50,000 - $500,000+", source: "Industry benchmarks" },
       { metric: "Healthy LTV:CAC Ratio", value: "3:1 or higher", source: "SaaS Capital" },
       { metric: "Top-Quartile LTV:CAC", value: "5:1 or higher", source: "KeyBanc 2025" },
     ],

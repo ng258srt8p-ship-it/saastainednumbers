@@ -15,7 +15,7 @@ Cohort analysis groups customers by the period they started (usually the month t
 
 Aggregate metrics like "overall churn rate" can mask dangerous trends. Consider this:
 
-- Your overall churn rate is 5% — looks healthy
+- Your overall churn rate is 5%, looks healthy
 - But your January cohort has 2% churn and your June cohort has 8% churn
 - The aggregate number is hiding a declining trend
 

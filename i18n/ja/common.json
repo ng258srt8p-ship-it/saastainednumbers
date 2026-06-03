@@ -69,7 +69,7 @@
     "stepPick": "計算機を選ぶ",
     "stepType": "数値を入力する",
     "stepAct": "行動する",
-    "pickDescription": "AIコストからFIRE計画まで — {n}個すべて無料でご利用いただけます。登録不要。",
+    "pickDescription": "AIコストからFIRE計画まで、{n}個すべて無料でご利用いただけます。登録不要。",
     "typeDescription": "入力するとブラウザ上で結果がリアルタイムに更新されます。データが端末の外に出ることはありません。",
     "actDescription": "結果を保存したり、サイトに埋め込んだり、チームと共有したり。アカウントは不要です。",
     "byTheNumbers": "数字で見る",
@@ -95,7 +95,7 @@
     "everythingFree": "すべて無料",
     "subtitle": "サブスクリプションもペイウォールもありません。{n}個の計算機はすべて完全に無料でご利用いただけます。",
     "forever": "永久に",
-    "feature1": "{n}個の計算機 — 制限なし",
+    "feature1": "{n}個の計算機、制限なし",
     "feature2": "ベンチマーク比較付きリアルタイム結果",
     "feature3": "ステージ別の成長インサイト（シードからシリーズC+）",
     "feature4": "ウェブサイトへの無制限埋め込み",
@@ -137,7 +137,7 @@
   },
   "calculators": {
     "browseCollection": "{m}カテゴリにわたる{n}個の計算機の完全コレクションをご覧ください。",
-    "editorial": "重要な指標のための無料・即時計算機。SaaSの収益やユニットエコノミクスから、AIコスト、副業収入、パーソナルファイナンスまで — すべての計算機は100%無料で、アカウントは不要です。入力するとリアルタイムに結果が更新され、データが端末の外に出ることはありません。創業者、事業運営者、クリエイター、そして素早く答えを必要とするすべての人のために作られました。",
+    "editorial": "重要な指標のための無料・即時計算機。SaaSの収益やユニットエコノミクスから、AIコスト、副業収入、パーソナルファイナンスまで、すべての計算機は100%無料で、アカウントは不要です。入力するとリアルタイムに結果が更新され、データが端末の外に出ることはありません。創業者、事業運営者、クリエイター、そして素早く答えを必要とするすべての人のために作られました。",
     "searchPlaceholder": "すべての計算機を検索...",
     "viewAll": "すべて表示 →"
   },
@@ -155,10 +155,39 @@
     "ariaLabel": "計算機を検索",
     "resultsFound": "{n}件の計算機が見つかりました"
   },
+  "about": {
+    "title": "About",
+    "heading": "About SaaStainedNumbers",
+    "subtitle": "Free, private, instant calculators for the metrics that matter.",
+    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
+    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
+    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
+    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future. Nothing is gated, no account is required, and your data never leaves your device.",
+    "contactLink": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Get in Touch",
+    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
+    "emailLabel": "Email us at",
+    "responseTime": "We aim to respond within 2 business days.",
+    "backToHome": "← Back to Home"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "heading": "Privacy Policy",
+    "subtitle": "How we handle your data."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "heading": "Terms of Service",
+    "subtitle": "The rules of the road."
+  },
   "footer": {
     "product": "プロダクト",
     "categories": "カテゴリ",
     "resources": "リソース",
+    "about": "About",
     "legal": "法的情報",
     "disclaimer": "免責事項",
     "privacyPolicy": "プライバシーポリシー",

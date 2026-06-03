@@ -59,6 +59,6 @@ Use our [ARR calculator](/revenue/arr-calculator) to annualize your MRR, or go t
 
 - **Using ARR too early:** If you're under $1M ARR, monthly changes are too significant to smooth into an annual number
 - **Using MRR for investor updates:** Investors think in ARR terms; present your numbers accordingly
-- **Not tracking both:** Each metric provides unique insights — don't pick one at the expense of the other
+- **Not tracking both:** Each metric provides unique insights, don't pick one at the expense of the other
 
 Track your recurring revenue with our [MRR calculator](/revenue/mrr-calculator) and [ARR calculator](/revenue/arr-calculator) today.

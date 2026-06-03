@@ -26,8 +26,8 @@ const config = {
       { metric: "Top Quartile", value: "50-60%", source: "Reforge / Industry Reports" },
       { metric: "Median", value: "25-35%", source: "Reforge / Industry Reports" },
       { metric: "Bottom Quartile", value: "< 20%", source: "Reforge / Industry Reports" },
-      { metric: "B2B Typical", value: "40-60%", source: "Industry Standard" },
-      { metric: "B2C Typical", value: "20-40%", source: "Industry Standard" },
+      { metric: "B2B Typical", value: "40-60%", source: "General benchmark" },
+      { metric: "B2C Typical", value: "20-40%", source: "General benchmark" },
     ],
     relatedCalculators: ["mrr-calculator", "trial-to-paid-calculator", "churn-calculator"],
     faq: [

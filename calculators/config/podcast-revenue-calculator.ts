@@ -28,12 +28,12 @@ const config = {
     formulaExplanation: "Monthly Ad Revenue = (Downloads × Episodes ÷ 1,000) × CPM. Monthly Sponsorship = Sponsorship Rate × Sponsors × Episodes. Total = Ad Revenue + Sponsorship Revenue. Annual = Monthly × 12.",
     benchmarks: "Podcast ad CPM ranges from $15-50 depending on niche. Business/tech shows command $30-50 CPM. Entertainment/lifestyle shows average $15-25. Premium sponsorships pay $25-100 CPM in flat fees. Top 1% of podcasts earn $50K+/month. The median podcast earns under $100/month  -  revenue is heavily skewed toward the top. Use [Podscribe](https://podscribe.ai) or [Megaphone](https://megaphone.fm) for ad management.",
     benchmarkData: [
-      { metric: "Indie Podcast (1-5K downloads/ep)", value: "$200-1,000 / month", source: "Industry Average" },
-      { metric: "Growing Podcast (5-20K downloads/ep)", value: "$1,000-5,000 / month", source: "Industry Average" },
-      { metric: "Top Podcast (100K+ downloads/ep)", value: "$20,000-100,000+ / month", source: "Industry Average" },
+      { metric: "Indie Podcast (1-5K downloads/ep)", value: "$200-1,000 / month", source: "General benchmark" },
+      { metric: "Growing Podcast (5-20K downloads/ep)", value: "$1,000-5,000 / month", source: "General benchmark" },
+      { metric: "Top Podcast (100K+ downloads/ep)", value: "$20,000-100,000+ / month", source: "General benchmark" },
       { metric: "Business/Tech CPM", value: "$30-50", source: "AdvertiseCast 2025" },
       { metric: "Entertainment CPM", value: "$15-25", source: "AdvertiseCast 2025" },
-      { metric: "Sponsorship Minimum Threshold", value: "5,000-10,000 downloads/ep", source: "Industry Standard" },
+      { metric: "Sponsorship Minimum Threshold", value: "5,000-10,000 downloads/ep", source: "General benchmark" },
     ],
     relatedCalculators: ["youtube-ad-revenue-calculator", "newsletter-revenue-calculator"],
     faq: [

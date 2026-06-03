@@ -69,7 +69,7 @@
     "stepPick": "Pick a calculator",
     "stepType": "Type your numbers",
     "stepAct": "Act on it",
-    "pickDescription": "From AI costs to FIRE plans — all {n} are free to use. No signup gate.",
+    "pickDescription": "From AI costs to FIRE plans, all {n} are free to use. No signup gate.",
     "typeDescription": "Results update live in your browser as you type. Nothing leaves your device.",
     "actDescription": "Save results, embed on your site, or share with your team. No account needed.",
     "byTheNumbers": "By the numbers",
@@ -78,7 +78,7 @@
     "allFree": "All {n} calculators are completely free. No subscriptions, no signups.",
     "heroLine1": "Know your numbers.",
     "heroLine2": "Sustain your growth.",
-    "heroSubtitle": "calculators for builders, operators, and creators. Enter your numbers — get an answer in your browser. All free, all private.",
+    "heroSubtitle": "calculators for builders, operators, and creators. Enter your numbers, get an answer in your browser. All free, all private.",
     "freeCalculators": "free calculators",
     "categories": "categories",
     "toStart": "to start",
@@ -95,7 +95,7 @@
     "everythingFree": "Everything is Free",
     "subtitle": "No subscriptions, no paywalls. All {n} calculators are completely free to use.",
     "forever": "forever",
-    "feature1": "All {n} calculators — no limits",
+    "feature1": "All {n} calculators, no limits",
     "feature2": "Real-time results with benchmark comparisons",
     "feature3": "Stage-based growth insights (Seed to Series C+)",
     "feature4": "Unlimited embeds for your website",
@@ -137,7 +137,7 @@
   },
   "calculators": {
     "browseCollection": "Browse our complete collection of {n} calculators across {m} categories.",
-    "editorial": "Free, instant calculators for the metrics that matter. From SaaS revenue and unit economics to AI costs, side hustle income, and personal finance — every calculator is 100% free with no account required. Results update live as you type, and nothing leaves your device. Built for founders, operators, creators, and anyone who needs answers fast.",
+    "editorial": "Free, instant calculators for the metrics that matter. From SaaS revenue and unit economics to AI costs, side hustle income, and personal finance, every calculator is 100% free with no account required. Results update live as you type, and nothing leaves your device. Built for founders, operators, creators, and anyone who needs answers fast.",
     "searchPlaceholder": "Search all calculators...",
     "viewAll": "View all →"
   },
@@ -155,10 +155,39 @@
     "ariaLabel": "Search calculators",
     "resultsFound": "{n} calculator(s) found"
   },
+  "about": {
+    "title": "About",
+    "heading": "About SaaStainedNumbers",
+    "subtitle": "Free, private, instant calculators for the metrics that matter.",
+    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
+    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
+    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
+    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future. Nothing is gated, no account is required, and your data never leaves your device.",
+    "contactLink": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Get in Touch",
+    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
+    "emailLabel": "Email us at",
+    "responseTime": "We aim to respond within 2 business days.",
+    "backToHome": "← Back to Home"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "heading": "Privacy Policy",
+    "subtitle": "How we handle your data."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "heading": "Terms of Service",
+    "subtitle": "The rules of the road."
+  },
   "footer": {
     "product": "Product",
     "categories": "Categories",
     "resources": "Resources",
+    "about": "About",
     "legal": "Legal",
     "disclaimer": "Disclaimer",
     "privacyPolicy": "Privacy Policy",

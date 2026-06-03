@@ -35,25 +35,20 @@ export async function generateMetadata({ params }: PageProps) {
       canonical: localeUrl(`/${category}`),
       languages: alternateLanguages(`/${category}`),
     },
-    openGraph: {
-      title: `${name} Calculators`,
-      description: desc,
-      type: "website",
-      images: [`/api/og?title=${encodeURIComponent(name)}&category=${category}&description=${encodeURIComponent(desc)}`],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${name} Calculators`,
-      description: desc,
-      images: [`/api/og?title=${encodeURIComponent(name)}&category=${category}&description=${encodeURIComponent(desc)}`],
-    },
-  };
+     openGraph: {
+       title: `${name} Calculators`,
+       description: desc,
+       type: "website",
+       images: [`/api/og?title=${encodeURIComponent(name)}&category=${category}&description=${encodeURIComponent(desc)}`],
+       siteName: "SaaStainedNumbers",
+      },
+    };
 }
 
 const CATEGORY_EDITORIAL: Record<string, string> = {
   revenue: `Understanding your revenue metrics is the foundation of SaaS financial management. 
 MRR (Monthly Recurring Revenue), ARR (Annual Recurring Revenue), ARPU, and NRR tell you whether your business is growing sustainably. 
-These metrics are what investors evaluate first — they reveal your pricing power, customer value, and revenue predictability. 
+These metrics are what investors evaluate first - they reveal your pricing power, customer value, and revenue predictability. 
 Use these calculators to track your revenue health, benchmark against industry standards, and identify opportunities for growth through pricing optimization and expansion revenue.`,
   "unit-economics": `Unit economics determine whether each customer relationship is profitable. 
 CAC (Customer Acquisition Cost), LTV (Customer Lifetime Value), payback period, and gross margin tell you if your business model works at scale. 
@@ -64,7 +59,7 @@ Understanding your churn rate, retention rate, and customer health score is esse
 These calculators help you measure customer attrition, identify at-risk accounts, and track the effectiveness of your retention strategies against industry benchmarks.`,
   "growth-efficiency": `Growth efficiency measures how effectively you convert investment into revenue. 
 Your Quick Ratio, Magic Number, Rule of 40, and CAC efficiency tell investors whether your growth is sustainable or burning cash. 
-The most valuable SaaS companies grow efficiently — they acquire customers at reasonable cost and retain them profitably. 
+The most valuable SaaS companies grow efficiently - they acquire customers at reasonable cost and retain them profitably. 
 Use these calculators to measure your growth efficiency, benchmark against top-quartile companies, and optimize your sales and marketing spend.`,
   "ai-cost": `AI costs can quickly spiral without careful tracking. Whether you're using Claude, ChatGPT, Gemini, or Grok APIs, 
 understanding your per-token costs, monthly API spend, and model comparison economics is critical for managing AI infrastructure budgets. 
@@ -81,7 +76,7 @@ Use them to model different scenarios, understand trade-offs, and build a financ
 evaluating ROI, pricing a product, comparing contractor vs employee costs, valuing your company, or 
 managing cash runway, having accurate calculations makes the difference between guessing and knowing. 
 These calculators cover the essential business math that founders and operators need to make confident decisions.`,
-  "saas-deepen": `Beyond the basics — advanced SaaS metrics reveal the operational drivers of your business. 
+  "saas-deepen": `Beyond the basics - advanced SaaS metrics reveal the operational drivers of your business. 
 Customer engagement scoring, feature adoption rates, time-to-value analysis, cohort retention, ARPU trends, 
 and capital efficiency ratios help you understand not just what's happening, but why. 
 These calculators are designed for operators who want to dig deeper into their metrics and find 

@@ -13,9 +13,9 @@ The Rule of 40 combines growth and profitability into a single metric:
 
 **Rule of 40 = Revenue Growth Rate (%) + Profit Margin (%)**
 
-If your growth rate is 30% and your profit margin is 15%, your Rule of 40 score is 45% — healthy.
+If your growth rate is 30% and your profit margin is 15%, your Rule of 40 score is 45%, healthy.
 
-If your growth rate is 20% and you're losing 10% (negative profit margin), your score is 10% — needs improvement.
+If your growth rate is 20% and you're losing 10% (negative profit margin), your score is 10%, needs improvement.
 
 Use our [Rule of 40 calculator](/growth-efficiency/rule-of-40-calculator) to compute your score instantly.
 
@@ -34,7 +34,7 @@ The 40% threshold emerged from observing hundreds of public SaaS companies. Comp
 
 ## The Growth-Profitability Tradeoff
 
-Early-stage companies naturally have low or negative Rule of 40 scores because they're investing heavily in growth. A seed-stage company growing 15% MoM with -30% margins has a score of (180% - 30%) = 150% — excellent.
+Early-stage companies naturally have low or negative Rule of 40 scores because they're investing heavily in growth. A seed-stage company growing 15% MoM with -30% margins has a score of (180% - 30%) = 150%, excellent.
 
 As companies mature, growth naturally slows, and profitability must increase to maintain the score. A growth stage company growing 8% MoM needs profit margin of 32%+ to hit 40, assuming we annualize correctly. More practically with YoY metrics: a company growing 60% YoY with -20% margin scores 40%.
 

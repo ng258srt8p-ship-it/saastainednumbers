@@ -155,10 +155,39 @@
     "ariaLabel": "Pesquisar calculadoras",
     "resultsFound": "{n} calculadora(s) encontrada(s)"
   },
+  "about": {
+    "title": "About",
+    "heading": "About SaaStainedNumbers",
+    "subtitle": "Free, private, instant calculators for the metrics that matter.",
+    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
+    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
+    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
+    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future — nothing is gated, no account is required, and your data never leaves your device.",
+    "contactLink": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Get in Touch",
+    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
+    "emailLabel": "Email us at",
+    "responseTime": "We aim to respond within 2 business days.",
+    "backToHome": "← Back to Home"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "heading": "Privacy Policy",
+    "subtitle": "How we handle your data."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "heading": "Terms of Service",
+    "subtitle": "The rules of the road."
+  },
   "footer": {
     "product": "Produto",
     "categories": "Categorias",
     "resources": "Recursos",
+    "about": "About",
     "legal": "Legal",
     "disclaimer": "Aviso legal",
     "privacyPolicy": "Política de privacidade",

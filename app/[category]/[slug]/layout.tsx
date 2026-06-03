@@ -4,6 +4,7 @@ import { renderContent } from "@/lib/renderContent.server";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTranslations } from "@/lib/getTranslations";
 import { resolveLocaleConfig } from "@/lib/resolve-calculator-locale";
+import { generateBreadcrumbListSchema } from "@/lib/seo";
 import type { SupportedLocale } from "@/calculators/config/calculator-schema";
 
 import "@/calculators/config/_all";
@@ -60,7 +61,8 @@ export default async function CalculatorLayout({
     })),
   } : null;
 
-  const schemas = [webApp, howTo, ...(faq ? [faq] : [])].filter(Boolean);
+  const breadcrumbSchema = generateBreadcrumbListSchema(resolved.category, resolved.slug);
+  const schemas = [webApp, howTo, breadcrumbSchema, ...(faq ? [faq] : [])].filter(Boolean);
 
   return (
     <>

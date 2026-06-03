@@ -79,6 +79,6 @@ Every percentage point of churn reduction preserves ARR. Reducing churn from 5% 
 
 ## ARR and Company Building
 
-ARR is more than a number — it's a measure of the recurring value you're creating for customers. Every dollar of ARR represents a customer who finds enough value in your product to pay for it regularly.
+ARR is more than a number, it's a measure of the recurring value you're creating for customers. Every dollar of ARR represents a customer who finds enough value in your product to pay for it regularly.
 
 Track your ARR and growth trajectory with our [ARR calculator](/revenue/arr-calculator) and [SaaS Metrics Dashboard](/dashboard).

@@ -28,8 +28,8 @@ const config = {
       { metric: "Top SaaS Gross Margin", value: "75 - 85%", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Median SaaS Gross Margin", value: "74%", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Good SaaS Gross Margin", value: "70 - 80%", source: "SaaS Capital" },
-      { metric: "Concerning for SaaS", value: "< 60%", source: "Industry Standard" },
-      { metric: "Infrastructure SaaS", value: "60 - 70%", source: "Pacific Crest" },
+      { metric: "Concerning for SaaS", value: "< 60%", source: "General benchmark" },
+      { metric: "Infrastructure SaaS", value: "60 - 70%", source: "KeyBanc Capital Markets" },
     ],
     relatedCalculators: ["mrr-calculator", "ltv-calculator", "arpu-calculator"],
     faq: [

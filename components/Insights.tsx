@@ -184,7 +184,7 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
             })}
           </div>
           <p className="mt-4 text-[10px] text-gray-400 dark:text-gray-500 text-center border-t border-brand-200/50 dark:border-brand-800/30 pt-3">
-            SaaStainedNumbers Insight Engine  —  algorithmic insights
+            SaaStainedNumbers. Rule-based guidance
           </p>
         </div>
       )}

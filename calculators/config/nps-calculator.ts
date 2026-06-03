@@ -6,7 +6,7 @@ const config = {
   category: "churn-retention",
   meta: {
     title: "Net Promoter Score (NPS) Calculator",
-    description: "Calculate your Net Promoter Score from survey responses  -  measure customer loyalty and predict growth.",
+     description: "Calculate your Net Promoter Score from survey responses; measure customer loyalty and predict growth.",
     keywords: ["nps", "net promoter score", "customer satisfaction", "loyalty", "survey"],
   },
   benchmarkMetric: "nps",
@@ -28,9 +28,9 @@ const config = {
     benchmarkData: [
       { metric: "World-Class NPS", value: "70+", source: "Satmetrix/Bain" },
       { metric: "Excellent NPS", value: "50 - 70", source: "Satmetrix/Bain" },
-      { metric: "Good NPS", value: "30 - 50", source: "Industry Standard" },
+      { metric: "Good NPS", value: "30 - 50", source: "General benchmark" },
       { metric: "Average B2B SaaS", value: "30 - 40", source: "Satmetrix/Bain" },
-      { metric: "Needs Improvement", value: "< 30", source: "Industry Standard" },
+      { metric: "Needs Improvement", value: "< 30", source: "General benchmark" },
     ],
     relatedCalculators: ["customer-health-score-calculator", "churn-calculator", "nrr-calculator"],
     faq: [
@@ -48,7 +48,7 @@ const config = {
     es: {
       meta: {
         title: "Calculadora de Net Promoter Score (NPS)",
-        description: "Calcula tu Net Promoter Score a partir de respuestas de encuestas — mide la lealtad del cliente y predice el crecimiento.",
+         description: "Calcula tu Net Promoter Score a partir de respuestas de encuestas; mide la lealtad del cliente y predice el crecimiento.",
       },
       inputs: [
         { id: "promoters", label: "Promotores (puntuación 9-10)" },
@@ -64,7 +64,7 @@ const config = {
     de: {
       meta: {
         title: "Net Promoter Score (NPS) Rechner",
-        description: "Berechnen Sie Ihren Net Promoter Score aus Umfrageantworten — messen Sie die Kundentreue und prognostizieren Sie das Wachstum.",
+         description: "Berechnen Sie Ihren Net Promoter Score aus Umfrageantworten; messen Sie die Kundentreue und prognostizieren Sie das Wachstum.",
       },
       inputs: [
         { id: "promoters", label: "Promotoren (Bewertung 9-10)" },
@@ -80,7 +80,7 @@ const config = {
     pt: {
       meta: {
         title: "Calculadora de Net Promoter Score (NPS)",
-        description: "Calcule seu Net Promoter Score a partir de respostas de pesquisa — meça a fidelidade do cliente e preveja o crescimento.",
+        description: "Calcule seu Net Promoter Score a partir de respostas de pesquisa; meça a fidelidade do cliente e preveja o crescimento.",
       },
       inputs: [
         { id: "promoters", label: "Promotores (nota 9-10)" },
@@ -96,7 +96,7 @@ const config = {
     fr: {
       meta: {
         title: "Calculateur de Net Promoter Score (NPS)",
-        description: "Calculez votre Net Promoter Score à partir des réponses à l'enquête — mesurez la fidélité client et prévoyez la croissance.",
+        description: "Calculez votre Net Promoter Score à partir des réponses à l'enquête; mesurez la fidélité client et prévoyez la croissance.",
       },
       inputs: [
         { id: "promoters", label: "Promoteurs (score 9-10)" },
@@ -112,7 +112,7 @@ const config = {
     ja: {
       meta: {
         title: "ネットプロモータースコア（NPS）計算ツール",
-        description: "アンケート回答からネットプロモータースコアを計算 — 顧客ロイヤルティを測定し、成長を予測します。",
+        description: "アンケート回答からネットプロモータースコアを計算; 顧客ロイヤルティを測定し、成長を予測します。",
       },
       inputs: [
         { id: "promoters", label: "推奨者（スコア9-10）" },

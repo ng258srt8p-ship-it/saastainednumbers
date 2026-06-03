@@ -25,9 +25,9 @@ const config = {
     formulaExplanation: "Net Cash Flow = Cash In - Cash Out. Burn Rate = Cash Out - Cash In (if cash flow is negative). For example: $80K in minus $95K out = -$15K net cash flow. Burn rate = $15K/month. Cash flow positive = No (0).",
     benchmarks: "According to SaaS industry benchmarks, high-growth SaaS companies typically operate at negative cash flow during growth phases, with median net cash flow margins of -10% to -30%. Profitable mature SaaS companies target 20-40% FCF margins. Companies with net cash flow margins above 30% are considered highly efficient.",
     benchmarkData: [
-      { metric: "High-Growth SaaS", value: "-10% to -30%", source: "SaaS Capital / Industry Benchmarks" },
-      { metric: "Profitable Mature SaaS", value: "20-40% FCF Margin", source: "SaaS Capital / Industry Benchmarks" },
-      { metric: "Highly Efficient", value: "30%+ FCF Margin", source: "SaaS Capital / Industry Benchmarks" },
+      { metric: "High-Growth SaaS", value: "-10% to -30%", source: "General benchmark" },
+      { metric: "Profitable Mature SaaS", value: "20-40% FCF Margin", source: "General benchmark" },
+      { metric: "Highly Efficient", value: "30%+ FCF Margin", source: "General benchmark" },
     ],
     relatedCalculators: ["burn-rate-calculator", "operating-margin-calculator", "revenue-per-employee-calculator"],
     faq: [

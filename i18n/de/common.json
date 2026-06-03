@@ -69,7 +69,7 @@
     "stepPick": "Rechner auswählen",
     "stepType": "Zahlen eingeben",
     "stepAct": "Loslegen",
-    "pickDescription": "Von KI-Kosten bis FIRE-Pläne — alle {n} sind kostenlos nutzbar. Keine Anmeldehürde.",
+    "pickDescription": "Von KI-Kosten bis FIRE-Pläne – alle {n} sind kostenlos nutzbar. Keine Anmeldehürde.",
     "typeDescription": "Ergebnisse werden während der Eingabe live in deinem Browser aktualisiert. Nichts verlässt dein Gerät.",
     "actDescription": "Ergebnisse speichern, auf deiner Website einbetten oder mit deinem Team teilen. Kein Konto nötig.",
     "byTheNumbers": "Zahlen und Fakten",
@@ -78,7 +78,7 @@
     "allFree": "Alle {n} Rechner sind komplett kostenlos. Keine Abos, keine Anmeldungen.",
     "heroLine1": "Kenne deine Zahlen.",
     "heroLine2": "Sichere dein Wachstum.",
-    "heroSubtitle": "Rechner für Gründer, Betreiber und Kreative. Gib deine Zahlen ein — erhalte sofort eine Antwort. Alles kostenlos, alles privat.",
+    "heroSubtitle": "Rechner für Gründer, Betreiber und Kreative. Gib deine Zahlen ein, erhalte sofort eine Antwort. Alles kostenlos, alles privat.",
     "freeCalculators": "kostenlose Rechner",
     "categories": "Kategorien",
     "toStart": "zum Start",
@@ -95,7 +95,7 @@
     "everythingFree": "Alles ist kostenlos",
     "subtitle": "Keine Abos, keine Bezahlschranken. Alle {n} Rechner sind völlig kostenlos nutzbar.",
     "forever": "für immer",
-    "feature1": "Alle {n} Rechner — keine Einschränkungen",
+    "feature1": "Alle {n} Rechner, keine Einschränkungen",
     "feature2": "Echtzeit-Ergebnisse mit Benchmark-Vergleichen",
     "feature3": "Wachstumsphasen (Seed bis Series C+)",
     "feature4": "Unbegrenztes Einbetten in deine Website",
@@ -137,7 +137,7 @@
   },
   "calculators": {
     "browseCollection": "Durchstöbere unsere gesamte Sammlung von {n} Rechnern in {m} Kategorien.",
-    "editorial": "Kostenlose, sofort einsatzbereite Rechner für die Kennzahlen, die wirklich zählen. Von SaaS-Umsätzen und Unit Economics bis zu KI-Kosten, Nebeneinkünften und persönlichen Finanzen — jeder Rechner ist 100% kostenlos, ohne Konto. Ergebnisse aktualisieren sich live während der Eingabe und nichts verlässt dein Gerät. Entwickelt für Gründer, Betreiber, Kreative und alle, die schnelle Antworten brauchen.",
+    "editorial": "Kostenlose, sofort einsatzbereite Rechner für die Kennzahlen, die wirklich zählen. Von SaaS-Umsätzen und Unit Economics bis zu KI-Kosten, Nebeneinkünften und persönlichen Finanzen, jeder Rechner ist 100% kostenlos, ohne Konto. Ergebnisse aktualisieren sich live während der Eingabe und nichts verlässt dein Gerät. Entwickelt für Gründer, Betreiber, Kreative und alle, die schnelle Antworten brauchen.",
     "searchPlaceholder": "Alle Rechner durchsuchen...",
     "viewAll": "Alle anzeigen →"
   },
@@ -155,10 +155,39 @@
     "ariaLabel": "Rechner suchen",
     "resultsFound": "{n} Rechner gefunden"
   },
+  "about": {
+    "title": "About",
+    "heading": "About SaaStainedNumbers",
+    "subtitle": "Free, private, instant calculators for the metrics that matter.",
+    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
+    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
+    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
+    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future, nothing is gated, no account is required, and your data never leaves your device.",
+    "contactLink": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Get in Touch",
+    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
+    "emailLabel": "Email us at",
+    "responseTime": "We aim to respond within 2 business days.",
+    "backToHome": "← Back to Home"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "heading": "Privacy Policy",
+    "subtitle": "How we handle your data."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "heading": "Terms of Service",
+    "subtitle": "The rules of the road."
+  },
   "footer": {
     "product": "Produkt",
     "categories": "Kategorien",
     "resources": "Ressourcen",
+    "about": "About",
     "legal": "Rechtliches",
     "disclaimer": "Haftungsausschluss",
     "privacyPolicy": "Datenschutzerklärung",

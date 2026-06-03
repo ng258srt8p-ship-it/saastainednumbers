@@ -26,8 +26,8 @@ const config = {
       { metric: "Excellent", value: "1.0+", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Top Quartile", value: "1.2+", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Median", value: "0.8", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Needs Improvement", value: "0.5 - 0.8", source: "Industry Standard" },
-      { metric: "Concerning", value: "< 0.5", source: "Industry Standard" },
+      { metric: "Needs Improvement", value: "0.5 - 0.8", source: "General benchmark" },
+      { metric: "Concerning", value: "< 0.5", source: "General benchmark" },
     ],
     relatedCalculators: ["cac-calculator", "quick-ratio-calculator", "burn-rate-calculator"],
     faq: [

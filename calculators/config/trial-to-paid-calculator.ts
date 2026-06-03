@@ -25,9 +25,9 @@ const config = {
     benchmarkData: [
       { metric: "Top Quartile", value: "25-35%+", source: "Recurly / ProfitWell" },
       { metric: "Median", value: "15-25%", source: "Recurly / ProfitWell" },
-      { metric: "Self-Serve Free Trial", value: "10-20%", source: "Industry Standard" },
-      { metric: "Demo-Led Trial", value: "20-40%", source: "Industry Standard" },
-      { metric: "Freemium to Paid", value: "2-5%", source: "Industry Standard" },
+      { metric: "Self-Serve Free Trial", value: "10-20%", source: "General benchmark" },
+      { metric: "Demo-Led Trial", value: "20-40%", source: "General benchmark" },
+      { metric: "Freemium to Paid", value: "2-5%", source: "General benchmark" },
     ],
     relatedCalculators: ["activation-rate-calculator", "mrr-calculator", "lead-conversion-rate-calculator"],
     faq: [

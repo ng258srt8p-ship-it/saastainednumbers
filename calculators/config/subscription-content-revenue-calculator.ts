@@ -30,12 +30,12 @@ const config = {
     formulaExplanation: "Paid Subscribers = Free Followers × (Conversion Rate ÷ 100), rounded to the nearest whole number. Monthly Subscription Revenue = Paid Subscribers × Monthly Price. Monthly Total = Subscription Revenue + PPV Revenue + Tips Revenue. Annual Revenue = Monthly Total × 12. The platform's fee is not deducted  -  shown values represent gross revenue before platform commission.",
     benchmarks: "Subscription content conversion rates typically range from 1-10% depending on the platform and content type. According to industry reports, the average OnlyFans creator has 100-300 paid subscribers earning $1,000-3,000/month. Top 1% of creators earn $10,000-100,000+/month. Patreon creators average $100-500/month with 50-200 patrons. PPV revenue typically accounts for 20-40% of total income on platforms that support it. Tips and custom content add 10-25%. Building a sustainable subscription business requires consistent posting, audience engagement, and promotional content on platforms like [Twitter/X](https://x.com) and [Reddit](https://reddit.com).",
     benchmarkData: [
-      { metric: "Average Follower-to-Paid Conversion", value: "2-5%", source: "Industry Reports 2025" },
-      { metric: "OnlyFans Median Monthly Earnings", value: "$150-300", source: "Creator Earnings Benchmark" },
-      { metric: "Top 1% Creator Monthly Revenue", value: "$10,000-100,000+", source: "Creator Earnings Benchmark" },
+      { metric: "Average Follower-to-Paid Conversion", value: "2-5%", source: "General benchmark" },
+      { metric: "OnlyFans Median Monthly Earnings", value: "$150-300", source: "General benchmark" },
+      { metric: "Top 1% Creator Monthly Revenue", value: "$10,000-100,000+", source: "General benchmark" },
       { metric: "Patreon Average Creator Income", value: "$100-500/mo", source: "Patreon 2025" },
-      { metric: "PPV Revenue Share of Total", value: "20-40%", source: "Creator Industry Survey" },
-      { metric: "Tips / Custom Content Share", value: "10-25%", source: "Creator Industry Survey" },
+      { metric: "PPV Revenue Share of Total", value: "20-40%", source: "General benchmark" },
+      { metric: "Tips / Custom Content Share", value: "10-25%", source: "General benchmark" },
     ],
     relatedCalculators: ["twitch-revenue-calculator", "newsletter-revenue-calculator"],
     faq: [

@@ -5,7 +5,7 @@ date: "May 24, 2026"
 slug: "what-is-cac"
 ---
 
-Customer Acquisition Cost (CAC) is one of the most fundamental metrics in SaaS. It tells you how much you spend to acquire each new customer — and whether your go-to-market engine is efficient enough to build a sustainable business.
+Customer Acquisition Cost (CAC) is one of the most fundamental metrics in SaaS. It tells you how much you spend to acquire each new customer, and whether your go-to-market engine is efficient enough to build a sustainable business.
 
 ## What Is CAC?
 
@@ -19,7 +19,7 @@ You can [use our CAC calculator](/growth-efficiency/cac-calculator) to compute y
 
 ## Why CAC Matters
 
-CAC is the foundation of SaaS unit economics. Every other metric — LTV, payback period, gross margin — connects back to how efficiently you acquire customers. A high CAC means you need more revenue per customer to be profitable. A low CAC gives you more flexibility in pricing and growth strategy.
+CAC is the foundation of SaaS unit economics. Every other metric (LTV, payback period, gross margin) connects back to how efficiently you acquire customers. A high CAC means you need more revenue per customer to be profitable. A low CAC gives you more flexibility in pricing and growth strategy.
 
 Investors scrutinize CAC because it reveals whether your growth is efficient. Companies with low CAC relative to LTV can scale faster and more safely than those with high acquisition costs.
 

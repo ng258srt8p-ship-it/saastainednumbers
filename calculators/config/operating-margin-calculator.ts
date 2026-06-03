@@ -25,8 +25,8 @@ const config = {
       { metric: "Excellent Operating Margin", value: "20%+", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Median Public SaaS", value: "10%", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Good for Mature SaaS", value: "15 - 25%", source: "SaaS Capital" },
-      { metric: "Growth Stage (Negative)", value: "-10% to -30%", source: "Industry Standard" },
-      { metric: "Concerning (Mature)", value: "< 5%", source: "Industry Standard" },
+      { metric: "Growth Stage (Negative)", value: "-10% to -30%", source: "General benchmark" },
+      { metric: "Concerning (Mature)", value: "< 5%", source: "General benchmark" },
     ],
     relatedCalculators: ["gross-margin-calculator", "contribution-margin-calculator", "rule-of-40-calculator"],
     faq: [

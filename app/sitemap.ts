@@ -71,8 +71,12 @@ export default async function sitemap() {
     { path: "/dashboard", pri: 0.7, freq: "weekly" as const },
     { path: "/blog", pri: 0.6, freq: "daily" as const },
     { path: "/pricing", pri: 0.5, freq: "monthly" as const },
+    { path: "/about", pri: 0.5, freq: "monthly" as const },
     { path: "/calculators", pri: 0.8, freq: "weekly" as const },
     { path: "/legal", pri: 0.3, freq: "monthly" as const },
+    { path: "/contact", pri: 0.3, freq: "monthly" as const },
+    { path: "/privacy", pri: 0.3, freq: "monthly" as const },
+    { path: "/terms", pri: 0.3, freq: "monthly" as const },
   ];
 
   const staticPages = staticPageDefs.map(({ path, pri, freq }) => ({

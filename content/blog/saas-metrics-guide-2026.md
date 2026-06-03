@@ -95,6 +95,6 @@ The most successful SaaS companies don't track these metrics in isolation. They 
 
 Our [SaaS Metrics Dashboard](/dashboard) lets you input your core numbers once and see all key metrics calculated at once, with links to explore each one in detail.
 
-Remember: the goal isn't just to track metrics — it's to use them to make better decisions about pricing, product investment, go-to-market strategy, and resource allocation.
+Remember: the goal isn't just to track metrics, it's to use them to make better decisions about pricing, product investment, go-to-market strategy, and resource allocation.
 
 Start tracking your metrics today with our [free SaaS Metrics Dashboard](/dashboard).

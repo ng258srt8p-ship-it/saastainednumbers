@@ -34,8 +34,8 @@ const config = {
     benchmarks: "According to industry data, contractors typically cost 20-40% more per hour than the equivalent employee hourly rate. However, because employees carry 25-60% overhead beyond salary, the total annual cost can be surprisingly close. For roles requiring specialized expertise (engineering, design, consulting), contractors are common and cost $100-250/hr. For ongoing operational roles, employees are typically more cost-effective. Use [Gusto](https://gusto.com) for payroll and [Upwork](https://upwork.com) for contractor hiring.",
     benchmarkData: [
       { metric: "Contractor Premium vs Employee Hourly", value: "20-40% higher", source: "MBO Partners 2025" },
-      { metric: "Employee Burden Rate (Remote)", value: "25-40%", source: "Industry Average" },
-      { metric: "Employee Burden Rate (In-Office)", value: "40-60%", source: "Industry Average" },
+      { metric: "Employee Burden Rate (Remote)", value: "25-40%", source: "General benchmark" },
+      { metric: "Employee Burden Rate (In-Office)", value: "40-60%", source: "General benchmark" },
       { metric: "Typical Contractor Rate (Tech)", value: "$100-250/hr", source: "Upwork 2025" },
       { metric: "US Payroll Tax (Employer Share)", value: "7.65%", source: "IRS" },
     ],

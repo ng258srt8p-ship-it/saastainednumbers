@@ -24,10 +24,10 @@ const config = {
     benchmarks: "Industry standard for SaaS is 3:1. Below 1:1 is unsustainable  -  you lose money on every customer. Above 5:1 may indicate under-investment in growth. According to SaaS Capital, the median private SaaS company has an LTV:CAC ratio of 3.2. Top-quartile companies achieve 5.0+ while still growing rapidly.",
     benchmarkData: [
       { metric: "Excellent LTV:CAC", value: "5.0+", source: "SaaS Capital" },
-      { metric: "Good LTV:CAC", value: "3.0 - 5.0", source: "Industry Standard" },
+      { metric: "Good LTV:CAC", value: "3.0 - 5.0", source: "General benchmark" },
       { metric: "Acceptable LTV:CAC", value: "2.0 - 3.0", source: "SaaS Capital" },
-      { metric: "Needs Improvement", value: "1.0 - 2.0", source: "Industry Standard" },
-      { metric: "Unsustainable", value: "< 1.0", source: "Industry Standard" },
+      { metric: "Needs Improvement", value: "1.0 - 2.0", source: "General benchmark" },
+      { metric: "Unsustainable", value: "< 1.0", source: "General benchmark" },
     ],
     relatedCalculators: ["cac-calculator", "ltv-calculator", "payback-period-calculator"],
     faq: [
@@ -55,10 +55,10 @@ const config = {
         { id: "ratio", label: "Ratio LTV:CAC" },
       ],
       content: {
-        intro: "El ratio LTV:CAC compara el valor total que genera un cliente durante su vida con el costo de adquirirlo. Es la métrica de economía unitaria más importante para negocios SaaS. Un ratio de 3:1 es el estándar de la industria para un negocio saludable — lo que significa que cada cliente genera tres veces lo que cuesta adquirirlo. Por debajo de 1:1 significa que estás gastando más en adquirir clientes de lo que valen. Por encima de 5:1 sugiere que podrías estar subinvirtiendo en crecimiento.",
+        intro: "El ratio LTV:CAC compara el valor total que genera un cliente durante su vida con el costo de adquirirlo. Es la métrica de economía unitaria más importante para negocios SaaS. Un ratio de 3:1 es el estándar de la industria para un negocio saludable; lo que significa que cada cliente genera tres veces lo que cuesta adquirirlo. Por debajo de 1:1 significa que estás gastando más en adquirir clientes de lo que valen. Por encima de 5:1 sugiere que podrías estar subinvirtiendo en crecimiento.",
         howToUse: "Ingresa tu Valor de Vida del Cliente (LTV) y Costo de Adquisición de Cliente (CAC) promedio. La calculadora calculará tu ratio LTV:CAC. Úsalo para evaluar la salud general del negocio o comparar diferentes segmentos de clientes y canales.",
         formulaExplanation: "Ratio LTV:CAC = LTV ÷ CAC. Ejemplo: LTV = $3,000, CAC = $1,000. Ratio = $3,000 ÷ $1,000 = 3.0. Un ratio de 3.0 significa que cada cliente genera 3x su costo de adquisición en valor de vida.",
-        benchmarks: "El estándar de la industria para SaaS es 3:1. Por debajo de 1:1 es insostenible — pierdes dinero en cada cliente. Por encima de 5:1 puede indicar subinversión en crecimiento. La empresa SaaS privada mediana tiene un ratio LTV:CAC de 3.2.",
+         benchmarks: "El estándar de la industria para SaaS es 3:1. Por debajo de 1:1 es insostenible; pierdes dinero en cada cliente. Por encima de 5:1 puede indicar subinversión en crecimiento. La empresa SaaS privada mediana tiene un ratio LTV:CAC de 3.2.",
         benchmarkData: [
           { metric: "Excelente LTV:CAC", value: "5.0+", source: "SaaS Capital" },
           { metric: "Buen LTV:CAC", value: "3.0 - 5.0", source: "Estándar de la Industria" },
@@ -127,10 +127,10 @@ const config = {
         { id: "ratio", label: "Relação LTV:CAC" },
       ],
       content: {
-        intro: "A relação LTV:CAC compara o valor total que um cliente gera durante sua vida com o custo de adquiri-lo. É a métrica de economia unitária mais importante para negócios SaaS. Uma relação de 3:1 é o padrão da indústria para um negócio saudável — significando que cada cliente gera três vezes o custo para adquiri-lo. Abaixo de 1:1 significa que você está gastando mais para adquirir clientes do que eles valem. Acima de 5:1 sugere que você pode estar subinvestindo em crescimento.",
+        intro: "A relação LTV:CAC compara o valor total que um cliente gera durante sua vida com o custo de adquiri-lo. É a métrica de economia unitária mais importante para negócios SaaS. Uma relação de 3:1 é o padrão da indústria para um negócio saudável; significando que cada cliente gera três vezes o custo para adquiri-lo. Abaixo de 1:1 significa que você está gastando mais para adquirir clientes do que eles valem. Acima de 5:1 sugere que você pode estar subinvestindo em crescimento.",
         howToUse: "Insira seu Valor de Vida do Cliente (LTV) e Custo de Aquisição de Cliente (CAC) médios. A calculadora calculará sua relação LTV:CAC. Use-a para avaliar a saúde geral do negócio ou comparar diferentes segmentos de clientes e canais.",
         formulaExplanation: "Relação LTV:CAC = LTV ÷ CAC. Exemplo: LTV = $3.000, CAC = $1.000. Relação = $3.000 ÷ $1.000 = 3,0. Uma relação de 3,0 significa que cada cliente gera 3x seu custo de aquisição em valor de vida.",
-        benchmarks: "O padrão da indústria para SaaS é 3:1. Abaixo de 1:1 é insustentável — você perde dinheiro em cada cliente. Acima de 5:1 pode indicar subinvestimento em crescimento. A empresa SaaS privada mediana tem uma relação LTV:CAC de 3,2.",
+        benchmarks: "O padrão da indústria para SaaS é 3:1. Abaixo de 1:1 é insustentável; você perde dinheiro em cada cliente. Acima de 5:1 pode indicar subinvestimento em crescimento. A empresa SaaS privada mediana tem uma relação LTV:CAC de 3,2.",
         benchmarkData: [
           { metric: "Excelente LTV:CAC", value: "5.0+", source: "SaaS Capital" },
           { metric: "Bom LTV:CAC", value: "3.0 - 5.0", source: "Padrão da Indústria" },
@@ -163,10 +163,10 @@ const config = {
         { id: "ratio", label: "Ratio LTV:CAC" },
       ],
       content: {
-        intro: "Le ratio LTV:CAC compare la valeur totale qu'un client génère sur sa durée de vie au coût de son acquisition. C'est la mesure d'économie unitaire la plus importante pour les entreprises SaaS. Un ratio de 3:1 est la norme du secteur pour une entreprise saine — ce qui signifie que chaque client génère trois fois ce qu'il coûte à acquérir. En dessous de 1:1 signifie que vous dépensez plus pour acquérir des clients qu'ils ne valent. Au-dessus de 5:1 suggère que vous sous-investissez peut-être dans la croissance.",
+        intro: "Le ratio LTV:CAC compare la valeur totale qu'un client génère sur sa durée de vie au coût de son acquisition. C'est la mesure d'économie unitaire la plus importante pour les entreprises SaaS. Un ratio de 3:1 est la norme du secteur pour une entreprise saine; ce qui signifie que chaque client génère trois fois ce qu'il coûte à acquérir. En dessous de 1:1 signifie que vous dépensez plus pour acquérir des clients qu'ils ne valent. Au-dessus de 5:1 suggère que vous sous-investissez peut-être dans la croissance.",
         howToUse: "Entrez votre Valeur à Vie du Client (LTV) et votre Coût d'Acquisition Client (CAC) moyens. Le calculateur calculera votre ratio LTV:CAC. Utilisez-le pour évaluer la santé globale de l'entreprise ou comparer différents segments de clients et canaux.",
         formulaExplanation: "Ratio LTV:CAC = LTV ÷ CAC. Exemple : LTV = 3 000 $, CAC = 1 000 $. Ratio = 3 000 $ ÷ 1 000 $ = 3,0. Un ratio de 3,0 signifie que chaque client génère 3 fois son coût d'acquisition en valeur à vie.",
-        benchmarks: "La norme du secteur pour le SaaS est de 3:1. En dessous de 1:1 est insoutenable — vous perdez de l'argent sur chaque client. Au-dessus de 5:1 peut indiquer un sous-investissement dans la croissance. L'entreprise SaaS privée médiane a un ratio LTV:CAC de 3,2.",
+        benchmarks: "La norme du secteur pour le SaaS est de 3:1. En dessous de 1:1 est insoutenable; vous perdez de l'argent sur chaque client. Au-dessus de 5:1 peut indiquer un sous-investissement dans la croissance. L'entreprise SaaS privée médiane a un ratio LTV:CAC de 3,2.",
         benchmarkData: [
           { metric: "Excellent LTV:CAC", value: "5.0+", source: "SaaS Capital" },
           { metric: "Bon LTV:CAC", value: "3.0 - 5.0", source: "Norme du Secteur" },
@@ -199,10 +199,10 @@ const config = {
         { id: "ratio", label: "LTV:CAC比率" },
       ],
       content: {
-        intro: "LTV:CAC比率は、顧客が生涯にわたって生み出す総価値と、その獲得にかかるコストを比較します。これはSaaSビジネスにとって最も重要なユニットエコノミクス指標です。3:1の比率が健全なビジネスの業界標準です — つまり、各顧客は獲得コストの3倍の価値を生み出すことを意味します。1:1を下回ると、顧客を獲得するためにその価値以上のコストを費やしていることになります。5:1を超えると、成長への投資が不足している可能性があります。",
+         intro: "LTV:CAC比率は、顧客が生涯にわたって生み出す総価値と、その獲得にかかるコストを比較します。これはSaaSビジネスにとって最も重要なユニットエコノミクス指標です。3:1の比率が健全なビジネスの業界標準です; つまり、各顧客は獲得コストの3倍の価値を生み出すことを意味します。1:1を下回ると、顧客を獲得するためにその価値以上のコストを費やしていることになります。5:1を超えると、成長への投資が不足している可能性があります。",
         howToUse: "平均的な顧客生涯価値（LTV）と顧客獲得コスト（CAC）を入力してください。計算機がLTV:CAC比率を算出します。ビジネスの全体的な健全性を評価したり、さまざまな顧客セグメントやチャネルを比較するために使用してください。",
         formulaExplanation: "LTV:CAC比率 = LTV ÷ CAC。例：LTV = $3,000、CAC = $1,000。比率 = $3,000 ÷ $1,000 = 3.0。比率3.0は、各顧客が獲得コストの3倍の生涯価値を生み出すことを意味します。",
-        benchmarks: "SaaSの業界標準は3:1です。1:1を下回ると持続不可能です — すべての顧客で損失が出ます。5:1を超えると成長への投資不足を示す可能性があります。中央値のプライベートSaaS企業のLTV:CAC比率は3.2です。",
+         benchmarks: "SaaSの業界標準は3:1です。1:1を下回ると持続不可能です; すべての顧客で損失が出ます。5:1を超えると成長への投資不足を示す可能性があります。中央値のプライベートSaaS企業のLTV:CAC比率は3.2です。",
         benchmarkData: [
           { metric: "優れたLTV:CAC", value: "5.0+", source: "SaaS Capital" },
           { metric: "良いLTV:CAC", value: "3.0 - 5.0", source: "業界標準" },

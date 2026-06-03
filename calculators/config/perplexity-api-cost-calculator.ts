@@ -30,9 +30,9 @@ const config = {
     benchmarkData: [
       { metric: "Sonar Input Price", value: "$1.00 / 1M tokens", source: "Perplexity 2025" },
       { metric: "Sonar Pro Input Price", value: "$3.00 / 1M tokens", source: "Perplexity 2025" },
-      { metric: "Small Research Assistant", value: "$50-300 / month", source: "Typical usage" },
-      { metric: "Medium Customer Support AI", value: "$300-1,500 / month", source: "Typical usage" },
-      { metric: "High-Volume Knowledge Base", value: "$1,500-5,000 / month", source: "Typical usage" },
+      { metric: "Small Research Assistant", value: "$50-300 / month", source: "General benchmark" },
+      { metric: "Medium Customer Support AI", value: "$300-1,500 / month", source: "General benchmark" },
+      { metric: "High-Volume Knowledge Base", value: "$1,500-5,000 / month", source: "General benchmark" },
     ],
     relatedCalculators: ["claude-api-cost-calculator", "chatgpt-api-cost-calculator", "ai-model-comparison-calculator"],
     faq: [

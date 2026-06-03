@@ -5,7 +5,7 @@ date: "April 30, 2026"
 slug: "founder-metrics-guide"
 ---
 
-Fundraising is one of the most important events in a startup's life. The founders who raise successfully don't just have great products — they know their metrics cold. Here are the 10 SaaS metrics every founder must understand before meeting with investors.
+Fundraising is one of the most important events in a startup's life. The founders who raise successfully don't just have great products, they know their metrics cold. Here are the 10 SaaS metrics every founder must understand before meeting with investors.
 
 ## 1. ARR (Annual Recurring Revenue)
 

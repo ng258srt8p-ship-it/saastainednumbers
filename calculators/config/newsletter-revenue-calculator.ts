@@ -28,10 +28,10 @@ const config = {
     intro: "Newsletters have become a powerful revenue channel for independent creators, journalists, and experts. Platforms like Substack and ConvertKit make it easy to monetize through both paid subscriptions and sponsorships. The key metrics are subscriber growth, conversion rate (typically 2-10%), and engagement (open rates of 30-60%). Top newsletters earn millions annually, but even a modest 10K subscriber list can generate a solid side income.",
     howToUse: "Enter your total subscriber count, expected free-to-paid conversion rate, monthly subscription price, sponsorship CPM rate, sponsored emails per month, and average open rate. The calculator shows paid subscribers, subscription revenue, sponsorship revenue, and total income.",
     formulaExplanation: "Paid Subs = Subscribers × (Conversion Rate ÷ 100). Subscription Revenue = Paid Subs × Monthly Price. Sponsorship Revenue = (Sponsored Emails × Subscribers × Open Rate ÷ 100 ÷ 1,000) × CPM. Total = Subscription + Sponsorship.",
-    benchmarks: "Newsletter benchmarks: Average conversion rate is 2-10% for paid newsletters. Open rates of 40-60% are excellent. Sponsorship CPM ranges from $25-100 depending on niche (tech/B2B commands highest rates). A 10K-subscriber newsletter with 5% conversion at $8/month and 2 sponsorships at $50 CPM earns ~$4,000/month from subscriptions and ~$450/month from sponsorships.",
+    benchmarks: "Newsletter benchmarks: Average conversion rate is 2-10% for paid newsletters. Open rates of 35-50% are good. Sponsorship CPM ranges from $25-100 depending on niche (tech/B2B commands highest rates). A 10K-subscriber newsletter with 5% conversion at $8/month and 2 sponsorships at $50 CPM earns ~$4,000/month from subscriptions and ~$450/month from sponsorships.",
     benchmarkData: [
       { metric: "Average Free-to-Paid Conversion", value: "2-10%", source: "Substack 2025" },
-      { metric: "Good Email Open Rate", value: "40-60%", source: "Mailchimp 2025" },
+      { metric: "Good Email Open Rate", value: "35-50%", source: "Industry benchmarks" },
       { metric: "Sponsorship CPM Range", value: "$25-100", source: "Newsletter Industry" },
       { metric: "Typical Monthly Subscription Price", value: "$5-15 / month", source: "Substack" },
       { metric: "Top 1% Newsletter Revenue", value: "$100K+ / year", source: "Substack" },

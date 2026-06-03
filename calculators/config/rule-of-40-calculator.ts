@@ -25,10 +25,10 @@ const config = {
     benchmarks: "According to KeyBanc Capital Markets 2025 SaaS Survey, median public SaaS Rule of 40 score is 35. Top-quartile companies score 50+. Companies above 40 are considered healthy and well-balanced. Companies below 20 are typically struggling with either growth or profitability. High-growth companies (50%+ growth) can have negative margins, while mature companies (10-20% growth) should be profitable.",
     benchmarkData: [
       { metric: "Excellent", value: "50+", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Good (Meets Threshold)", value: "40+", source: "Industry Standard" },
+      { metric: "Good (Meets Threshold)", value: "40+", source: "General benchmark" },
       { metric: "Median Public SaaS", value: "35", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Needs Improvement", value: "20 - 40", source: "Industry Standard" },
-      { metric: "Concerning", value: "< 20", source: "Industry Standard" },
+      { metric: "Needs Improvement", value: "20 - 40", source: "General benchmark" },
+      { metric: "Concerning", value: "< 20", source: "General benchmark" },
     ],
     relatedCalculators: ["gross-margin-calculator", "operating-margin-calculator", "mrr-growth-rate-calculator"],
     faq: [

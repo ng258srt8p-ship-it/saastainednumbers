@@ -11,22 +11,16 @@ const calculatorCount = getAllCalculators().length;
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   return {
-    title: `${t("pricing.everythingFree")} — SaaStainedNumbers`,
+    title: `${t("pricing.everythingFree")} - SaaStainedNumbers`,
     description: t("pricing.allFree"),
     alternates: {
       canonical: localeUrl("/pricing"),
       languages: alternateLanguages("/pricing"),
     },
     openGraph: {
-      title: `${t("pricing.everythingFree")} — SaaStainedNumbers`,
+      title: `${t("pricing.everythingFree")} - SaaStainedNumbers`,
       description: t("pricing.allFree"),
       type: "website",
-      images: ["/api/og?title=Pricing&category=home"],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${t("pricing.everythingFree")} — SaaStainedNumbers`,
-      description: t("pricing.allFree"),
       images: ["/api/og?title=Pricing&category=home"],
     },
   };

@@ -26,8 +26,8 @@ const config = {
       { metric: "SMB ACV", value: "$100 - $500 / year", source: "SaaS Capital" },
       { metric: "Mid-Market ACV", value: "$5K - $50K / year", source: "SaaS Capital" },
       { metric: "Enterprise ACV", value: "$50K - $500K+ / year", source: "KeyBanc SaaS Survey" },
-      { metric: "Self-Serve ACV", value: "< $2K / year", source: "OpenView Partners" },
-      { metric: "Sales-Assisted Threshold", value: "$25K+ ACV", source: "Pacific Crest" },
+      { metric: "Self-Serve ACV", value: "< $2K / year", source: "KeyBanc Capital Markets" },
+      { metric: "Sales-Assisted Threshold", value: "$25K+ ACV", source: "KeyBanc Capital Markets" },
     ],
     relatedCalculators: ["mrr-calculator", "arpu-calculator", "ltv-calculator"],
     faq: [

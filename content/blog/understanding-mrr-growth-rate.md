@@ -5,7 +5,7 @@ date: "May 18, 2026"
 slug: "understanding-mrr-growth-rate"
 ---
 
-Monthly Recurring Revenue (MRR) growth rate is the pulse of your SaaS business. It tells you whether you're accelerating, maintaining, or losing momentum — often before any other metric catches the signal.
+Monthly Recurring Revenue (MRR) growth rate is the pulse of your SaaS business. It tells you whether you're accelerating, maintaining, or losing momentum, often before any other metric catches the signal.
 
 ## What Is MRR Growth Rate?
 
@@ -24,7 +24,7 @@ MRR growth rate is the single best leading indicator of long-term success becaus
 
 ## What Good MRR Growth Looks Like
 
-Growth rate expectations vary significantly by company stage. According to SaaS Capital's benchmark data, the median SaaS company grows approximately 20% year over year. But early stage companies can — and should — grow much faster:
+Growth rate expectations vary significantly by company stage. According to SaaS Capital's benchmark data, the median SaaS company grows approximately 20% year over year. But early stage companies can, and should, grow much faster:
 
 - **Seed stage ($0 to $1M ARR):** 15 to 20% month over month growth
 - **Series A ($1M to $5M ARR):** 10 to 15% month over month

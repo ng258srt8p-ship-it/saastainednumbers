@@ -37,7 +37,7 @@ For example, if your ARPU is $100/month, gross margin is 80%, and monthly churn 
 
 LTV = $100 × 0.80 / 0.05 = $1,600
 
-If your CAC is $400, your LTV:CAC ratio is 4:1 — a healthy business.
+If your CAC is $400, your LTV:CAC ratio is 4:1, a healthy business.
 
 Use our [LTV calculator](/revenue/ltv-calculator) for your specific numbers.
 

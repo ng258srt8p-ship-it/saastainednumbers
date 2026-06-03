@@ -32,10 +32,10 @@ const config = {
     benchmarks: "Top-quartile SaaS companies maintain an LTV/CAC ratio above 5x with a median of 3-5x. Payback period benchmarks vary by segment: enterprise SaaS typically targets under 12 months, while SMB SaaS can stretch to 18 months. Contribution margin should exceed 60% for healthy SaaS businesses. According to KeyBanc 2025 SaaS Survey, best-in-class companies have payback periods under 6 months and LTV/CAC ratios above 7x.",
     benchmarkData: [
       { metric: "Excellent LTV/CAC Ratio", value: "> 5x", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Good LTV/CAC Ratio", value: "3 - 5x", source: "Pacific Crest" },
+      { metric: "Good LTV/CAC Ratio", value: "3 - 5x", source: "KeyBanc Capital Markets" },
       { metric: "Contribution Margin (Best-in-Class)", value: "> 75%", source: "SaaS Capital" },
-      { metric: "Payback Period (Enterprise)", value: "< 12 months", source: "OpenView" },
-      { metric: "Payback Period (SMB)", value: "< 18 months", source: "OpenView" },
+      { metric: "Payback Period (Enterprise)", value: "< 12 months", source: "KeyBanc Capital Markets" },
+      { metric: "Payback Period (SMB)", value: "< 18 months", source: "KeyBanc Capital Markets" },
     ],
     relatedCalculators: ["cac-calculator", "ltv-calculator", "arpu-calculator", "gross-margin-calculator"],
     faq: [

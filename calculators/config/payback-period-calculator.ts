@@ -22,13 +22,13 @@ const config = {
     intro: "CAC Payback Period measures how many months it takes to earn back the cost of acquiring a customer through their gross margin contribution. It's a critical unit economics metric that reveals the efficiency of your go-to-market engine. A shorter payback period means faster ROI on acquisition spend and less capital required to fund growth. SaaS investors typically look for payback periods under 12 months for healthy businesses. This metric directly influences how much you can invest in growth and how quickly you can scale. This calculator computes your payback period and yearly profit per customer.",
     howToUse: "Enter your customer acquisition cost (CAC), average revenue per user (ARPU), and gross margin percentage. The calculator will show how many months to recover CAC and the yearly profit each customer generates after payback.",
     formulaExplanation: "Monthly Contribution = ARPU × (Gross Margin ÷ 100). Payback Period = CAC ÷ Monthly Contribution. Yearly Profit = (Monthly Contribution × 12) - CAC. For example: CAC = $300, ARPU = $50, Gross Margin = 80%. Monthly Contribution = $40. Payback = $300 ÷ $40 = 7.5 months. Yearly Profit = $40 × 12 - $300 = $180",
-    benchmarks: "Best-in-class SaaS companies achieve CAC payback under 6 months. Good is 6-12 months. Acceptable is 12-18 months. Above 18 months signals poor unit economics. Enterprise SaaS companies typically have longer payback periods (12-24 months) but higher LTV. According to Pacific Crest SaaS Survey, median CAC payback is 12-18 months across all SaaS companies.",
+    benchmarks: "Best-in-class SaaS companies achieve CAC payback under 6 months. Good is 6-12 months. Acceptable is 12-18 months. Above 18 months signals poor unit economics. Enterprise SaaS companies typically have longer payback periods (12-24 months) but higher LTV. According to KeyBanc Capital Markets, median CAC payback is 12-18 months across all SaaS companies.",
     benchmarkData: [
-      { metric: "Best-in-Class Payback", value: "< 6 months", source: "OpenView Partners" },
+      { metric: "Best-in-Class Payback", value: "< 6 months", source: "KeyBanc Capital Markets" },
       { metric: "Good Payback", value: "6 - 12 months", source: "SaaS Capital" },
-      { metric: "Acceptable Payback", value: "12 - 18 months", source: "Pacific Crest SaaS Survey" },
+      { metric: "Acceptable Payback", value: "12 - 18 months", source: "KeyBanc Capital Markets" },
       { metric: "Needs Improvement", value: "18 - 24 months", source: "SaaS Capital" },
-      { metric: "Enterprise SaaS Median", value: "12 - 24 months", source: "Pacific Crest SaaS Survey" },
+      { metric: "Enterprise SaaS Median", value: "12 - 24 months", source: "KeyBanc Capital Markets" },
     ],
     relatedCalculators: ["cac-calculator", "ltv-calculator", "mrr-calculator"],
     faq: [

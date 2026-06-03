@@ -25,8 +25,8 @@ const config = {
     benchmarkData: [
       { metric: "Top Quartile", value: "20-30%+", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Median", value: "12-15%", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Usage-Based Pricing", value: "20-40%", source: "Industry Standard" },
-      { metric: "Flat-Fee Subscription", value: "5-15%", source: "Industry Standard" },
+      { metric: "Usage-Based Pricing", value: "20-40%", source: "General benchmark" },
+      { metric: "Flat-Fee Subscription", value: "5-15%", source: "General benchmark" },
     ],
     relatedCalculators: ["nrr-calculator", "mrr-calculator", "mrr-growth-rate-calculator"],
     faq: [

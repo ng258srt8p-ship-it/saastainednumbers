@@ -21,13 +21,13 @@ const config = {
     intro: "Customer Acquisition Cost (CAC) measures the total cost of acquiring a new customer, including all sales and marketing expenses. It's one of the most critical metrics for understanding the efficiency of your growth engine. By tracking CAC over time and across channels, you can optimize your marketing spend, improve sales processes, and ensure your unit economics are sustainable. A high CAC relative to customer lifetime value (LTV) signals that your business model may need adjustment. Conversely, a low CAC indicates efficient growth. This calculator helps you measure and monitor your CAC so you can make data-driven decisions about where to invest your acquisition budget.",
     howToUse: "Enter your total sales and marketing spend, additional costs, and the number of new customers acquired in the period. The calculator will compute your CAC. Compare CAC across different channels and time periods to identify the most efficient growth strategies.",
     formulaExplanation: "CAC = (Sales Costs + Marketing Costs) ÷ New Customers Acquired. For example, if you spend $10,000 on sales and $5,000 on marketing and acquire 50 new customers: CAC = ($10,000 + $5,000) ÷ 50 = $300 per customer.",
-    benchmarks: "Average SaaS CAC varies by business model: self-serve SMB products average $50-200 CAC, sales-assisted SMB averages $500-2,000, enterprise sales averages $5,000-50,000+. According to First Round Capital and Pacific Crest SaaS surveys, the median SaaS company has a payback period of 12-18 months. For healthy unit economics, aim for an LTV:CAC ratio of 3:1 or higher across all channels. Analyze channel-level CAC with [ProfitWell](https://www.profitwell.com).",
+    benchmarks: "Average SaaS CAC varies by business model: self-serve SMB products average $50-200 CAC, sales-assisted SMB averages $500-2,000, enterprise sales averages $5,000-50,000+. The median SaaS company has a payback period of 12-18 months. For healthy unit economics, aim for an LTV:CAC ratio of 3:1 or higher across all channels. Analyze channel-level CAC with [ProfitWell](https://www.profitwell.com).",
     benchmarkData: [
-      { metric: "Self-Serve SMB CAC", value: "$50 - $200", source: "First Round Capital" },
-      { metric: "Sales-Assisted SMB CAC", value: "$500 - $2,000", source: "First Round Capital" },
-      { metric: "Enterprise CAC", value: "$5,000 - $50,000+", source: "Pacific Crest SaaS Survey" },
+      { metric: "Self-Serve SMB CAC", value: "$50 - $200", source: "General benchmark" },
+      { metric: "Sales-Assisted SMB CAC", value: "$500 - $2,000", source: "General benchmark" },
+      { metric: "Enterprise CAC", value: "$5,000 - $50,000+", source: "KeyBanc Capital Markets" },
       { metric: "Healthy Payback Period", value: "12 - 18 months", source: "SaaS Capital" },
-      { metric: "Target LTV:CAC Ratio", value: "3:1 or higher", source: "Industry Standard" },
+      { metric: "Target LTV:CAC Ratio", value: "3:1 or higher", source: "General benchmark" },
     ],
     relatedCalculators: ["mrr-calculator", "ltv-calculator", "arpu-calculator"],
     faq: [

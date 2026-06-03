@@ -24,10 +24,10 @@ const config = {
     benchmarks: "Healthy SaaS companies maintain contribution margins of 65-80%. Below 50% suggests variable costs are too high relative to revenue. Above 80% is excellent and indicates a scalable business model. According to SaaS Capital, median SaaS contribution margin is approximately 70%. Companies with low contribution margins struggle to scale profitably.",
     benchmarkData: [
       { metric: "Excellent Contribution Margin", value: "80%+", source: "SaaS Capital" },
-      { metric: "Good Contribution Margin", value: "65 - 80%", source: "Industry Standard" },
+      { metric: "Good Contribution Margin", value: "65 - 80%", source: "General benchmark" },
       { metric: "Median SaaS", value: "~70%", source: "SaaS Capital" },
-      { metric: "Needs Improvement", value: "50 - 65%", source: "Industry Standard" },
-      { metric: "Concerning", value: "< 50%", source: "Industry Standard" },
+      { metric: "Needs Improvement", value: "50 - 65%", source: "General benchmark" },
+      { metric: "Concerning", value: "< 50%", source: "General benchmark" },
     ],
     relatedCalculators: ["gross-margin-calculator", "operating-margin-calculator", "mrr-calculator"],
     faq: [

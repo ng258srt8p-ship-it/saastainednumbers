@@ -32,7 +32,7 @@ const config = {
       { metric: "Median Month 1 Retention", value: "60 - 70%", source: "Mixpanel" },
       { metric: "Best-in-Class Month 12 Retention", value: "50%+", source: "Reforge" },
       { metric: "Median Month 12 Retention", value: "25 - 35%", source: "Mixpanel" },
-      { metric: "Enterprise Month 1 Retention", value: "85%+", source: "OpenView" },
+      { metric: "Enterprise Month 1 Retention", value: "85%+", source: "KeyBanc Capital Markets" },
     ],
     relatedCalculators: ["churn-calculator", "nrr-calculator", "customer-health-score-calculator"],
     faq: [

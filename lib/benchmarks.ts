@@ -241,7 +241,7 @@ export const benchmarkReferences: Record<string, BenchmarkData> = {
     average: "1-3x",
     good: "3-5x",
     excellent: "> 5x",
-    source: "Ballpark / SaaS Benchmarks Report",
+    source: "SaaS Capital / KeyBanc benchmarks",
     date: "2025",
     notes: "LTV:CAC > 3x is considered healthy for most SaaS businesses"
   },
@@ -266,7 +266,7 @@ export const benchmarkReferences: Record<string, BenchmarkData> = {
     average: "5-10%",
     good: "10-20%",
     excellent: "> 20%",
-    source: "OpenView SaaS Benchmarks",
+    source: "KeyBanc / SaaS Capital benchmarks",
     date: "2025",
   },
   "gross-margin": {
@@ -290,7 +290,7 @@ export const benchmarkReferences: Record<string, BenchmarkData> = {
     average: "12-24 months",
     good: "6-12 months",
     excellent: "< 6 months",
-    source: "OpenView / Scale Partners",
+    source: "General benchmark",
     date: "2025",
   },
   "burn-multiple": {
@@ -314,7 +314,7 @@ export const benchmarkReferences: Record<string, BenchmarkData> = {
     average: "$10-50",
     good: "$50-150",
     excellent: "> $150",
-    source: "OpenView SaaS Benchmarks",
+    source: "KeyBanc / SaaS Capital benchmarks",
     date: "2025",
   },
   "magic-number": {
@@ -322,7 +322,7 @@ export const benchmarkReferences: Record<string, BenchmarkData> = {
     average: "0.5-0.75",
     good: "0.75-1.0",
     excellent: "> 1.0",
-    source: "a16z / OpenView",
+    source: "General benchmark",
     date: "2025",
   },
   "employee-cost": {

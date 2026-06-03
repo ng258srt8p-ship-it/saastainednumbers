@@ -24,8 +24,8 @@ const config = {
     benchmarkData: [
       { metric: "Best-in-Class SaaS", value: "$500K+", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Median Public SaaS", value: "$350K", source: "KeyBanc 2025 SaaS Survey" },
-      { metric: "Product-Led Growth", value: "$400K - $600K", source: "OpenView Partners" },
-      { metric: "Sales-Led SaaS", value: "$200K - $350K", source: "OpenView Partners" },
+      { metric: "Product-Led Growth", value: "$400K - $600K", source: "KeyBanc Capital Markets" },
+      { metric: "Sales-Led SaaS", value: "$200K - $350K", source: "KeyBanc Capital Markets" },
       { metric: "Early-Stage SaaS", value: "$50K - $150K", source: "SaaS Capital" },
     ],
     relatedCalculators: ["mrr-calculator", "gross-margin-calculator", "operating-margin-calculator"],

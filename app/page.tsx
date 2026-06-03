@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCalculators, getAllKnownCategories, CATEGORY_META, getCategoryTranslationKey } from "@/lib/registry";
 import { resolveLocaleConfig } from "@/lib/resolve-calculator-locale";
@@ -9,6 +10,21 @@ import { getTranslations } from "@/lib/getTranslations";
 import type { Locale } from "@/lib/useLocale";
 
 import "@/calculators/config/_all";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  return {
+    title: "SaaStainedNumbers - Free SaaS & Business Calculators",
+    description: "100+ free calculators for SaaS metrics, revenue, churn, unit economics, AI costs, side hustles, and personal finance.",
+    openGraph: {
+      title: "SaaStainedNumbers - Free SaaS & Business Calculators",
+      description: "100+ free calculators for SaaS metrics, revenue, churn, unit economics, AI costs, side hustles, and personal finance.",
+      type: "website",
+      images: ["/api/og?title=SaaStainedNumbers&description=Free+SaaS+%26+Business+Calculators"],
+      siteName: "SaaStainedNumbers",
+    },
+  };
+}
 
 function SectionLabel({ num }: { num: number }) {
   return (

@@ -32,7 +32,7 @@ const config = {
       { metric: "DoorDash Driver Median", value: "$15-22 / hour gross", source: "Gridwise 2025" },
       { metric: "Vehicle Expense Rate", value: "25-40% of gross", source: "IRS Mileage Rate" },
       { metric: "Self-Employment Tax Rate", value: "15.3% + income tax", source: "IRS" },
-      { metric: "Typical Take-Home Percentage", value: "50-65% of gross", source: "Industry Average" },
+      { metric: "Typical Take-Home Percentage", value: "50-65% of gross", source: "General benchmark" },
       { metric: "Empty Miles (No Passenger)", value: "20-40% of total", source: "Rideshare Guy 2025" },
     ],
     relatedCalculators: ["freelance-rate-calculator", "savings-rate-calculator"],

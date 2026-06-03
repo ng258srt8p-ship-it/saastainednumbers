@@ -26,10 +26,10 @@ const config = {
     benchmarks: "A good ROI depends on your industry and risk level. S&P 500 historical average: 10% annualized. Business investments should target 15-30% ROI. Marketing campaigns: 300-500% ROI (5:1 ratio) is considered excellent. Real estate: 8-12% annualized. Venture capital targets 25%+ annualized to compensate for high failure rates. Use [QuickBooks](https://quickbooks.intuit.com) or [Bench](https://bench.co) for tracking business investment performance.",
     benchmarkData: [
       { metric: "S&P 500 Historical Average", value: "10% annualized", source: "Morningstar" },
-      { metric: "Good Business Investment", value: "15-30% ROI", source: "Industry Average" },
+      { metric: "Good Business Investment", value: "15-30% ROI", source: "General benchmark" },
       { metric: "Excellent Marketing ROI", value: "300-500% (5:1)", source: "Nielsen" },
       { metric: "Real Estate Average Return", value: "8-12% annualized", source: "NCREIF" },
-      { metric: "Venture Capital Target", value: "25%+ annualized", source: "Industry Standard" },
+      { metric: "Venture Capital Target", value: "25%+ annualized", source: "General benchmark" },
       { metric: "Small Business Average", value: "20-40% ROI", source: "SBA" },
     ],
     relatedCalculators: ["break-even-calculator", "fire-calculator"],

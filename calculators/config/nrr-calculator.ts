@@ -30,8 +30,8 @@ const config = {
       { metric: "Best-in-Class NRR", value: "120%+", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Good NRR", value: "110 - 120%", source: "KeyBanc 2025 SaaS Survey" },
       { metric: "Acceptable NRR", value: "100 - 110%", source: "SaaS Capital" },
-      { metric: "Below Par NRR", value: "< 100%", source: "Industry Standard" },
-      { metric: "Enterprise Gross Retention", value: "85 - 95%", source: "Pacific Crest" },
+      { metric: "Below Par NRR", value: "< 100%", source: "General benchmark" },
+      { metric: "Enterprise Gross Retention", value: "85 - 95%", source: "KeyBanc Capital Markets" },
     ],
     relatedCalculators: ["mrr-calculator", "churn-calculator", "arpu-calculator"],
     faq: [

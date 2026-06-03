@@ -5,7 +5,7 @@ date: "May 2, 2026"
 slug: "saas-benchmarks-2026"
 ---
 
-Knowing where your SaaS company stands against industry benchmarks is essential for fundraising, strategic planning, and operational improvement. Here are the most comprehensive SaaS benchmarks for 2026, drawn from KeyBanc Capital Markets, SaaS Capital, and OpenView data.
+Knowing where your SaaS company stands against industry benchmarks is essential for fundraising, strategic planning, and operational improvement. Here are the most comprehensive SaaS benchmarks for 2026, drawn from KeyBanc Capital Markets, SaaS Capital, and other industry sources.
 
 ## Growth Benchmarks
 

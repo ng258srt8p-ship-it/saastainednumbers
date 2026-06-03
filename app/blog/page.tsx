@@ -8,22 +8,16 @@ import { getTranslations } from "@/lib/getTranslations";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   return {
-    title: `${t("blog.title")} — SaaStainedNumbers`,
+    title: `${t("blog.title")} - SaaStainedNumbers`,
     description: t("blog.subtitle"),
     alternates: {
       canonical: localeUrl("/blog"),
       languages: alternateLanguages("/blog"),
     },
     openGraph: {
-      title: `${t("blog.title")} — SaaStainedNumbers`,
+      title: `${t("blog.title")} - SaaStainedNumbers`,
       description: t("blog.subtitle"),
       type: "website",
-      images: ["/api/og?title=Blog&category=home"],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${t("blog.title")} — SaaStainedNumbers`,
-      description: t("blog.subtitle"),
       images: ["/api/og?title=Blog&category=home"],
     },
   };
