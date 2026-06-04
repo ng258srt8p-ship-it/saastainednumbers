@@ -59,9 +59,10 @@ interface HealthBadgeProps {
   value: number;
   metric: string;
   label?: string;
+  ariaLabel?: string;
 }
 
-export function HealthBadge({ value, metric, label }: HealthBadgeProps) {
+export function HealthBadge({ value, metric, label, ariaLabel }: HealthBadgeProps) {
   const ref = benchmarkReferences[metric];
 
   if (!ref) return null;
@@ -71,10 +72,16 @@ export function HealthBadge({ value, metric, label }: HealthBadgeProps) {
 
   if (!rating) return null;
 
+  // Construct an aria-label for screen readers
+  const constructedAriaLabel = ariaLabel || 
+    (label ? `${label}: ${value}` : `Metric: ${metric}, Value: ${value}, Rating: ${rating}`);
+  
   return (
     <span
       className={`group relative inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ${ratingColors[rating]}`}
       title={label ? `${label}: ${value}` : String(value)}
+      aria-label={constructedAriaLabel}
+      role="status"
     >
       <span className="capitalize">{rating}</span>
       <span className="absolute bottom-full left-1/2 z-10 mb-2 hidden w-56 -translate-x-1/2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-xs text-gray-700 dark:text-gray-300 shadow-lg group-hover:block whitespace-pre-line text-left">

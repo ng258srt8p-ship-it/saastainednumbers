@@ -18,7 +18,7 @@ export function FeedbackWidget({ slug, strings }: FeedbackWidgetProps) {
 
   if (submitted) {
     return (
-      <p className="text-xs text-gray-600 dark:text-gray-500">{strings?.thanks ?? "Thanks for your feedback!"}</p>
+      <p className="text-xs text-gray-600 dark:text-gray-500" aria-live="polite">{strings?.thanks ?? "Thanks for your feedback!"}</p>
     );
   }
 
@@ -32,7 +32,7 @@ export function FeedbackWidget({ slug, strings }: FeedbackWidgetProps) {
           setSubmitted(true);
         }}
         className="rounded px-2 py-0.5 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
-        aria-label="Yes, helpful"
+        aria-label={strings?.yes ?? "Yes, helpful"}
       >
         {strings?.yes ?? "Yes"}
       </button>
@@ -43,7 +43,7 @@ export function FeedbackWidget({ slug, strings }: FeedbackWidgetProps) {
           setSubmitted(true);
         }}
         className="rounded px-2 py-0.5 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
-        aria-label="No, not helpful"
+        aria-label={strings?.no ?? "No, not helpful"}
       >
         {strings?.no ?? "No"}
       </button>

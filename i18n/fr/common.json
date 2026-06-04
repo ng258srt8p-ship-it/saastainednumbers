@@ -35,7 +35,8 @@
     "growth": "Croissance",
     "deltaAbsolute": "$",
     "deltaPercent": "%",
-    "deltaBoth": "Les deux"
+    "deltaBoth": "Les deux",
+      "relatedCalculators": "Calculateurs associés"
   },
   "category": {
     "revenue": "Métriques de revenus",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { getCurrencySymbol } from "@/lib/formatNumber";
 import { useCurrency } from "@/components/CurrencyProvider";
 import type { Locale } from "@/lib/useLocale";
@@ -32,17 +32,39 @@ export function InputSlider({
 }: InputSliderProps) {
   const [localValue, setLocalValue] = useState(String(value));
 
+   // Sync localValue when the value prop changes externally (e.g. from another input or stage selector)
+  useEffect(() => {
+    setLocalValue(String(value));
+    }, [value]);
+
+   // Ref-based debounce: fire onChange on every keystroke for immediate recalc,
+   // but only update localValue onBlur to avoid caret jumps in the text field
+  const changeTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
   const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+     (e: React.ChangeEvent<HTMLInputElement>) => {
       const raw = e.target.value;
       setLocalValue(raw);
       const num = parseFloat(raw);
       if (!isNaN(num) && num >= 0) {
         onChange(num);
-      }
-    },
-    [onChange]
-  );
+        clearTimeout(changeTimer.current);
+        changeTimer.current = setTimeout(() => {
+          setLocalValue(String(num));
+          }, 300);
+        }
+     },
+     [onChange]
+    );
+
+   // On blur, snap localValue back to the real numeric value to avoid drift
+  const handleBlur = useCallback(
+     () => {
+      clearTimeout(changeTimer.current);
+      setLocalValue(String(value));
+      },
+     [value]
+    );
 
   const { currency } = useCurrency();
   const currencySymbol = useMemo(() => getCurrencySymbol(locale, currency), [locale, currency]);
@@ -54,17 +76,18 @@ export function InputSlider({
       <label htmlFor={id} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
         {label}
       </label>
-      <div className="relative">
-        {prefix && (
-          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">
-            {prefix}
-          </span>
-        )}
-        <input
-          id={id}
-          type="number"
-          value={localValue}
-          onChange={handleChange}
+        <div className="relative">
+          {prefix && (
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">
+              {prefix}
+            </span>
+          )}
+          <input
+           id={id}
+           type="number"
+           value={localValue}
+           onChange={handleChange}
+           onBlur={handleBlur}
           min={min ?? 0}
           max={max}
           placeholder={placeholder}

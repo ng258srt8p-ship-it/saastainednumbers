@@ -97,63 +97,65 @@ export default async function RootLayout({
           <main id="main-content" className="flex-1">
             {children}
           </main>
-          <ShowWhenNotEmbed><footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
-          <div className="mx-auto max-w-6xl px-4 py-10">
-            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-6 sm:gap-8 lg:gap-12">
-              <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("footer.product")}</h3>
-                <ul className="mt-3 space-y-2">
-                  <li><Link href="/" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("common.home")}</Link></li>
-                  <li><Link href="/calculators" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("category.all")}</Link></li>
-                  <li><Link href="/about" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.about")}</Link></li>
-                  <li><Link href="/pricing" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.pricing")}</Link></li>
-                  <li><Link href="/dashboard" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.dashboard")}</Link></li>
-                </ul>
+          <ShowWhenNotEmbed>
+            <footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+              <div className="mx-auto max-w-6xl px-4 py-10">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-6 sm:gap-8 lg:gap-12">
+                  <div className="w-full sm:w-auto">
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("footer.product")}</h3>
+                    <ul className="mt-3 space-y-2">
+                      <li><Link href="/" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("common.home")}</Link></li>
+                      <li><Link href="/calculators" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("category.all")}</Link></li>
+                      <li><Link href="/about" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.about")}</Link></li>
+                      <li><Link href="/pricing" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.pricing")}</Link></li>
+                      <li><Link href="/dashboard" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.dashboard")}</Link></li>
+                    </ul>
+                  </div>
+                  <div className="w-full sm:w-auto">
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.categories")}</h3>
+                    <ul className="mt-3 space-y-2">
+                      {categorySlugs.map((slug) => (
+                        <li key={slug}>
+                          <Link href={`/${slug}`} className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">
+                            {t(`category.${getCategoryTranslationKey(slug)}`)}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-full sm:w-auto">
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.resources")}</h3>
+                    <ul className="mt-3 space-y-2">
+                      <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.blog")}</Link></li>
+                    </ul>
+                  </div>
+                  <div className="w-full sm:w-auto">
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.legal")}</h3>
+                    <ul className="mt-3 space-y-2">
+                      <li><Link href="/legal" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.legal")}</Link></li>
+                      <li><Link href="/privacy" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.privacyPolicy")}</Link></li>
+                      <li><Link href="/terms" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.termsOfService")}</Link></li>
+                      <li><Link href="/legal#cookies" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.cookiePolicy")}</Link></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200 dark:border-gray-700 pt-6 sm:flex-row">
+                  <div className="flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" className="w-8 h-8 shrink-0" aria-hidden>
+                      <polygon points="20,70 60,70 40,40" fill="#008387" stroke="#008387" strokeWidth="5" strokeLinejoin="round"/>
+                      <polygon points="26,32 54,32 40,10" fill="#143562" stroke="#143562" strokeWidth="5" strokeLinejoin="round"/>
+                    </svg>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} {t("footer.copyright")}.</p>
+                  </div>
+                  <div className="flex gap-4">
+                    <Link href="/about" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("footer.about")}</Link>
+                    <Link href="/contact" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("contact.title")}</Link>
+                    <Link href="/blog" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("nav.blog")}</Link>
+                  </div>
+                </div>
               </div>
-              <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.categories")}</h3>
-                <ul className="mt-3 space-y-2">
-                  {categorySlugs.map((slug) => (
-                    <li key={slug}>
-                      <Link href={`/${slug}`} className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">
-                        {t(`category.${getCategoryTranslationKey(slug)}`)}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.resources")}</h3>
-                <ul className="mt-3 space-y-2">
-                  <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.blog")}</Link></li>
-                </ul>
-              </div>
-              <div className="w-full sm:w-auto">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.legal")}</h3>
-                <ul className="mt-3 space-y-2">
-                  <li><Link href="/legal" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.legal")}</Link></li>
-                  <li><Link href="/privacy" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.privacyPolicy")}</Link></li>
-                  <li><Link href="/terms" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.termsOfService")}</Link></li>
-                  <li><Link href="/legal#cookies" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.cookiePolicy")}</Link></li>
-                </ul>
-              </div>
-            </div>
-            <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200 dark:border-gray-700 pt-6 sm:flex-row">
-              <div className="flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" className="w-8 h-8 shrink-0" aria-hidden>
-                  <polygon points="20,70 60,70 40,40" fill="#008387" stroke="#008387" strokeWidth="5" strokeLinejoin="round"/>
-                  <polygon points="26,32 54,32 40,10" fill="#143562" stroke="#143562" strokeWidth="5" strokeLinejoin="round"/>
-                </svg>
-                <p className="text-xs text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} {t("footer.copyright")}.</p>
-              </div>
-              <div className="flex gap-4">
-                <Link href="/about" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("footer.about")}</Link>
-                <Link href="/contact" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("contact.title")}</Link>
-                <Link href="/blog" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("nav.blog")}</Link>
-              </div>
-            </div>
-          </div>
-        </footer></ShowWhenNotEmbed>
+            </footer>
+          </ShowWhenNotEmbed>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -184,7 +186,7 @@ export default async function RootLayout({
             }),
           }}
         />
-      </CurrencyProvider>
+        </CurrencyProvider>
       </body>
     </html>
   );

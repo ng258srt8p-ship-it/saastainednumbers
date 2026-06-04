@@ -35,7 +35,8 @@
     "growth": "グロース",
     "deltaAbsolute": "$",
     "deltaPercent": "%",
-    "deltaBoth": "両方"
+    "deltaBoth": "両方",
+      "relatedCalculators": "関連計算機"
   },
   "category": {
     "revenue": "収益指標",

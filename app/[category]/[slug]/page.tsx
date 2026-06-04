@@ -91,7 +91,9 @@ export default async function CalculatorPage({ params }: PageProps) {
     feedbackYes: t("feedback.yes"),
     feedbackNo: t("feedback.no"),
     feedbackThanks: t("feedback.thanks"),
-  };
+    shellFaqTitle: t("calculator.frequentlyAskedQuestions"),
+    shellRelatedCalculatorsTitle: t("calculator.relatedCalculators"),
+   };
 
   return <CalculatorClient config={resolved} relatedCalculators={related} hideContent strings={strings} />;
 }

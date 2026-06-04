@@ -18,7 +18,16 @@ export function MobileNav({ t, locale }: MobileNavProps) {
   const pathname = usePathname();
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const closedBy = useRef<"close" | "link" | null>(null);
   const close = useCallback(() => setOpen(false), []);
+
+  // Restore focus to the trigger when menu closes
+  useEffect(() => {
+    if (!open && closedBy.current === "close" && hamburgerRef.current) {
+      hamburgerRef.current.focus();
+      closedBy.current = null;
+    }
+   }, [open]);
 
   // Close on browser back/forward
   useEffect(() => {
@@ -28,32 +37,36 @@ export function MobileNav({ t, locale }: MobileNavProps) {
     return () => window.removeEventListener("popstate", handler);
   }, [open, close]);
 
-  // Escape key
+    // Escape key closes menu and restores focus to trigger
   useEffect(() => {
     if (!open) return;
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-    };
+      if (e.key === "Escape") {
+        closedBy.current = "close";
+        close();
+       }
+      };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [open, close]);
+    }, [open, close]);
 
-  // Outside click
+   // Outside click closes menu and restores focus to trigger
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
       if (
         menuRef.current &&
-        !menuRef.current.contains(e.target as Node) &&
+         !menuRef.current.contains(e.target as Node) &&
         hamburgerRef.current &&
-        !hamburgerRef.current.contains(e.target as Node)
-      ) {
+         !hamburgerRef.current.contains(e.target as Node)
+       ) {
+        closedBy.current = "close";
         close();
-      }
-    };
+       }
+      };
     document.addEventListener("click", handler);
     return () => document.removeEventListener("click", handler);
-  }, [open, close]);
+    }, [open, close]);
 
   // Focus trap
   useEffect(() => {
@@ -162,10 +175,10 @@ export function MobileNav({ t, locale }: MobileNavProps) {
                 const isCurrent = pathname === item.href || pathname.startsWith(item.href + "/");
                 return (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={close}
-                      aria-current={isCurrent ? "page" : undefined}
+        <Link
+         href={item.href}
+         onClick={() => { closedBy.current = "link"; close(); }}
+         aria-current={isCurrent ? "page" : undefined}
                       className="block px-3 py-3 text-[15px] font-medium text-gray-800 dark:text-gray-200 border-b border-gray-100 dark:border-gray-700 transition-colors hover:text-brand-600 last:border-b-0"
                     >
                       {item.label}

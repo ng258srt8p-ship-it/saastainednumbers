@@ -62,7 +62,9 @@ interface Props {
     feedbackYes: string;
     feedbackNo: string;
     feedbackThanks: string;
-  };
+    shellFaqTitle: string;
+    shellRelatedCalculatorsTitle: string;
+   };
 }
 
 
@@ -192,12 +194,13 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
     </div>
   ) : null;
 
-  return (
-    <>
-    <CalculatorShell
-      title={config.meta.title}
-      description={config.meta.description}
-      stageSelector={stageSelector}
+   return (
+      <>
+      <CalculatorShell
+       title={config.meta.title}
+       description={config.meta.description}
+       strings={{ faqTitle: strings?.shellFaqTitle ?? "Frequently Asked Questions", relatedCalculatorsTitle: strings?.shellRelatedCalculatorsTitle ?? "Related Calculators" }}
+       stageSelector={stageSelector}
       feedbackWidget={<FeedbackWidget slug={config.slug} strings={strings ? { wasThisHelpful: strings.feedbackHelpful, yes: strings.feedbackYes, no: strings.feedbackNo, thanks: strings.feedbackThanks } : undefined} />}
       sidebarAd={<SidekickAd />}
       afterContentAd={hideContent ? undefined : <AdUnit slot="calculator-below-content" />}

@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { PrivacyNotice } from "./PrivacyNotice";
 
 interface Breadcrumb {
@@ -21,6 +22,10 @@ interface CalculatorShellProps {
   embedButton?: ReactNode;
   stageSelector?: ReactNode;
   sidebarAd?: ReactNode;
+  strings?: {
+    faqTitle: string;
+    relatedCalculatorsTitle: string;
+   };
 }
 
 export function CalculatorShell({
@@ -33,9 +38,10 @@ export function CalculatorShell({
   relatedCalculators,
   feedbackWidget,
   embedButton,
-  breadcrumbs,
+   breadcrumbs,
   stageSelector,
   sidebarAd,
+   strings,
 }: CalculatorShellProps) {
   return (
     <div className="bg-page-bg">
@@ -47,9 +53,10 @@ export function CalculatorShell({
               <li key={crumb.label} className="flex items-center gap-2">
                 {i > 0 && <span>/</span>}
                 {crumb.href ? (
-                  <a href={crumb.href} className="hover:text-brand-400 transition-colors">
-                    {crumb.label}
-                  </a>
+                    <Link href={crumb.href} className="hover:text-brand-400 transition-colors">
+                      {crumb.label}
+                    </Link>
+
                 ) : (
                   <span className="text-gray-600 dark:text-gray-300 font-medium">{crumb.label}</span>
                 )}
@@ -94,20 +101,20 @@ export function CalculatorShell({
         {sidebarAd && <div className="w-full lg:w-72 shrink-0">{sidebarAd}</div>}
       </div>
 
-      {faqSection && (
-        <section className="mt-12">
-          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
-            Frequently Asked Questions
-          </h2>
-          <div className="mt-6 space-y-3">{faqSection}</div>
-        </section>
-      )}
+        {faqSection && (
+          <section className="mt-12">
+            <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
+             {strings?.faqTitle ?? "Frequently Asked Questions"}
+            </h2>
+            <div className="mt-6 space-y-3">{faqSection}</div>
+          </section>
+        )}
 
-      {relatedCalculators && (
-        <section className="mt-12 border-t border-gray-100 dark:border-gray-800 pt-8">
-          <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
-            Related Calculators
-          </h2>
+        {relatedCalculators && (
+          <section className="mt-12 border-t border-gray-100 dark:border-gray-800 pt-8">
+            <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
+             {strings?.relatedCalculatorsTitle ?? "Related Calculators"}
+            </h2>
           <div className="mt-4">{relatedCalculators}</div>
         </section>
       )}

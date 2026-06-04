@@ -2,9 +2,16 @@
 
 import { useEffect, useState } from "react";
 
+function getSystemTheme(): "dark" | "light" {
+  if (typeof window === "undefined") return "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
 if (typeof window !== "undefined") {
   const stored = localStorage.getItem("theme");
   if (stored === "dark") {
+    document.documentElement.classList.add("dark");
+  } else if (!stored && getSystemTheme() === "dark") {
     document.documentElement.classList.add("dark");
   }
 }
@@ -14,17 +21,28 @@ export function ThemeToggle() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMountReady(true);
     setDark(document.documentElement.classList.contains("dark"));
-  }, []);
+
+    // Listen for system preference changes when no user override exists
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem("theme")) {
+        document.documentElement.classList.toggle("dark", e.matches);
+        setDark(e.matches);
+      }
+    };
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+   }, []);
 
   const toggle = () => {
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem("theme", next ? "dark" : "light");
-  };
+   };
 
   return (
     <button

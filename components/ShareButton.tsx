@@ -41,6 +41,7 @@ export function ShareButton({ inputs, category, slug }: ShareButtonProps) {
       type="button"
       onClick={handleCopy}
       className="rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 transition-colors"
+      aria-label={copied ? "Copied!" : "Share"}
     >
       {copied ? "Copied!" : "Share"}
     </button>

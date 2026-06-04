@@ -65,7 +65,7 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
     setVisible(false);
 
     try {
-      const insights = generateInsights({ title, description, category, inputs, outputs, currency });
+      const insights = await generateInsights({ title, description, category, inputs, outputs, currency });
 
       await new Promise((r) => setTimeout(r, 300));
 
@@ -98,6 +98,7 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
           type="button"
           onClick={handleGenerate}
           className="group inline-flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-brand-500/50 px-4 py-3 text-sm font-medium text-brand-600 dark:text-brand-400 transition-all hover:border-brand-500 hover:bg-brand-500/5 hover:text-brand-700 dark:hover:text-brand-300"
+          aria-label="Get Insights"
         >
           <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
             <path d="M8 1a7 7 0 100 14A7 7 0 008 1zM8 4v4M8 10v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -107,13 +108,13 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
       )}
 
       {loading && (
-        <div className="flex items-center justify-center rounded-xl border border-brand-200 dark:border-brand-800/30 bg-brand-50/50 dark:bg-brand-950/20 px-4 py-8 transition-all duration-300">
+        <div className="flex items-center justify-center rounded-xl border border-brand-200 dark:border-brand-800/30 bg-brand-50/50 dark:bg-brand-950/20 px-4 py-8 transition-all duration-300" role="status" aria-label="Loading insights">
           <ThinkingAnimation />
         </div>
       )}
 
       {error && (
-        <div className="rounded-xl border border-red-200 dark:border-red-800/50 bg-red-50 dark:bg-red-950/30 px-4 py-3">
+        <div className="rounded-xl border border-red-200 dark:border-red-800/50 bg-red-50 dark:bg-red-950/30 px-4 py-3" role="alert">
           <div className="flex items-start gap-2">
             <svg className="mt-0.5 h-4 w-4 shrink-0 text-red-500" viewBox="0 0 16 16" fill="currentColor">
               <path d="M8 1a7 7 0 100 14A7 7 0 008 1zM7 5v3a1 1 0 002 0V5a1 1 0 00-2 0zm0 5a1 1 0 102 0 1 1 0 00-2 0z" />
@@ -145,6 +146,7 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
                 type="button"
                 onClick={handleGenerate}
                 className="text-xs text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 underline"
+                aria-label="Regenerate insights"
               >
                 Regenerate
               </button>
@@ -157,7 +159,7 @@ export function Insights({ title, description, category, inputs, outputs }: Insi
               </button>
             </div>
           </div>
-          <div className="prose prose-sm prose-gray dark:prose-invert max-w-none">
+          <div className="prose prose-sm prose-gray dark:prose-invert max-w-none" role="status" aria-live="polite">
             {insights.split("\n").map((line, i) => {
               if (line.startsWith("## ")) {
                 return (

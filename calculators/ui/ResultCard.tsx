@@ -50,11 +50,15 @@ export function ResultCard({ label, value, type, isPrimary, prefix, suffix, metr
         <p className="mt-2 font-heading text-4xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 dark:from-brand-400 dark:to-brand-300 bg-clip-text text-transparent">
           {prefix}{formatted}{suffix}
         </p>
-        {health && health !== "reference" && (
-          <span className={`mt-2 inline-block rounded-full border px-2.5 py-0.5 text-xs font-medium ${getHealthColor(health)}`}>
-            {getHealthLabel(health)}
-          </span>
-        )}
+      {health && health !== "reference" && (
+        <span
+          className={`mt-2 inline-block rounded-full border px-2.5 py-0.5 text-xs font-medium ${getHealthColor(health)}`}
+          role="status"
+          aria-label={`${label} health status: ${getHealthLabel(health)}`}
+        >
+          {getHealthLabel(health)}
+        </span>
+      )}
       </div>
     );
   }
@@ -63,22 +67,35 @@ export function ResultCard({ label, value, type, isPrimary, prefix, suffix, metr
     <div className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm">
       <div className="flex items-center justify-between gap-2">
         <p className="text-xs font-medium text-gray-500 dark:text-gray-400">{label}</p>
-        {health && (
-          <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold leading-tight ${getHealthColor(health)}`}>
-            {getHealthLabel(health)}
-          </span>
+         {health && (
+            <span
+             className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold leading-tight ${getHealthColor(health)}`}
+             role="status"
+             aria-label={`${label} health status: ${getHealthLabel(health)}`}
+            >
+              {getHealthLabel(health)}
+            </span>
+
         )}
       </div>
       <p className="mt-1 font-heading text-xl font-semibold text-gray-900 dark:text-gray-100">
         {prefix}{formatted}{suffix}
       </p>
-      {metricKey && rawValue !== undefined && (
-        <div className="mt-2 h-1.5 w-full rounded-full bg-gray-100">
-          <div
-            className={`h-full rounded-full transition-all duration-500 ${getBarColor(health ?? "reference")}`}
-            style={{ width: `${getGradientPercent(metricKey, rawValue, stage)}%` }}
-          />
-        </div>
+       {metricKey && rawValue !== undefined && (
+           <div
+             className="mt-2 h-1.5 w-full rounded-full bg-gray-100"
+             role="progressbar"
+             aria-label={`${label} progress`}
+             aria-valuenow={getGradientPercent(metricKey, rawValue, stage)}
+             aria-valuemin={0}
+             aria-valuemax={100}
+            >
+             <div
+              className={`h-full rounded-full transition-all duration-500 ${getBarColor(health ?? "reference")}`}
+              style={{ width: `${getGradientPercent(metricKey, rawValue, stage)}%` }}
+             />
+           </div>
+
       )}
     </div>
   );
