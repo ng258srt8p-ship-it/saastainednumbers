@@ -3,8 +3,11 @@ import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 import { AdScript } from "@/components/AdScript";
-import { ShowWhenNotEmbed } from "@/components/ShowWhenNotEmbed";
 import { Nav } from "@/components/Nav";
+import { FooterShow } from "@/components/FooterShow";
+import { ShowWhenNotEmbed } from "@/components/ShowWhenNotEmbed";
+import { MainContentWrapper } from "@/components/MainContentWrapper";
+import { PageTransition } from "@/components/PageTransition";
 import { CurrencyProvider } from "@/components/CurrencyProvider";
 import { getTranslations } from "@/lib/getTranslations";
 import { alternateLanguages, localeUrl } from "@/lib/locale-url";
@@ -71,8 +74,8 @@ export default async function RootLayout({
   const categorySlugs = getAllKnownCategories();
 
   return (
-    <html lang={locale} className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
+    <html lang={locale} className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} min-h-screen antialiased`}>
+      <body className="min-h-screen grid grid-rows-[auto_1fr_auto] bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
         <CurrencyProvider locale={locale as Locale}>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-BHDH2PETBK" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -94,13 +97,19 @@ export default async function RootLayout({
           {t("common.skipToContent")}
         </a>
           <ShowWhenNotEmbed><Nav /></ShowWhenNotEmbed>
-          <main id="main-content" className="flex-1">
-            {children}
+          <main id="main-content" className="flex-1 flex flex-col min-h-0">
+            <MainContentWrapper>
+              <PageTransition>{children}</PageTransition>
+            </MainContentWrapper>
           </main>
           <ShowWhenNotEmbed>
-            <footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+            <FooterShow>
+            <footer className="border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 relative">
+            {/* Gradient top border */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" aria-hidden />
+
               <div className="mx-auto max-w-6xl px-4 py-10">
-                <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-6 sm:gap-8 lg:gap-12">
+                <div className="grid grid-cols-2 sm:flex sm:flex-row sm:flex-wrap sm:justify-center gap-6 sm:gap-8 lg:gap-12">
                   <div className="w-full sm:w-auto">
                     <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("footer.product")}</h3>
                     <ul className="mt-3 space-y-2">
@@ -108,8 +117,7 @@ export default async function RootLayout({
                       <li><Link href="/calculators" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("category.all")}</Link></li>
                       <li><Link href="/about" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.about")}</Link></li>
                       <li><Link href="/pricing" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.pricing")}</Link></li>
-                      <li><Link href="/dashboard" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.dashboard")}</Link></li>
-                    </ul>
+                            </ul>
                   </div>
                   <div className="w-full sm:w-auto">
                     <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.categories")}</h3>
@@ -155,6 +163,7 @@ export default async function RootLayout({
                 </div>
               </div>
             </footer>
+            </FooterShow>
           </ShowWhenNotEmbed>
         <script
           type="application/ld+json"
