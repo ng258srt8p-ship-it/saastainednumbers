@@ -30,7 +30,7 @@ export function LocaleSwitcher({ locale: current }: { locale: Locale }) {
       <button
         type="button"
         onClick={() => setOpen((p) => !p)}
-        className="flex items-center gap-1 rounded-lg px-2 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        className="flex items-center gap-1 rounded-lg px-2 py-1.5 text-xs font-medium text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label="Select language"
@@ -45,7 +45,7 @@ export function LocaleSwitcher({ locale: current }: { locale: Locale }) {
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden />
           <div
-            className="absolute left-0 z-50 mt-1 min-w-[140px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg py-1"
+            className="absolute right-0 z-50 mt-1 min-w-[140px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg py-1"
             role="listbox"
             aria-label="Select language"
           >
