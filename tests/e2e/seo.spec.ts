@@ -52,7 +52,6 @@ test.describe("Page Titles", () => {
     { path: "/", titleIncludes: "SaaStainedNumbers" },
     { path: "/calculators", titleIncludes: "Calculator" },
     { path: "/pricing", titleIncludes: "Free" },
-    { path: "/dashboard", titleIncludes: "SaaStainedNumbers" },
     { path: "/blog", titleIncludes: "Blog" },
     { path: "/revenue", titleIncludes: "Revenue" },
     { path: "/revenue/mrr-calculator", titleIncludes: "MRR" },

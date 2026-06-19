@@ -59,6 +59,8 @@ export default async function Home() {
   const heroLine2First = heroLine2.split(" ").slice(0, -1).join(" ");
   const heroLine2Last = heroLine2.split(" ").pop() || "";
 
+  const openCanvasLabel = t("home.openCanvas") || "Open Canvas";
+
   return (
     <div className="flex flex-col flex-1">
       {/* § HERO */}
@@ -78,10 +80,10 @@ export default async function Home() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="/revenue/mrr-calculator"
+              href="/canvas"
               className="rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:shadow-xl hover:shadow-brand-500/30 hover:scale-105"
             >
-              {t("home.startCalculating")}
+              {openCanvasLabel}
             </Link>
             <Link
               href="/calculators"
@@ -123,7 +125,6 @@ export default async function Home() {
         </div>
       </section>
 
-
       {/* § 01 · POPULAR */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
@@ -164,7 +165,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* § 02 · CATEGORIES */}
+          {/* § 02 · CATEGORIES */}
       <section className="bg-gray-50 dark:bg-gray-900/50 px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <SectionLabel num={2} />
@@ -180,16 +181,19 @@ export default async function Home() {
                 <Link
                   key={cat}
                   href={`/${cat}`}
-                  className="group relative rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1"
+                  className="group rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
                 >
-                  <CategoryIcon identifier={meta?.icon} className="w-10 h-10" />
-                  <div className="mt-4 flex items-center justify-between">
-                    <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">{t("category." + getCategoryTranslationKey(cat))}</h3>
-                    <span className="rounded-full bg-brand-50 dark:bg-brand-900/40 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:text-brand-300">
-                      <span className="font-numbers">{count}</span>
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{meta?.description}</p>
+                  <span className="text-xs font-medium uppercase tracking-wider text-brand-500 dark:text-brand-400">
+                    <span className="font-numbers">{count}</span> {count === 1 ? "calculator" : "calculators"}
+                  </span>
+                  <h3 className="mt-2 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 transition-colors flex items-center gap-2">
+                    <CategoryIcon identifier={meta?.icon} className="w-5 h-5 shrink-0 text-brand-500" />
+                    {t("category." + getCategoryTranslationKey(cat))}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{meta?.description}</p>
+                  <span className="mt-4 inline-flex items-center text-sm font-medium text-brand-600 dark:text-brand-400 opacity-0 transition-opacity group-hover:opacity-100">
+                    {t("home.openCalculator")}
+                  </span>
                 </Link>
               );
             })}
@@ -197,7 +201,7 @@ export default async function Home() {
           <div className="mt-10 text-center">
             <Link
               href="/calculators"
-              className="inline-flex items-center gap-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-5 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:border-brand-500/50"
             >
               {t("home.seeAllCalculators").replace("{n}", String(totalCount))}
             </Link>
@@ -252,17 +256,17 @@ export default async function Home() {
             {t("home.theLedger")}
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
+            <div className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">{totalCount}</p>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.calculatorsInCatalog")}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.acrossCategories")} <span className="font-numbers">{categories.length}</span> {t("home.categories").toLowerCase()}</p>
             </div>
-            <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
+            <div className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">{totalCount * 4}</p>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.calculationBenchmarks")}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.industryStandardData")}</p>
             </div>
-            <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
+            <div className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100"><CurrencyHeroValue locale={locale as Locale} /></p>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.alwaysFree")}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.noPaywalls")}</p>
@@ -270,7 +274,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
 
       {/* § 06 · CTA */}
       <section className="bg-gradient-to-r from-brand-900 to-brand-800 px-4 py-20">

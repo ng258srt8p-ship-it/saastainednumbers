@@ -54,7 +54,7 @@ export function ComparisonChart({ data, locale }: ComparisonChartProps) {
   }));
 
   return (
-    <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+    <div className="mobbin-card">
       <h3 className="mb-4 text-sm font-semibold text-gray-800 dark:text-gray-200">Scenario Comparison</h3>
       <ResponsiveContainer width="100%" height={Math.max(200, data.length * 60)}>
         <BarChart data={chartData} layout="vertical" margin={{ top: 4, right: 16, bottom: 4, left: 8 }}>

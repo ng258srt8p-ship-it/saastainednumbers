@@ -31,7 +31,6 @@ const PAGE_TYPES = [
   { path: "/personal-finance/savings-rate-calculator", label: "Calc: Savings" },
   { path: "/blog", label: "Blog listing" },
   { path: "/blog/saas-metrics-guide-2026", label: "Blog post" },
-  { path: "/dashboard", label: "Dashboard" },
   { path: "/pricing", label: "Pricing" },
 ];
 

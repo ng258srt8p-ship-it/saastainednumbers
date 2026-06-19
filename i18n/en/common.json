@@ -3,26 +3,98 @@
     "dashboard": "Dashboard",
     "pricing": "Pricing",
     "blog": "Blog",
-    "calculators": "Calculators"
+    "calculators": "Calculators",
+    "canvas": "Canvas"
   },
   "common": {
-    "home": "Home",
-    "loading": "Loading...",
     "new": "New",
-    "skipToContent": "Skip to content"
+    "home": "Home",
+    "skipToContent": "Skip to content",
+    "loading": "Loading..."
+  },
+  "home": {
+    "heroLine1": "Open the Canvas",
+    "heroLine2": "Calculate. Connect. Control.",
+    "heroSubtitle": "calculators. Pick your path.",
+    "startCalculating": "Start Calculating",
+    "browseAll": "Browse All",
+    "freeCalculators": "Free Calculators",
+    "categories": "Categories",
+    "toStart": "to Start",
+    "popularCalculators": "Popular Calculators",
+    "popularSubtitle": "Start with these favorites — the ones founders reach for first.",
+    "openCalculator": "Open calculator →",
+    "browseByCategory": "Browse by Category",
+    "categoriesSubtitle": "categories, calculators. Pick your path.",
+    "seeAllCalculators": "See all {n} calculators →",
+    "threeSteps": "How It Works",
+    "stepPick": "Pick Your Calculator",
+    "pickDescription": "Choose from {n} mathematically verified calculators across 9 categories.",
+    "stepType": "Enter Your Numbers",
+    "typeDescription": "Inputs update results in real time. No waiting, no page reloads.",
+    "stepAct": "Get Insights, Share Results",
+    "actDescription": "Get benchmarks, share reports, or embed on your site.",
+    "theLedger": "By The Numbers",
+    "calculatorsInCatalog": "calculators in catalog",
+    "acrossCategories": "across",
+    "calculationBenchmarks": "calculations benchmarked",
+    "industryStandardData": "Industry-standard data sources",
+    "alwaysFree": "$0 Forever",
+    "noPaywalls": "No paywalls, no gating, no subscription tiers",
+    "startBuilding": "Start Building",
+    "allFree": "{n} free calculators. No credit card. No signup.",
+    "browseCalculators": "Browse Calculators",
+    "openCanvas": "Open Canvas"
+  },
+  "category": {
+    "searchPlaceholder": "Search calculators...",
+    "revenue": "Revenue Metrics",
+    "unitEconomics": "Unit Economics",
+    "churnRetention": "Churn & Retention",
+    "growthEfficiency": "Growth & Efficiency",
+    "aiCost": "AI Cost",
+    "sideHustle": "Side Hustle",
+    "personalFinance": "Personal Finance",
+    "generalBusiness": "General Business",
+    "saasDeepen": "SaaS Deepen",
+    "calculatorsLabel": "Calculators",
+    "all": "All Calculators",
+    "noSignup": "No signup required",
+    "comingSoon": "Coming soon — calculators on the way",
+    "buildingNow": "We're building these now. Check back soon!",
+    "browseAll": "Browse All"
+  },
+  "search": {
+    "ariaLabel": "Search calculators",
+    "resultsFound": "results found"
+  },
+  "commonSection": {
+    "faqTitle": "Frequently Asked Questions",
+    "relatedCalculatorsTitle": "Related Calculators"
+  },
+  "canvas": {
+    "nodes": "nodes",
+    "cables": "cables",
+    "closeRack": "CLOSE RACK",
+    "openAllRacks": "OPEN ALL RACKS",
+    "closePanel": "CLOSE PANEL",
+    "inputs": "INPUTS",
+    "outputs": "OUTPUTS",
+    "canvasReady": "Canvas Ready"
   },
   "calculator": {
     "howToUse": "How to Use This Calculator",
     "formulaAndExample": "Formula & Worked Example",
     "industryBenchmarks": "Industry Benchmarks",
     "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "relatedCalculators": "Related Calculators",
     "tableMetric": "Metric",
     "tableValue": "Value",
     "tableSource": "Source",
     "resetAll": "Reset all values",
-    "resetBoth": "Reset both scenarios",
     "addScenarioB": "Add Scenario B to compare",
     "backToSingleView": "Back to single view",
+    "resetBoth": "Reset both scenarios",
     "scenarioA": "Scenario A",
     "scenarioB": "Scenario B",
     "resultsComparison": "Results Comparison",
@@ -35,165 +107,94 @@
     "growth": "Growth",
     "deltaAbsolute": "$",
     "deltaPercent": "%",
-    "deltaBoth": "Both",
-      "relatedCalculators": "Related Calculators"
-  },
-  "category": {
-    "revenue": "Revenue Metrics",
-    "unitEconomics": "Unit Economics",
-    "churnRetention": "Churn & Retention",
-    "growthEfficiency": "Growth & Efficiency",
-    "aiCost": "AI Cost",
-    "sideHustle": "Side Hustle",
-    "personalFinance": "Personal Finance",
-    "generalBusiness": "General Business",
-    "saasDeepen": "SaaS Deepen",
-    "all": "All Calculators",
-    "noSignup": "No signup. No email. No catch.",
-    "comingSoon": "Calculators in this category are coming soon.",
-    "buildingNow": "We are building them now. Check back soon!",
-    "browseAll": "Browse all categories →",
-    "searchPlaceholder": "Search calculators...",
-    "calculatorsLabel": "Calculators"
-  },
-  "home": {
-    "startCalculating": "Start Calculating",
-    "browseAll": "Browse All →",
-    "openCalculator": "Open calculator →",
-    "seeAllCalculators": "See all {n} calculators →",
-    "popularCalculators": "Popular calculators",
-    "popularSubtitle": "Top picks to get you started.",
-    "browseByCategory": "Browse by category",
-    "categoriesSubtitle": "categories, calculators. Pick your path.",
-    "howItWorks": "How it works",
-    "threeSteps": "Three steps. No friction.",
-    "stepPick": "Pick a calculator",
-    "stepType": "Type your numbers",
-    "stepAct": "Act on it",
-    "pickDescription": "From AI costs to FIRE plans, all {n} are free to use. No signup gate.",
-    "typeDescription": "Results update live in your browser as you type. Nothing leaves your device.",
-    "actDescription": "Save results, embed on your site, or share with your team. No account needed.",
-    "byTheNumbers": "By the numbers",
-    "theLedger": "The ledger",
-    "startBuilding": "Start building.",
-    "allFree": "All {n} calculators are completely free. No subscriptions, no signups.",
-    "heroLine1": "Know your numbers.",
-    "heroLine2": "Sustain your growth.",
-    "heroSubtitle": "calculators for builders, operators, and creators. Enter your numbers, get an answer in your browser. All free, all private.",
-    "freeCalculators": "free calculators",
-    "categories": "categories",
-    "toStart": "to start",
-    "calculatorsInCatalog": "calculators in catalog",
-    "acrossCategories": "across",
-    "calculationBenchmarks": "calculation benchmarks",
-    "industryStandardData": "industry-standard data",
-    "alwaysFree": "always free",
-    "noPaywalls": "no paywalls, no tiers",
-    "browseCalculators": "Browse Calculators"
-  },
-  "pricing": {
-    "allFree": "All calculators are completely free. No subscriptions, no paywalls, no account required.",
-    "everythingFree": "Everything is Free",
-    "subtitle": "No subscriptions, no paywalls. All {n} calculators are completely free to use.",
-    "forever": "forever",
-    "feature1": "All {n} calculators, no limits",
-    "feature2": "Real-time results with benchmark comparisons",
-    "feature3": "Stage-based growth insights (Seed to Series C+)",
-    "feature4": "Unlimited embeds for your website",
-    "feature5": "URL sharing for collaboration"
-  },
-  "dashboard": {
-    "title": "Dashboard",
-    "heading": "Mission Control",
-    "subtitle": "Build your own dashboard. Add the calculators you need, enter data once, see everything connect.",
-    "share": "Share",
-    "copied": "Copied!",
-    "addCalculators": "Add Calculator",
-    "noCalculatorsSelected": "No calculators selected. Pick a template or add individual calculators.",
-    "browseCalculators": "Browse Calculators",
-    "calculatorsActive": "calculator",
-    "remove": "Remove"
+    "deltaBoth": "Both"
   },
   "feedback": {
     "wasThisHelpful": "Was this helpful?",
     "yes": "Yes",
     "no": "No",
-    "thanks": "Thanks for your feedback!"
+    "thanks": "Thanks!"
   },
-  "email": {
-    "stayUpdated": "Stay updated with new calculators and features.",
-    "placeholder": "you@example.com",
-    "subscribe": "Subscribe",
-    "success": "You're subscribed!",
-    "error": "Something went wrong. Try again."
+  "footer": {
+    "product": "Product",
+    "about": "About",
+    "categories": "Categories",
+    "resources": "Resources",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "copyright": "SaaStainedNumbers. All rights reserved."
+  },
+  "pricing": {
+    "everythingFree": "Everything Free",
+    "allFree": "All calculators free forever.",
+    "subtitle": "{n} mathematically verified calculators. Zero cost. Unlimited access.",
+    "forever": "Forever.",
+    "feature1": "All {n} calculators included",
+    "feature2": "Real-time results and insights",
+    "feature3": "Embed on any site — free",
+    "feature4": "Unlimited usage — no quotas",
+    "feature5": "Community support included",
+    "pricing": "Pricing"
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "SaaS metrics insights, tutorials, and industry benchmarks.",
+    "subtitle": "Insights, guides, and strategies for SaaS builders.",
     "featuredPost": "Featured Post",
-    "allArticles": "All Articles",
     "readArticle": "Read article →",
+    "allArticles": "All Articles",
     "readMore": "Read more →",
     "backToBlog": "← Back to Blog"
-  },
-  "calculators": {
-    "browseCollection": "Browse our complete collection of {n} calculators across {m} categories.",
-    "editorial": "Free, instant calculators for the metrics that matter. From SaaS revenue and unit economics to AI costs, side hustle income, and personal finance, every calculator is 100% free with no account required. Results update live as you type, and nothing leaves your device. Built for founders, operators, creators, and anyone who needs answers fast.",
-    "searchPlaceholder": "Search all calculators...",
-    "viewAll": "View all →"
-  },
-  "error": {
-    "pageNotFound": "Page Not Found",
-    "calculatorNotFound": "Calculator Not Found",
-    "goHome": "Go Home",
-    "oops": "Oops",
-    "somethingWentWrong": "Something went wrong",
-    "tryAgain": "Try Again",
-    "notFoundDescription": "The page you're looking for doesn't exist."
-  },
-  "search": {
-    "placeholder": "Search calculators...",
-    "ariaLabel": "Search calculators",
-    "resultsFound": "{n} calculator(s) found"
-  },
-  "about": {
-    "title": "About",
-    "heading": "About SaaStainedNumbers",
-    "subtitle": "Free, private, instant calculators for the metrics that matter.",
-    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
-    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
-    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
-    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future. Nothing is gated, no account is required, and your data never leaves your device.",
-    "contactLink": "Contact us"
   },
   "contact": {
     "title": "Contact",
     "heading": "Get in Touch",
-    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
-    "emailLabel": "Email us at",
-    "responseTime": "We aim to respond within 2 business days.",
-    "backToHome": "← Back to Home"
+    "subtitle": "Have questions, suggestions, or just want to say hello? We'd love to hear from you.",
+    "emailLabel": "Email Us",
+    "responseTime": "We typically respond within 24 hours."
+  },
+  "dashboard": {
+    "heading": "Dashboard",
+    "subtitle": "Track your key metrics all in one place.",
+    "share": "Share",
+    "copied": "Copied!",
+    "addCalculators": "Add Calculators",
+    "noCalculatorsSelected": "No calculators selected yet.",
+    "browseCalculators": "Browse Calculators",
+    "calculatorsActive": "Calculators Active",
+    "remove": "Remove"
+  },
+  "calculators": {
+    "browseCollection": "Browse our collection of {n} calculators across {m} categories.",
+    "editorial": "All calculators are mathematically verified and benchmarked against industry-standard data sources. No account required — just calculate.",
+    "searchPlaceholder": "Search calculators...",
+    "viewAll": "View All →"
+  },
+  "about": {
+    "title": "About",
+    "heading": "About SaaStainedNumbers",
+    "subtitle": "Free, mathematically verified calculators for SaaS founders, operators, and builders.",
+    "mission": "Our mission is to make financial and business mathematics accessible to everyone. We believe that the tools to model, plan, and understand your business should be free, open, and available to all — not locked behind paywalls or enterprise contracts.",
+    "whoWeAre": "We're a small team of engineers, mathematicians, and SaaS operators who got tired of paying for simple calculators. Every calculator on this site is built from first principles, mathematically verified, and benchmarked against real industry data.",
+    "editorial": "All calculators are developed using standard mathematical and financial formulas. Every formula is documented alongside a worked example. Industry benchmarks are sourced from publicly available data, published research, and reputable industry reports. We cite our sources and update them regularly.",
+    "freeModel": "SaaStainedNumbers is supported by non-intrusive display ads and contextual affiliate links within calculator FAQ sections. We never sell user data, never require sign-up, and never put calculators behind a paywall. Embeds are completely ad-free.",
+    "haveQuestions": "Have questions or suggestions? We'd love to hear from you.",
+    "contactLink": "Contact Us →"
   },
   "privacy": {
     "title": "Privacy Policy",
     "heading": "Privacy Policy",
-    "subtitle": "How we handle your data."
+    "subtitle": "How we handle your data — short version: we don't collect your calculator inputs."
   },
   "terms": {
     "title": "Terms of Service",
     "heading": "Terms of Service",
-    "subtitle": "The rules of the road."
+    "subtitle": "The rules of the road for using SaaStainedNumbers."
   },
-  "footer": {
-    "product": "Product",
-    "categories": "Categories",
-    "resources": "Resources",
-    "about": "About",
-    "legal": "Legal",
-    "disclaimer": "Disclaimer",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service",
-    "cookiePolicy": "Cookie Policy",
-    "copyright": "SaaStainedNumbers"
+  "error": {
+    "pageNotFound": "Page Not Found",
+    "notFoundDescription": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home"
   }
 }

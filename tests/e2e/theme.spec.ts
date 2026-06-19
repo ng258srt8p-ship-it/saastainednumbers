@@ -16,7 +16,7 @@ test.describe("Theme Toggle", () => {
     await page.goto(`${BASE}/revenue/mrr-calculator`, { waitUntil: "load" });
     await expect(themeBtn(page)).toBeAttached();
 
-    await page.goto(`${BASE}/dashboard`, { waitUntil: "load" });
+    await page.goto(`${BASE}/canvas`, { waitUntil: "load" });
     await expect(themeBtn(page)).toBeAttached();
 
     await page.goto(`${BASE}/blog`, { waitUntil: "load" });
@@ -78,7 +78,7 @@ test.describe("Theme Toggle", () => {
     await page.goto(`${BASE}/revenue/mrr-calculator`, { waitUntil: "load" });
     await expect(page.locator("html")).toHaveClass(/dark/);
 
-    await page.goto(`${BASE}/dashboard`, { waitUntil: "load" });
+    await page.goto(`${BASE}/canvas`, { waitUntil: "load" });
     await expect(page.locator("html")).toHaveClass(/dark/);
   });
 
@@ -102,7 +102,7 @@ test.describe("Theme Toggle", () => {
 
   test("dashboard page respects dark mode", async ({ page }) => {
     await page.addInitScript(() => localStorage.setItem("theme", "dark"));
-    await page.goto(`${BASE}/dashboard`, { waitUntil: "load" });
+    await page.goto(`${BASE}/canvas`, { waitUntil: "load" });
     await expect(page.locator("html")).toHaveClass(/dark/);
   });
 

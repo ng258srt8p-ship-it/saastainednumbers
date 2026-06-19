@@ -1,203 +1,116 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { CurrencySwitcher } from "./CurrencySwitcher";
-import { LocaleSwitcher } from "./LocaleSwitcher";
-import type { Locale } from "@/lib/useLocale";
+import { usePathname } from "next/navigation";
+import { useState, useRef, useCallback, useEffect } from "react";
 
+interface NavLinks {
+  pricing?: string;
+  blog?: string;
+  calculators?: string;
+  canvas?: string;
+}
 
-type MobileNavProps = {
-  t: Record<string, string>;
-  locale: Locale;
-};
+interface MobileNavProps {
+  t: NavLinks;
+  locale: string;
+}
 
 export function MobileNav({ t, locale }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const hamburgerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const closedBy = useRef<"close" | "link" | null>(null);
-  const close = useCallback(() => setOpen(false), []);
 
-  // Restore focus to the trigger when menu closes
-  useEffect(() => {
-    if (!open && closedBy.current === "close" && hamburgerRef.current) {
-      hamburgerRef.current.focus();
-      closedBy.current = null;
-    }
-   }, [open]);
-
-  // Close on browser back/forward
-  useEffect(() => {
-    if (!open) return;
-    const handler = () => close();
-    window.addEventListener("popstate", handler);
-    return () => window.removeEventListener("popstate", handler);
-  }, [open, close]);
-
-    // Escape key closes menu and restores focus to trigger
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        closedBy.current = "close";
-        close();
-       }
-      };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-    }, [open, close]);
-
-   // Outside click closes menu and restores focus to trigger
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: MouseEvent) => {
-      if (
-        menuRef.current &&
-         !menuRef.current.contains(e.target as Node) &&
-        hamburgerRef.current &&
-         !hamburgerRef.current.contains(e.target as Node)
-       ) {
-        closedBy.current = "close";
-        close();
-       }
-      };
-    document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
-    }, [open, close]);
-
-  // Focus trap
-  useEffect(() => {
-    if (!open || !menuRef.current) return;
-    const focusable = Array.from(
-      menuRef.current.querySelectorAll<HTMLElement>("a, button, [tabindex='0']")
-    );
-    if (focusable.length) focusable[0].focus();
-
-    const handler = (e: KeyboardEvent) => {
-      if (e.key !== "Tab" || !menuRef.current) return;
-      const items = Array.from(
-        menuRef.current.querySelectorAll<HTMLElement>("a, button, [tabindex='0']")
-      );
-      if (!items.length) return;
-      const first = items[0];
-      const last = items[items.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [open]);
-
-  // Scroll shadow on nav
-  useEffect(() => {
-    const nav = document.querySelector("nav");
-    if (!nav) return;
-    const handler = () => nav.classList.toggle("is-scrolled", window.scrollY > 8);
-    window.addEventListener("scroll", handler, { passive: true });
-    handler();
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  // Body scroll lock
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
-
-  const items = [
-    { href: "/calculators", label: t.calculators },
-    { href: "/dashboard", label: t.dashboard },
-    { href: "/pricing", label: t.pricing },
-    { href: "/blog", label: t.blog },
-    { href: "/about", label: "About" },
+  const links = [
+    { label: t.calculators ?? "Calculators", href: "/calculators" },
+    { label: t.canvas ?? "Canvas", href: "/canvas" },
+    { label: t.pricing ?? "Pricing", href: "/pricing" },
+    { label: t.blog ?? "Blog", href: "/blog" },
   ];
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [open]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (open && menuRef.current) {
+      menuRef.current.focus();
+    }
+  }, [open]);
 
   return (
     <>
-      <div className="hidden md:flex items-center gap-5 text-sm text-gray-500 dark:text-gray-400">
-        <Link href="/calculators" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
-          {t.calculators}
-        </Link>
-        <Link href="/dashboard" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
-          {t.dashboard}
-        </Link>
-        <Link href="/pricing" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
-          {t.pricing}
-        </Link>
-        <Link href="/blog" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
-          {t.blog}
-        </Link>
-        <Link href="/about" className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
-          About
-        </Link>
-      </div>
-
       <button
-        ref={hamburgerRef}
         type="button"
-        onClick={() => setOpen((p) => !p)}
-        className="md:hidden flex items-center justify-center w-11 h-11 relative z-50"
-        aria-label={open ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={open}
-        aria-controls="mobile-menu"
+        aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+        onClick={() => setOpen((o) => !o)}
+        className="flex md:hidden h-9 w-9 items-center justify-center rounded-lg text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" className="w-6 h-6 text-gray-500 dark:text-gray-400">
-          <line className="hamburger-bar" x1="3" y1="6" x2="21" y2="6" />
-          <line className="hamburger-bar" x1="3" y1="12" x2="21" y2="12" />
-          <line className="hamburger-bar" x1="3" y1="18" x2="21" y2="18" />
-        </svg>
+        {open ? (
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" d="M4 6h16" />
+            <path strokeLinecap="round" d="M4 12h16" />
+            <path strokeLinecap="round" d="M4 18h16" />
+          </svg>
+        )}
       </button>
 
-      <div
-        ref={menuRef}
-        id="mobile-menu"
-        role="dialog"
-        aria-label="Mobile navigation"
-        aria-hidden={!open}
-        className={`md:hidden fixed left-0 right-0 top-[80px] bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-700 shadow-lg z-40 transition-all duration-300 ${
-          open
-            ? "opacity-100 pointer-events-auto translate-y-0"
-            : "opacity-0 pointer-events-none -translate-y-2"
-        }`}
-      >
-        <div className="px-4 py-5 flex flex-col gap-4">
-          <nav aria-label="Mobile navigation">
-            <ul className="flex flex-col gap-1">
-              {items.map((item) => {
-                const isCurrent = pathname === item.href || pathname.startsWith(item.href + "/");
-                return (
-                  <li key={item.href}>
-        <Link
-         href={item.href}
-         onClick={() => { closedBy.current = "link"; close(); }}
-         aria-current={isCurrent ? "page" : undefined}
-                      className="block px-3 py-3 text-[15px] font-medium text-gray-800 dark:text-gray-200 border-b border-gray-100 dark:border-gray-700 transition-colors hover:text-brand-600 last:border-b-0"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-          <div className="flex flex-col border-b border-gray-100 dark:border-gray-700">
-            <div className="px-3 py-3 border-b border-gray-100 dark:border-gray-700">
-              <CurrencySwitcher />
-            </div>
-            <div className="px-3 py-3">
-              <LocaleSwitcher locale={locale} />
+      {open && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-40"
+            onClick={() => setOpen(false)}
+            aria-hidden
+          />
+          <div
+            ref={menuRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-label="Mobile navigation"
+            className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm rounded-2xl backdrop-blur-[48px] bg-[rgba(237,237,237,0.64)] dark:bg-[rgba(30,30,30,0.64)] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-black/[0.04] dark:border-white/[0.06] p-2 animate-slide-in"
+            onKeyDown={handleKeyDown}
+          >
+            <div className="flex flex-col gap-0.5">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`flex items-center px-4 py-3 text-sm font-semibold tracking-[0.2px] rounded-xl transition-colors ${
+                    pathname === link.href
+                      ? "bg-black/5 dark:bg-white/10 text-brand-600 dark:text-brand-400"
+                      : "text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10"
+                  }`}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 }

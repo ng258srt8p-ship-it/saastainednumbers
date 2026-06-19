@@ -1,4 +1,5 @@
 import "./mrr-calculator";
+import "./master-aggregator";
 import "./cac-calculator";
 import "./ltv-calculator";
 import "./churn-calculator";

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(opencode run *)"
+    ]
+  },
+  "budget": {
+    "total": 60000
+  }
+}

@@ -46,13 +46,13 @@ test.describe("404 - Beyond /[category]/[slug]", () => {
     await expect(page).toHaveURL(`${BASE}/`);
   });
 
-  test("404 page has Dashboard navigation option", async ({ page }) => {
+  test("404 page has Calculators navigation option", async ({ page }) => {
     await page.goto(`${BASE}/this-path-does-not-exist-at-all`, { waitUntil: "load" });
-    const dashBtn = page.locator("a[href='/dashboard']");
-    if (await dashBtn.count() > 0) {
-      await expect(dashBtn.first()).toBeVisible();
-      await dashBtn.first().click();
-      await expect(page).toHaveURL(/\/dashboard/);
+    const calcBtn = page.locator("a[href='/calculators']");
+    if (await calcBtn.count() > 0) {
+      await expect(calcBtn.first()).toBeVisible();
+      await calcBtn.first().click();
+      await expect(page).toHaveURL(/\/calculators/);
     }
   });
 

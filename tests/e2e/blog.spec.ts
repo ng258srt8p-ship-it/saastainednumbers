@@ -92,7 +92,7 @@ test.describe("Blog Post Pages", () => {
       if (await backLink.count() > 0) {
         await expect(backLink.first()).toBeVisible();
         await backLink.first().click();
-        await expect(page).toHaveURL(/\/blog$/);
+        await expect(page).toHaveURL(/\/blog\/?$/);
       }
     });
 

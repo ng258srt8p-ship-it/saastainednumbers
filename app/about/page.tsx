@@ -25,36 +25,32 @@ export default async function AboutPage() {
   const { t } = await getTranslations();
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
-        {t("about.heading")}
-      </h1>
-      <p className="mt-2 text-gray-500 dark:text-gray-400">
-        {t("about.subtitle")}
-      </p>
+    <div className="mobbin-section">
+      <div className="max-w-3xl mx-auto">
+        <span className="mobbin-label">{t("about.title")}</span>
+        <h1 className="font-heading text-3xl font-bold mt-2 text-gray-900 dark:text-gray-100">{t("about.heading")}</h1>
+        <p className="mt-2 text-gray-500 dark:text-gray-400">{t("about.subtitle")}</p>
 
-      <hr className="my-8 border-gray-200 dark:border-gray-700" />
+        <div className="mt-10 space-y-6">
+          {[
+            { title: "Our Mission", text: t("about.mission") },
+            { title: "Who We Are", text: t("about.whoWeAre") },
+            { title: "Editorial Standards", text: t("about.editorial") },
+            { title: "Why Is It Free?", text: t("about.freeModel") },
+          ].map((section) => (
+            <div key={section.title} className="mobbin-card">
+              <h2 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{section.title}</h2>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{section.text}</p>
+            </div>
+          ))}
+        </div>
 
-      <div className="prose prose-gray dark:prose-invert max-w-none">
-        <h2>Our Mission</h2>
-        <p>{t("about.mission")}</p>
-
-        <h2>Who We Are</h2>
-        <p>{t("about.whoWeAre")}</p>
-
-        <h2>Editorial Standards</h2>
-        <p>{t("about.editorial")}</p>
-
-        <h2>Why Is It Free?</h2>
-        <p>{t("about.freeModel")}</p>
-
-        <h2>Contact</h2>
-        <p>
-          Questions or suggestions?{" "}
-          <Link href="/contact" className="text-brand-600 dark:text-brand-400 hover:underline">
+        <div className="mt-10 text-center mobbin-card flex flex-col items-center">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{t("about.haveQuestions")}</p>
+          <Link href="/contact" className="mobbin-btn-primary">
             {t("about.contactLink")}
           </Link>
-        </p>
+        </div>
       </div>
     </div>
   );

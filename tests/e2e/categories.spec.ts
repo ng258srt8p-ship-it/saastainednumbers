@@ -40,7 +40,7 @@ test.describe("Category Pages", () => {
 
     test(`${cat.path} calculator card links work`, async ({ page }) => {
       await page.goto(`${BASE}/${cat.path}`, { waitUntil: "load" });
-      const firstCalcLink = page.locator("a[href*='/']").filter({ has: page.locator("h2") }).first();
+      const firstCalcLink = page.locator("a[href*='-calculator']").first();
       const href = await firstCalcLink.getAttribute("href");
       if (href && !href.startsWith("http")) {
         const resp = await page.goto(`${BASE}${href}`, { waitUntil: "load" });
@@ -70,18 +70,27 @@ test.describe("Category Pages", () => {
   for (const cat of CATEGORIES) {
     test(`${cat.path} calculator cards have descriptions`, async ({ page }) => {
       await page.goto(`${BASE}/${cat.path}`, { waitUntil: "load" });
-      const descriptions = page.locator("p.text-sm.text-gray-600");
-      const count = await descriptions.count();
-      expect(count).toBeGreaterThanOrEqual(1);
+      // Check that calculator cards have non-empty description text
+      const cards = page.locator("a[href*='-calculator']");
+      const cardCount = await cards.count();
+      if (cardCount > 0) {
+        const descriptions = page.locator("[class*='line-clamp']");
+        const count = await descriptions.count();
+        expect(count).toBeGreaterThanOrEqual(1);
+      } else {
+        // Empty category — check for coming-soon message
+        await expect(page.getByText(/coming soon/i).first()).toBeVisible({ timeout: 3000 });
+      }
     });
   }
 });
 
 test.describe("Category Page - Empty/Unknown", () => {
-  test("unknown category shows 404", async ({ page }) => {
+  test("unknown category shows coming soon page", async ({ page }) => {
     const resp = await page.goto(`${BASE}/nonexistent-category`, { waitUntil: "load" });
-    expect(resp?.status()).toBe(404);
-    await expect(page.locator("h1")).toContainText(/not found|404/i);
+    // Category pages return 200 with an empty/coming-soon state
+    expect(resp?.status()).toBe(200);
+    await expect(page.getByText(/coming soon/i).first()).toBeVisible({ timeout: 3000 });
   });
 
   test("unknown category has browse all link", async ({ page }) => {

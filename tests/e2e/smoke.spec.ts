@@ -8,7 +8,7 @@ test.describe("Homepage", () => {
     expect(resp?.status()).toBe(200);
     await expect(page.locator("nav")).toBeVisible();
     await expect(page.locator("nav a:has-text('SaaStainedNumbers')")).toBeVisible();
-    await expect(page.locator("nav a:has-text('Dashboard')")).toBeVisible();
+    await expect(page.locator("nav a:has-text('Canvas')")).toBeVisible();
     await expect(page.locator("nav a:has-text('Blog')")).toBeVisible();
   });
 
@@ -52,7 +52,7 @@ test.describe("Calculator Pages", () => {
     { slug: "claude-api-cost-calculator", category: "ai-cost", title: "Claude API Cost" },
     { slug: "chatgpt-api-cost-calculator", category: "ai-cost", title: "ChatGPT API Cost" },
     { slug: "youtube-ad-revenue-calculator", category: "side-hustle", title: "YouTube Ad Revenue" },
-    { slug: "freelance-rate-calculator", category: "side-hustle", title: "Freelance Rate" },
+    { slug: "freelance-rate-calculator", category: "side-hustle", title: "Freelance Hourly Rate" },
     { slug: "gig-worker-take-home-calculator", category: "side-hustle", title: "Gig Worker Take-Home" },
     { slug: "etsy-profit-calculator", category: "side-hustle", title: "Etsy Profit" },
     { slug: "fire-calculator", category: "personal-finance", title: "FIRE" },
@@ -61,12 +61,12 @@ test.describe("Calculator Pages", () => {
     { slug: "roi-calculator", category: "general-business", title: "ROI" },
     { slug: "gemini-api-cost-calculator", category: "ai-cost", title: "Gemini API Cost" },
     { slug: "grok-api-cost-calculator", category: "ai-cost", title: "Grok API Cost" },
-    { slug: "ai-image-cost-calculator", category: "ai-cost", title: "AI Image Cost" },
+    { slug: "ai-image-cost-calculator", category: "ai-cost", title: "AI Image Generation" },
     { slug: "ai-fine-tuning-cost-calculator", category: "ai-cost", title: "AI Fine-Tuning Cost" },
     { slug: "podcast-revenue-calculator", category: "side-hustle", title: "Podcast Revenue" },
     { slug: "newsletter-revenue-calculator", category: "side-hustle", title: "Newsletter Revenue" },
     { slug: "amazon-fba-calculator", category: "side-hustle", title: "Amazon FBA" },
-    { slug: "affiliate-income-calculator", category: "side-hustle", title: "Affiliate Income" },
+    { slug: "affiliate-income-calculator", category: "side-hustle", title: "Affiliate Marketing" },
     { slug: "blogging-income-calculator", category: "side-hustle", title: "Blogging Income" },
     { slug: "investment-returns-calculator", category: "personal-finance", title: "Investment Returns" },
     { slug: "debt-payoff-calculator", category: "personal-finance", title: "Debt Payoff" },
@@ -82,7 +82,7 @@ test.describe("Calculator Pages", () => {
     { slug: "cohort-analysis-calculator", category: "saas-deepen", title: "Cohort Analysis" },
     { slug: "saas-capital-efficiency-calculator", category: "saas-deepen", title: "SaaS Capital Efficiency" },
     { slug: "cac-payback-period-enhanced-calculator", category: "saas-deepen", title: "CAC Payback Period" },
-    { slug: "ai-model-comparison-calculator", category: "ai-cost", title: "AI Model Comparison" },
+    { slug: "ai-model-comparison-calculator", category: "ai-cost", title: "AI Model Cost" },
     { slug: "perplexity-api-cost-calculator", category: "ai-cost", title: "Perplexity API Cost" },
     { slug: "twitch-revenue-calculator", category: "side-hustle", title: "Twitch Revenue" },
     { slug: "subscription-content-revenue-calculator", category: "side-hustle", title: "Subscription Content Revenue" },
@@ -105,7 +105,7 @@ test.describe("Calculator Pages", () => {
     test(`${calc.title} calculator page loads correctly`, async ({ page }) => {
       const resp = await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "load" });
       expect(resp?.status()).toBe(200);
-      await expect(page.locator("h1")).toContainText(calc.title);
+      await expect(page.locator("h1").first()).toContainText(calc.title);
     });
 
     test(`${calc.title} calculator has input fields`, async ({ page }) => {
@@ -123,10 +123,10 @@ test.describe("Calculator Pages", () => {
 
     test(`${calc.title} calculator has content section`, async ({ page }) => {
       await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "load" });
-      await expect(page.locator("text=How to Use This Calculator")).toBeVisible();
-      await expect(page.locator("text=Formula & Worked Example")).toBeVisible();
-      await expect(page.locator("text=Industry Benchmarks")).toBeVisible();
-      await expect(page.locator("text=Frequently Asked Questions")).toBeVisible();
+      await expect(page.getByRole("heading", { name: "How to Use This Calculator" }).first()).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Formula & Worked Example" }).first()).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Industry Benchmarks" }).first()).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Frequently Asked Questions" }).first()).toBeVisible();
     });
 
     test(`${calc.title} calculator FAQ accordion expands`, async ({ page }) => {
@@ -143,7 +143,7 @@ test.describe("Calculator Pages", () => {
     test(`${calc.title} page loads correctly`, async ({ page }) => {
       const resp = await page.goto(`${BASE}/${calc.category}/${calc.slug}`, { waitUntil: "load" });
       expect(resp?.status()).toBe(200);
-      await expect(page.locator("h1")).toContainText(calc.title);
+      await expect(page.locator("h1").first()).toContainText(calc.title);
     });
   }
 });

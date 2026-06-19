@@ -1,0 +1,118 @@
+# Mobbin-Inspired UI Refactor Implementation Plan
+
+> **For Hermes:** Use subagent-driven-development skill to implement this plan task-by-task.
+
+**Goal:** Redesign the WebCalc interface to mimic the premium, highly organized, and visual-first aesthetic of Mobbin (high-quality screenshot/card-based layouts, clean typography, subtle depth, and sophisticated micro-interactions).
+
+**Architecture:** The refactor will focus on transitioning from standard components to a "Gallery/Card" heavy architecture. This involves updating the design tokens (Tailwind CSS v4), replacing current navigation/layout patterns, and redesigning the core calculator interfaces to prioritize visual clarity and high-density information presentation through a mobile-app-inspired component set.
+
+**Tech Stack:** Next.js 16, Tailwind CSS v4, Radix UI/Shadcn (via `shadcn` CLI), Lucide React, Framer Motion (for Mobbin-style transitions).
+
+---
+
+### Task 1: Design Token Standardization (The "Mobbin" Palette)
+
+**Objective:** Establish the new design system (color, typography, shadows, and spacing) to match Mobbin's premium aesthetic.
+
+**Files:**
+- Modify: `tailwind.config.js` (or equivalent via Tailwind v4 plugins)
+- Modify: `app/globals.css`
+
+**Step 1: Define Mobbin-inspired color palette**
+Mobbin uses high-contrast but soft colors. Primary: Deep Navy/Black; Accents: Vibrant but controlled. Focus on surface colors (Background, Card, Border, Input).
+
+**Step 2: Implement Typography Scale**
+Establish a strict typographic hierarchy. Use Inter or a similar premium sans-serif. Define clear sizes for Headings (Display, H1-H6) and Body (Large, Base, Small, Caption).
+
+**Step 3: Define Shadow/Elevation system**
+Mobbin uses subtle, layered shadows to create depth. Implement a set of elevation levels (sm, md, lg, xl) using modern CSS `box-shadow` or Tailwind utility extensions.
+
+**Step 4: Verify**
+Run a visual check on the main layout to ensure the background/surface color differentiation is correct.
+
+---
+
+### Task 2: Layout & Navigation Overhaul
+
+**Objective:** Replace the current navigation with a Mobbin-style layout (fixed header/sidebar, refined sidebar for categories, and consistent spacing).
+
+**Files:**
+- Modify: `components/Nav.tsx`
+- Modify: `app/layout.tsx`
+
+**Step 1: Refactor Root Layout**
+Implement a layout that supports a more "app-like" feel. This includes a high-density navigation bar and a structured sidebar for mobile/desktop responsiveness.
+
+**Step 2: Implement Responsive Sidebar**
+Create a sidebar that utilizes Mobbin's pattern of organized, icon-plus-text menu items with subtle hover/active states.
+
+**Step 3: Verify**
+Navigate through all 9 categories and ensure the layout remains consistent and responsive.
+
+---
+
+### Task 3: Component Library Update (The "Card" Paradigm)
+
+**Objective:** Transition existing components to a card-based, visual-first structure.
+
+**Files:**
+- Modify: `components/` (Multiple files)
+- Modify: `app/[category]/page.tsx` (Implement category grid)
+
+**Step 1: Create Mobbin-style Card component**
+Build a highly reusable `CalculatorCard` component. It should feature:
+- High-resolution thumbnail/icon area.
+- Clear, bold Title.
+- Sub-category/Tag label.
+- Subtle border-radius (rounded-2xl or similar).
+- Hover state with elevation increase.
+
+**Step 2: Refactor Category Pages**
+Convert category listings from a simple list to a high-density grid of these new cards.
+
+**Step 3: Verify**
+Check the layout of `/revenue/`, `/churn-and-retention/`, etc. Ensure the grid is responsive and looks premium.
+
+---
+
+### Task 4: Calculator Interface Refactor
+
+**Objective:** Redesign the actual calculator interface for maximum clarity and "app-like" interaction.
+
+**Files:**
+- Modify: `app/[category]/[slug]/page.tsx`
+- Modify: `components/CalculatorClient.tsx` (or equivalent)
+
+**Step 1: Implement "Input/Output" Split/Stack**
+Redesign inputs to be clearly separated from the results. Use "Input Cards" and "Result Cards."
+
+**Step 2: Add Micro-interactions**
+Implement Framer Motion for:
+- Smooth number transitions when inputs change.
+- Card entry animations.
+- Result highlight animations.
+
+**Step 3: Verify**
+Perform a functional test on a core calculator (e.g., MRR) to ensure inputs still correctly update results through the new UI layer.
+
+---
+
+### Task 5: Visual Polish & QA
+
+**Objective:** Final pass on typography, spacing, and micro-interactions to ensure "Premium" feel.
+
+**Files:**
+- Modify: `app/pricing/page.tsx`
+- Modify: `components/FeedbackWidget.tsx`
+
+**Step 1: Finalize Spacing & Grids**
+Ensure consistent padding and margins across all pages.
+
+**Step 2: Visual Regression Check**
+Manually audit key pages: Homepage, Pricing, Dashboard, and Calculator pages against Mobbin's UI patterns.
+
+**Step 3: Commit**
+```bash
+git add .
+git commit -m "feat: complete Mobbin-style UI refactor"
+```

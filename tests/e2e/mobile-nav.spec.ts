@@ -23,7 +23,7 @@ test.describe("Mobile Navigation", () => {
 
   test("desktop navigation links are hidden on mobile", async ({ page }) => {
     await page.goto(BASE);
-    const desktopLink = page.locator('a[href="/dashboard"]').first();
+    const desktopLink = page.locator('a[href="/canvas"]').first();
     await expect(desktopLink).not.toBeVisible();
   });
 
@@ -37,7 +37,7 @@ test.describe("Mobile Navigation", () => {
     await page.goto(BASE);
     await hamburger(page).click();
     await expect(dialog(page).locator("text=Calculators")).toBeVisible();
-    await expect(dialog(page).locator("text=Dashboard")).toBeVisible();
+    await expect(dialog(page).locator("text=Canvas")).toBeVisible();
     await expect(dialog(page).locator("text=Pricing")).toBeVisible();
     await expect(dialog(page).locator("text=Blog")).toBeVisible();
   });
@@ -76,9 +76,8 @@ test.describe("Mobile Navigation", () => {
 
   test("desktop viewport shows nav links and hides hamburger", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 720 });
-    await page.goto(BASE);
+    await page.goto(BASE, { waitUntil: "networkidle" });
     await expect(hamburger(page)).not.toBeVisible();
-    const desktopLink = page.locator('a[href="/dashboard"]').first();
-    await expect(desktopLink).toBeVisible();
+    await expect(page.getByTestId("canvas-nav-link")).toBeVisible();
   });
 });

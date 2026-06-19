@@ -20,7 +20,6 @@ import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
 import { AdUnit } from "@/components/AdUnit";
 import { Insights } from "@/components/Insights";
-import { SidekickAd } from "@/components/SidekickAd";
 
 interface RelatedCalc {
   slug: string;
@@ -202,7 +201,6 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
        strings={{ faqTitle: strings?.shellFaqTitle ?? "Frequently Asked Questions", relatedCalculatorsTitle: strings?.shellRelatedCalculatorsTitle ?? "Related Calculators" }}
        stageSelector={stageSelector}
       feedbackWidget={<FeedbackWidget slug={config.slug} strings={strings ? { wasThisHelpful: strings.feedbackHelpful, yes: strings.feedbackYes, no: strings.feedbackNo, thanks: strings.feedbackThanks } : undefined} />}
-      sidebarAd={<SidekickAd />}
       afterContentAd={hideContent ? undefined : <AdUnit slot="calculator-below-content" />}
       contentSection={hideContent ? undefined : (
         <div className="space-y-8">
@@ -365,12 +363,13 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
             </button>
           </div>
           <div className="flex-1 space-y-3" aria-live="polite" aria-label="Calculation results">
-            {resultsA.map((r) => (
-              <ResultCard key={r.id} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} locale={strings?.locale as Locale | undefined} />
+            {resultsA.map((r, i) => (
+              <ResultCard key={r.id} index={i} value={String(r.value)} label={r.label} type={r.type} isPrimary={r.isPrimary} metricKey={metricKey ?? undefined} rawValue={typeof r.value === "number" ? r.value : undefined} stage={stage} locale={strings?.locale as Locale | undefined} />
             ))}
           </div>
         </div>
       )}
+
 
       {!compareMode && (
         <div className="mt-6 border-t border-gray-200 dark:border-gray-700/50 pt-4">
@@ -463,20 +462,6 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
         onClose={() => setEmbedOpen(false)}
       />
     </CalculatorShell>
-
-      <div className="mx-auto max-w-4xl px-4 pb-8 flex justify-center">
-        <div
-          dangerouslySetInnerHTML={{
-            __html: [
-              '<a rel="sponsored"',
-              'href="https://shopify.pxf.io/c/7346865/3797165/13624" target="_top" id="3797165">',
-              '<img src="//a.impactradius-go.com/display-ad/13624-3797165" border="0" alt="Shopify" width="728" height="90"/>',
-              '</a>',
-              '<img height="0" width="0" src="https://imp.pxf.io/i/7346865/3797165/13624" style="position:absolute;visibility:hidden;" border="0" />',
-            ].join(""),
-          }}
-        />
-      </div>
 
     </>
   );

@@ -1,33 +1,105 @@
 {
   "nav": {
-    "dashboard": "Panel",
+    "dashboard": "Panel de Control",
     "pricing": "Precios",
     "blog": "Blog",
-    "calculators": "Calculadoras"
+    "calculators": "Calculadoras",
+    "canvas": "Lienzo"
   },
   "common": {
-    "home": "Inicio",
-    "loading": "Cargando...",
     "new": "Nuevo",
-    "skipToContent": "Saltar al contenido"
+    "home": "Inicio",
+    "skipToContent": "Saltar al contenido",
+    "loading": "Cargando..."
+  },
+  "home": {
+    "heroLine1": "Abre el Lienzo",
+    "heroLine2": "Calcula. Conecta. Controla.",
+    "heroSubtitle": "calculadoras. Elige tu camino.",
+    "startCalculating": "Empezar a Calcular",
+    "browseAll": "Ver Todo",
+    "freeCalculators": "Calculadoras Gratis",
+    "categories": "Categorías",
+    "toStart": "para Empezar",
+    "popularCalculators": "Calculadoras Populares",
+    "popularSubtitle": "Empieza con estos favoritos — los que usan los fundadores primero.",
+    "openCalculator": "Abrir calculadora →",
+    "browseByCategory": "Explorar por Categoría",
+    "categoriesSubtitle": "categorías, calculadoras. Elige tu camino.",
+    "seeAllCalculators": "Ver las {n} calculadoras →",
+    "threeSteps": "Cómo Funciona",
+    "stepPick": "Elige tu Calculadora",
+    "pickDescription": "Elige entre {n} calculadoras verificadas matemáticamente en 9 categorías.",
+    "stepType": "Ingresa tus Números",
+    "typeDescription": "Los inputs actualizan resultados en tiempo real. Sin esperas, sin recargas.",
+    "stepAct": "Obtén Insights, Comparte Resultados",
+    "actDescription": "Obtén benchmarks, comparte reportes o incrusta en tu sitio.",
+    "theLedger": "En Números",
+    "calculatorsInCatalog": "calculadoras en catálogo",
+    "acrossCategories": "a través de",
+    "calculationBenchmarks": "cálculos evaluados",
+    "industryStandardData": "Fuentes de datos estándar de la industria",
+    "alwaysFree": "$0 Para Siempre",
+    "noPaywalls": "Sin muros de pago, sin bloqueo, sin suscripciones",
+    "startBuilding": "Empezar a Construir",
+    "allFree": "{n} calculadoras gratis. Sin tarjeta. Sin registro.",
+    "browseCalculators": "Ver Calculadoras",
+    "openCanvas": "Abrir Lienzo"
+  },
+  "category": {
+    "searchPlaceholder": "Buscar calculadoras...",
+    "revenue": "Métricas de Ingresos",
+    "unitEconomics": "Economía Unitaria",
+    "churnRetention": "Cancelación y Retención",
+    "growthEfficiency": "Crecimiento y Eficiencia",
+    "aiCost": "Costo de IA",
+    "sideHustle": "Negocio Lateral",
+    "personalFinance": "Finanzas Personales",
+    "generalBusiness": "Negocios Generales",
+    "saasDeepen": "SaaS Profundo",
+    "calculatorsLabel": "Calculadoras",
+    "all": "Todas las Calculadoras",
+    "noSignup": "Sin registro necesario",
+    "comingSoon": "Próximamente — calculadoras en camino",
+    "buildingNow": "Las estamos construyendo ahora. ¡Vuelve pronto!",
+    "browseAll": "Ver Todo"
+  },
+  "search": {
+    "ariaLabel": "Buscar calculadoras",
+    "resultsFound": "resultados encontrados"
+  },
+  "commonSection": {
+    "faqTitle": "Preguntas Frecuentes",
+    "relatedCalculatorsTitle": "Calculadoras Relacionadas"
+  },
+  "canvas": {
+    "nodes": "nodos",
+    "cables": "cables",
+    "closeRack": "CERRAR RACK",
+    "openAllRacks": "ABRIR TODOS LOS RACKS",
+    "closePanel": "CERRAR PANEL",
+    "inputs": "ENTRADAS",
+    "outputs": "SALIDAS",
+    "canvasReady": "Lienzo Listo"
   },
   "calculator": {
-    "howToUse": "Cómo usar esta calculadora",
-    "formulaAndExample": "Fórmula y ejemplo práctico",
-    "industryBenchmarks": "Referencias del sector",
-    "frequentlyAskedQuestions": "Preguntas frecuentes",
+    "howToUse": "Cómo Usar Esta Calculadora",
+    "formulaAndExample": "Fórmula y Ejemplo",
+    "industryBenchmarks": "Benchmarks del Sector",
+    "frequentlyAskedQuestions": "Preguntas Frecuentes",
+    "relatedCalculators": "Calculadoras Relacionadas",
     "tableMetric": "Métrica",
     "tableValue": "Valor",
     "tableSource": "Fuente",
     "resetAll": "Restablecer todos los valores",
+    "addScenarioB": "Añadir Escenario B para comparar",
+    "backToSingleView": "Volver a la vista simple",
     "resetBoth": "Restablecer ambos escenarios",
-    "addScenarioB": "Añadir escenario B para comparar",
-    "backToSingleView": "Volver a vista única",
     "scenarioA": "Escenario A",
     "scenarioB": "Escenario B",
-    "resultsComparison": "Comparación de resultados",
+    "resultsComparison": "Comparación de Resultados",
     "embed": "Incrustar",
-    "disclaimer": "Aviso: Los resultados son solo informativos y no deben considerarse asesoramiento financiero. SaaStainedNumbers no se responsabiliza de las decisiones tomadas basándose en estos cálculos.",
+    "disclaimer": "Aviso: Los resultados son solo para fines informativos y no deben considerarse como asesoramiento financiero. SaaStainedNumbers no es responsable de las decisiones tomadas basadas en estos cálculos.",
     "seed": "Semilla",
     "seriesA": "Serie A",
     "seriesB": "Serie B",
@@ -35,165 +107,94 @@
     "growth": "Crecimiento",
     "deltaAbsolute": "$",
     "deltaPercent": "%",
-    "deltaBoth": "Ambos",
-      "relatedCalculators": "Calculadoras relacionadas"
-  },
-  "category": {
-    "revenue": "Métricas de ingresos",
-    "unitEconomics": "Economía unitaria",
-    "churnRetention": "Churn y retención",
-    "growthEfficiency": "Crecimiento y eficiencia",
-    "aiCost": "Costes de IA",
-    "sideHustle": "Trabajos complementarios",
-    "personalFinance": "Finanzas personales",
-    "generalBusiness": "Negocios en general",
-    "saasDeepen": "SaaS avanzado",
-    "all": "Todas las calculadoras",
-    "noSignup": "Sin registro. Sin correo. Sin compromiso.",
-    "comingSoon": "Próximamente calculadoras en esta categoría.",
-    "buildingNow": "Las estamos preparando. ¡Vuelve pronto!",
-    "browseAll": "Ver todas las categorías →",
-    "searchPlaceholder": "Buscar calculadoras...",
-    "calculatorsLabel": "Calculadoras"
-  },
-  "home": {
-    "startCalculating": "Empezar a calcular",
-    "browseAll": "Explorar todo →",
-    "openCalculator": "Abrir calculadora →",
-    "seeAllCalculators": "Ver las {n} calculadoras →",
-    "popularCalculators": "Calculadoras populares",
-    "popularSubtitle": "Nuestras recomendadas para empezar.",
-    "browseByCategory": "Explorar por categoría",
-    "categoriesSubtitle": "categorías, calculadoras. Elige tu ruta.",
-    "howItWorks": "Cómo funciona",
-    "threeSteps": "Tres pasos. Sin complicaciones.",
-    "stepPick": "Elige una calculadora",
-    "stepType": "Introduce tus datos",
-    "stepAct": "Actúa",
-    "pickDescription": "Desde costes de IA hasta planes FIRE, las {n} son gratuitas. Sin registro.",
-    "typeDescription": "Los resultados se actualizan al instante mientras escribes. Nada sale de tu dispositivo.",
-    "actDescription": "Guarda resultados, incrusta en tu web o comparte con tu equipo. Sin necesidad de cuenta.",
-    "byTheNumbers": "En cifras",
-    "theLedger": "El balance",
-    "startBuilding": "Empieza a construir.",
-    "allFree": "Las {n} calculadoras son completamente gratuitas. Sin suscripciones ni registros.",
-    "heroLine1": "Conoce tus cifras.",
-    "heroLine2": "Sostén tu crecimiento.",
-    "heroSubtitle": "calculadoras para fundadores, operadores y creadores. Introduce tus datos, obtén una respuesta al instante. Todo gratis, todo privado.",
-    "freeCalculators": "calculadoras gratuitas",
-    "categories": "categorías",
-    "toStart": "para empezar",
-    "calculatorsInCatalog": "calculadoras en el catálogo",
-    "acrossCategories": "en",
-    "calculationBenchmarks": "referencias de cálculo",
-    "industryStandardData": "datos estándar del sector",
-    "alwaysFree": "siempre gratis",
-    "noPaywalls": "sin muros de pago, sin niveles",
-    "browseCalculators": "Explorar calculadoras"
-  },
-  "pricing": {
-    "allFree": "Todas las calculadoras son completamente gratuitas. Sin suscripciones, sin muros de pago, sin necesidad de cuenta.",
-    "everythingFree": "Todo es gratis",
-    "subtitle": "Sin suscripciones ni muros de pago. Las {n} calculadoras son completamente gratuitas.",
-    "forever": "para siempre",
-    "feature1": "Las {n} calculadoras, sin límites",
-    "feature2": "Resultados en tiempo real con referencias comparativas",
-    "feature3": "Perspectivas de crecimiento por etapa (Semilla a Serie C+)",
-    "feature4": "Incrustaciones ilimitadas para tu web",
-    "feature5": "Compartir por URL para colaboración"
-  },
-  "dashboard": {
-    "title": "Panel",
-    "heading": "Centro de control",
-    "subtitle": "Crea tu propio panel. Añade las calculadoras que necesites, introduce los datos una vez y ve cómo todo se conecta.",
-    "share": "Compartir",
-    "copied": "¡Copiado!",
-    "addCalculators": "Añadir calculadora",
-    "noCalculatorsSelected": "Ninguna calculadora seleccionada. Elige una plantilla o añade calculadoras individuales.",
-    "browseCalculators": "Explorar calculadoras",
-    "calculatorsActive": "calculadora",
-    "remove": "Eliminar"
+    "deltaBoth": "Ambos"
   },
   "feedback": {
-    "wasThisHelpful": "¿Te ha resultado útil?",
+    "wasThisHelpful": "¿Te fue útil?",
     "yes": "Sí",
     "no": "No",
-    "thanks": "¡Gracias por tu opinión!"
-  },
-  "email": {
-    "stayUpdated": "Recibe novedades sobre nuevas calculadoras y funciones.",
-    "placeholder": "tu@ejemplo.com",
-    "subscribe": "Suscribirse",
-    "success": "¡Estás suscrito!",
-    "error": "Algo salió mal. Inténtalo de nuevo."
-  },
-  "blog": {
-    "title": "Blog",
-    "subtitle": "Información sobre métricas SaaS, tutoriales y referencias del sector.",
-    "featuredPost": "Artículo destacado",
-    "allArticles": "Todos los artículos",
-    "readArticle": "Leer artículo →",
-    "readMore": "Leer más →",
-    "backToBlog": "← Volver al blog"
-  },
-  "calculators": {
-    "browseCollection": "Explora nuestra colección completa de {n} calculadoras en {m} categorías.",
-    "editorial": "Calculadoras gratuitas e instantáneas para las métricas que importan. Desde ingresos SaaS y economía unitaria hasta costes de IA, ingresos complementarios y finanzas personales, todas las calculadoras son 100% gratuitas, sin necesidad de cuenta. Los resultados se actualizan en vivo mientras escribes y nada sale de tu dispositivo. Creadas para fundadores, operadores, creadores y cualquier persona que necesite respuestas rápidas.",
-    "searchPlaceholder": "Buscar todas las calculadoras...",
-    "viewAll": "Ver todo →"
-  },
-  "error": {
-    "pageNotFound": "Página no encontrada",
-    "calculatorNotFound": "Calculadora no encontrada",
-    "goHome": "Ir al inicio",
-    "oops": "Vaya",
-    "somethingWentWrong": "Algo salió mal",
-    "tryAgain": "Intentar de nuevo",
-    "notFoundDescription": "La página que buscas no existe."
-  },
-  "search": {
-    "placeholder": "Buscar calculadoras...",
-    "ariaLabel": "Buscar calculadoras",
-    "resultsFound": "{n} calculadora(s) encontrada(s)"
-  },
-  "about": {
-    "title": "About",
-    "heading": "About SaaStainedNumbers",
-    "subtitle": "Free, private, instant calculators for the metrics that matter.",
-    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
-    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
-    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
-    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future. Nothing is gated, no account is required, and your data never leaves your device.",
-    "contactLink": "Contact us"
-  },
-  "contact": {
-    "title": "Contact",
-    "heading": "Get in Touch",
-    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
-    "emailLabel": "Email us at",
-    "responseTime": "We aim to respond within 2 business days.",
-    "backToHome": "← Back to Home"
-  },
-  "privacy": {
-    "title": "Privacy Policy",
-    "heading": "Privacy Policy",
-    "subtitle": "How we handle your data."
-  },
-  "terms": {
-    "title": "Terms of Service",
-    "heading": "Terms of Service",
-    "subtitle": "The rules of the road."
+    "thanks": "¡Gracias!"
   },
   "footer": {
     "product": "Producto",
+    "about": "Acerca de",
     "categories": "Categorías",
     "resources": "Recursos",
-    "about": "About",
     "legal": "Legal",
-    "disclaimer": "Aviso legal",
-    "privacyPolicy": "Política de privacidad",
-    "termsOfService": "Términos del servicio",
-    "cookiePolicy": "Política de cookies",
-    "copyright": "SaaStainedNumbers"
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos del Servicio",
+    "cookiePolicy": "Política de Cookies",
+    "copyright": "SaaStainedNumbers. Todos los derechos reservados."
+  },
+  "pricing": {
+    "everythingFree": "Todo Gratis",
+    "allFree": "Todas las calculadoras gratis para siempre.",
+    "subtitle": "{n} calculadoras verificadas matemáticamente. Sin costo. Acceso ilimitado.",
+    "forever": "Para siempre.",
+    "feature1": "Las {n} calculadoras incluidas",
+    "feature2": "Resultados e insights en tiempo real",
+    "feature3": "Incrusta en cualquier sitio — gratis",
+    "feature4": "Uso ilimitado — sin cuotas",
+    "feature5": "Soporte comunitario incluido",
+    "pricing": "Precios"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights, guías y estrategias para creadores SaaS.",
+    "featuredPost": "Artículo Destacado",
+    "readArticle": "Leer artículo →",
+    "allArticles": "Todos los Artículos",
+    "readMore": "Leer más →",
+    "backToBlog": "← Volver al Blog"
+  },
+  "dashboard": {
+    "heading": "Panel de Control",
+    "subtitle": "Sigue tus métricas clave en un solo lugar.",
+    "share": "Compartir",
+    "copied": "¡Copiado!",
+    "addCalculators": "Añadir Calculadoras",
+    "noCalculatorsSelected": "Aún no hay calculadoras seleccionadas.",
+    "browseCalculators": "Explorar Calculadoras",
+    "calculatorsActive": "Calculadoras Activas",
+    "remove": "Eliminar"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Ponte en Contacto",
+    "subtitle": "¿Tienes preguntas, sugerencias o solo quieres saludar? Nos encantaría saber de ti.",
+    "emailLabel": "Envíanos un Email",
+    "responseTime": "Normalmente respondemos dentro de 24 horas."
+  },
+  "calculators": {
+    "browseCollection": "Explora nuestra colección de {n} calculadoras en {m} categorías.",
+    "editorial": "Todas las calculadoras están verificadas matemáticamente y comparadas con fuentes de datos estándar de la industria. Sin cuenta requerida — solo calcula.",
+    "searchPlaceholder": "Buscar calculadoras...",
+    "viewAll": "Ver Todo →"
+  },
+  "about": {
+    "title": "Acerca de",
+    "heading": "Acerca de SaaStainedNumbers",
+    "subtitle": "Calculadoras gratuitas y verificadas matemáticamente para fundadores, operadores y constructores SaaS.",
+    "mission": "Nuestra misión es hacer que las matemáticas financieras y empresariales sean accesibles para todos. Creemos que las herramientas para modelar, planificar y entender tu negocio deben ser gratuitas, abiertas y disponibles para todos, no bloqueadas detrás de muros de pago o contratos empresariales.",
+    "whoWeAre": "Somos un pequeño equipo de ingenieros, matemáticos y operadores SaaS cansados de pagar por calculadoras simples. Cada calculadora en este sitio está construida desde primeros principios, verificada matemáticamente y comparada con datos reales de la industria.",
+    "editorial": "Todas las calculadoras se desarrollan utilizando fórmulas matemáticas y financieras estándar. Cada fórmula está documentada junto con un ejemplo práctico. Los benchmarks de la industria provienen de datos disponibles públicamente, investigaciones publicadas e informes sectoriales de buena reputación. Citamos nuestras fuentes y las actualizamos regularmente.",
+    "freeModel": "SaaStainedNumbers se sostiene mediante anuncios no intrusivos y enlaces de afiliados contextuales en las secciones FAQ de las calculadoras. Nunca vendemos datos de usuarios, nunca requerimos registro y nunca ponemos calculadoras detrás de un muro de pago. Los embebidos son completamente sin anuncios.",
+    "haveQuestions": "¿Tienes preguntas o sugerencias? Nos encantaría saber de ti.",
+    "contactLink": "Contáctanos →"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "heading": "Política de Privacidad",
+    "subtitle": "Cómo manejamos tus datos — versión corta: no recolectamos tus datos de cálculo."
+  },
+  "terms": {
+    "title": "Términos del Servicio",
+    "heading": "Términos del Servicio",
+    "subtitle": "Las reglas del juego para usar SaaStainedNumbers."
+  },
+  "error": {
+    "pageNotFound": "Página No Encontrada",
+    "notFoundDescription": "La página que buscas no existe o ha sido movida.",
+    "goHome": "Ir al Inicio"
   }
 }

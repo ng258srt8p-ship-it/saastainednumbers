@@ -68,7 +68,6 @@ export default async function sitemap() {
 
   const staticPageDefs = [
     { path: "/", pri: 1.0, freq: "weekly" as const },
-    { path: "/dashboard", pri: 0.7, freq: "weekly" as const },
     { path: "/blog", pri: 0.6, freq: "daily" as const },
     { path: "/pricing", pri: 0.5, freq: "monthly" as const },
     { path: "/about", pri: 0.5, freq: "monthly" as const },

@@ -3,6 +3,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ===== Primary Brand Colors ===== */
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
@@ -10,9 +11,26 @@
   --text-secondary: #6b7280;
   --border: #e5e7eb;
   --nav-bg: #ffffff;
-  --footer-bg: #f9fafb;
   --page-bg: #ffffff;
   --card-bg: #f9fafb;
+
+  /* Elevation/shadows — Mobbin-inspired layered depth */
+  --elevation-1: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --elevation-2: 0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.04);
+  --elevation-3: 0 10px 15px rgba(0,0,0,0.06), 0 4px 6px rgba(0,0,0,0.04);
+  --elevation-4: 0 20px 25px rgba(0,0,0,0.08), 0 8px 10px rgba(0,0,0,0.04);
+  --elevation-card-hover: 0 8px 30px rgba(0,131,135,0.12);
+
+  /* Canvas-specific dark tokens */
+  --canvas-bg: #0C0D0E;
+  --panel-bg: #1A1C1E;
+  --panel-border: #2A2C2E;
+  --panel-border-glow: rgba(0, 131, 135, 0.3);
+  --indicator-brand: #008387;
+  --indicator-amber: #f59e0b;
+  --indicator-red: #ef4444;
+  --cable-color: #3da0a3;
+  --cable-active: #008387;
 }
 
 .dark {
@@ -22,7 +40,6 @@
   --text-secondary: #94a3b8;
   --border: #334155;
   --nav-bg: #111827;
-  --footer-bg: #1e293b;
   --page-bg: #0B0F1A;
   --card-bg: #1A2035;
 }
@@ -49,6 +66,16 @@
   --color-page-bg: var(--page-bg);
   --color-card-bg: var(--card-bg);
 
+  /* Canvas Industrial Swiss Modernism Tokens */
+  --color-canvas-bg: #0C0D0E;
+  --color-panel-bg: #1A1C1E;
+  --color-panel-border: #2A2C2E;
+  --color-cable: #3da0a3;
+  --color-cable-active: #008387;
+  --color-indicator-brand: #008387;
+  --color-indicator-amber: #f59e0b;
+  --color-indicator-red: #ef4444;
+
   --color-secondary-50: #f4fafb;
   --color-secondary-100: #dff0f2;
   --color-secondary-200: #b3d4d9;
@@ -73,7 +100,7 @@
   --color-accent-900: #07152b;
   --color-accent-950: #030a16;
 
-  --color-success: #22c55e;
+  --color-success: #008387;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
@@ -91,6 +118,7 @@
   --color-gray-950: #030712;
 }
 
+/* Canvas skeuomorphic panel styles */
 @layer base {
   * {
     box-sizing: border-box;
@@ -101,10 +129,121 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  @media (max-width: 767px) {
-    body {
-      padding-bottom: 60px;
-    }
+  /* ── Mobbin-style utility classes ── */
+  .mobbin-card {
+    border-radius: 0.75rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-gray-100);
+    background-color: var(--color-white);
+    padding: 1rem;
+    box-shadow: var(--elevation-1, 0 1px 3px rgba(0,0,0,0.06));
+    transition: all 0.2s ease;
+  }
+  :where(.dark) .mobbin-card {
+    border-color: var(--color-gray-700);
+    background-color: var(--color-gray-800);
+  }
+
+  .mobbin-card-hover {
+    border-radius: 0.75rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-gray-100);
+    background-color: var(--color-white);
+    padding: 1rem;
+    box-shadow: var(--elevation-1, 0 1px 3px rgba(0,0,0,0.06));
+    transition: all 0.2s ease;
+  }
+  :where(.dark) .mobbin-card-hover {
+    border-color: var(--color-gray-700);
+    background-color: var(--color-gray-800);
+  }
+  .mobbin-card-hover:hover {
+    box-shadow: var(--elevation-2, 0 4px 6px rgba(0,0,0,0.05));
+    transform: translateY(-2px);
+  }
+  :where(.dark) .mobbin-card-hover:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .mobbin-input {
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-gray-200);
+    background-color: var(--color-gray-50);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-gray-900);
+    transition: all 0.15s ease;
+    outline: none;
+  }
+  :where(.dark) .mobbin-input {
+    border-color: var(--color-gray-600);
+    background-color: var(--color-gray-900);
+    color: var(--color-gray-100);
+  }
+  .mobbin-input::placeholder {
+    color: var(--color-gray-400);
+  }
+  :where(.dark) .mobbin-input::placeholder {
+    color: var(--color-gray-500);
+  }
+  .mobbin-input:focus {
+    border-color: var(--color-brand-500);
+    box-shadow: 0 0 0 3px rgba(0, 131, 135, 0.15);
+  }
+
+  .mobbin-btn-primary {
+    border-radius: 0.5rem;
+    background-color: var(--color-brand-600);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: white;
+    transition: all 0.15s ease;
+  }
+  .mobbin-btn-primary:hover {
+    background-color: var(--color-brand-700);
+  }
+  .mobbin-btn-primary:active {
+    background-color: var(--color-brand-800);
+    transform: scale(0.98);
+  }
+
+  .mobbin-btn-secondary {
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-gray-200);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    background: transparent;
+    transition: all 0.15s ease;
+  }
+  :where(.dark) .mobbin-btn-secondary {
+    border-color: var(--color-gray-700);
+    color: var(--color-gray-300);
+  }
+  .mobbin-btn-secondary:hover {
+    background-color: var(--color-gray-50);
+  }
+  :where(.dark) .mobbin-btn-secondary:hover {
+    background-color: var(--color-gray-800);
+  }
+  .mobbin-btn-secondary:active {
+    transform: scale(0.98);
+  }
+
+  .mobbin-section {
+    @apply mx-auto max-w-6xl px-4 py-12 sm:py-16;
+  }
+
+  .mobbin-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500;
   }
 }
 
@@ -124,6 +263,16 @@
   80%, 100% { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes led-glow {
+  0%, 100% { box-shadow: 0 0 4px currentColor; }
+  50% { box-shadow: 0 0 12px currentColor, 0 0 24px currentColor; }
+}
+
+@keyframes cable-flow {
+  from { stroke-dashoffset: 20; }
+  to { stroke-dashoffset: 0; }
+}
+
 .animate-slide-in {
   animation: slide-in 0.2s ease-out;
 }
@@ -132,7 +281,99 @@
   animation: fade-in 0.15s ease-out;
 }
 
-/* Hamburger icon lines */
+/* Skeuomorphic canvas panel */
+.skeu-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: oklch(0.75 0 0);
+}
+
+/* LED indicator */
+.led {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: led-glow 2s infinite;
+}
+
+.led-brand { background: var(--indicator-brand); color: var(--indicator-brand); }
+.led-amber { background: var(--indicator-amber); color: var(--indicator-amber); }
+.led-red { background: var(--indicator-red); color: var(--indicator-red); }
+
+/* Animated cable */
+.cable {
+  stroke-dasharray: 6 4;
+  animation: cable-flow 0.5s linear infinite;
+}
+
+/* Canvas brush-metal background */
+.brush-metal {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.01) 2px,
+    rgba(255,255,255,0.01) 4px
+  ),
+  linear-gradient(180deg, #1a1c1e 0%, #141517 100%);
+}
+
+/* Input slider for canvas nodes */
+.canvas-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: oklch(0.2 0 0);
+  border-radius: 2px;
+  outline: none;
+}
+
+.canvas-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #008387;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 131, 135, 0.5);
+}
+
+.canvas-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #008387;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 6px rgba(0, 131, 135, 0.5);
+}
+
+/* Jack/Socket connectors */
+.jack {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: oklch(0.15 0 0);
+  border: 1px solid oklch(0.3 0 0);
+  cursor: crosshair;
+  transition: all 0.2s ease;
+}
+
+.jack:hover {
+  background: #008387;
+  box-shadow: 0 0 8px rgba(0, 131, 135, 0.6);
+}
+
+.jack.connected {
+  background: #008387;
+  box-shadow: 0 0 6px rgba(0, 131, 135, 0.4);
+}
+
 .hamburger-bar {
   transition: transform 0.25s ease, opacity 0.25s ease;
   transform-origin: center center;

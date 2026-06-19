@@ -11,7 +11,7 @@ test.describe("Pricing Page", () => {
   test("pricing page has correct title", async ({ page }) => {
     await page.goto(`${BASE}/pricing`, { waitUntil: "load" });
     const title = await page.title();
-    expect(title).toContain("Pricing");
+    expect(title).toContain("Everything Free");
   });
 
   test("pricing page has meta description", async ({ page }) => {
@@ -48,7 +48,7 @@ test.describe("Pricing Page", () => {
 
   test("feature items have checkmarks", async ({ page }) => {
     await page.goto(`${BASE}/pricing`, { waitUntil: "load" });
-    const checkmarks = page.locator("ul li").filter({ has: page.locator("text=✓") });
+    const checkmarks = page.locator("li svg").or(page.locator("ul li").filter({ has: page.locator("text=✓") }));
     const count = await checkmarks.count();
     expect(count).toBeGreaterThanOrEqual(3);
   });

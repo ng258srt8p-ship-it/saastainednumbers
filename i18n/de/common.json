@@ -3,197 +3,198 @@
     "dashboard": "Dashboard",
     "pricing": "Preise",
     "blog": "Blog",
-    "calculators": "Rechner"
+    "calculators": "Rechner",
+    "canvas": "Arbeitsfläche"
   },
   "common": {
-    "home": "Startseite",
-    "loading": "Wird geladen...",
     "new": "Neu",
-    "skipToContent": "Zum Inhalt springen"
+    "home": "Startseite",
+    "skipToContent": "Zum Inhalt springen",
+    "loading": "Lädt..."
+  },
+  "home": {
+    "heroLine1": "Öffne die Arbeitsfläche",
+    "heroLine2": "Berechne. Verbinde. Kontrolliere.",
+    "heroSubtitle": "Kategorien, Rechner. Wählen Sie Ihren Weg.",
+    "startCalculating": "Jetzt Berechnen",
+    "browseAll": "Alle Ansehen",
+    "freeCalculators": "Kostenlose Rechner",
+    "categories": "Kategorien",
+    "toStart": "zum Starten",
+    "popularCalculators": "Beliebte Rechner",
+    "popularSubtitle": "Starten Sie mit diesen Favoriten — die Gründer zuerst nutzen.",
+    "openCalculator": "Rechner öffnen →",
+    "browseByCategory": "Nach Kategorie Durchsuchen",
+    "categoriesSubtitle": "Kategorien, Rechner. Wählen Sie Ihren Weg.",
+    "seeAllCalculators": "Alle {n} Rechner anzeigen →",
+    "threeSteps": "So Funktioniert's",
+    "stepPick": "Wählen Sie Ihren Rechner",
+    "pickDescription": "Wählen Sie aus {n} mathematisch verifizierten Rechnern in 9 Kategorien.",
+    "stepType": "Zahlen Eingeben",
+    "typeDescription": "Eingaben aktualisieren Ergebnisse in Echtzeit. Keine Wartezeit, keine Neuladen.",
+    "stepAct": "Einblicke erhalten, Ergebnisse teilen",
+    "actDescription": "Benchmarks erhalten, Berichte teilen oder auf Ihrer Website einbetten.",
+    "theLedger": "In Zahlen",
+    "calculatorsInCatalog": "Rechner im Katalog",
+    "acrossCategories": "über",
+    "calculationBenchmarks": "Berechnungen bewertet",
+    "industryStandardData": "Branchenübliche Datenquellen",
+    "alwaysFree": "Für immer $0",
+    "noPaywalls": "Keine Bezahlmauern, keine Sperre, keine Abos",
+    "startBuilding": "Jetzt Bauen",
+    "allFree": "{n} kostenlose Rechner. Keine Karte. Keine Anmeldung.",
+    "browseCalculators": "Rechner Durchsuchen",
+    "openCanvas": "Arbeitsfläche Öffnen"
+  },
+  "category": {
+    "searchPlaceholder": "Rechner suchen...",
+    "revenue": "Umsatzkennzahlen",
+    "unitEconomics": "Einheitsökonomie",
+    "churnRetention": "Kündigung und Bindung",
+    "growthEfficiency": "Wachstum und Effizienz",
+    "aiCost": "KI-Kosten",
+    "sideHustle": "Nebengeschäft",
+    "personalFinance": "Private Finanzen",
+    "generalBusiness": "Allgemeine Unternehmen",
+    "saasDeepen": "SaaS Vertiefung",
+    "calculatorsLabel": "Rechner",
+    "all": "Alle Rechner",
+    "noSignup": "Keine Anmeldung erforderlich",
+    "comingSoon": "Demnächst — Rechner in Vorbereitung",
+    "buildingNow": "Wir arbeiten daran. Schau bald wieder vorbei!",
+    "browseAll": "Alle Ansehen"
+  },
+  "search": {
+    "ariaLabel": "Rechner suchen",
+    "resultsFound": "Ergebnisse gefunden"
+  },
+  "commonSection": {
+    "faqTitle": "Häufiggestellte Fragen",
+    "relatedCalculatorsTitle": "Verwandte Rechner"
+  },
+  "canvas": {
+    "nodes": "Knoten",
+    "cables": "Kabel",
+    "closeRack": "RACK SCHLIESSEN",
+    "openAllRacks": "ALLE RACKS ÖFFNEN",
+    "closePanel": "PANEL SCHLIESSEN",
+    "inputs": "EINGABEN",
+    "outputs": "AUSGABEN",
+    "canvasReady": "Arbeitsfläche Bereit"
   },
   "calculator": {
-    "howToUse": "So verwenden Sie diesen Rechner",
-    "formulaAndExample": "Formel und Beispielrechnung",
+    "howToUse": "Wie Man Diesen Rechner Benutzt",
+    "formulaAndExample": "Formel und Beispiel",
     "industryBenchmarks": "Branchenvergleich",
-    "frequentlyAskedQuestions": "Häufig gestellte Fragen",
+    "frequentlyAskedQuestions": "Häufig Gestellte Fragen",
+    "relatedCalculators": "Verwandte Rechner",
     "tableMetric": "Kennzahl",
     "tableValue": "Wert",
     "tableSource": "Quelle",
     "resetAll": "Alle Werte zurücksetzen",
-    "resetBoth": "Beide Szenarien zurücksetzen",
     "addScenarioB": "Szenario B zum Vergleich hinzufügen",
     "backToSingleView": "Zurück zur Einzelansicht",
+    "resetBoth": "Beide Szenarien zurücksetzen",
     "scenarioA": "Szenario A",
     "scenarioB": "Szenario B",
     "resultsComparison": "Ergebnisvergleich",
     "embed": "Einbetten",
-    "disclaimer": "Hinweis: Die Ergebnisse dienen ausschließlich Informationszwecken und stellen keine Finanzberatung dar. SaaStainedNumbers übernimmt keine Haftung für Entscheidungen, die auf Basis dieser Berechnungen getroffen werden.",
-    "seed": "Seed",
-    "seriesA": "Series A",
-    "seriesB": "Series B",
-    "seriesC": "Series C",
+    "disclaimer": "Hinweis: Die Ergebnisse dienen nur zu Informationszwecken und stellen keine Finanzberatung dar. SaaStainedNumbers übernimmt keine Haftung für Entscheidungen, die auf Grundlage dieser Berechnungen getroffen werden.",
+    "seed": "Start",
+    "seriesA": "Serie A",
+    "seriesB": "Serie B",
+    "seriesC": "Serie C",
     "growth": "Wachstum",
     "deltaAbsolute": "$",
     "deltaPercent": "%",
-    "deltaBoth": "Beides",
-      "relatedCalculators": "Verwandte Rechner"
-  },
-  "category": {
-    "revenue": "Umsatzkennzahlen",
-    "unitEconomics": "Unit Economics",
-    "churnRetention": "Kundenabwanderung und -bindung",
-    "growthEfficiency": "Wachstum und Effizienz",
-    "aiCost": "KI-Kosten",
-    "sideHustle": "Nebeneinkünfte",
-    "personalFinance": "Persönliche Finanzen",
-    "generalBusiness": "Allgemeine Geschäftsthemen",
-    "saasDeepen": "SaaS vertiefen",
-    "all": "Alle Rechner",
-    "noSignup": "Keine Anmeldung. Keine E-Mail. Kein Haken.",
-    "comingSoon": "Rechner in dieser Kategorie sind in Vorbereitung.",
-    "buildingNow": "Wir arbeiten daran. Schau bald wieder vorbei!",
-    "browseAll": "Alle Kategorien durchsuchen →",
-    "searchPlaceholder": "Rechner suchen...",
-    "calculatorsLabel": "Rechner"
-  },
-  "home": {
-    "startCalculating": "Jetzt berechnen",
-    "browseAll": "Alle ansehen →",
-    "openCalculator": "Rechner öffnen →",
-    "seeAllCalculators": "Alle {n} Rechner ansehen →",
-    "popularCalculators": "Beliebte Rechner",
-    "popularSubtitle": "Unsere Top-Empfehlungen für den Einstieg.",
-    "browseByCategory": "Nach Kategorie durchsuchen",
-    "categoriesSubtitle": "Kategorien, Rechner. Finde deinen Weg.",
-    "howItWorks": "So funktioniert es",
-    "threeSteps": "Drei Schritte. Keine Hürden.",
-    "stepPick": "Rechner auswählen",
-    "stepType": "Zahlen eingeben",
-    "stepAct": "Loslegen",
-    "pickDescription": "Von KI-Kosten bis FIRE-Pläne – alle {n} sind kostenlos nutzbar. Keine Anmeldehürde.",
-    "typeDescription": "Ergebnisse werden während der Eingabe live in deinem Browser aktualisiert. Nichts verlässt dein Gerät.",
-    "actDescription": "Ergebnisse speichern, auf deiner Website einbetten oder mit deinem Team teilen. Kein Konto nötig.",
-    "byTheNumbers": "Zahlen und Fakten",
-    "theLedger": "Der Überblick",
-    "startBuilding": "Leg los.",
-    "allFree": "Alle {n} Rechner sind komplett kostenlos. Keine Abos, keine Anmeldungen.",
-    "heroLine1": "Kenne deine Zahlen.",
-    "heroLine2": "Sichere dein Wachstum.",
-    "heroSubtitle": "Rechner für Gründer, Betreiber und Kreative. Gib deine Zahlen ein, erhalte sofort eine Antwort. Alles kostenlos, alles privat.",
-    "freeCalculators": "kostenlose Rechner",
-    "categories": "Kategorien",
-    "toStart": "zum Start",
-    "calculatorsInCatalog": "Rechner im Katalog",
-    "acrossCategories": "in",
-    "calculationBenchmarks": "Berechnungsvergleiche",
-    "industryStandardData": "Branchenstandards",
-    "alwaysFree": "immer kostenlos",
-    "noPaywalls": "keine Bezahlschranken, keine Stufen",
-    "browseCalculators": "Rechner durchsuchen"
-  },
-  "pricing": {
-    "allFree": "Alle Rechner sind komplett kostenlos. Keine Abonnements, keine Bezahlschranken, kein Konto erforderlich.",
-    "everythingFree": "Alles ist kostenlos",
-    "subtitle": "Keine Abos, keine Bezahlschranken. Alle {n} Rechner sind völlig kostenlos nutzbar.",
-    "forever": "für immer",
-    "feature1": "Alle {n} Rechner, keine Einschränkungen",
-    "feature2": "Echtzeit-Ergebnisse mit Benchmark-Vergleichen",
-    "feature3": "Wachstumsphasen (Seed bis Series C+)",
-    "feature4": "Unbegrenztes Einbetten in deine Website",
-    "feature5": "URL-Freigabe für die Zusammenarbeit"
-  },
-  "dashboard": {
-    "title": "Dashboard",
-    "heading": "Kommandozentrale",
-    "subtitle": "Erstelle dein persönliches Dashboard. Füge die Rechner hinzu, die du brauchst, gib Daten einmal ein und sieh zu, wie alles zusammenfließt.",
-    "share": "Teilen",
-    "copied": "Kopiert!",
-    "addCalculators": "Rechner hinzufügen",
-    "noCalculatorsSelected": "Keine Rechner ausgewählt. Wähle eine Vorlage oder füge einzelne Rechner hinzu.",
-    "browseCalculators": "Rechner durchsuchen",
-    "calculatorsActive": "Rechner",
-    "remove": "Entfernen"
+    "deltaBoth": "Beide"
   },
   "feedback": {
     "wasThisHelpful": "War das hilfreich?",
     "yes": "Ja",
     "no": "Nein",
-    "thanks": "Danke für dein Feedback!"
-  },
-  "email": {
-    "stayUpdated": "Bleib auf dem Laufenden über neue Rechner und Funktionen.",
-    "placeholder": "du@beispiel.de",
-    "subscribe": "Abonnieren",
-    "success": "Du bist angemeldet!",
-    "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
-  },
-  "blog": {
-    "title": "Blog",
-    "subtitle": "SaaS-Kennzahlen Einblicke, Tutorials und Branchenvergleiche.",
-    "featuredPost": "Beitrag der Woche",
-    "allArticles": "Alle Artikel",
-    "readArticle": "Artikel lesen →",
-    "readMore": "Weiterlesen →",
-    "backToBlog": "← Zurück zum Blog"
-  },
-  "calculators": {
-    "browseCollection": "Durchstöbere unsere gesamte Sammlung von {n} Rechnern in {m} Kategorien.",
-    "editorial": "Kostenlose, sofort einsatzbereite Rechner für die Kennzahlen, die wirklich zählen. Von SaaS-Umsätzen und Unit Economics bis zu KI-Kosten, Nebeneinkünften und persönlichen Finanzen, jeder Rechner ist 100% kostenlos, ohne Konto. Ergebnisse aktualisieren sich live während der Eingabe und nichts verlässt dein Gerät. Entwickelt für Gründer, Betreiber, Kreative und alle, die schnelle Antworten brauchen.",
-    "searchPlaceholder": "Alle Rechner durchsuchen...",
-    "viewAll": "Alle anzeigen →"
-  },
-  "error": {
-    "pageNotFound": "Seite nicht gefunden",
-    "calculatorNotFound": "Rechner nicht gefunden",
-    "goHome": "Zur Startseite",
-    "oops": "Hoppla",
-    "somethingWentWrong": "Etwas ist schiefgelaufen",
-    "tryAgain": "Erneut versuchen",
-    "notFoundDescription": "Die von dir gesuchte Seite existiert nicht."
-  },
-  "search": {
-    "placeholder": "Rechner suchen...",
-    "ariaLabel": "Rechner suchen",
-    "resultsFound": "{n} Rechner gefunden"
-  },
-  "about": {
-    "title": "About",
-    "heading": "About SaaStainedNumbers",
-    "subtitle": "Free, private, instant calculators for the metrics that matter.",
-    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
-    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
-    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
-    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future, nothing is gated, no account is required, and your data never leaves your device.",
-    "contactLink": "Contact us"
-  },
-  "contact": {
-    "title": "Contact",
-    "heading": "Get in Touch",
-    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
-    "emailLabel": "Email us at",
-    "responseTime": "We aim to respond within 2 business days.",
-    "backToHome": "← Back to Home"
-  },
-  "privacy": {
-    "title": "Privacy Policy",
-    "heading": "Privacy Policy",
-    "subtitle": "How we handle your data."
-  },
-  "terms": {
-    "title": "Terms of Service",
-    "heading": "Terms of Service",
-    "subtitle": "The rules of the road."
+    "thanks": "Danke!"
   },
   "footer": {
     "product": "Produkt",
+    "about": "Über uns",
     "categories": "Kategorien",
     "resources": "Ressourcen",
-    "about": "About",
     "legal": "Rechtliches",
-    "disclaimer": "Haftungsausschluss",
-    "privacyPolicy": "Datenschutzerklärung",
+    "privacyPolicy": "Datenschutz",
     "termsOfService": "Nutzungsbedingungen",
     "cookiePolicy": "Cookie-Richtlinie",
-    "copyright": "SaaStainedNumbers"
+    "copyright": "SaaStainedNumbers. Alle Rechte vorbehalten."
+  },
+  "pricing": {
+    "everythingFree": "Alles Kostenlos",
+    "allFree": "Alle Rechner für immer kostenlos.",
+    "subtitle": "{n} mathematisch verifizierte Rechner. Keine Kosten. Unbegrenzter Zugriff.",
+    "forever": "Für immer.",
+    "feature1": "Alle {n} Rechner enthalten",
+    "feature2": "Echtzeit-Ergebnisse und Einblicke",
+    "feature3": "Auf jeder Website einbetten — kostenlos",
+    "feature4": "Unbegrenzte Nutzung — keine Kontingente",
+    "feature5": "Community-Support inklusive",
+    "pricing": "Preise"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Einblicke, Anleitungen und Strategien für SaaS-Entwickler.",
+    "featuredPost": "Vorgestellter Beitrag",
+    "readArticle": "Artikel lesen →",
+    "allArticles": "Alle Artikel",
+    "readMore": "Weiterlesen →",
+    "backToBlog": "← Zurück zum Blog"
+  },
+  "dashboard": {
+    "heading": "Dashboard",
+    "subtitle": "Verfolgen Sie Ihre wichtigsten Kennzahlen an einem Ort.",
+    "share": "Teilen",
+    "copied": "Kopiert!",
+    "addCalculators": "Rechner Hinzufügen",
+    "noCalculatorsSelected": "Noch keine Rechner ausgewählt.",
+    "browseCalculators": "Rechner Durchsuchen",
+    "calculatorsActive": "Aktive Rechner",
+    "remove": "Entfernen"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Kontakt aufnehmen",
+    "subtitle": "Haben Sie Fragen, Anregungen oder möchten Sie einfach Hallo sagen? Wir freuen uns, von Ihnen zu hören.",
+    "emailLabel": "E-Mail senden",
+    "responseTime": "Wir antworten in der Regel innerhalb von 24 Stunden."
+  },
+  "calculators": {
+    "browseCollection": "Durchstöbern Sie unsere Sammlung von {n} Rechnern in {m} Kategorien.",
+    "editorial": "Alle Rechner sind mathematisch verifiziert und mit branchenüblichen Datenquellen verglichen. Kein Konto erforderlich — einfach rechnen.",
+    "searchPlaceholder": "Rechner suchen...",
+    "viewAll": "Alle Ansehen →"
+  },
+  "about": {
+    "title": "Über uns",
+    "heading": "Über SaaStainedNumbers",
+    "subtitle": "Kostenlose, mathematisch verifizierte Rechner für SaaS-Gründer, Betreiber und Entwickler.",
+    "mission": "Unsere Mission ist es, finanzielle und geschäftliche Mathematik für alle zugänglich zu machen. Wir glauben, dass Werkzeuge zur Modellierung, Planung und Analyse Ihres Unternehmens kostenlos, offen und für alle verfügbar sein sollten — nicht hinter Bezahlschranken oder Unternehmensverträgen versteckt.",
+    "whoWeAre": "Wir sind ein kleines Team von Ingenieuren, Mathematikern und SaaS-Betreibern, die es leid sind, für einfache Rechner zu bezahlen. Jeder Rechner auf dieser Website ist aus ersten Prinzipien heraus entwickelt, mathematisch verifiziert und mit realen Branchendaten verglichen.",
+    "editorial": "Alle Rechner werden unter Verwendung standardmäßiger mathematischer und finanzieller Formeln entwickelt. Jede Formel ist zusammen mit einem durchgerechneten Beispiel dokumentiert. Branchenvergleiche stammen aus öffentlich zugänglichen Daten, veröffentlichten Forschungsergebnissen und seriösen Branchenberichten. Wir geben unsere Quellen an und aktualisieren sie regelmäßig.",
+    "freeModel": "SaaStainedNumbers wird durch nicht aufdringliche Werbeanzeigen und kontextuelle Affiliate-Links in den FAQ-Bereichen der Rechner finanziert. Wir verkaufen niemals Benutzerdaten, verlangen niemals eine Anmeldung und stellen Rechner niemals hinter eine Bezahlschranke. Einbettungen sind vollständig werbefrei.",
+    "haveQuestions": "Haben Sie Fragen oder Anregungen? Wir freuen uns, von Ihnen zu hören.",
+    "contactLink": "Kontaktieren Sie uns →"
+  },
+  "privacy": {
+    "title": "Datenschutz",
+    "heading": "Datenschutzerklärung",
+    "subtitle": "Wie wir mit Ihren Daten umgehen — Kurzversion: Wir sammeln Ihre Rechnereingaben nicht."
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "heading": "Nutzungsbedingungen",
+    "subtitle": "Die Spielregeln für die Nutzung von SaaStainedNumbers."
+  },
+  "error": {
+    "pageNotFound": "Seite nicht gefunden",
+    "notFoundDescription": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "goHome": "Zur Startseite"
   }
 }

@@ -95,5 +95,5 @@ export default async function CalculatorPage({ params }: PageProps) {
     shellRelatedCalculatorsTitle: t("calculator.relatedCalculators"),
    };
 
-  return <CalculatorClient config={resolved} relatedCalculators={related} hideContent strings={strings} />;
+  return <CalculatorClient config={resolved} relatedCalculators={related} strings={strings} />;
 }

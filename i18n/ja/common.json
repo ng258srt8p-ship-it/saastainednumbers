@@ -3,30 +3,102 @@
     "dashboard": "ダッシュボード",
     "pricing": "料金",
     "blog": "ブログ",
-    "calculators": "計算機"
+    "calculators": "計算機",
+    "canvas": "キャンバス"
   },
   "common": {
-    "home": "ホーム",
-    "loading": "読み込み中...",
     "new": "新着",
-    "skipToContent": "コンテンツにスキップ"
+    "home": "ホーム",
+    "skipToContent": "コンテンツにスキップ",
+    "loading": "読み込み中..."
+  },
+  "home": {
+    "heroLine1": "キャンバスを開く",
+    "heroLine2": "計算する。接続する。コントロール。",
+    "heroSubtitle": "カテゴリー、計算機。道を選んでください。",
+    "startCalculating": "計算を開始",
+    "browseAll": "すべて表示",
+    "freeCalculators": "無料計算機",
+    "categories": "カテゴリー",
+    "toStart": "開始へ",
+    "popularCalculators": "人気計算機",
+    "popularSubtitle": "お気に入りから始めましょう — 創業者が最初に使うもの。",
+    "openCalculator": "計算機を開く →",
+    "browseByCategory": "カテゴリーで検索",
+    "categoriesSubtitle": "カテゴリー、計算機。道を選んでください。",
+    "seeAllCalculators": "すべての {n} 計算機を表示 →",
+    "threeSteps": "使い方",
+    "stepPick": "計算機を選ぶ",
+    "pickDescription": "9カテゴリーの{n}つの数学的に検証された計算機から選択。",
+    "stepType": "数字を入力",
+    "typeDescription": "入力がリアルタイムで結果を更新。待ち時間なし、再読み込みなし。",
+    "stepAct": "インサイトを得て、結果を共有",
+    "actDescription": "ベンチマークを取得、レポートを共有、またはサイトに埋め込み。",
+    "theLedger": "数字で見る",
+    "calculatorsInCatalog": "カタログの計算機",
+    "acrossCategories": " across",
+    "calculationBenchmarks": "評価された計算",
+    "industryStandardData": "業界標準データソース",
+    "alwaysFree": "永久無料",
+    "noPaywalls": "有料壁なし、ロックなし、サブスクリプションなし",
+    "startBuilding": "構築を開始",
+    "allFree": "{n}つの無料計算機。カード不要。登録不要。",
+    "browseCalculators": "計算機を表示",
+    "openCanvas": "キャンバスを開く"
+  },
+  "category": {
+    "searchPlaceholder": "計算機を検索...",
+    "revenue": "収益指標",
+    "unitEconomics": "単体経済",
+    "churnRetention": "解約と維持",
+    "growthEfficiency": "成長と効率",
+    "aiCost": "AIコスト",
+    "sideHustle": "サイドビジネス",
+    "personalFinance": "個人財務",
+    "generalBusiness": "一般ビジネス",
+    "saasDeepen": "SaaS詳細",
+    "calculatorsLabel": "計算機",
+    "all": "すべての計算機",
+    "noSignup": "登録不要",
+    "comingSoon": "近日公開 — 準備中の計算機",
+    "buildingNow": "現在構築中です。もうすぐ公開！",
+    "browseAll": "すべて表示"
+  },
+  "search": {
+    "ariaLabel": "計算機を検索",
+    "resultsFound": "件の結果が見つかりました"
+  },
+  "commonSection": {
+    "faqTitle": "よくある質問",
+    "relatedCalculatorsTitle": "関連計算機"
+  },
+  "canvas": {
+    "nodes": "ノード",
+    "cables": "ケーブル",
+    "closeRack": "ラックを閉じる",
+    "openAllRacks": "全ラックを開く",
+    "closePanel": "パネルを閉じる",
+    "inputs": "入力",
+    "outputs": "出力",
+    "canvasReady": "キャンバス準備完了"
   },
   "calculator": {
     "howToUse": "この計算機の使い方",
-    "formulaAndExample": "計算式と具体例",
+    "formulaAndExample": "計算式と例",
     "industryBenchmarks": "業界ベンチマーク",
     "frequentlyAskedQuestions": "よくある質問",
+    "relatedCalculators": "関連計算機",
     "tableMetric": "指標",
     "tableValue": "値",
     "tableSource": "出典",
-    "resetAll": "すべてリセット",
-    "resetBoth": "両方のシナリオをリセット",
-    "addScenarioB": "比較用にシナリオBを追加",
+    "resetAll": "すべての値をリセット",
+    "addScenarioB": "シナリオBを追加して比較",
     "backToSingleView": "シングルビューに戻る",
+    "resetBoth": "両方のシナリオをリセット",
     "scenarioA": "シナリオA",
     "scenarioB": "シナリオB",
     "resultsComparison": "結果の比較",
-    "embed": "埋め込む",
+    "embed": "埋め込み",
     "disclaimer": "免責事項：結果は情報提供のみを目的としており、財務アドバイスと見なされるべきではありません。SaaStainedNumbersは、これらの計算に基づいて行われたいかなる決定についても責任を負いません。",
     "seed": "シード",
     "seriesA": "シリーズA",
@@ -35,165 +107,94 @@
     "growth": "グロース",
     "deltaAbsolute": "$",
     "deltaPercent": "%",
-    "deltaBoth": "両方",
-      "relatedCalculators": "関連計算機"
-  },
-  "category": {
-    "revenue": "収益指標",
-    "unitEconomics": "ユニットエコノミクス",
-    "churnRetention": "チャーンとリテンション",
-    "growthEfficiency": "成長と効率性",
-    "aiCost": "AIコスト",
-    "sideHustle": "副業",
-    "personalFinance": "パーソナルファイナンス",
-    "generalBusiness": "一般ビジネス",
-    "saasDeepen": "SaaSディープダイブ",
-    "all": "すべての計算機",
-    "noSignup": "登録不要。メール不要。条件なし。",
-    "comingSoon": "このカテゴリの計算機は準備中です。",
-    "buildingNow": "現在構築中です。もう少々お待ちください！",
-    "browseAll": "すべてのカテゴリを見る →",
-    "searchPlaceholder": "計算機を検索...",
-    "calculatorsLabel": "の計算機"
-  },
-  "home": {
-    "startCalculating": "計算を始める",
-    "browseAll": "すべて見る →",
-    "openCalculator": "計算機を開く →",
-    "seeAllCalculators": "{n}個の計算機すべてを見る →",
-    "popularCalculators": "人気の計算機",
-    "popularSubtitle": "初心者におすすめの厳選計算機。",
-    "browseByCategory": "カテゴリから探す",
-    "categoriesSubtitle": "カテゴリ、計算機。あなたの道を選んでください。",
-    "howItWorks": "使い方",
-    "threeSteps": "たった3ステップ。簡単です。",
-    "stepPick": "計算機を選ぶ",
-    "stepType": "数値を入力する",
-    "stepAct": "行動する",
-    "pickDescription": "AIコストからFIRE計画まで、{n}個すべて無料でご利用いただけます。登録不要。",
-    "typeDescription": "入力するとブラウザ上で結果がリアルタイムに更新されます。データが端末の外に出ることはありません。",
-    "actDescription": "結果を保存したり、サイトに埋め込んだり、チームと共有したり。アカウントは不要です。",
-    "byTheNumbers": "数字で見る",
-    "theLedger": "全体像",
-    "startBuilding": "さあ、始めましょう。",
-    "allFree": "{n}個の計算機はすべて完全無料。サブスクリプションも登録も不要です。",
-    "heroLine1": "数字を把握しよう。",
-    "heroLine2": "成長を持続させよう。",
-    "heroSubtitle": "起業家、事業運営者、クリエイターのための計算機。数字を入力するだけで、ブラウザ上ですぐに答えが得られます。すべて無料、すべてプライベート。",
-    "freeCalculators": "無料の計算機",
-    "categories": "カテゴリ",
-    "toStart": "始める",
-    "calculatorsInCatalog": "カタログ内の計算機",
-    "acrossCategories": "の",
-    "calculationBenchmarks": "計算ベンチマーク",
-    "industryStandardData": "業界標準データ",
-    "alwaysFree": "いつでも無料",
-    "noPaywalls": "ペイウォールなし、段階なし",
-    "browseCalculators": "計算機を探す"
-  },
-  "pricing": {
-    "allFree": "すべての計算機は完全無料です。サブスクリプションもペイウォールもアカウントも必要ありません。",
-    "everythingFree": "すべて無料",
-    "subtitle": "サブスクリプションもペイウォールもありません。{n}個の計算機はすべて完全に無料でご利用いただけます。",
-    "forever": "永久に",
-    "feature1": "{n}個の計算機、制限なし",
-    "feature2": "ベンチマーク比較付きリアルタイム結果",
-    "feature3": "ステージ別の成長インサイト（シードからシリーズC+）",
-    "feature4": "ウェブサイトへの無制限埋め込み",
-    "feature5": "コラボレーションのためのURL共有"
-  },
-  "dashboard": {
-    "title": "ダッシュボード",
-    "heading": "ミッションコントロール",
-    "subtitle": "自分だけのダッシュボードを作成しましょう。必要な計算機を追加し、データを一度入力するだけで、すべてが連動します。",
-    "share": "共有",
-    "copied": "コピーしました！",
-    "addCalculators": "計算機を追加",
-    "noCalculatorsSelected": "計算機が選択されていません。テンプレートを選ぶか、個別に計算機を追加してください。",
-    "browseCalculators": "計算機を探す",
-    "calculatorsActive": "個の計算機",
-    "remove": "削除"
+    "deltaBoth": "両方"
   },
   "feedback": {
-    "wasThisHelpful": "役に立ちましたか？",
+    "wasThisHelpful": "参考になりましたか？",
     "yes": "はい",
     "no": "いいえ",
-    "thanks": "ご意見ありがとうございます！"
-  },
-  "email": {
-    "stayUpdated": "新しい計算機や機能の最新情報をお届けします。",
-    "placeholder": "you@example.com",
-    "subscribe": "登録する",
-    "success": "登録が完了しました！",
-    "error": "エラーが発生しました。もう一度お試しください。"
-  },
-  "blog": {
-    "title": "ブログ",
-    "subtitle": "SaaSメトリクスのインサイト、チュートリアル、業界ベンチマーク。",
-    "featuredPost": "注目の記事",
-    "allArticles": "すべての記事",
-    "readArticle": "記事を読む →",
-    "readMore": "続きを読む →",
-    "backToBlog": "← ブログに戻る"
-  },
-  "calculators": {
-    "browseCollection": "{m}カテゴリにわたる{n}個の計算機の完全コレクションをご覧ください。",
-    "editorial": "重要な指標のための無料・即時計算機。SaaSの収益やユニットエコノミクスから、AIコスト、副業収入、パーソナルファイナンスまで、すべての計算機は100%無料で、アカウントは不要です。入力するとリアルタイムに結果が更新され、データが端末の外に出ることはありません。創業者、事業運営者、クリエイター、そして素早く答えを必要とするすべての人のために作られました。",
-    "searchPlaceholder": "すべての計算機を検索...",
-    "viewAll": "すべて表示 →"
-  },
-  "error": {
-    "pageNotFound": "ページが見つかりません",
-    "calculatorNotFound": "計算機が見つかりません",
-    "goHome": "ホームに戻る",
-    "oops": "エラーが発生しました",
-    "somethingWentWrong": "問題が発生しました",
-    "tryAgain": "もう一度試す",
-    "notFoundDescription": "お探しのページは存在しません。"
-  },
-  "search": {
-    "placeholder": "計算機を検索...",
-    "ariaLabel": "計算機を検索",
-    "resultsFound": "{n}件の計算機が見つかりました"
-  },
-  "about": {
-    "title": "About",
-    "heading": "About SaaStainedNumbers",
-    "subtitle": "Free, private, instant calculators for the metrics that matter.",
-    "mission": "SaaStainedNumbers is built for founders, operators, and creators who need fast answers without digging through spreadsheets or paying for expensive tools. Every calculator is free, runs in your browser, and gives you an answer in seconds.",
-    "whoWeAre": "SaaStainedNumbers is a solo project focused on accuracy, transparency, and usefulness. Every calculator follows well-established industry formulas.",
-    "editorial": "Every calculator, guide, and benchmark on this site is reviewed for accuracy. Formulas follow standard SaaS industry definitions. Benchmarks are sourced from publicly available data where possible, with clear source citations in every benchmark table.",
-    "freeModel": "SaaStainedNumbers is and always will be free. The site uses affiliate links and may display ads in the future. Nothing is gated, no account is required, and your data never leaves your device.",
-    "contactLink": "Contact us"
-  },
-  "contact": {
-    "title": "Contact",
-    "heading": "Get in Touch",
-    "subtitle": "Have a question, suggestion, or feedback? We'd love to hear from you.",
-    "emailLabel": "Email us at",
-    "responseTime": "We aim to respond within 2 business days.",
-    "backToHome": "← Back to Home"
-  },
-  "privacy": {
-    "title": "Privacy Policy",
-    "heading": "Privacy Policy",
-    "subtitle": "How we handle your data."
-  },
-  "terms": {
-    "title": "Terms of Service",
-    "heading": "Terms of Service",
-    "subtitle": "The rules of the road."
+    "thanks": "ありがとうございます！"
   },
   "footer": {
-    "product": "プロダクト",
-    "categories": "カテゴリ",
+    "product": "製品",
+    "about": "概要",
+    "categories": "カテゴリー",
     "resources": "リソース",
-    "about": "About",
     "legal": "法的情報",
-    "disclaimer": "免責事項",
     "privacyPolicy": "プライバシーポリシー",
     "termsOfService": "利用規約",
     "cookiePolicy": "クッキーポリシー",
-    "copyright": "SaaStainedNumbers"
+    "copyright": "SaaStainedNumbers. 無断転載を禁じます。"
+  },
+  "pricing": {
+    "everythingFree": "すべて無料",
+    "allFree": "すべての計算機を永久無料。",
+    "subtitle": "{n}の数学的に検証された計算機。ゼロコスト。無制限アクセス。",
+    "forever": "永久に。",
+    "feature1": "すべての{n}計算機を含む",
+    "feature2": "リアルタイムの結果とインサイト",
+    "feature3": "任意のサイトに埋め込み — 無料",
+    "feature4": "無制限の使用 — 上限なし",
+    "feature5": "コミュニティサポート含む",
+    "pricing": "料金"
+  },
+  "blog": {
+    "title": "ブログ",
+    "subtitle": "SaaSビルダーのためのインサイト、ガイド、戦略。",
+    "featuredPost": "注目記事",
+    "readArticle": "記事を読む →",
+    "allArticles": "すべての記事",
+    "readMore": "もっと読む →",
+    "backToBlog": "← ブログに戻る"
+  },
+  "dashboard": {
+    "heading": "ダッシュボード",
+    "subtitle": "主要な指標を一か所で追跡。",
+    "share": "共有",
+    "copied": "コピーしました！",
+    "addCalculators": "計算機を追加",
+    "noCalculatorsSelected": "まだ計算機が選択されていません。",
+    "browseCalculators": "計算機を表示",
+    "calculatorsActive": "アクティブな計算機",
+    "remove": "削除"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "お問い合わせ",
+    "subtitle": "ご質問、ご提案、またはご連絡があれば、ぜひお聞かせください。",
+    "emailLabel": "メールを送信",
+    "responseTime": "通常24時間以内に返信いたします。"
+  },
+  "calculators": {
+    "browseCollection": "{n}個の計算機を{m}カテゴリーで閲覧。",
+    "editorial": "すべての計算機は数学的に検証され、業界標準のデータソースと比較されています。アカウント不要 — すぐに計算できます。",
+    "searchPlaceholder": "計算機を検索...",
+    "viewAll": "すべて表示 →"
+  },
+  "about": {
+    "title": "概要",
+    "heading": "SaaStainedNumbersについて",
+    "subtitle": "SaaS創業者、運営者、開発者のための無料・数学検証済み計算機。",
+    "mission": "私たちの使命は、財務およびビジネス数学をすべての人が利用できるようにすることです。ビジネスをモデル化し、計画し、理解するためのツールは、有料壁や企業契約の背後に隠されるのではなく、無料でオープンに、すべての人が利用できるべきだと考えています。",
+    "whoWeAre": "私たちは、単純な計算機に料金を支払うことにうんざりしたエンジニア、数学者、SaaS運営者の小さなチームです。このサイトのすべての計算機は、第一原理から構築され、数学的に検証され、実際の業界データと比較されています。",
+    "editorial": "すべての計算機は標準的な数学・財務計算式を使用して開発されています。各計算式は実例とともに文書化されています。業界ベンチマークは、公開データ、公表された研究、信頼できる業界レポートから取得しています。出典を明記し、定期的に更新しています。",
+    "freeModel": "SaaStainedNumbersは、非侵入型の広告と計算機FAQセクション内のコンテキストアフィリエイトリンクによって運営されています。ユーザーデータを販売したり、登録を要求したり、計算機を有料壁の背後に置いたりすることは絶対にありません。埋め込みは完全に広告なしです。",
+    "haveQuestions": "ご質問やご提案がありますか？ぜひお聞かせください。",
+    "contactLink": "お問い合わせ →"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー",
+    "heading": "プライバシーポリシー",
+    "subtitle": "データの取り扱いについて — 簡略版：計算入力値は収集しません。"
+  },
+  "terms": {
+    "title": "利用規約",
+    "heading": "利用規約",
+    "subtitle": "SaaStainedNumbersをご利用いただくためのルール。"
+  },
+  "error": {
+    "pageNotFound": "ページが見つかりません",
+    "notFoundDescription": "お探しのページは存在しないか、移動されました。",
+    "goHome": "ホームに戻る"
   }
 }

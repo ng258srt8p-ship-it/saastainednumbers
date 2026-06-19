@@ -2,7 +2,6 @@ import { getAllPosts } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { SidekickAd } from "@/components/SidekickAd";
 import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 import { getTranslations } from "@/lib/getTranslations";
 
@@ -71,9 +70,6 @@ export default async function BlogPostPage({ params }: PageProps) {
             className="prose prose-gray dark:prose-invert max-w-none"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
-          <div className="mt-8">
-            <SidekickAd />
-          </div>
         </article>
       </div>
     </>

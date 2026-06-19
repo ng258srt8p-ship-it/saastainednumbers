@@ -48,7 +48,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={mountReady ? toggle : undefined}
-      className="flex items-center justify-center w-9 h-9 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
+      className="flex items-center justify-center w-9 h-9 rounded-lg text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
       aria-label={mountReady ? (dark ? "Switch to light mode" : "Switch to dark mode") : "Toggle theme"}
     >
       {mountReady ? (
