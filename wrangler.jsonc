@@ -6,7 +6,7 @@
     "enabled": true
   },
   "build": {
-    "command": "./build-static.sh",
+    "command": "./scripts/build-static.sh",
     "cwd": "."
   },
   "assets": {
