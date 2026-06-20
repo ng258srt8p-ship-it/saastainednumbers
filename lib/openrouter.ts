@@ -2,7 +2,14 @@ import type { ScreenData } from "./ai-chat-context";
 import chatConfig from "./chat-key.json";
 
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
-const MODEL = "openrouter/free";
+
+// Ordered fallback chain: try each model in sequence until one responds
+const MODEL_CHAIN: string[] = [
+  "meta-llama/llama-3.2-3b-instruct:free",
+  "liquid/lfm-2.5-1.2b-instruct:free",
+  "google/gemini-2.0-flash-exp:free",
+  "openrouter/free",
+];
 
 // Load API key from chat-key.json (base64-encoded)
 const _b64 = chatConfig.k;
@@ -77,36 +84,77 @@ Help them compare these metrics.`;
   return base;
 }
 
+/**
+ * Attempt to send a chat completion request with a given model.
+ * Returns the response content on success, or null on failure.
+ */
+async function tryModel(
+  model: string,
+  messages: ChatMessage[],
+  screenData: ScreenData | null,
+  signal: AbortSignal
+): Promise<string | null> {
+  try {
+    const response = await fetch(OPENROUTER_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+        "HTTP-Referer": "https://saastainednumbers.com",
+        "X-Title": "SaaStainedNumbers",
+      },
+      body: JSON.stringify({
+        model,
+        messages: [{ role: "system", content: buildSystemPrompt(screenData) }, ...messages],
+        max_tokens: 1024,
+        temperature: 0.7,
+      }),
+      signal,
+    });
+
+    if (!response.ok) {
+      // 429 is rate-limited; don't retry on 4xx
+      if (response.status === 429) return null;
+      if (response.status >= 400 && response.status < 500) return null;
+      // 5xx — transient server error, could retry
+      return null;
+    }
+
+    const data: ChatResponse = await response.json();
+    const content = data.choices?.[0]?.message?.content;
+    return content || null;
+  } catch {
+    // Network error, timeout, etc.
+    return null;
+  }
+}
+
 export async function sendChatMessage(
   messages: ChatMessage[],
   screenData: ScreenData | null
 ): Promise<string> {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 10000);
-  const response = await fetch(OPENROUTER_API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-      "HTTP-Referer": "https://saastainednumbers.com",
-      "X-Title": "SaaStainedNumbers",
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      messages: [{ role: "system", content: buildSystemPrompt(screenData) }, ...messages],
-      max_tokens: 1024,
-      temperature: 0.7,
-    }),
-    signal: controller.signal,
-  });
-  clearTimeout(timeoutId);
-  if (!response.ok) {
-    if (response.status === 429) throw new Error("Daily AI chat limit reached.");
-    await response.text().catch(() => {});
-    throw new Error(`AI chat error (${response.status}).`);
+  const timeoutId = setTimeout(() => controller.abort(), 30000);
+
+  try {
+      // Try models in order until one responds
+      let content: string | null = null;
+      for (const model of MODEL_CHAIN) {
+        content = await tryModel(model, messages, screenData, controller.signal);
+        if (content) break;
+      }
+
+    if (!content) {
+      throw new Error("Sorry, I couldn't get a response from the AI. Please try again.");
+    }
+
+    return content;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") {
+      throw new Error("Request timed out. Please check your connection and try again.");
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
   }
-  const data: ChatResponse = await response.json();
-  const c = data.choices?.[0]?.message?.content;
-  if (!c) throw new Error("Sorry, I didn't get a response.");
-  return c;
 }
