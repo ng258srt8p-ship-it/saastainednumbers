@@ -50,7 +50,7 @@ npm run test:e2e:ui
 npm run test:e2e:headed
 
 # Serve static export and run tests (for CI-like run)
-./build-static.sh
+./scripts/build-static.sh
 npx serve out -l 3000 &
 npx playwright test
 

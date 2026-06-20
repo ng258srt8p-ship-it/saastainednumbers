@@ -47,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline
       - name: Build static export
-        run: ./build-static.sh
+        run: ./scripts/build-static.sh
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
       - name: Start server and run E2E tests
@@ -87,7 +87,7 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline
       - name: Build static export
-        run: ./build-static.sh
+        run: ./scripts/build-static.sh
       - name: Copy Cloudflare Functions into out/
         run: cp -r functions out/functions
       - name: Deploy to Cloudflare Pages
