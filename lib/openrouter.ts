@@ -16,6 +16,47 @@ interface ChatResponse {
   }>;
 }
 
+interface ApiConfig {
+  openrouterApiKey: string | null;
+  configured: boolean;
+  model: string;
+}
+
+/**
+ * Cached API key — fetched once from the runtime config endpoint.
+ * Falls back to the build-time env var (for local dev).
+ */
+let cachedKey: string | null | undefined = undefined;
+
+async function getApiKey(): Promise<string> {
+  if (cachedKey !== undefined) return cachedKey!;
+
+  // Try runtime config endpoint (production: Cloudflare Function → Pages env var)
+  try {
+    const res = await fetch("/api/config", { method: "GET", signal: AbortSignal.timeout(3000) });
+    if (res.ok) {
+      const config: ApiConfig = await res.json();
+      if (config.configured && config.openrouterApiKey) {
+        cachedKey = config.openrouterApiKey;
+        return cachedKey;
+      }
+    }
+  } catch {
+    // Runtime endpoint not available (local dev with serve, or CF not configured)
+  }
+
+  // Fall back to build-time env var (local dev with .env.local)
+  const fallback = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+  if (fallback) {
+    cachedKey = fallback;
+    return cachedKey;
+  }
+
+  // Cache null so we don't retry the fetch on every message
+  cachedKey = null;
+  throw new Error("AI chat is not configured. Please set NEXT_PUBLIC_OPENROUTER_API_KEY.");
+}
+
 /**
  * Build a system prompt that includes the current screen context.
  * This lets the AI "see" what the user is looking at.
@@ -82,10 +123,7 @@ export async function sendChatMessage(
   messages: ChatMessage[],
   screenData: ScreenData | null
 ): Promise<string> {
-  const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
-  if (!apiKey) {
-    throw new Error("AI chat is not configured. Please set NEXT_PUBLIC_OPENROUTER_API_KEY.");
-  }
+  const apiKey = await getApiKey();
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10000);
