@@ -93,24 +93,27 @@ export const CalculatorWidget = function CalculatorWidget({ slug, onRemove, onOu
 
   // Handle slider changes — update local state AND propagate to parent
   const handleChange = useCallback((id: string) => (v: number) => {
-    // Update local state
-    setValues(prev => {
-      const newValues = { ...prev, [id]: v };
-      // Read refs inside the updater — they hold the latest values
-      const c = calcRef.current;
-      const notify = onOutputsChangeRef.current;
-      if (c && notify) {
-        try {
-          const newOutputs = computeOutputs(newValues, c.slug);
-          if (newOutputs) {
-            notify(c.slug, newOutputs);
-          }
-        } catch {
-          // Engine error — ignore
+    const c = calcRef.current;
+    const notify = onOutputsChangeRef.current;
+
+    // Build new values from current refs (avoid stale closure with the updater below)
+    const prevValues = valuesRef.current;
+    const newValues = { ...prevValues, [id]: v };
+
+    // Update local state (pure — just returns new state)
+    setValues(newValues);
+
+    // Propagate to parent OUTSIDE the state updater to avoid render-phase side effects
+    if (c && notify) {
+      try {
+        const newOutputs = computeOutputs(newValues, c.slug);
+        if (newOutputs) {
+          notify(c.slug, newOutputs);
         }
+      } catch {
+        // Engine error — ignore
       }
-      return newValues;
-    });
+    }
   }, []);
 
   // Propagate outputs to parent on mount and whenever calc/slug changes
