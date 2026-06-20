@@ -180,7 +180,7 @@ export function CalculatorCatalog({ onAddCalculator, onApplyTemplate, addedSlugs
                   return (
                     <button
                       key={calc.slug}
-                      draggable={!isAdded}
+                      draggable={isAdded ? "false" : "true"}
                       onDragStart={(e) => handleDragStart(e, calc.slug)}
                       onClick={() => !isAdded && onAddCalculator(calc.slug)}
                       title={calc.meta.title}

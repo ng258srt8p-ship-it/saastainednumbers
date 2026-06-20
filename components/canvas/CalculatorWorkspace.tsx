@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CalculatorWidget } from "./CalculatorWidget";
 import { CanvasTotalWidget } from "./CanvasTotalWidget";
@@ -52,11 +52,16 @@ export function CalculatorWorkspace({
       return;
     }
 
-    // Compute initial outputs for each calculator
+    // Use a flag to prevent multiple initializations
+    let isCancelled = false;
+
+    // Function to compute initial outputs for each calculator
     const initializeOutputs = async () => {
       const initialOutputs: Record<string, Record<string, number | string>> = {};
 
       for (const slug of slugs) {
+        if (isCancelled) return;
+
         try {
           // Get calculator config
           const { getCalculator } = await import('@/lib/registry');
@@ -90,12 +95,16 @@ export function CalculatorWorkspace({
         }
       }
 
-      if (Object.keys(initialOutputs).length > 0) {
+      if (!isCancelled && Object.keys(initialOutputs).length > 0) {
         setAllOutputs(initialOutputs);
       }
     };
 
     initializeOutputs();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [slugs]);
 
   return (

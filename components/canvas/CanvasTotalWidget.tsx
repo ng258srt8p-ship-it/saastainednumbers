@@ -26,6 +26,7 @@ export function CanvasTotalWidget({ allOutputs, calculatorCount }: CanvasTotalWi
     let ltvCount = 0;
     let bestLtvCac = 0;
     const churnRates: number[] = [];
+    const expansionRates: number[] = [];
 
     for (const outputs of Object.values(allOutputs)) {
       const mrr = Number(outputs.mrr) || 0;
@@ -45,6 +46,10 @@ export function CanvasTotalWidget({ allOutputs, calculatorCount }: CanvasTotalWi
 
       const churn = Number(outputs.monthlyChurnPct) || 0;
       if (churn > 0) churnRates.push(churn);
+
+      // Track expansion rates for later aggregation
+      const expansionRate = Number(outputs.expansionRevenueRate) || 0;
+      if (expansionRate > 0) expansionRates.push(expansionRate);
 
       // Revenue — check multiple possible output IDs
       const revSources = [
@@ -88,6 +93,11 @@ export function CanvasTotalWidget({ allOutputs, calculatorCount }: CanvasTotalWi
     if (churnRates.length > 0) {
       const avg = churnRates.reduce((a, b) => a + b, 0) / churnRates.length;
       result.push({ label: "Avg Churn", value: avg.toFixed(1) + "%", type: "metric" });
+    }
+
+    if (expansionRates.length > 0) {
+      const avgExpansion = expansionRates.reduce((a, b) => a + b, 0) / expansionRates.length;
+      result.push({ label: "Avg Expansion Rate", value: avgExpansion.toFixed(1) + "%", type: "ratio" });
     }
 
     return result;
