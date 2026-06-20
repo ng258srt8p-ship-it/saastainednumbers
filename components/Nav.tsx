@@ -41,8 +41,8 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
     <header className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full px-4 pointer-events-none">
       <nav
         className={`pointer-events-auto mx-auto max-w-[880px] ${
-              mobileMenuOpen ? "rounded-[20px]" : "rounded-full"
-            } backdrop-blur-[48px] bg-[rgba(237,237,237,0.88)] dark:bg-[rgba(30,30,30,0.88)] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-black/[0.04] dark:border-white/[0.06] overflow-hidden transition-[border-radius] duration-300`}
+            mobileMenuOpen ? "rounded-[20px]" : "rounded-full"
+          } backdrop-blur-[48px] bg-[rgba(237,237,237,0.88)] dark:bg-[rgba(30,30,30,0.88)] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-black/[0.04] dark:border-white/[0.06] [&:not(:has([role="listbox"]))]:overflow-hidden transition-[border-radius] duration-300`}
         style={{
           gridTemplateRows: "48px 1fr",
           display: "grid",
