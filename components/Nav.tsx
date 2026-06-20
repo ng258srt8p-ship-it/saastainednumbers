@@ -38,7 +38,7 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
   ];
 
   return (
-    <header className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full px-4 pointer-events-none">
+    <header className="fixed top-0 left-1/2 z-50 -translate-x-1/2 w-full px-4 pt-4 pointer-events-none bg-white dark:bg-gray-950">
       <nav
         className={`pointer-events-auto mx-auto max-w-[880px] ${
             mobileMenuOpen ? "rounded-[20px]" : "rounded-full"
