@@ -15,7 +15,7 @@ export function MainContentWrapper({ children }: { children: React.ReactNode }) 
     }
   }, []);
 
-  // No padding on embed pages, routes, and canvas (canvas fills viewport with own nav offset)
+  // No padding on embed pages and routes
   const isEmbed = pathname?.startsWith("/embed") || embed || pathname?.startsWith("/canvas");
 
   return (
