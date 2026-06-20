@@ -83,7 +83,7 @@ function CanvasPageInner() {
   }, []);
 
   return (
-    <div className="flex h-[calc(100vh-64px)]" style={{ height: "calc(100vh - 64px)" }}>
+    <div className="flex h-screen bg-white dark:bg-gray-800 overflow-hidden" style={{ height: "100vh", paddingTop: "66px", boxSizing: "border-box" }}>
       {/* Catalog sidebar */}
       <CalculatorCatalog
         onAddCalculator={addCalculator}
