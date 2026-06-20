@@ -109,7 +109,7 @@ export function CalculatorWorkspace({
 
   return (
     <main
-      className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900/50 p-6"
+      className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900/50 px-6 pb-6 pt-[66px]"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >

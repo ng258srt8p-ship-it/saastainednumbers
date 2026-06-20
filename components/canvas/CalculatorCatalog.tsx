@@ -51,7 +51,7 @@ export function CalculatorCatalog({ onAddCalculator, onApplyTemplate, addedSlugs
   // Drag end cleanup — no-op needed to clear drag state
 
   return (
-    <aside className="w-72 lg:w-80 border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-y-auto shrink-0 flex flex-col">
+    <aside className="w-72 lg:w-80 border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-y-auto shrink-0 flex flex-col pt-[66px]">
       {/* Templates section */}
       <div className="border-b border-gray-100 dark:border-gray-700">
         <button
