@@ -62,7 +62,26 @@ export default async function CalculatorLayout({
   } : null;
 
   const breadcrumbSchema = generateBreadcrumbListSchema(resolved.category, resolved.slug);
-  const schemas = [webApp, howTo, breadcrumbSchema, ...(faq ? [faq] : [])].filter(Boolean);
+
+  const webpageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: resolved.meta.title,
+    description: resolved.meta.description,
+    url: `https://saastainednumbers.com/${resolved.category}/${resolved.slug}`,
+    about: {
+      "@type": "Thing",
+      name: "Financial Mathematics",
+    },
+    specialty: "FinancialPlanning",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "SaaStainedNumbers",
+      url: "https://saastainednumbers.com",
+    },
+  };
+
+  const schemas = [webApp, howTo, breadcrumbSchema, webpageSchema, ...(faq ? [faq] : [])].filter(Boolean);
 
   return (
     <>

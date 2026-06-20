@@ -13,7 +13,7 @@
     "loading": "Carregando..."
   },
   "home": {
-    "heroLine1": "Conhe\u00e7a seus n\u00fameros.",
+    "heroLine1": "Conheça seus números.",
     "heroLine2": "Sustente seu crescimento.",
     "heroSubtitle": "categorias, calculadoras. Escolha seu caminho.",
     "startCalculating": "Começar a Calcular",
@@ -163,7 +163,20 @@
     "heading": "Entre em Contato",
     "subtitle": "Tem perguntas, sugestões ou só quer dizer oi? Adoraríamos ouvir de você.",
     "emailLabel": "Envie-nos um Email",
-    "responseTime": "Normalmente respondemos em até 24 horas."
+    "responseTime": "Normalmente respondemos em até 24 horas.",
+    "formTitle": "Envie-nos uma Mensagem",
+    "formName": "Seu Nome",
+    "formEmail": "Seu Email",
+    "formSubject": "Assunto",
+    "formMessage": "Mensagem",
+    "formSend": "Enviar Mensagem",
+    "formSending": "Enviando...",
+    "formSuccess": "Obrigado! Responderemos em até 24 horas.",
+    "formError": "Algo deu errado. Tente novamente ou nos envie um email.",
+    "formSubjectGeneral": "Consulta Geral",
+    "formSubjectBug": "Relatar Erro",
+    "formSubjectSuggestion": "Sugestão",
+    "formSubjectLegal": "Consulta Jurídica"
   },
   "calculators": {
     "browseCollection": "Explore nossa coleção de {n} calculadoras em {m} categorias.",

@@ -9,6 +9,7 @@ import { engines } from "@/lib/engine-registry";
 import { Insights } from "@/components/Insights";
 import type { CalculatorConfig } from "@/calculators/config/calculator-schema";
 import type { Locale } from "@/lib/useLocale";
+import { DisclaimerBanner } from "@/calculators/ui/DisclaimerBanner";
 
 interface Props {
   slug: string;
@@ -148,9 +149,7 @@ export function EmbedClient({ slug, config, locale, strings }: Props) {
           </span>
         </a>
       </div>
-      <p className="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center px-2">
-        {strings.disclaimer}
-      </p>
+      <DisclaimerBanner />
     </div>
   );
 }

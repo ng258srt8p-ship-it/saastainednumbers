@@ -64,6 +64,23 @@ export function generateJsonLd(slug: string, config: CalculatorConfig, faqItems:
     generateWebApplicationSchema(slug, config, locale),
     generateBreadcrumbListSchema(config.category, slug),
     generateFAQPageSchema(faqItems),
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: config.meta.title,
+      description: config.meta.description,
+      url: `https://saastainednumbers.com/${config.category}/${slug}`,
+      about: {
+        "@type": "Thing",
+        name: "Financial Mathematics",
+        description: "Educational financial modeling and business calculation tools",
+      },
+      specialty: "FinancialPlanning",
+      isAccessibleForFree: true,
+      significantLink: [
+        { "@type": "LinkRole", linkTarget: `https://saastainednumbers.com/${config.category}/${slug}`, name: config.meta.title, inLanguage: locale ?? "en" },
+      ],
+    },
   ];
   return schemas.map((s) => JSON.stringify(s)).join("\n");
 }

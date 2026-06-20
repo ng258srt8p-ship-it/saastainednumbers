@@ -13,8 +13,8 @@
     "loading": "Cargando..."
   },
   "home": {
-    "heroLine1": "Conoce tus n\u00fameros.",
-    "heroLine2": "Sost\u00e9n tu crecimiento.",
+    "heroLine1": "Conoce tus números.",
+    "heroLine2": "Sostén tu crecimiento.",
     "heroSubtitle": "calculadoras. Elige tu camino.",
     "startCalculating": "Empezar a Calcular",
     "browseAll": "Ver Todo",
@@ -163,7 +163,20 @@
     "heading": "Ponte en Contacto",
     "subtitle": "¿Tienes preguntas, sugerencias o solo quieres saludar? Nos encantaría saber de ti.",
     "emailLabel": "Envíanos un Email",
-    "responseTime": "Normalmente respondemos dentro de 24 horas."
+    "responseTime": "Normalmente respondemos dentro de 24 horas.",
+    "formTitle": "Envíanos un Mensaje",
+    "formName": "Tu Nombre",
+    "formEmail": "Tu Correo Electrónico",
+    "formSubject": "Asunto",
+    "formMessage": "Mensaje",
+    "formSend": "Enviar Mensaje",
+    "formSending": "Enviando...",
+    "formSuccess": "¡Gracias! Te responderemos dentro de 24 horas.",
+    "formError": "Algo salió mal. Intenta de nuevo o escríbenos directamente.",
+    "formSubjectGeneral": "Consulta General",
+    "formSubjectBug": "Reportar Error",
+    "formSubjectSuggestion": "Sugerencia",
+    "formSubjectLegal": "Consulta Legal"
   },
   "calculators": {
     "browseCollection": "Explora nuestra colección de {n} calculadoras en {m} categorías.",

@@ -163,7 +163,20 @@
     "heading": "Kontakt aufnehmen",
     "subtitle": "Haben Sie Fragen, Anregungen oder möchten Sie einfach Hallo sagen? Wir freuen uns, von Ihnen zu hören.",
     "emailLabel": "E-Mail senden",
-    "responseTime": "Wir antworten in der Regel innerhalb von 24 Stunden."
+    "responseTime": "Wir antworten in der Regel innerhalb von 24 Stunden.",
+    "formTitle": "Nachricht Senden",
+    "formName": "Dein Name",
+    "formEmail": "Deine E-Mail",
+    "formSubject": "Betreff",
+    "formMessage": "Nachricht",
+    "formSend": "Nachricht Senden",
+    "formSending": "Wird gesendet...",
+    "formSuccess": "Danke! Wir melden uns innerhalb von 24 Stunden.",
+    "formError": "Etwas ist schiefgelaufen. Versuche es erneut oder schreibe uns direkt.",
+    "formSubjectGeneral": "Allgemeine Anfrage",
+    "formSubjectBug": "Fehler melden",
+    "formSubjectSuggestion": "Vorschlag",
+    "formSubjectLegal": "Rechtliche Anfrage"
   },
   "calculators": {
     "browseCollection": "Durchstöbern Sie unsere Sammlung von {n} Rechnern in {m} Kategorien.",

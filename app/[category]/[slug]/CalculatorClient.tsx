@@ -12,6 +12,7 @@ import { useComparisonState } from "@/lib/useComparisonState";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { EmbedModal } from "@/calculators/ui/EmbedModal";
 import { FeedbackWidget } from "@/calculators/ui/FeedbackWidget";
+import { DisclaimerBanner } from "@/calculators/ui/DisclaimerBanner";
 import { renderContent } from "@/lib/renderContent";
 import { analytics } from "@/lib/analytics";
 import { getMetricKey } from "@/lib/benchmarks";
@@ -452,9 +453,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
         </div>
       )}
 
-      <p className="mt-8 text-xs text-gray-600 dark:text-gray-400 text-center px-4">
-        {strings?.disclaimer ?? "Disclaimer: Results are for informational purposes only and should not be considered financial advice. SaaStainedNumbers is not responsible for any decisions made based on these calculations."}
-      </p>
+      <DisclaimerBanner />
       <EmbedModal
         slug={config.slug}
         title={config.meta.title}

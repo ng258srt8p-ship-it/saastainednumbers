@@ -163,7 +163,20 @@
     "heading": "お問い合わせ",
     "subtitle": "ご質問、ご提案、またはご連絡があれば、ぜひお聞かせください。",
     "emailLabel": "メールを送信",
-    "responseTime": "通常24時間以内に返信いたします。"
+    "responseTime": "通常24時間以内に返信いたします。",
+    "formTitle": "メッセージを送信",
+    "formName": "お名前",
+    "formEmail": "メールアドレス",
+    "formSubject": "件名",
+    "formMessage": "メッセージ",
+    "formSend": "送信",
+    "formSending": "送信中...",
+    "formSuccess": "ありがとうございます！24時間以内にご連絡いたします。",
+    "formError": "エラーが発生しました。もう一度お試しいただくか、直接メールでお問い合わせください。",
+    "formSubjectGeneral": "一般的なお問い合わせ",
+    "formSubjectBug": "バグ報告",
+    "formSubjectSuggestion": "提案",
+    "formSubjectLegal": "法的なお問い合わせ"
   },
   "calculators": {
     "browseCollection": "{n}個の計算機を{m}カテゴリーで閲覧。",

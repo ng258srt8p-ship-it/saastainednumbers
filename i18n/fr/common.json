@@ -163,7 +163,20 @@
     "heading": "Prenez Contact",
     "subtitle": "Des questions, des suggestions ou simplement envie de dire bonjour ? Nous serions ravis de vous entendre.",
     "emailLabel": "Envoyez-nous un Email",
-    "responseTime": "Nous répondons généralement sous 24 heures."
+    "responseTime": "Nous répondons généralement sous 24 heures.",
+    "formTitle": "Envoyez-nous un Message",
+    "formName": "Votre Nom",
+    "formEmail": "Votre Email",
+    "formSubject": "Sujet",
+    "formMessage": "Message",
+    "formSend": "Envoyer le Message",
+    "formSending": "Envoi en cours...",
+    "formSuccess": "Merci ! Nous vous répondrons sous 24 heures.",
+    "formError": "Une erreur s'est produite. Réessayez ou écrivez-nous directement.",
+    "formSubjectGeneral": "Demande Générale",
+    "formSubjectBug": "Signaler un Problème",
+    "formSubjectSuggestion": "Suggestion",
+    "formSubjectLegal": "Demande Juridique"
   },
   "calculators": {
     "browseCollection": "Parcourez notre collection de {n} calculateurs dans {m} catégories.",

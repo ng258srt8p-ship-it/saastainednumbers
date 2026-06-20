@@ -152,7 +152,20 @@
     "heading": "Get in Touch",
     "subtitle": "Have questions, suggestions, or just want to say hello? We'd love to hear from you.",
     "emailLabel": "Email Us",
-    "responseTime": "We typically respond within 24 hours."
+    "responseTime": "We typically respond within 24 hours.",
+    "formTitle": "Send Us a Message",
+    "formName": "Your Name",
+    "formEmail": "Your Email",
+    "formSubject": "Subject",
+    "formMessage": "Message",
+    "formSend": "Send Message",
+    "formSending": "Sending...",
+    "formSuccess": "Thanks! We'll get back to you within 24 hours.",
+    "formError": "Something went wrong. Please try again or email us directly.",
+    "formSubjectGeneral": "General Inquiry",
+    "formSubjectBug": "Bug Report",
+    "formSubjectSuggestion": "Suggestion",
+    "formSubjectLegal": "Legal Inquiry"
   },
   "dashboard": {
     "heading": "Dashboard",
