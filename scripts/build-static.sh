@@ -39,7 +39,7 @@ FIRST=true
 for locale in "${LOCALES[@]}"; do
   echo ""
   echo "=== Building for locale: $locale ==="
-  STATIC_EXPORT=true NEXT_PUBLIC_LOCALE=$locale npx next build
+  STATIC_EXPORT=true NEXT_PUBLIC_LOCALE=$locale NEXT_PUBLIC_OPENROUTER_API_KEY="${NEXT_PUBLIC_OPENROUTER_API_KEY:-}" npx next build
 
   if [ "$FIRST" = true ]; then
     # First build (English): keep everything at root
