@@ -4,6 +4,10 @@ import chatConfig from "./chat-key.json";
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const MODEL = "openrouter/free";
 
+// Load API key from chat-key.json (base64-encoded)
+const _b64 = chatConfig.k;
+const OPENROUTER_API_KEY = atob(_b64);
+
 interface ChatMessage {
   role: "system" | "user" | "assistant";
   content: string;
@@ -16,9 +20,6 @@ interface ChatResponse {
     finish_reason: string;
   }>;
 }
-
-const _b64 = chatConfig.k;
-const OPENROUTER_API_KEY = atob(_b64);
 
 /**
  * Build a system prompt that includes the current screen context.

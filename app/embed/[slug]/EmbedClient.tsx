@@ -22,6 +22,10 @@ interface Props {
 
 export function EmbedClient({ slug, config, locale, strings }: Props) {
   const searchParams = useSearchParams();
+
+  // Handle null searchParams (Next.js 16+ requires this check for SSR safety)
+  if (!searchParams) return null;
+
   const theme = searchParams.get("theme") ?? "light";
   const embedHeight = Number(searchParams.get("height")) || 600;
   const hideHeader = searchParams.get("hideHeader") === "true";
