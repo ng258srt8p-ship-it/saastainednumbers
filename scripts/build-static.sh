@@ -17,11 +17,12 @@ cleanup() {
   echo ""
   echo "Restoring API routes..."
   if [ -d ".api-backup" ]; then
-    rm -rf app/api
+    rm -rf app/api app/privacy-policy
     cp -r .api-backup app/api
     rm -rf .api-backup
     echo "API routes restored."
   fi
+  git checkout app/privacy-policy/route.ts 2>/dev/null || true
   if [ -d "out-final" ]; then
     rm -rf out
     mv out-final out
@@ -30,7 +31,7 @@ cleanup() {
 trap cleanup EXIT
 
 echo "Removing all API routes for static export..."
-rm -rf app/api
+rm -rf app/api app/privacy-policy
 
 mkdir -p out-final
 FIRST=true
