@@ -35,6 +35,8 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
     { label: t.canvas ?? "Canvas", href: "/canvas" },
     { label: t.pricing ?? "Pricing", href: "/pricing" },
     { label: t.blog ?? "Blog", href: "/blog" },
+    { label: "About Us", href: "/about" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
   return (
@@ -42,7 +44,7 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
       <nav
         className={`pointer-events-auto mx-auto max-w-[880px] ${
             mobileMenuOpen ? "rounded-[20px]" : "rounded-full"
-          } backdrop-blur-[48px] bg-[rgba(237,237,237,0.88)] dark:bg-[rgba(30,30,30,0.88)] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-black/[0.04] dark:border-white/[0.06] [&:not(:has([role="listbox"]))]:overflow-hidden transition-[border-radius] duration-300`}
+          } backdrop-blur-[48px] bg-[rgba(237,237,237,0.88)] dark:bg-[rgba(30,30,30,0.88)] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-black/[0.04] dark:border-white/[0.06] [&:not(:has([role=\"listbox\"))]:overflow-hidden transition-[border-radius] duration-300`}
         style={{
           gridTemplateRows: "48px 1fr",
           display: "grid",
@@ -93,6 +95,18 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
                 className="px-3 py-1.5 text-sm font-semibold tracking-[0.2px] text-brand-600 dark:text-brand-400 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors"
               >
                 {t.canvas}
+              </Link>
+              <Link
+                href="/about"
+                className="px-3 py-1.5 text-sm font-semibold tracking-[0.2px] text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/contact"
+                className="px-3 py-1.5 text-sm font-semibold tracking-[0.2px] text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors"
+              >
+                Contact Us
               </Link>
             </div>
 
