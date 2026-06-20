@@ -96,7 +96,9 @@ export default async function RootLayout({
         >
           {t("common.skipToContent")}
         </a>
-          <ShowWhenNotEmbed><Nav /></ShowWhenNotEmbed>
+          <ShowWhenNotEmbed>
+            <Nav t={{ pricing: t("nav.pricing"), blog: t("nav.blog"), calculators: t("nav.calculators"), canvas: "Canvas" }} locale={locale as Locale} />
+          </ShowWhenNotEmbed>
           <main id="main-content" className="flex-1 flex flex-col min-h-0">
             <MainContentWrapper>
               <PageTransition>{children}</PageTransition>

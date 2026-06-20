@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 
 interface CanvasTotalWidgetProps {
-  allOutputs: Map<string, Record<string, number | string>>;
+  allOutputs: Record<string, Record<string, number | string>>;
   calculatorCount: number;
 }
 
@@ -27,7 +27,7 @@ export function CanvasTotalWidget({ allOutputs, calculatorCount }: CanvasTotalWi
     let bestLtvCac = 0;
     const churnRates: number[] = [];
 
-    for (const outputs of allOutputs.values()) {
+    for (const outputs of Object.values(allOutputs)) {
       const mrr = Number(outputs.mrr) || 0;
       if (mrr > 0) totalMRR += mrr;
 

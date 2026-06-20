@@ -62,7 +62,7 @@ export default async function Home() {
   const openCanvasLabel = t("home.openCanvas") || "Open Canvas";
 
   return (
-    <div className="flex flex-col flex-1">
+    <div className="flex flex-col flex-1 -mt-16">
       {/* § HERO */}
       <section className="relative overflow-hidden px-4 py-24 sm:py-32">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950" />

@@ -18,7 +18,7 @@ export function CalculatorWorkspace({
   onRemoveCalculator,
   onClearWorkspace,
 }: CalculatorWorkspaceProps) {
-  const [allOutputs, setAllOutputs] = useState<Map<string, Record<string, number | string>>>(new Map());
+  const [allOutputs, setAllOutputs] = useState<Record<string, Record<string, number | string>>>({});
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -35,15 +35,12 @@ export function CalculatorWorkspace({
 
   const handleOutputsChange = useCallback((slug: string, outputs: Record<string, number | string>) => {
     setAllOutputs(prev => {
-      const next = new Map(prev);
-      // Only keep numeric outputs for the aggregate
       const numericOutputs: Record<string, number | string> = {};
       for (const [key, val] of Object.entries(outputs)) {
         const num = Number(val);
         numericOutputs[key] = Number.isFinite(num) ? num : val;
       }
-      next.set(slug, numericOutputs);
-      return next;
+      return { ...prev, [slug]: numericOutputs };
     });
   }, []);
 

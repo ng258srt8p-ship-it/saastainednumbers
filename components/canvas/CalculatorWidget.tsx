@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useCallback, useEffect, memo } from "react";
+import { useMemo, useState, useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { getCalculator } from "@/lib/registry";
 import { engines } from "@/lib/engine-registry";
@@ -35,7 +35,7 @@ function buildDefaults(inputs: CalculatorInput[]): Record<string, number> {
   return init;
 }
 
-export const CalculatorWidget = memo(function CalculatorWidget({ slug, onRemove, onOutputsChange }: CalculatorWidgetProps) {
+export const CalculatorWidget = function CalculatorWidget({ slug, onRemove, onOutputsChange }: CalculatorWidgetProps) {
   const calc = useMemo(() => getCalculator(slug), [slug]);
 
   // Initialize state once per slug change
@@ -50,12 +50,39 @@ export const CalculatorWidget = memo(function CalculatorWidget({ slug, onRemove,
     }
   }, [slug, calc]);
 
-  const handleChange = useCallback((id: string) => (v: number) => {
-    setValues(prev => ({ ...prev, [id]: v }));
-  }, []);
+  // Refs for latest values used in synchronous handleChange
+  const valuesRef = useRef(values);
+  valuesRef.current = values;
 
   const engineSlug = calc ? calc.slug : slug;
   const engine = engines[engineSlug as keyof typeof engines] as ((params: Record<string, number>) => Record<string, number | string>) | undefined;
+
+  const engineRef = useRef(engine);
+  engineRef.current = engine;
+  const calcRef = useRef(calc);
+  calcRef.current = calc;
+  const onOutputsChangeRef = useRef(onOutputsChange);
+  onOutputsChangeRef.current = onOutputsChange;
+
+  const handleChange = useCallback((id: string) => (v: number) => {
+    setValues(prev => ({ ...prev, [id]: v }));
+
+    // Synchronously compute outputs and propagate for real-time Executive Summary
+    const eng = engineRef.current;
+    const c = calcRef.current;
+    const notify = onOutputsChangeRef.current;
+    const currentValues = valuesRef.current;
+
+    if (eng && c && notify) {
+      try {
+        const newValues = { ...currentValues, [id]: v };
+        const newOutputs = eng(newValues) ?? {};
+        notify(c.slug, newOutputs);
+      } catch {
+        // Engine error — ignore, outputs will be empty
+      }
+    }
+  }, []);
 
   // Compute outputs
   const outputs = useMemo<Record<string, number | string>>(() => {
@@ -68,12 +95,8 @@ export const CalculatorWidget = memo(function CalculatorWidget({ slug, onRemove,
     }
   }, [calc, engine, values]);
 
-  // Notify parent of output changes
-  useEffect(() => {
-    if (onOutputsChange && calc) {
-      onOutputsChange(calc.slug, outputs);
-    }
-  }, [outputs, onOutputsChange, calc]);
+  // No useEffect needed — handleChange synchronously notifies parent for real-time updates
+  // This avoids double-firing and ensures Executive Summary updates immediately
 
   if (!calc) {
     return (
@@ -167,4 +190,4 @@ export const CalculatorWidget = memo(function CalculatorWidget({ slug, onRemove,
       </a>
     </motion.div>
   );
-});
+};

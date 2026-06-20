@@ -71,7 +71,7 @@ export function CalculatorCatalog({ onAddCalculator, onApplyTemplate, addedSlugs
           </svg>
         </button>
         {showTemplates && (
-          <div className="px-3 pb-3 space-y-1.5">
+          <div className="px-3 pb-3 space-y-3 max-h-[45vh] overflow-y-auto">
             {TEMPLATE_CATEGORIES.map((cat) => {
               const catTemplates = templates.filter((t) => t.category === cat.id);
               if (catTemplates.length === 0) return null;
@@ -80,7 +80,8 @@ export function CalculatorCatalog({ onAddCalculator, onApplyTemplate, addedSlugs
                   <p className="text-[10px] font-medium uppercase tracking-wider text-gray-400 dark:text-gray-500 px-1 mb-1">
                     {cat.label}
                   </p>
-                  {catTemplates.map((t) => (
+                  <div className="space-y-1.5">
+                    {catTemplates.map((t) => (
                     <button
                       key={t.id}
                       onClick={() => onApplyTemplate(t.id)}
@@ -96,11 +97,28 @@ export function CalculatorCatalog({ onAddCalculator, onApplyTemplate, addedSlugs
                           {t.description}
                         </div>
                       </div>
-                      <span className="shrink-0 text-[10px] font-medium text-gray-400 dark:text-gray-500 tabular-nums">
-                        {t.slugs.length}
-                      </span>
+                      <div className="flex items-center gap-1">
+                        {t.slugs.length > 0 && (
+                          <span
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              for (const s of t.slugs) onAddCalculator(s);
+                            }}
+                            className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-brand-500 hover:bg-brand-600 text-white cursor-pointer"
+                            title={`Add ${t.slugs.length} calculator${t.slugs.length !== 1 ? "s" : ""} to workspace`}
+                          >
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+                            </svg>
+                          </span>
+                        )}
+                        <span className="shrink-0 text-[10px] font-medium text-gray-400 dark:text-gray-500 tabular-nums">
+                          {t.slugs.length}
+                        </span>
+                      </div>
                     </button>
                   ))}
+                  </div>
                 </div>
               );
             })}
