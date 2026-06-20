@@ -44,6 +44,60 @@ export function CalculatorWorkspace({
     });
   }, []);
 
+  // Initialize allOutputs when calculators are added
+  useEffect(() => {
+    if (slugs.length === 0) {
+      // Clear all outputs when workspace is empty
+      setAllOutputs({});
+      return;
+    }
+
+    // Compute initial outputs for each calculator
+    const initializeOutputs = async () => {
+      const initialOutputs: Record<string, Record<string, number | string>> = {};
+
+      for (const slug of slugs) {
+        try {
+          // Get calculator config
+          const { getCalculator } = await import('@/lib/registry');
+          const calc = getCalculator(slug);
+          if (!calc) continue;
+
+          // Get default values from calculator config
+          const defaultValues: Record<string, number> = {};
+          for (const input of calc.inputs) {
+            defaultValues[input.id] = input.defaultValue ?? 0;
+          }
+
+          // Get the engine for this calculator
+          const { engines } = await import('@/lib/engine-registry');
+          const engine = engines[slug as keyof typeof engines];
+
+          if (engine) {
+            // Compute outputs using engine
+            const outputs = engine(defaultValues);
+            if (outputs && Object.keys(outputs).length > 0) {
+              const numericOutputs: Record<string, number | string> = {};
+              for (const [key, val] of Object.entries(outputs)) {
+                const num = Number(val);
+                numericOutputs[key] = Number.isFinite(num) ? num : val;
+              }
+              initialOutputs[slug] = numericOutputs;
+            }
+          }
+        } catch (error) {
+          console.error(`Failed to initialize outputs for calculator ${slug}:`, error);
+        }
+      }
+
+      if (Object.keys(initialOutputs).length > 0) {
+        setAllOutputs(initialOutputs);
+      }
+    };
+
+    initializeOutputs();
+  }, [slugs]);
+
   return (
     <main
       className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900/50 p-6"

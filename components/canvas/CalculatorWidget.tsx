@@ -35,6 +35,25 @@ function buildDefaults(inputs: CalculatorInput[]): Record<string, number> {
   return init;
 }
 
+/**
+ * Compute engine outputs from raw values.
+ * Returns the outputs object, or `null` if the engine is unavailable.
+ */
+function computeOutputs(
+  values: Record<string, number>,
+  calcSlug: string
+): Record<string, number | string> | null {
+  const engine = engines[calcSlug as keyof typeof engines] as
+    | ((params: Record<string, number>) => Record<string, number | string>)
+    | undefined;
+  if (!engine) return null;
+  try {
+    return engine(values) ?? {};
+  } catch {
+    return {};
+  }
+}
+
 export const CalculatorWidget = function CalculatorWidget({ slug, onRemove, onOutputsChange }: CalculatorWidgetProps) {
   const calc = useMemo(() => getCalculator(slug), [slug]);
 
@@ -43,6 +62,14 @@ export const CalculatorWidget = function CalculatorWidget({ slug, onRemove, onOu
     calc ? buildDefaults(calc.inputs) : {}
   );
 
+  // Refs to avoid stale closures in handleChange + mount propagation
+  const onOutputsChangeRef = useRef(onOutputsChange);
+  onOutputsChangeRef.current = onOutputsChange;
+  const valuesRef = useRef(values);
+  valuesRef.current = values;
+  const calcRef = useRef(calc);
+  calcRef.current = calc;
+
   // Reset values when slug changes
   useEffect(() => {
     if (calc) {
@@ -50,41 +77,10 @@ export const CalculatorWidget = function CalculatorWidget({ slug, onRemove, onOu
     }
   }, [slug, calc]);
 
-  // Refs for latest values used in synchronous handleChange
-  const valuesRef = useRef(values);
-  valuesRef.current = values;
-
+  // Compute outputs for display
   const engineSlug = calc ? calc.slug : slug;
   const engine = engines[engineSlug as keyof typeof engines] as ((params: Record<string, number>) => Record<string, number | string>) | undefined;
 
-  const engineRef = useRef(engine);
-  engineRef.current = engine;
-  const calcRef = useRef(calc);
-  calcRef.current = calc;
-  const onOutputsChangeRef = useRef(onOutputsChange);
-  onOutputsChangeRef.current = onOutputsChange;
-
-  const handleChange = useCallback((id: string) => (v: number) => {
-    setValues(prev => ({ ...prev, [id]: v }));
-
-    // Synchronously compute outputs and propagate for real-time Executive Summary
-    const eng = engineRef.current;
-    const c = calcRef.current;
-    const notify = onOutputsChangeRef.current;
-    const currentValues = valuesRef.current;
-
-    if (eng && c && notify) {
-      try {
-        const newValues = { ...currentValues, [id]: v };
-        const newOutputs = eng(newValues) ?? {};
-        notify(c.slug, newOutputs);
-      } catch {
-        // Engine error — ignore, outputs will be empty
-      }
-    }
-  }, []);
-
-  // Compute outputs
   const outputs = useMemo<Record<string, number | string>>(() => {
     if (!calc) return {};
     if (!engine) return {};
@@ -95,8 +91,45 @@ export const CalculatorWidget = function CalculatorWidget({ slug, onRemove, onOu
     }
   }, [calc, engine, values]);
 
-  // No useEffect needed — handleChange synchronously notifies parent for real-time updates
-  // This avoids double-firing and ensures Executive Summary updates immediately
+  // Handle slider changes — update local state AND propagate to parent
+  const handleChange = useCallback((id: string) => (v: number) => {
+    // Update local state
+    setValues(prev => {
+      const newValues = { ...prev, [id]: v };
+      // Read refs inside the updater — they hold the latest values
+      const c = calcRef.current;
+      const notify = onOutputsChangeRef.current;
+      if (c && notify) {
+        try {
+          const newOutputs = computeOutputs(newValues, c.slug);
+          if (newOutputs) {
+            notify(c.slug, newOutputs);
+          }
+        } catch {
+          // Engine error — ignore
+        }
+      }
+      return newValues;
+    });
+  }, []);
+
+  // Propagate outputs to parent on mount and whenever calc/slug changes
+  const hasPropagated = useRef(false);
+  useEffect(() => {
+    if (!calc) return;
+    const notify = onOutputsChangeRef.current;
+    if (!notify) return;
+
+    // Recompute outputs from current values and propagate
+    const newOutputs = computeOutputs(values, calc.slug);
+    if (newOutputs && Object.keys(newOutputs).length > 0) {
+      notify(calc.slug, newOutputs);
+    }
+    hasPropagated.current = true;
+    // Intentionally run when slug/calc changes, not when values or outputs change
+    // (slider changes are handled synchronously in handleChange)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug, calc]);
 
   if (!calc) {
     return (
