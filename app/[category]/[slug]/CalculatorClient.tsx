@@ -21,6 +21,8 @@ import { engines } from "@/lib/engine-registry";
 import { ShareButton } from "@/components/ShareButton";
 import { AdUnit } from "@/components/AdUnit";
 import { Insights } from "@/components/Insights";
+import { AiChatWidget } from "@/components/AiChatWidget";
+import type { ScreenData } from "@/lib/ai-chat-context";
 
 interface RelatedCalc {
   slug: string;
@@ -118,6 +120,19 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
   }));
 
   const aiOutputs = resultsA;
+
+  // Compute screen data for AI chat widget (memoized)
+  const chatScreenData: ScreenData | null = useMemo(() => ({
+    type: "calculator",
+    slug: config.slug,
+    title: config.meta.title,
+    description: config.meta.description,
+    category: config.category,
+    inputs: aiInputs,
+    outputs: aiOutputs,
+    benchmarks: config.content.benchmarkData,
+    faq: config.content.faq,
+  }), [config.slug, config.meta.title, config.meta.description, config.category, config.content.benchmarkData, config.content.faq, aiInputs, aiOutputs]);
 
   const primaryValue = Number(resultsA.find((r) => r.isPrimary)?.value ?? 0);
   useEffect(() => {
@@ -462,6 +477,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
       />
     </CalculatorShell>
 
+      <AiChatWidget screenData={chatScreenData} />
     </>
   );
 }

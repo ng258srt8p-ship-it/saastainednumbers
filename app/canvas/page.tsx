@@ -1,9 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { CalculatorCatalog } from "@/components/canvas/CalculatorCatalog";
 import { CalculatorWorkspace } from "@/components/canvas/CalculatorWorkspace";
 import { getTemplateById } from "@/lib/canvas-templates";
+import { getCalculator } from "@/lib/registry";
+import { AiChatWidget } from "@/components/AiChatWidget";
+import { AiChatProvider, useAiChatContext } from "@/lib/ai-chat-context";
 import "@/calculators/config/_all";
 
 const WORKSPACE_STORAGE_KEY = "canvas-workspace-calculators";
@@ -21,21 +24,51 @@ function loadSlugs(): string[] {
   return [];
 }
 
-export default function CanvasPage() {
-  // Initialize from localStorage synchronously via lazy initializer
-  const [workspaceCalculators, setWorkspaceCalculators] = useState<string[]>(() => loadSlugs());
+function CanvasPageInner() {
+  const [workspaceCalculators, setWorkspaceCalculators] = useState<string[]>([]);
+  const { setScreenData } = useAiChatContext();
+  const [hydrated, setHydrated] = useState(false);
 
-  // Persist to localStorage whenever workspace changes
+  // Hydrate from localStorage after mount (avoids hydration mismatch)
   useEffect(() => {
-    localStorage.setItem(WORKSPACE_STORAGE_KEY, JSON.stringify(workspaceCalculators));
+    const slugs = loadSlugs();
+    setWorkspaceCalculators(slugs);
+    setHydrated(true);
+  }, []);
+
+  // Persist to localStorage whenever workspace changes (skip initial SSR hydrate)
+  useEffect(() => {
+    if (hydrated) {
+      localStorage.setItem(WORKSPACE_STORAGE_KEY, JSON.stringify(workspaceCalculators));
+    }
+  }, [workspaceCalculators, hydrated]);
+
+  // Build workspace context for the AI chat
+  const workspaceContext = useMemo(() => {
+    return {
+      type: "canvas" as const,
+      calculators: workspaceCalculators.map((slug) => {
+        const calc = getCalculator(slug);
+        return {
+          slug,
+          title: calc?.meta?.title ?? slug,
+          outputs: [], // Can be enriched with calculator output data later
+        };
+      }),
+    };
   }, [workspaceCalculators]);
 
+  // Keep AI chat in sync with the canvas workspace
+  useEffect(() => {
+    setScreenData(workspaceContext);
+  }, [workspaceContext, setScreenData]);
+
   const addCalculator = useCallback((slug: string) => {
-    setWorkspaceCalculators(prev => prev.includes(slug) ? prev : [...prev, slug]);
+    setWorkspaceCalculators((prev) => (prev.includes(slug) ? prev : [...prev, slug]));
   }, []);
 
   const removeCalculator = useCallback((slug: string) => {
-    setWorkspaceCalculators(prev => prev.filter(s => s !== slug));
+    setWorkspaceCalculators((prev) => prev.filter((s) => s !== slug));
   }, []);
 
   const clearWorkspace = useCallback(() => {
@@ -64,6 +97,15 @@ export default function CanvasPage() {
         onRemoveCalculator={removeCalculator}
         onClearWorkspace={clearWorkspace}
       />
+      <AiChatWidget />
     </div>
+  );
+}
+
+export default function CanvasPage() {
+  return (
+    <AiChatProvider>
+      <CanvasPageInner />
+    </AiChatProvider>
   );
 }
