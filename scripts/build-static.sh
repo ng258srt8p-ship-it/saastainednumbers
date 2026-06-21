@@ -3,6 +3,18 @@ set -euo pipefail
 
 echo "=== SaaStainedNumbers Multi-Locale Static Export ==="
 
+# Ensure native binaries for Linux x64 are present (Cloudflare clean-install strips optional deps)
+if [ "$(uname -s)" = "Linux" ] && [ "$(uname -m)" = "x86_64" ]; then
+  if [ ! -d "node_modules/lightningcss-linux-x64-gnu" ]; then
+    echo "Installing lightningcss Linux x64 binary..."
+    npm install --no-save lightningcss-linux-x64-gnu@1.32.0 || true
+  fi
+  if [ ! -d "node_modules/@next/swc-linux-x64-gnu" ]; then
+    echo "Installing Next.js SWC Linux x64 binary..."
+    npm install --no-save @next/swc-linux-x64-gnu@16.2.6 || true
+  fi
+fi
+
 LOCALES=("en" "es" "de" "pt" "fr" "ja")
 
 # Ensure API routes exist before backing up
