@@ -31,7 +31,11 @@ function getCurrencySnapshot(locale: string): string {
 
 function subscribeToCurrency(callback: () => void): () => void {
   window.addEventListener("storage", callback);
-  return () => window.removeEventListener("storage", callback);
+  window.addEventListener("currency-changed", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("currency-changed", callback);
+  };
 }
 
 export function CurrencyProvider({ locale, children }: { locale: string; children: React.ReactNode }) {
@@ -44,6 +48,7 @@ export function CurrencyProvider({ locale, children }: { locale: string; childre
   const setCurrency = useCallback((code: string) => {
     document.cookie = `currency=${code};path=/;max-age=31536000;SameSite=Lax`;
     window.dispatchEvent(new Event("storage"));
+    window.dispatchEvent(new Event("currency-changed"));
   }, []);
 
   return (

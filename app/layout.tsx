@@ -117,6 +117,7 @@ export default async function RootLayout({
                     <ul className="mt-3 space-y-2">
                       <li><Link href="/" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("common.home")}</Link></li>
                       <li><Link href="/calculators" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("category.all")}</Link></li>
+                      <li><Link href="/canvas" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.canvas")}</Link></li>
                       <li><Link href="/about" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.about")}</Link></li>
                       <li><Link href="/pricing" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.pricing")}</Link></li>
                             </ul>

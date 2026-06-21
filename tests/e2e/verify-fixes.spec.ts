@@ -63,11 +63,11 @@ test("embed route: no nav or footer", async ({ page }) => {
   await expect(footer).toHaveCount(0);
 });
 
-test("canvas page: footer hidden", async ({ page }) => {
+test("canvas page: footer present", async ({ page }) => {
   await page.goto("/canvas", { waitUntil: "networkidle" });
   await page.waitForTimeout(2000);
   const footer = page.locator("footer");
-  await expect(footer).toHaveCount(0);
+  await expect(footer).not.toHaveCount(0);
 });
 
 test("non-embed page: nav and footer present", async ({ page }) => {

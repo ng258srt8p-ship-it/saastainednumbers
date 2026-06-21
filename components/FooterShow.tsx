@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-/** Renders children (the footer) on all pages except /canvas and embed. */
+/** Renders children (the footer) on all pages except /embed and ?embed. */
 export function FooterShow({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [embed, setEmbed] = useState(false);
@@ -16,7 +16,6 @@ export function FooterShow({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  if (pathname?.startsWith("/canvas")) return null;
   if (pathname?.startsWith("/embed")) return null;
   if (embed) return null;
   return <>{children}</>;

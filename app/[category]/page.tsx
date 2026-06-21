@@ -7,6 +7,7 @@ import { CalculatorCard } from "@/components/CalculatorCard";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { alternateLanguages, localeUrl } from "@/lib/locale-url";
 import { getTranslations } from "@/lib/getTranslations";
+import { redirect } from "next/navigation";
 
 import "@/calculators/config/_all";
 
@@ -40,10 +41,12 @@ function CATEGORY_ICON(category: string) {
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
   const { t, locale } = await getTranslations();
+  if (category === calculatorsLabel) {
+    redirect("/calculators");
+  }
   const calculators = getCalculatorsByCategory(category);
   const meta = CATEGORY_META[category];
   const categoryName = t("category." + getCategoryTranslationKey(category));
-  const calculatorsLabel = t("category.calculatorsLabel");
   const allCategories = getAllKnownCategories().filter((c) => getCalculatorsByCategory(c).length > 0);
 
   if (calculators.length === 0) {

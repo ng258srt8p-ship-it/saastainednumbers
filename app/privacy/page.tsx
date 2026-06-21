@@ -34,65 +34,56 @@ export default async function PrivacyPage() {
         {t("privacy.heading")}
       </h1>
       <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-        Last updated: May 26, 2026
+        {t("privacy.lastUpdated")}
       </p>
 
       <hr className="my-8 border-gray-200 dark:border-gray-700" />
 
       <div className="prose prose-gray dark:prose-invert max-w-none">
-        <h2>Our Commitment to Privacy</h2>
+        <h2>{t("privacy.commitmentTitle")}</h2>
         <p>
-          SaaStainedNumbers is designed to respect your privacy. All calculator calculations
-           happen <strong>entirely in your browser</strong>; your input data never leaves your
-          device. We do not store, transmit, or process your calculator inputs on our servers.
+          {t("privacy.commitmentBody")}
         </p>
 
-        <h2>What We Do NOT Collect</h2>
+        <h2>{t("privacy.notCollectedTitle")}</h2>
         <ul>
-          <li>We do <strong>not</strong> collect or store your calculator inputs.</li>
-          <li>We do <strong>not</strong> sell, rent, or share your personal information with third parties.</li>
-          <li>We do <strong>not</strong> use your data for advertising personalization or profiling.</li>
+          <li>{t("privacy.notCollected1")}</li>
+          <li>{t("privacy.notCollected2")}</li>
+          <li>{t("privacy.notCollected3")}</li>
         </ul>
 
-        <h2>Cookies and Local Storage</h2>
+        <h2>{t("privacy.cookiesTitle")}</h2>
         <p>
-          We use <strong>localStorage</strong> in your browser to remember your theme preference
-          (light/dark mode) and locale selection. This data stays on your device and is not sent
-          to our servers.
+          {t("privacy.cookiesBody1")}
         </p>
         <p>
-          We use Google Analytics (GA4) to understand aggregate traffic patterns. GA4 uses cookies
-          to distinguish unique visitors. You can learn more about Google{'\''}s data practices in
-          Google{'\''}s Privacy Policy.
+          {t("privacy.cookiesBody2")}
         </p>
 
-        <h2>Third-Party Services</h2>
-        <p>We use the following third-party services:</p>
+        <h2>{t("privacy.thirdPartyTitle")}</h2>
+        <p>{t("privacy.thirdPartyIntro")}</p>
         <ul>
-          <li><strong>Google Analytics</strong> - anonymized traffic analysis</li>
-          <li><strong>EthicalAds</strong> - privacy-focused advertising</li>
-          <li><strong>Skimlinks</strong> - affiliate link monetization (some outbound links to retailers and service providers may be affiliate links)</li>
-           <li><strong>Neon (PostgreSQL)</strong> - database hosting for user accounts and saved calculations (currently dormant; sign-in is disabled)</li>
+          <li>{t("privacy.thirdParty1")}</li>
+          <li>{t("privacy.thirdParty2")}</li>
+          <li>{t("privacy.thirdParty3")}</li>
+          <li>{t("privacy.thirdParty4")}</li>
         </ul>
 
-        <h2>Your Rights</h2>
+        <h2>{t("privacy.yourRightsTitle")}</h2>
         <p>
-          Depending on your jurisdiction, you may have the right to access, correct, delete, or
-          port your personal data. To exercise these rights, contact us at{" "}
+          {t("privacy.yourRightsBody")}{" "}
           <a href="mailto:legal@saastainednumbers.com" className="text-brand-600 dark:text-brand-400 hover:underline">legal@saastainednumbers.com</a>.
-          We will respond within the timeframe required by applicable law.
+          {t("privacy.yourRightsBody2")}
         </p>
 
-        <h2>Data Retention</h2>
+        <h2>{t("privacy.dataRetentionTitle")}</h2>
         <p>
-          We do not retain personal data beyond what is necessary for the operation of the
-          service. Analytics data is retained for 26 months per Google Analytics default settings.
+          {t("privacy.dataRetentionBody")}
         </p>
 
-        <h2>Changes to This Policy</h2>
+        <h2>{t("privacy.changesTitle")}</h2>
         <p>
-          We may update this Privacy Policy from time to time. Changes will be posted on this page
-          with an updated date.
+          {t("privacy.changesBody")}
         </p>
       </div>
     </div>
