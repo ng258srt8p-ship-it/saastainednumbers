@@ -41,6 +41,11 @@ function CATEGORY_ICON(category: string) {
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
   const { t, locale } = await getTranslations();
+  const LOCALES = ["en", "es", "de", "pt", "fr", "ja"];
+  const isLocalePrefix = LOCALES.includes(category);
+  if (isLocalePrefix) {
+    redirect("/calculators");
+  }
   const calculatorsLabel = t("category.calculatorsLabel");
   if (category === calculatorsLabel) {
     redirect("/calculators");
