@@ -42,20 +42,26 @@ test.describe("Footer Links", () => {
 
   test("footer Privacy link goes to /privacy", async ({ page }) => {
     await page.goto(`${BASE}/`, { waitUntil: "load" });
-    const privacyLink = page.locator(`footer a[href="/privacy"]`);
+    const privacyLink = page.locator('footer a').filter({ hasText: /Privacy/i }).first();
     await expect(privacyLink).toBeVisible();
+    const href = await privacyLink.getAttribute("href");
+    expect(href).toContain("/privacy");
   });
 
   test("footer Terms link goes to /terms", async ({ page }) => {
     await page.goto(`${BASE}/`, { waitUntil: "load" });
-    const termsLink = page.locator(`footer a[href="/terms"]`);
+    const termsLink = page.locator('footer a').filter({ hasText: /Terms/i }).first();
     await expect(termsLink).toBeVisible();
+    const href = await termsLink.getAttribute("href");
+    expect(href).toContain("/terms");
   });
 
   test("footer Contact link goes to /contact", async ({ page }) => {
     await page.goto(`${BASE}/`, { waitUntil: "load" });
-    const contactLink = page.locator(`footer a[href="/contact"]`);
+    const contactLink = page.locator('footer a').filter({ hasText: /Contact/i }).first();
     await expect(contactLink).toBeVisible();
+    const href = await contactLink.getAttribute("href");
+    expect(href).toContain("/contact");
   });
 
   test("footer links work on calculator pages too", async ({ page }) => {

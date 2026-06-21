@@ -84,16 +84,10 @@ test.describe("Currency Matrix - Mobile (Representative currencies)", () => {
   for (const code of testCodes) {
     test(`${code} selectable from mobile menu`, async ({ page }) => {
       await page.goto(`${BASE}/revenue/mrr-calculator`, { waitUntil: "load" });
-      // Open hamburger menu
-      await page.locator('button[aria-label*="Open navigation"]').click();
+      // Currency switcher is in the header (visible on mobile)
+      await currencyBtn(page).click();
       await page.waitForTimeout(300);
-      // Find currency switcher inside mobile menu
-      const mobileCurrency = page.locator('div[role="dialog"] button[aria-label="Select currency"]');
-      await mobileCurrency.click();
-      await page.locator('button[role="option"]', { hasText: code }).click();
-      await page.waitForTimeout(300);
-      // Close menu
-      await page.locator('button[aria-label*="Close"]').click();
+      await currencyDropdown(page).locator('button[role="option"]', { hasText: code }).click();
       await page.waitForTimeout(300);
       // Check header currency updated
       await expect(currencyBtn(page)).toContainText(new RegExp(code));
