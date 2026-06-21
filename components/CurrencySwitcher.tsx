@@ -1,12 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCurrency } from "./CurrencyProvider";
 import { SUPPORTED_CURRENCIES, getCurrencySymbolStatic } from "@/lib/currencies";
 
 export function CurrencySwitcher() {
   const { currency, setCurrency } = useCurrency();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [open]);
 
   return (
     <div className="relative">
@@ -23,7 +32,7 @@ export function CurrencySwitcher() {
 
       {open && (
         <>
-          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden />
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} onKeyDown={(e) => e.key === "Escape" && setOpen(false)} aria-hidden />
           <div
             className="absolute left-0 z-50 mt-1 min-w-[140px] max-h-[300px] overflow-y-auto rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg py-1"
             role="listbox"

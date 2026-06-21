@@ -72,7 +72,8 @@ export function mobileMenu(page: Page) {
 }
 
 export function themeToggle(page: Page) {
-  return page.locator('button[aria-label*="theme" i]');
+  // Matches both pre-hydration ("Toggle theme") and post-hydration ("Switch to dark/light mode") labels
+  return page.locator('button[aria-label*="theme" i], button[aria-label*="Switch to" i]');
 }
 
 export function embedBtn(page: Page) {
