@@ -13,6 +13,8 @@ interface NavLinks {
   blog?: string;
   calculators?: string;
   canvas?: string;
+  aboutUs?: string;
+  contactUs?: string;
 }
 
 export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
@@ -35,8 +37,8 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
     { label: t.canvas ?? "Canvas", href: "/canvas" },
     { label: t.pricing ?? "Pricing", href: "/pricing" },
     { label: t.blog ?? "Blog", href: "/blog" },
-    { label: "About Us", href: "/about" },
-    { label: "Contact Us", href: "/contact" },
+    { label: t.aboutUs ?? "About Us", href: "/about" },
+    { label: t.contactUs ?? "Contact Us", href: "/contact" },
   ];
 
   return (
@@ -100,13 +102,13 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
                 href="/about"
                 className="px-3 py-1.5 text-sm font-semibold tracking-[0.2px] text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors"
               >
-                About Us
+                {t.aboutUs ?? "About Us"}
               </Link>
               <Link
                 href="/contact"
                 className="px-3 py-1.5 text-sm font-semibold tracking-[0.2px] text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors"
               >
-                Contact Us
+                {t.contactUs ?? "Contact Us"}
               </Link>
             </div>
 
