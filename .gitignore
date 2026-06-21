@@ -35,3 +35,4 @@ Thumbs.db
 *.tsbuildinfo
 .vercel
 test-results/
+e2e-screenshots/
