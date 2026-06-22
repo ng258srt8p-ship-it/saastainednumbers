@@ -65,6 +65,11 @@
     "typescript": "^5.9.3",
     "vitest": "^4.1.9"
   },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "1.32.0",
+    "@tailwindcss/oxide-linux-x64-gnu": "4.3.0",
+    "@next/swc-linux-x64-gnu": "16.2.6"
+  },
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=10.0.0"

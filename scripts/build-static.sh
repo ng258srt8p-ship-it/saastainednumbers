@@ -3,20 +3,16 @@ set -euo pipefail
 
 echo "=== SaaStainedNumbers Multi-Locale Static Export ==="
 
-# Ensure native binaries for Linux x64 are present (Cloudflare clean-install strips optional deps)
+# Native binaries for Linux x64 are declared as optionalDependencies in package.json.
+# If they're still missing after install (e.g. npm cache issue), force-install them.
 if [ "$(uname -s)" = "Linux" ] && [ "$(uname -m)" = "x86_64" ]; then
-  if [ ! -d "node_modules/lightningcss-linux-x64-gnu" ]; then
-    echo "Installing lightningcss Linux x64 binary..."
-    npm install --no-save lightningcss-linux-x64-gnu@1.32.0 || true
-  fi
-  if [ ! -d "node_modules/@tailwindcss/oxide-linux-x64-gnu" ]; then
-    echo "Installing TailwindCSS oxide Linux x64 binary..."
-    npm install --no-save @tailwindcss/oxide-linux-x64-gnu@4.3.0 || true
-  fi
-  if [ ! -d "node_modules/@next/swc-linux-x64-gnu" ]; then
-    echo "Installing Next.js SWC Linux x64 binary..."
-    npm install --no-save @next/swc-linux-x64-gnu@16.2.6 || true
-  fi
+  for pkg in "lightningcss-linux-x64-gnu@1.32.0" "@tailwindcss/oxide-linux-x64-gnu@4.3.0" "@next/swc-linux-x64-gnu@16.2.6"; do
+    shortname="${pkg%%@*}"
+    if [ ! -d "node_modules/$shortname" ]; then
+      echo "Installing missing Linux binary: $pkg"
+      npm install --no-save "$pkg" || true
+    fi
+  done
 fi
 
 LOCALES=("en" "es" "de" "pt" "fr" "ja")
