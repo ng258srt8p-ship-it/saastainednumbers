@@ -217,7 +217,8 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
        strings={{ faqTitle: strings?.shellFaqTitle ?? "Frequently Asked Questions", relatedCalculatorsTitle: strings?.shellRelatedCalculatorsTitle ?? "Related Calculators" }}
        stageSelector={stageSelector}
       feedbackWidget={<FeedbackWidget slug={config.slug} strings={strings ? { wasThisHelpful: strings.feedbackHelpful, yes: strings.feedbackYes, no: strings.feedbackNo, thanks: strings.feedbackThanks } : undefined} />}
-      afterContentAd={hideContent ? undefined : <AdUnit slot="calculator-below-content" />}
+      afterContentAd={hideContent ? undefined : <AdUnit slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_BELOW_CONTENT ?? "calculator-below-content"} />}
+      showAffiliateDisclosure={!hideContent}
       contentSection={hideContent ? undefined : (
         <div className="space-y-8">
           <section>
@@ -270,7 +271,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
               )}
             </section>
           )}
-          <AdUnit slot="calculator-in-content" className="mt-8" />
+          <AdUnit slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_IN_CONTENT ?? "calculator-in-content"} className="mt-8" />
         </div>
       )}
       faqSection={hideContent ? undefined : (

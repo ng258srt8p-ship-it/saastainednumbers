@@ -46,7 +46,14 @@
     "startBuilding": "Start Building",
     "allFree": "{n} free calculators. No credit card. No signup.",
     "browseCalculators": "Browse Calculators",
-    "openCanvas": "Open Canvas"
+    "openCanvas": "Open Canvas",
+    "whyTitle": "Why SaaStainedNumbers?",
+    "whyBody1": "SaaStainedNumbers was built to solve a simple problem: SaaS founders, operators, and financial analysts need fast, reliable financial math — without creating an account, sitting through a demo, or paying for a tool they'll use once. Every calculator on this site runs entirely in your browser. Your data never leaves your device.",
+    "whyBody2": "Each calculator is built from first principles using standard financial formulas. We document every formula with a worked example, benchmark results against industry-standard data, and cite our sources. No black-box estimates — just transparent math you can verify yourself.",
+    "whyBody3": "We support the site through non-intrusive display ads and contextual affiliate links in FAQ sections. There are no paywalls, no sign-up walls, and no premium tiers. Every calculator is free, forever.",
+    "latestInsights": "Latest Insights",
+    "latestInsightsSubtitle": "Guides and strategies from our blog — free to read, no signup required.",
+    "readArticle": "Read article →"
   },
   "category": {
     "searchPlaceholder": "Search calculators...",

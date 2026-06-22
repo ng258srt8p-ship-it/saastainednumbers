@@ -44,17 +44,6 @@ export default async function sitemap() {
     };
   });
 
-  const embedPages = calculators.map((calc) => {
-    const path = `/embed/${calc.slug}`;
-    return {
-      url: localeUrl(path, "en"),
-      alternates: { languages: alternateLanguages(path) },
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.3,
-    };
-  });
-
   const blogPages = posts.map((post) => {
     const path = `/blog/${post.slug}`;
     return {
@@ -86,5 +75,5 @@ export default async function sitemap() {
     priority: pri,
   }));
 
-  return [...staticPages, ...categoryPages, ...calculatorPages, ...embedPages, ...blogPages];
+  return [...staticPages, ...categoryPages, ...calculatorPages, ...blogPages];
 }

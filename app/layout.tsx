@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
-import Script from "next/script";
-import { AdScript } from "@/components/AdScript";
+import { CookieConsentProvider } from "@/components/CookieConsentContext";
+import { ConsentScripts } from "@/components/ConsentScripts";
 import { Nav } from "@/components/Nav";
 import { FooterShow } from "@/components/FooterShow";
 import { ShowWhenNotEmbed } from "@/components/ShowWhenNotEmbed";
@@ -77,15 +77,8 @@ export default async function RootLayout({
     <html lang={locale} className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} min-h-screen antialiased`}>
       <body className="min-h-screen grid grid-rows-[auto_1fr_auto] bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
         <CurrencyProvider locale={locale as Locale}>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-BHDH2PETBK" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-BHDH2PETBK');`}
-        </Script>
-        <AdScript />
-        <Script src="https://s.skimresources.com/js/303938X1792076.skimlinks.js" strategy="afterInteractive" />
+        <CookieConsentProvider>
+        <ConsentScripts />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -198,6 +191,7 @@ export default async function RootLayout({
             }),
           }}
         />
+        </CookieConsentProvider>
         </CurrencyProvider>
       </body>
     </html>

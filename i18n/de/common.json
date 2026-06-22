@@ -46,6 +46,13 @@
     "startBuilding": "Jetzt Bauen",
     "allFree": "{n} kostenlose Rechner. Keine Karte. Keine Anmeldung.",
     "browseCalculators": "Rechner Durchsuchen",
+    "whyTitle": "Warum SaaStainedNumbers?",
+    "whyBody1": "SaaStainedNumbers wurde entwickelt, um ein einfaches Problem zu lösen: SaaS-Gründer, Operateure und Finanzanalysten brauchen schnelle, zuverlässige Finanzberechnungen — ohne Konto erstellen, Demo durchlaufen oder für ein Tool bezahlen, das sie nur einmal nutzen. Jeder Rechner auf dieser Seite läuft vollständig in Ihrem Browser. Ihre Daten verlassen niemals Ihr Gerät.",
+    "whyBody2": "Jeder Rechner wird von Grund auf mit standardisierten Finanzformeln erstellt. Wir dokumentieren jede Formel mit einem durchgerechneten Beispiel, vergleichen Ergebnisse mit branchenüblichen Daten und geben unsere Quellen an. Keine Blackbox-Schätzungen — nur transparente Mathematik, die Sie selbst überprüfen können.",
+    "whyBody3": "Wir finanzieren die Seite durch nicht-intrusive Anzeigen und kontextbezogene Affiliate-Links in FAQ-Abschnitten. Keine Paywalls, keine Registrierungspflicht und keine Premium-Stufen. Jeder Rechner ist kostenlos, für immer.",
+    "latestInsights": "Aktuelle Einblicke",
+    "latestInsightsSubtitle": "Ratgeber und Strategien aus unserem Blog — kostenlos zu lesen, keine Anmeldung erforderlich.",
+    "readArticle": "Artikel lesen →",
     "openCanvas": "Arbeitsfläche Öffnen"
   },
   "category": {

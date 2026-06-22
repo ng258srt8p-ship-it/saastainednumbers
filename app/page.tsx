@@ -7,12 +7,12 @@ import { CalculatorSearch } from "@/components/CalculatorSearch";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import { CurrencyHeroValue } from "@/components/CurrencyHeroValue";
 import { getTranslations } from "@/lib/getTranslations";
+import { getAllPosts } from "@/lib/blog";
 import type { Locale } from "@/lib/useLocale";
 
 import "@/calculators/config/_all";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { t } = await getTranslations();
   return {
     title: "SaaStainedNumbers - Free SaaS & Business Calculators",
     description: "100+ free calculators for SaaS metrics, revenue, churn, unit economics, AI costs, side hustles, and personal finance.",
@@ -50,6 +50,7 @@ export default async function Home() {
   const calcBySlug = Object.fromEntries(calculators.map((c) => [`${c.category}/${c.slug}`, c]));
   const totalCount = calculators.length;
   const countByCategory = (slug: string) => calculators.filter((c) => c.category === slug).length;
+  const latestPosts = getAllPosts().slice(0, 3);
 
   const heroLine1 = t("home.heroLine1");
   const heroLine1First = heroLine1.split(" ")[0];
@@ -124,6 +125,62 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* § WHY SAASTAINEDNUMBERS */}
+      <section className="px-4 py-20 bg-gray-50 dark:bg-gray-900/50">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
+            {t("home.whyTitle")}
+          </h2>
+          <div className="mt-8 space-y-5 text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            <p>{t("home.whyBody1")}</p>
+            <p>{t("home.whyBody2")}</p>
+            <p>{t("home.whyBody3")}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* § LATEST INSIGHTS */}
+      {latestPosts.length > 0 && (
+        <section className="px-4 py-20">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
+              {t("home.latestInsights")}
+            </h2>
+            <p className="mt-3 text-gray-500 dark:text-gray-400">
+              {t("home.latestInsightsSubtitle")}
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {latestPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                >
+                  <time className="text-xs text-gray-400 dark:text-gray-500" dateTime={post.date}>
+                    {new Date(post.date).toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric" })}
+                  </time>
+                  <h3 className="mt-2 font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-brand-600 transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{post.description}</p>
+                  <span className="mt-4 inline-flex items-center text-sm font-medium text-brand-600 dark:text-brand-400 opacity-0 transition-opacity group-hover:opacity-100">
+                    {t("home.readArticle")}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-5 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:border-brand-500/50"
+              >
+                {t("blog.allArticles")} →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* § 01 · POPULAR */}
       <section className="px-4 py-20">

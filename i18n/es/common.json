@@ -46,6 +46,13 @@
     "startBuilding": "Empezar a Construir",
     "allFree": "{n} calculadoras gratis. Sin tarjeta. Sin registro.",
     "browseCalculators": "Ver Calculadoras",
+    "whyTitle": "¿Por qué SaaStainedNumbers?",
+    "whyBody1": "SaaStainedNumbers fue creado para resolver un problema simple: los fundadores, operadores y analistas financieros de SaaS necesitan cálculos financieros rápidos y confiables, sin crear una cuenta, sin ver una demostración ni pagar por una herramienta que usarán una sola vez. Cada calculadora en este sitio funciona completamente en tu navegador. Tus datos nunca salen de tu dispositivo.",
+    "whyBody2": "Cada calculadora está construida desde primeros principios utilizando fórmulas financieras estándar. Documentamos cada fórmula con un ejemplo resuelto, comparamos los resultados con datos estándar de la industria y citamos nuestras fuentes. Sin estimaciones opacas — solo matemáticas transparentes que puedes verificar tú mismo.",
+    "whyBody3": "Mantenemos el sitio mediante anuncios no intrusivos y enlaces de afiliados contextuales en las secciones de preguntas frecuentes. No hay muros de pago, no hay muros de registro y no hay niveles premium. Cada calculadora es gratuita, para siempre.",
+    "latestInsights": "Últimas Publicaciones",
+    "latestInsightsSubtitle": "Guías y estrategias de nuestro blog — gratis para leer, sin registro requerido.",
+    "readArticle": "Leer artículo →",
     "openCanvas": "Abrir Lienzo"
   },
   "category": {

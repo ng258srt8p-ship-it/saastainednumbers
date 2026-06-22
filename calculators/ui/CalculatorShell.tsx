@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { PrivacyNotice } from "./PrivacyNotice";
 
 interface Breadcrumb {
@@ -22,6 +23,7 @@ interface CalculatorShellProps {
   embedButton?: ReactNode;
   stageSelector?: ReactNode;
   sidebarAd?: ReactNode;
+  showAffiliateDisclosure?: boolean;
   strings?: {
     faqTitle: string;
     relatedCalculatorsTitle: string;
@@ -41,6 +43,7 @@ export function CalculatorShell({
    breadcrumbs,
   stageSelector,
   sidebarAd,
+  showAffiliateDisclosure,
    strings,
 }: CalculatorShellProps) {
   return (
@@ -100,6 +103,12 @@ export function CalculatorShell({
 
         {sidebarAd && <div className="w-full lg:w-72 shrink-0">{sidebarAd}</div>}
       </div>
+
+        {showAffiliateDisclosure && (
+          <div className="mt-10">
+            <AffiliateDisclosure />
+          </div>
+        )}
 
         {faqSection && (
           <section className="mt-12">
