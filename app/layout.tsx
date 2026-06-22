@@ -75,26 +75,59 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={`${inter.variable} ${jakarta.variable} ${permanentMarker.variable} min-h-screen antialiased`}>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  name: "SaaStainedNumbers",
+                  url: "https://saastainednumbers.com",
+                  logo: "https://saastainednumbers.com/logo.svg",
+                  description:
+                    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
+                  sameAs: [
+                    "https://github.com/SaaStainedNumbers",
+                    "https://x.com/SaaStainedNums",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  name: "SaaStainedNumbers",
+                  url: "https://saastainednumbers.com",
+                  description:
+                    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
+                  inLanguage: "en",
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: "https://saastainednumbers.com/calculators?q={search_term_string}",
+                    "query-input": "required name=search_term_string",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-screen grid grid-rows-[auto_1fr_auto] bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
         <CurrencyProvider locale={locale as Locale}>
         <CookieConsentProvider>
         <ConsentScripts />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" media="print" />
-        <script dangerouslySetInnerHTML={{ __html: "document.querySelector('link[href*=\"Material+Symbols\"]').media='all'" }} />
-        <noscript>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" />
-        </noscript>
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
-        >
-          {t("common.skipToContent")}
-        </a>
           <ShowWhenNotEmbed>
             <Nav t={{ pricing: t("nav.pricing"), blog: t("nav.blog"), calculators: t("nav.calculators"), canvas: t("nav.canvas") ?? "Canvas" }} locale={locale as Locale} />
           </ShowWhenNotEmbed>
           <main id="main-content" className="flex-1 flex flex-col min-h-0">
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
+            >
+              {t("common.skipToContent")}
+            </a>
             <MainContentWrapper>
               <PageTransition>{children}</PageTransition>
             </MainContentWrapper>
@@ -160,41 +193,6 @@ export default async function RootLayout({
             </footer>
             </FooterShow>
           </ShowWhenNotEmbed>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  name: "SaaStainedNumbers",
-                  url: "https://saastainednumbers.com",
-                  logo: "https://saastainednumbers.com/logo.svg",
-                  description:
-                    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
-                  sameAs: [
-                    "https://github.com/SaaStainedNumbers",
-                    "https://x.com/SaaStainedNums",
-                  ],
-                },
-                {
-                  "@type": "WebSite",
-                  name: "SaaStainedNumbers",
-                  url: "https://saastainednumbers.com",
-                  description:
-                    "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
-                  inLanguage: "en",
-                  potentialAction: {
-                    "@type": "SearchAction",
-                    target: "https://saastainednumbers.com/calculators?q={search_term_string}",
-                    "query-input": "required name=search_term_string",
-                  },
-                },
-              ],
-            }),
-          }}
-        />
         </CookieConsentProvider>
         </CurrencyProvider>
       </body>
