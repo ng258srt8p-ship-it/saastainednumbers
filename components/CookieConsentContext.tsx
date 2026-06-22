@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 
 const CONSENT_KEY = "cookie-consent";
@@ -24,14 +24,13 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
   const [consent, setConsent] = useState<ConsentState>(getStoredConsent);
 
   useEffect(() => {
-    // Sync consent changes to localStorage
     if (consent) {
       localStorage.setItem(CONSENT_KEY, consent);
     }
   }, [consent]);
 
-  const handleAccept = () => setConsent("accepted");
-  const handleReject = () => setConsent("rejected");
+  const handleAccept = useCallback(() => setConsent("accepted"), []);
+  const handleReject = useCallback(() => setConsent("rejected"), []);
 
   return (
     <CookieConsentContext.Provider value={consent}>
@@ -40,7 +39,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
         <div
           role="dialog"
           aria-label="Cookie consent"
-          className="fixed bottom-0 inset-x-0 z-50 p-4 sm:p-6"
+          className="fixed bottom-0 inset-x-0 z-[60] p-4 sm:p-6"
         >
           <div className="mx-auto max-w-3xl rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-2xl">
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
