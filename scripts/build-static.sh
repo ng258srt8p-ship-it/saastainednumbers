@@ -9,6 +9,10 @@ if [ "$(uname -s)" = "Linux" ] && [ "$(uname -m)" = "x86_64" ]; then
     echo "Installing lightningcss Linux x64 binary..."
     npm install --no-save lightningcss-linux-x64-gnu@1.32.0 || true
   fi
+  if [ ! -d "node_modules/@tailwindcss/oxide-linux-x64-gnu" ]; then
+    echo "Installing TailwindCSS oxide Linux x64 binary..."
+    npm install --no-save @tailwindcss/oxide-linux-x64-gnu@4.3.0 || true
+  fi
   if [ ! -d "node_modules/@next/swc-linux-x64-gnu" ]; then
     echo "Installing Next.js SWC Linux x64 binary..."
     npm install --no-save @next/swc-linux-x64-gnu@16.2.6 || true
