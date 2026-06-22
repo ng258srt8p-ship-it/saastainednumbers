@@ -50,7 +50,7 @@ Research shows that companies with top-quartile NPS scores grow at more than twi
 
 ## Connecting NPS to Other Metrics
 
-NPS is most powerful when tracked alongside other SaaS metrics. Our [churn calculator](/churn-retention/churn-calculator) helps quantify the revenue impact of improving NPS, and our [customer health score calculator](/churn-retention/customer-health-score-calculator) combines NPS with product engagement data for a complete view.
+NPS is most effective when tracked alongside other SaaS metrics. Our [churn calculator](/churn-retention/churn-calculator) helps quantify the revenue impact of improving NPS, and our [customer health score calculator](/churn-retention/customer-health-score-calculator) combines NPS with product engagement data for a complete view.
 
 Track your NPS alongside other key metrics with our [SaaS Metrics Dashboard](/dashboard).
 

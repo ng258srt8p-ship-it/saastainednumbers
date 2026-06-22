@@ -57,6 +57,6 @@ Use our [LTV calculator](/revenue/ltv-calculator) for your specific numbers.
 
 ## The Complete Picture
 
-The LTV:CAC ratio is most powerful when tracked alongside other metrics. Use our [SaaS Metrics Dashboard](/dashboard) to see how changes in churn, pricing, or acquisition costs affect your LTV:CAC ratio in real time.
+The LTV:CAC ratio is most effective when tracked alongside other metrics. Use our [SaaS Metrics Dashboard](/dashboard) to see how changes in churn, pricing, or acquisition costs affect your LTV:CAC ratio in real time.
 
 Track your LTV:CAC ratio with our [LTV calculator](/revenue/ltv-calculator) and [CAC calculator](/growth-efficiency/cac-calculator).

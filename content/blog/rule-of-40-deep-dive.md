@@ -5,7 +5,7 @@ date: "April 26, 2026"
 slug: "rule-of-40-deep-dive"
 ---
 
-The Rule of 40 is the most widely used health metric in SaaS. It states that a healthy SaaS company's revenue growth rate plus profit margin should equal or exceed 40%. Simple, elegant, and surprisingly powerful.
+The Rule of 40 is the most widely used health metric in SaaS. It states that a healthy SaaS company's revenue growth rate plus profit margin should equal or exceed 40%. Simple, elegant, and surprisingly effective.
 
 ## What Is the Rule of 40?
 
@@ -83,7 +83,7 @@ The Rule of 40 has limitations:
 
 ## Track With Other Metrics
 
-The Rule of 40 is most powerful when tracked alongside:
+The Rule of 40 is most effective when tracked alongside:
 
 - **NRR:** Combined with Rule of 40, gives the most complete picture of business health
 - **Quick Ratio:** Use our [quick ratio calculator](/growth-efficiency/quick-ratio-calculator)

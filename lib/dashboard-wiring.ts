@@ -53,7 +53,7 @@ function findMetricInOutputs(
 export const TEMPLATES: Record<string, { label: string; description: string; calcs: string[] }> = {
   "startup-metrics": {
     label: "Startup Metrics",
-    description: "MRR, CAC, LTV, Churn, ARPU — the core SaaS metrics",
+    description: "MRR, CAC, LTV, Churn, ARPU, the core SaaS metrics",
     calcs: ["mrr-calculator", "cac-calculator", "ltv-calculator", "churn-calculator", "arpu-calculator"],
   },
   "unit-economics": {

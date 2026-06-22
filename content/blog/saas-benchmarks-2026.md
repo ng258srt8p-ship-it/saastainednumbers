@@ -1,11 +1,11 @@
 ---
 title: "SaaS Benchmarks 2026: Key Metrics by Industry and Stage"
-description: "Comprehensive SaaS benchmarks for 2026 across growth, retention, efficiency, and profitability metrics. Compare your performance against industry standards."
+description: "SaaS benchmarks for 2026 across growth, retention, efficiency, and profitability metrics. Compare your performance against industry standards."
 date: "May 2, 2026"
 slug: "saas-benchmarks-2026"
 ---
 
-Knowing where your SaaS company stands against industry benchmarks is essential for fundraising, strategic planning, and operational improvement. Here are the most comprehensive SaaS benchmarks for 2026, drawn from KeyBanc Capital Markets, SaaS Capital, and other industry sources.
+Knowing where your SaaS company stands against industry benchmarks is essential for fundraising, strategic planning, and operational improvement. Here are the most up-to-date SaaS benchmarks for 2026, drawn from KeyBanc Capital Markets, SaaS Capital, and other industry sources.
 
 ## Growth Benchmarks
 

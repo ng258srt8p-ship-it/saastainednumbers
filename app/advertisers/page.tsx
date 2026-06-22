@@ -50,15 +50,15 @@ export default async function AdvertisersPage() {
           We work with professional advertising networks and affiliate programs that comply with industry standards for online advertising, including but not limited to:
          </p>
          <ul>
-          <li>Google AdSense — Google's advertising platform</li>
-          <li>EthicalAds — Privacy-focused advertising network</li>
-          <li>Skimlinks — Affiliate link monetization platform</li>
+          <li>Google AdSense: Google&apos;s advertising platform</li>
+          <li>EthicalAds: Privacy-focused advertising network</li>
+          <li>Skimlinks: Affiliate link monetization platform</li>
           <li>Various SaaS affiliate programs and retailer partnerships</li>
          </ul>
 
          <h2>Editorial Independence</h2>
          <p>
-          Despite relying on advertising revenue, SaaStainedNumbers maintains full editorial control over all content. Advertisers have no influence over calculator accuracy, benchmark data, or written material published on the platform. Our business model depends on maintaining trust with our users — we will not compromise credibility for revenue.
+          Despite relying on advertising revenue, SaaStainedNumbers maintains full editorial control over all content. Advertisers have no influence over calculator accuracy, benchmark data, or written material published on the platform. Our business model depends on maintaining trust with our users. We will not compromise credibility for revenue.
          </p>
 
          <h2>Contact</h2>

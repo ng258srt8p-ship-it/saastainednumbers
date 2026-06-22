@@ -22,7 +22,7 @@
     "categories": "Categorías",
     "toStart": "para Empezar",
     "popularCalculators": "Calculadoras Populares",
-    "popularSubtitle": "Empieza con estos favoritos — los que usan los fundadores primero.",
+    "popularSubtitle": "Empieza con estos favoritos, los que usan los fundadores primero.",
     "openCalculator": "Abrir calculadora →",
     "browseByCategory": "Explorar por Categoría",
     "categoriesSubtitle": "categorías, calculadoras. Elige tu camino.",
@@ -46,10 +46,10 @@
     "browseCalculators": "Ver Calculadoras",
     "whyTitle": "¿Por qué SaaStainedNumbers?",
     "whyBody1": "SaaStainedNumbers fue creado para resolver un problema simple: los fundadores, operadores y analistas financieros de SaaS necesitan cálculos financieros rápidos y confiables, sin crear una cuenta, sin ver una demostración ni pagar por una herramienta que usarán una sola vez. Cada calculadora en este sitio funciona completamente en tu navegador. Tus datos nunca salen de tu dispositivo.",
-    "whyBody2": "Cada calculadora está construida desde primeros principios utilizando fórmulas financieras estándar. Documentamos cada fórmula con un ejemplo resuelto, comparamos los resultados con datos estándar de la industria y citamos nuestras fuentes. Sin estimaciones opacas — solo matemáticas transparentes que puedes verificar tú mismo.",
+    "whyBody2": "Cada calculadora está construida desde primeros principios utilizando fórmulas financieras estándar. Documentamos cada fórmula con un ejemplo resuelto, comparamos los resultados con datos estándar de la industria y citamos nuestras fuentes. Sin estimaciones opacas, solo matemáticas transparentes que puedes verificar tú mismo.",
     "whyBody3": "Mantenemos el sitio mediante anuncios no intrusivos y enlaces de afiliados contextuales en las secciones de preguntas frecuentes. No hay muros de pago, no hay muros de registro y no hay niveles premium. Cada calculadora es gratuita, para siempre.",
     "latestInsights": "Últimas Publicaciones",
-    "latestInsightsSubtitle": "Guías y estrategias de nuestro blog — gratis para leer, sin registro requerido.",
+    "latestInsightsSubtitle": "Guías y estrategias de nuestro blog, gratis para leer, sin registro requerido.",
     "readArticle": "Leer artículo →",
     "openCanvas": "Abrir Lienzo"
   },
@@ -67,7 +67,7 @@
     "calculatorsLabel": "Calculadoras",
     "all": "Todas las Calculadoras",
     "noSignup": "Sin registro necesario",
-    "comingSoon": "Próximamente — calculadoras en camino",
+    "comingSoon": "Próximamente, calculadoras en camino",
     "buildingNow": "Las estamos construyendo ahora. ¡Vuelve pronto!",
     "browseAll": "Ver Todo"
   },
@@ -139,8 +139,8 @@
     "forever": "Para siempre.",
     "feature1": "Las {n} calculadoras incluidas",
     "feature2": "Resultados e insights en tiempo real",
-    "feature3": "Incrusta en cualquier sitio — gratis",
-    "feature4": "Uso ilimitado — sin cuotas",
+    "feature3": "Incrusta en cualquier sitio, gratis",
+    "feature4": "Uso ilimitado, sin cuotas",
     "feature5": "Soporte comunitario incluido",
     "pricing": "Precios"
   },
@@ -166,7 +166,7 @@
   },
   "calculators": {
     "browseCollection": "Explora nuestra colección de {n} calculadoras en {m} categorías.",
-    "editorial": "Todas las calculadoras utilizan fórmulas financieras estándar y citan sus fuentes. Sin cuenta requerida — solo calcula.",
+    "editorial": "Todas las calculadoras utilizan fórmulas financieras estándar y citan sus fuentes. Sin cuenta requerida, solo calcula.",
     "searchPlaceholder": "Buscar calculadoras...",
     "viewAll": "Ver Todo →"
   },
@@ -245,7 +245,7 @@
   "privacy": {
     "title": "Política de Privacidad",
     "heading": "Política de Privacidad",
-    "subtitle": "Cómo manejamos tus datos — versión corta: no recolectamos tus datos de cálculo.",
+    "subtitle": "Cómo manejamos tus datos. Versión corta: no recolectamos tus datos de cálculo.",
     "lastUpdated": "Última actualización: 26 de mayo de 2026",
     "commitmentTitle": "Nuestro Compromiso con la Privacidad",
     "commitmentBody": "SaaStainedNumbers está diseñado para respetar tu privacidad. Todos los cálculos de las calculadoras ocurren completamente en tu navegador; tus datos de entrada nunca salen de tu dispositivo. No almacenamos, transmitimos ni procesamos tus entradas de cálculo en nuestros servidores.",

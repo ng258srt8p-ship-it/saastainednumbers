@@ -1,6 +1,6 @@
 ---
 title: "Revenue Operations (RevOps) Metrics: A Complete Guide"
-description: "Revenue Operations aligns marketing, sales, and customer success around shared metrics. Learn which RevOps metrics matter and how to build a data-driven revenue engine."
+description: "Revenue Operations aligns marketing, sales, and customer success around shared metrics. Learn which RevOps metrics matter and how to build a metrics-driven revenue engine."
 date: "April 20, 2026"
 slug: "revenue-operations-guide"
 ---

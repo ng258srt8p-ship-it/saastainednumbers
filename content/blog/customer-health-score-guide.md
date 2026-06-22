@@ -5,7 +5,7 @@ date: "May 15, 2026"
 slug: "customer-health-score-guide"
 ---
 
-Customer health scoring is one of the most powerful tools in a SaaS company's retention arsenal. A well-designed health score tells you which customers are thriving, which need help, and which are at risk of churning, often weeks or months before they leave.
+Customer health scoring is one of the most useful tools in a SaaS company's retention arsenal. A well-designed health score tells you which customers are thriving, which need help, and which are at risk of churning, often weeks or months before they leave.
 
 In this guide, we'll walk through how to build a customer health score system that actually works, what metrics to include, and how to use it to drive retention and expansion.
 

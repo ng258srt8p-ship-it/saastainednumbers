@@ -40,7 +40,7 @@ const config = {
       { question: "How does pricing affect gross margin?", answer: "Higher pricing directly improves gross margin if COGS stays constant. Usage-based pricing can compress margins at scale if infrastructure costs grow proportionally with revenue." },
       { question: "Can gross margin decrease as you scale?", answer: "Yes. Enterprise deals often require more support and onboarding, reducing gross margin. Multi-tenant SaaS typically maintains margins better than single-tenant deployments." },
       { question: "How should I track gross margin trends?", answer: "Track gross margin monthly and look for trends: declining margins may indicate rising cloud costs or increased support needs. Improving margins suggest economies of scale. Tools like [Baremetrics](https://baremetrics.com?via=saastainednumbers) can track this automatically." },
-      { question: "What is the difference between gross margin and contribution margin?", answer: "Gross margin subtracts COGS from revenue. Contribution margin subtracts all variable costs including variable sales commissions and variable support costs. Contribution margin is more comprehensive." },
+      { question: "What is the difference between gross margin and contribution margin?", answer: "Gross margin subtracts COGS from revenue. Contribution margin subtracts all variable costs including variable sales commissions and variable support costs. Contribution margin is broader." },
     ],
   },
   locales: {

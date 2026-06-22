@@ -22,7 +22,7 @@
     "categories": "Kategorien",
     "toStart": "zum Starten",
     "popularCalculators": "Beliebte Rechner",
-    "popularSubtitle": "Starten Sie mit diesen Favoriten — die Gründer zuerst nutzen.",
+    "popularSubtitle": "Starten Sie mit diesen Favoriten, die Gründer zuerst nutzen.",
     "openCalculator": "Rechner öffnen →",
     "browseByCategory": "Nach Kategorie Durchsuchen",
     "categoriesSubtitle": "Kategorien, Rechner. Wählen Sie Ihren Weg.",
@@ -45,11 +45,11 @@
     "allFree": "{n} kostenlose Rechner. Keine Karte. Keine Anmeldung.",
     "browseCalculators": "Rechner Durchsuchen",
     "whyTitle": "Warum SaaStainedNumbers?",
-    "whyBody1": "SaaStainedNumbers wurde entwickelt, um ein einfaches Problem zu lösen: SaaS-Gründer, Operateure und Finanzanalysten brauchen schnelle, zuverlässige Finanzberechnungen — ohne Konto erstellen, Demo durchlaufen oder für ein Tool bezahlen, das sie nur einmal nutzen. Jeder Rechner auf dieser Seite läuft vollständig in Ihrem Browser. Ihre Daten verlassen niemals Ihr Gerät.",
-    "whyBody2": "Jeder Rechner wird von Grund auf mit standardisierten Finanzformeln erstellt. Wir dokumentieren jede Formel mit einem durchgerechneten Beispiel, vergleichen Ergebnisse mit branchenüblichen Daten und geben unsere Quellen an. Keine Blackbox-Schätzungen — nur transparente Mathematik, die Sie selbst überprüfen können.",
+    "whyBody1": "SaaStainedNumbers wurde entwickelt, um ein einfaches Problem zu lösen: SaaS-Gründer, Operateure und Finanzanalysten brauchen schnelle, zuverlässige Finanzberechnungen, ohne Konto erstellen, Demo durchlaufen oder für ein Tool bezahlen, das sie nur einmal nutzen. Jeder Rechner auf dieser Seite läuft vollständig in Ihrem Browser. Ihre Daten verlassen niemals Ihr Gerät.",
+    "whyBody2": "Jeder Rechner wird von Grund auf mit standardisierten Finanzformeln erstellt. Wir dokumentieren jede Formel mit einem durchgerechneten Beispiel, vergleichen Ergebnisse mit branchenüblichen Daten und geben unsere Quellen an. Keine Blackbox-Schätzungen, nur transparente Mathematik, die Sie selbst überprüfen können.",
     "whyBody3": "Wir finanzieren die Seite durch nicht-intrusive Anzeigen und kontextbezogene Affiliate-Links in FAQ-Abschnitten. Keine Paywalls, keine Registrierungspflicht und keine Premium-Stufen. Jeder Rechner ist kostenlos, für immer.",
     "latestInsights": "Aktuelle Einblicke",
-    "latestInsightsSubtitle": "Ratgeber und Strategien aus unserem Blog — kostenlos zu lesen, keine Anmeldung erforderlich.",
+    "latestInsightsSubtitle": "Ratgeber und Strategien aus unserem Blog, kostenlos zu lesen, keine Anmeldung erforderlich.",
     "readArticle": "Artikel lesen →",
     "openCanvas": "Arbeitsfläche Öffnen"
   },
@@ -67,7 +67,7 @@
     "calculatorsLabel": "Rechner",
     "all": "Alle Rechner",
     "noSignup": "Keine Anmeldung erforderlich",
-    "comingSoon": "Demnächst — Rechner in Vorbereitung",
+    "comingSoon": "Demnächst, Rechner in Vorbereitung",
     "buildingNow": "Wir arbeiten daran. Schau bald wieder vorbei!",
     "browseAll": "Alle Ansehen"
   },
@@ -139,8 +139,8 @@
     "forever": "Für immer.",
     "feature1": "Alle {n} Rechner enthalten",
     "feature2": "Echtzeit-Ergebnisse und Einblicke",
-    "feature3": "Auf jeder Website einbetten — kostenlos",
-    "feature4": "Unbegrenzte Nutzung — keine Kontingente",
+    "feature3": "Auf jeder Website einbetten, kostenlos",
+    "feature4": "Unbegrenzte Nutzung, keine Kontingente",
     "feature5": "Community-Support inklusive",
     "pricing": "Preise"
   },
@@ -166,7 +166,7 @@
   },
   "calculators": {
     "browseCollection": "Durchstöbern Sie unsere Sammlung von {n} Rechnern in {m} Kategorien.",
-    "editorial": "Alle Rechner verwenden Standard-Finanzformeln und geben ihre Quellen an. Kein Konto erforderlich — einfach rechnen.",
+    "editorial": "Alle Rechner verwenden Standard-Finanzformeln und geben ihre Quellen an. Kein Konto erforderlich, einfach rechnen.",
     "searchPlaceholder": "Rechner suchen...",
     "viewAll": "Alle Ansehen →"
   },
@@ -245,7 +245,7 @@
   "privacy": {
     "title": "Datenschutzerklärung",
     "heading": "Datenschutzerklärung",
-    "subtitle": "Wie wir mit Ihren Daten umgehen — Kurzversion: Wir sammeln Ihre Rechnereingaben nicht.",
+    "subtitle": "Wie wir mit Ihren Daten umgehen. Kurzversion: Wir sammeln Ihre Rechnereingaben nicht.",
     "lastUpdated": "Zuletzt aktualisiert: 26. Mai 2026",
     "commitmentTitle": "Unser Engagement für den Datenschutz",
     "commitmentBody": "SaaStainedNumbers ist so konzipiert, dass Ihre Privatsphäre respektiert wird. Alle Rechnerberechnungen finden vollständig in Ihrem Browser statt; Ihre Eingabedaten verlassen niemals Ihr Gerät. Wir speichern, übertragen oder verarbeiten Ihre Rechnereingaben nicht auf unseren Servern.",

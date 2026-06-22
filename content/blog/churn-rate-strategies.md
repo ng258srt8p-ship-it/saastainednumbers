@@ -45,7 +45,7 @@ Customers who feel heard are less likely to churn. Implement regular NPS surveys
 
 ### 8. Reduce Time to Value
 
-The faster customers experience value, the more likely they are to stay. Analyze your onboarding funnel, identify bottlenecks, and streamline the path to activation. Every day you reduce time to value improves retention.
+The faster customers experience value, the more likely they are to stay. Analyze your onboarding funnel, identify bottlenecks, and shorten the path to activation. Every day you reduce time to value improves retention.
 
 ### 9. Build Community
 

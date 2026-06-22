@@ -6,7 +6,7 @@ const config = {
   category: "saas-deepen",
   meta: {
     title: "Unit Economics Dashboard Calculator",
-    description: "Track your SaaS unit economics with a comprehensive dashboard showing LTV/CAC ratio, contribution margin, payback period, MRR, and gross profit per customer.",
+    description: "Track your SaaS unit economics with a full dashboard showing LTV/CAC ratio, contribution margin, payback period, MRR, and gross profit per customer.",
     keywords: ["unit economics", "saas metrics", "ltv cac ratio", "contribution margin", "payback period", "mrr", "gross profit per customer"],
   },
   benchmarkMetric: "ltv-cac",

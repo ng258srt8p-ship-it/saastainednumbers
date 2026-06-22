@@ -22,7 +22,7 @@
     "categories": "Categories",
     "toStart": "to Start",
     "popularCalculators": "Popular Calculators",
-    "popularSubtitle": "Start with these favorites — the ones founders reach for first.",
+    "popularSubtitle": "Start with these favorites, the ones founders reach for first.",
     "openCalculator": "Open calculator →",
     "browseByCategory": "Browse by Category",
     "categoriesSubtitle": "categories, calculators. Pick your path.",
@@ -46,11 +46,11 @@
     "browseCalculators": "Browse Calculators",
     "openCanvas": "Open Canvas",
     "whyTitle": "Why SaaStainedNumbers?",
-    "whyBody1": "SaaStainedNumbers was built to solve a simple problem: SaaS founders, operators, and financial analysts need fast, reliable financial math — without creating an account, sitting through a demo, or paying for a tool they'll use once. Every calculator on this site runs entirely in your browser. Your data never leaves your device.",
-    "whyBody2": "Each calculator is built from first principles using standard financial formulas. We document every formula with a worked example, benchmark results against industry-standard data, and cite our sources. No black-box estimates — just transparent math you can verify yourself.",
+    "whyBody1": "SaaStainedNumbers was built to solve a simple problem: SaaS founders, operators, and financial analysts need fast, reliable financial math, without creating an account, sitting through a demo, or paying for a tool they'll use once. Every calculator on this site runs entirely in your browser. Your data never leaves your device.",
+    "whyBody2": "Each calculator is built from first principles using standard financial formulas. We document every formula with a worked example, benchmark results against industry-standard data, and cite our sources. No black-box estimates, just transparent math you can verify yourself.",
     "whyBody3": "We support the site through non-intrusive display ads and contextual affiliate links in FAQ sections. There are no paywalls, no sign-up walls, and no premium tiers. Every calculator is free, forever.",
     "latestInsights": "Latest Insights",
-    "latestInsightsSubtitle": "Guides and strategies from our blog — free to read, no signup required.",
+    "latestInsightsSubtitle": "Guides and strategies from our blog, free to read, no signup required.",
     "readArticle": "Read article →"
   },
   "category": {
@@ -67,7 +67,7 @@
     "calculatorsLabel": "Calculators",
     "all": "All Calculators",
     "noSignup": "No signup required",
-    "comingSoon": "Coming soon — calculators on the way",
+    "comingSoon": "Coming soon, calculators on the way",
     "buildingNow": "We're building these now. Check back soon!",
     "browseAll": "Browse All"
   },
@@ -139,8 +139,8 @@
     "forever": "Forever.",
     "feature1": "All {n} calculators included",
     "feature2": "Real-time results and insights",
-    "feature3": "Embed on any site — free",
-    "feature4": "Unlimited usage — no quotas",
+    "feature3": "Embed on any site, free",
+    "feature4": "Unlimited usage, no quotas",
     "feature5": "Community support included",
     "pricing": "Pricing"
   },
@@ -173,7 +173,7 @@
   "privacy": {
     "title": "Privacy Policy",
     "heading": "Privacy Policy",
-    "subtitle": "How we handle your data — short version: we don't collect your calculator inputs.",
+    "subtitle": "How we handle your data. Short version: we don't collect your calculator inputs.",
     "lastUpdated": "Last updated: May 26, 2026",
     "commitmentTitle": "Our Commitment to Privacy",
     "commitmentBody": "SaaStainedNumbers is designed to respect your privacy. All calculator calculations happen entirely in your browser; your input data never leaves your device. We do not store, transmit, or process your calculator inputs on our servers.",

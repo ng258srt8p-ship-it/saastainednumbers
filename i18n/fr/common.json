@@ -22,7 +22,7 @@
     "categories": "catégories",
     "toStart": "à partir de",
     "popularCalculators": "Calculateurs populaires",
-    "popularSubtitle": "Commencez par vos favoris — ce que les fondateurs utilisent en premier.",
+    "popularSubtitle": "Commencez par vos favoris, ce que les fondateurs utilisent en premier.",
     "openCalculator": "Ouvrir le calculateur →",
     "browseByCategory": "Parcourir par catégorie",
     "categoriesSubtitle": "catégories, calculateurs. Choisissez votre parcours.",
@@ -45,11 +45,11 @@
     "allFree": "{n} calculateurs gratuits. Aucune carte requise. Aucune inscription requise.",
     "browseCalculators": "Parcourir les calculateurs",
     "whyTitle": "Pourquoi SaaStainedNumbers ?",
-    "whyBody1": "SaaStainedNumbers a été créé pour résoudre un problème simple : les fondateurs, opérateurs et analystes financiers SaaS ont besoin de calculs financiers rapides et fiables — sans créer de compte, sans assister à une démo ni payer pour un outil qu'ils n'utiliseront qu'une fois. Chaque calculateur sur ce site fonctionne entièrement dans votre navigateur. Vos données ne quittent jamais votre appareil.",
-    "whyBody2": "Chaque calculateur est construit à partir des principes fondamentaux en utilisant des formules financières standard. Nous documentons chaque formule avec un exemple détaillé, comparons les résultats aux données standards de l'industrie et citons nos sources. Pas d'estimations opaques — juste des mathématiques transparentes que vous pouvez vérifier vous-même.",
+    "whyBody1": "SaaStainedNumbers a été créé pour résoudre un problème simple : les fondateurs, opérateurs et analystes financiers SaaS ont besoin de calculs financiers rapides et fiables, sans créer de compte, sans assister à une démo ni payer pour un outil qu'ils n'utiliseront qu'une fois. Chaque calculateur sur ce site fonctionne entièrement dans votre navigateur. Vos données ne quittent jamais votre appareil.",
+    "whyBody2": "Chaque calculateur est construit à partir des principes fondamentaux en utilisant des formules financières standard. Nous documentons chaque formule avec un exemple détaillé, comparons les résultats aux données standards de l'industrie et citons nos sources. Pas d'estimations opaques, juste des mathématiques transparentes que vous pouvez vérifier vous-même.",
     "whyBody3": "Nous finançons le site grâce à des publicités non intrusives et des liens d'affiliation contextuels dans les sections FAQ. Pas de paywalls, pas d'obligations d'inscription et pas de niveaux premium. Chaque calculateur est gratuit, pour toujours.",
     "latestInsights": "Dernières Publications",
-    "latestInsightsSubtitle": "Guides et stratégies de notre blog — gratuits à lire, sans inscription requise.",
+    "latestInsightsSubtitle": "Guides et stratégies de notre blog, gratuits à lire, sans inscription requise.",
     "readArticle": "Lire l'article →",
     "openCanvas": "Ouvrir le Cahier"
   },
@@ -67,7 +67,7 @@
     "calculatorsLabel": "calculateurs",
     "all": "Tous les Calculateurs",
     "noSignup": "Aucune inscription requise",
-    "comingSoon": "À venir — calculateurs en préparation",
+    "comingSoon": "À venir, calculateurs en préparation",
     "buildingNow": "Nous les construisons maintenant. Revenez bientôt !",
     "browseAll": "Parcourir tout"
   },
@@ -139,8 +139,8 @@
     "forever": "Pour toujours.",
     "feature1": "Les {n} calculateurs inclus",
     "feature2": "Résultats et insights en temps réel",
-    "feature3": "Intégration sur n'importe quel site — gratuit",
-    "feature4": "Utilisation illimitée — sans quotas",
+    "feature3": "Intégration sur n'importe quel site, gratuit",
+    "feature4": "Utilisation illimitée, sans quotas",
     "feature5": "Support communautaire inclus",
     "pricing": "Tarifs"
   },
@@ -166,7 +166,7 @@
   },
   "calculators": {
     "browseCollection": "Parcourez notre collection de {n} calculateurs dans {m} catégories.",
-    "editorial": "Tous les calculateurs utilisent des formules financières standard et citent leurs sources. Aucun compte requis — calculez simplement.",
+    "editorial": "Tous les calculateurs utilisent des formules financières standard et citent leurs sources. Aucun compte requis, calculez simplement.",
     "searchPlaceholder": "Rechercher un calculateur...",
     "viewAll": "Voir tout →"
   },
@@ -245,7 +245,7 @@
   "privacy": {
     "title": "Politique de confidentialité",
     "heading": "Politique de confidentialité",
-    "subtitle": "Comment nous traitons vos données — version courte : nous ne collectons pas vos données de calcul.",
+    "subtitle": "Comment nous traitons vos données. Version courte : nous ne collectons pas vos données de calcul.",
     "lastUpdated": "Dernière mise à jour : 26 mai 2026",
     "commitmentTitle": "Notre engagement en matière de confidentialité",
     "commitmentBody": "SaaStainedNumbers est conçu pour respecter votre vie privée. Tous les calculs des calculateurs se font entièrement dans votre navigateur ; vos données d'entrée ne quittent jamais votre appareil. Nous ne stockons, ne transmettons ni ne traitons vos données de calcul sur nos serveurs.",

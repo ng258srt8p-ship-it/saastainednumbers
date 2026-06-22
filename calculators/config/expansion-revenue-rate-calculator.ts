@@ -37,7 +37,7 @@ const config = {
       { question: "How often should I track expansion revenue rate?", answer: "Monthly. Track alongside logo expansion rate (percentage of customers who expanded) for a complete picture of expansion effectiveness." },
       { question: "Does expansion revenue rate vary by customer segment?", answer: "Yes. Enterprise customers typically have higher expansion potential (20-40% annually) than SMB (5-15%). Segment by customer size for accurate benchmarking." },
       { question: "What is the relationship between expansion and churn?", answer: "Even modest expansion can offset churn. A 10% expansion rate can offset 10% revenue churn, resulting in 100% NRR. High expansion is the strongest predictor of long-term SaaS success." },
-      { question: "How does product-led growth affect expansion?", answer: "PLG companies with usage-based pricing naturally drive expansion as customers grow. This creates a powerful flywheel: more usage → more value → more spend → more product investment." },
+      { question: "How does product-led growth affect expansion?", answer: "PLG companies with usage-based pricing naturally drive expansion as customers grow. This creates a strong flywheel: more usage → more value → more spend → more product investment." },
     ],
   },
   locales: {

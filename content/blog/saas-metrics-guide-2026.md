@@ -1,6 +1,6 @@
 ---
 title: "The Essential SaaS Metrics Guide for 2026"
-description: "A comprehensive guide to the 10 SaaS metrics that matter most: from MRR and CAC to NRR and Rule of 40. Learn what to track, why it matters, and how to improve each metric."
+description: "A guide to the 10 SaaS metrics that matter most: from MRR and CAC to NRR and Rule of 40. Learn what to track, why it matters, and how to improve each metric."
 date: "May 20, 2026"
 slug: "saas-metrics-guide-2026"
 ---

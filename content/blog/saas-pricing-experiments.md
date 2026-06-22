@@ -5,7 +5,7 @@ date: "May 4, 2026"
 slug: "saas-pricing-experiments"
 ---
 
-Pricing is the most powerful lever in your SaaS business. A 10% price increase flows almost entirely to the bottom line. Yet most companies change pricing once or twice, if ever. The best SaaS companies run continuous pricing experiments to optimize for growth and revenue.
+Pricing is the most impactful lever in your SaaS business. A 10% price increase flows almost entirely to the bottom line. Yet most companies change pricing once or twice, if ever. The best SaaS companies run continuous pricing experiments to optimize for growth and revenue.
 
 ## Why Pricing Experiments Matter
 

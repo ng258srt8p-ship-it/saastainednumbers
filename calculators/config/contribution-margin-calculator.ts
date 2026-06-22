@@ -31,7 +31,7 @@ const config = {
     ],
     relatedCalculators: ["gross-margin-calculator", "operating-margin-calculator", "mrr-calculator"],
     faq: [
-      { question: "What is the difference between contribution margin and gross margin?", answer: "Gross margin only subtracts COGS (hosting, support). Contribution margin subtracts ALL variable costs including sales commissions, variable marketing costs, and payment processing. Contribution margin is more comprehensive." },
+      { question: "What is the difference between contribution margin and gross margin?", answer: "Gross margin only subtracts COGS (hosting, support). Contribution margin subtracts ALL variable costs including sales commissions, variable marketing costs, and payment processing. Contribution margin is broader." },
       { question: "What costs should be included as variable costs?", answer: "Sales commissions, payment processing fees, variable hosting costs, customer support per-ticket costs, contractor costs, and any other costs that scale directly with revenue." },
       { question: "How is contribution margin used for pricing?", answer: "Contribution margin helps determine minimum pricing. If each sale has 40% contribution margin, you know 60% of revenue goes to variable costs. Set pricing to ensure positive contribution after all variable costs." },
       { question: "How does contribution margin affect scalability?", answer: "Higher contribution margins mean more revenue is available for fixed costs and profit. A 80% contribution margin company can scale profitably much faster than a 50% contribution margin company." },
