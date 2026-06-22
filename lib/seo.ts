@@ -22,27 +22,45 @@ export function generateMetadata(config: CalculatorConfig): Metadata {
   };
 }
 
-export function generateWebApplicationSchema(slug: string, config: CalculatorConfig, locale?: string) {
+export function generateWebApplicationSchema(
+  slug: string,
+  config: CalculatorConfig,
+  categoryDisplayName: string,
+  locale?: string,
+) {
+  const path = `/${config.category}/${slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: config.meta.title,
+    description: config.meta.description,
     applicationCategory: "BusinessApplication",
-    operatingSystem: "Any",
+    operatingSystem: "Web",
     browserRequirements: "Requires JavaScript",
-    offers: { "@type": "Offer", price: "0", priceCurrency: getDefaultCurrency(locale ?? "en") },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: getDefaultCurrency(locale ?? "en"),
+      availability: "https://schema.org/OnlineOnly",
+    },
     featureList: config.outputs.map((o) => `Calculate ${o.label}`),
+    url: `https://saastainednumbers.com${path}`,
   };
 }
 
-export function generateBreadcrumbListSchema(category: string, slug: string) {
+export function generateBreadcrumbListSchema(
+  categorySlug: string,
+  categoryDisplayName: string,
+  slug: string,
+  calculatorTitle: string,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://saastainednumbers.com" },
-      { "@type": "ListItem", position: 2, name: category, item: `https://saastainednumbers.com/${category}` },
-      { "@type": "ListItem", position: 3, name: slug, item: `https://saastainednumbers.com/${category}/${slug}` },
+      { "@type": "ListItem", position: 2, name: categoryDisplayName, item: `https://saastainednumbers.com/${categorySlug}` },
+      { "@type": "ListItem", position: 3, name: calculatorTitle, item: `https://saastainednumbers.com/${categorySlug}/${slug}` },
     ],
   };
 }
@@ -57,30 +75,4 @@ export function generateFAQPageSchema(faqItems: FAQItem[]) {
       acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
   };
-}
-
-export function generateJsonLd(slug: string, config: CalculatorConfig, faqItems: FAQItem[], locale?: string) {
-  const schemas = [
-    generateWebApplicationSchema(slug, config, locale),
-    generateBreadcrumbListSchema(config.category, slug),
-    generateFAQPageSchema(faqItems),
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: config.meta.title,
-      description: config.meta.description,
-      url: `https://saastainednumbers.com/${config.category}/${slug}`,
-      about: {
-        "@type": "Thing",
-        name: "Financial Mathematics",
-        description: "Educational financial modeling and business calculation tools",
-      },
-      specialty: "FinancialPlanning",
-      isAccessibleForFree: true,
-      significantLink: [
-        { "@type": "LinkRole", linkTarget: `https://saastainednumbers.com/${config.category}/${slug}`, name: config.meta.title, inLanguage: locale ?? "en" },
-      ],
-    },
-  ];
-  return schemas.map((s) => JSON.stringify(s)).join("\n");
 }

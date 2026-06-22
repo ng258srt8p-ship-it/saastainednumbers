@@ -47,6 +47,21 @@ export default async function BlogPostPage({ params }: PageProps) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Organization",
+      name: "SaaStainedNumbers",
+      url: "https://saastainednumbers.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SaaStainedNumbers",
+      url: "https://saastainednumbers.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://saastainednumbers.com/logo.svg",
+      },
+    },
     url: `https://saastainednumbers.com/blog/${slug}`,
   };
 

@@ -37,7 +37,7 @@ const permanentMarker = Permanent_Marker({
 export async function generateMetadata(): Promise<Metadata> {
   const title = {
     template: "%s | SaaStainedNumbers",
-    default: "SaaStainedNumbers  -  Free Calculators for Builders & Creators",
+    default: "SaaStainedNumbers - Free Calculators for Builders & Creators",
   };
   const description = "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account or sign-up required.";
   return {
@@ -80,9 +80,11 @@ export default async function RootLayout({
         <CookieConsentProvider>
         <ConsentScripts />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" media="all" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" media="print" />
+        <script dangerouslySetInnerHTML={{ __html: "document.querySelector('link[href*=\"Material+Symbols\"]').media='all'" }} />
+        <noscript>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossOrigin="anonymous" />
+        </noscript>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
@@ -171,6 +173,10 @@ export default async function RootLayout({
                   logo: "https://saastainednumbers.com/logo.svg",
                   description:
                     "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
+                  sameAs: [
+                    "https://github.com/SaaStainedNumbers",
+                    "https://x.com/SaaStainedNums",
+                  ],
                 },
                 {
                   "@type": "WebSite",
@@ -178,6 +184,7 @@ export default async function RootLayout({
                   url: "https://saastainednumbers.com",
                   description:
                     "Free, instant SaaS calculators for MRR, CAC, LTV, churn, and more. No account required.",
+                  inLanguage: "en",
                   potentialAction: {
                     "@type": "SearchAction",
                     target: "https://saastainednumbers.com/calculators?q={search_term_string}",

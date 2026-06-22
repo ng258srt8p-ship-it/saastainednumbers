@@ -2,10 +2,18 @@ import { getAllCalculators } from "@/lib/registry";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTranslations } from "@/lib/getTranslations";
 import { resolveLocaleConfig } from "@/lib/resolve-calculator-locale";
-import { generateBreadcrumbListSchema } from "@/lib/seo";
+import { generateWebApplicationSchema, generateFAQPageSchema } from "@/lib/seo";
+import { getCategoryTranslationKey } from "@/lib/registry";
 import type { SupportedLocale } from "@/calculators/config/calculator-schema";
 
 import "@/calculators/config/_all";
+
+function splitHowToSteps(text: string): string[] {
+  return text
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
 
 export default async function CalculatorLayout({
   params,
@@ -21,45 +29,23 @@ export default async function CalculatorLayout({
   const { locale, t } = await getTranslations();
   const resolved = resolveLocaleConfig(config, locale as SupportedLocale);
 
-  const webApp = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: resolved.meta.title,
-    description: resolved.meta.description,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/OnlineOnly",
-    },
-    url: `https://saastainednumbers.com/${resolved.category}/${resolved.slug}`,
-  };
+  const categoryDisplayName = t(`category.${getCategoryTranslationKey(category)}`);
+
+  const webApp = generateWebApplicationSchema(slug, resolved, categoryDisplayName, locale);
 
   const howTo = {
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: resolved.meta.title,
     description: resolved.meta.description,
-    step: resolved.content.howToUse.split(". ").filter(Boolean).map((step: string, i: number) => ({
+    step: splitHowToSteps(resolved.content.howToUse).map((step: string, i: number) => ({
       "@type": "HowToStep",
       position: i + 1,
-      text: step.trim(),
+      text: step,
     })),
   };
 
-  const faq = resolved.content.faq.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: resolved.content.faq.map((item: { question: string; answer: string }) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  } : null;
-
-  const breadcrumbSchema = generateBreadcrumbListSchema(resolved.category, resolved.slug);
+  const faq = resolved.content.faq.length > 0 ? generateFAQPageSchema(resolved.content.faq) : null;
 
   const webpageSchema = {
     "@context": "https://schema.org",
@@ -79,13 +65,14 @@ export default async function CalculatorLayout({
     },
   };
 
-  const schemas = [webApp, howTo, breadcrumbSchema, webpageSchema, ...(faq ? [faq] : [])].filter(Boolean);
+  const schemas = [webApp, howTo, webpageSchema, ...(faq ? [faq] : [])].filter(Boolean);
 
   return (
     <>
       <div className="mx-auto max-w-6xl px-4">
         <Breadcrumb items={[
           { label: t("common.home"), href: "/" },
+          { label: categoryDisplayName, href: `/${category}` },
           { label: resolved.meta.title, href: `/${resolved.category}/${resolved.slug}` },
         ]} />
       </div>
