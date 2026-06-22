@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
 import { CookieConsentProvider } from "@/components/CookieConsentContext";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { ConsentScripts } from "@/components/ConsentScripts";
 import { Nav } from "@/components/Nav";
 import { FooterShow } from "@/components/FooterShow";
@@ -118,6 +119,7 @@ export default async function RootLayout({
         <CurrencyProvider locale={locale as Locale}>
         <CookieConsentProvider>
         <ConsentScripts />
+        <CookieConsentBanner />
           <ShowWhenNotEmbed>
             <Nav t={{ pricing: t("nav.pricing"), blog: t("nav.blog"), calculators: t("nav.calculators"), canvas: t("nav.canvas") ?? "Canvas" }} locale={locale as Locale} />
           </ShowWhenNotEmbed>
