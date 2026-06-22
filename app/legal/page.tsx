@@ -62,12 +62,6 @@ export default async function LegalPage() {
       href: "/legal#acceptable-use",
       description: t("legal.sectionAcceptableUse.description"),
     },
-    {
-      id: "contact",
-      title: t("contact.title"),
-      href: "/contact",
-      description: t("legal.sectionContact.description"),
-    },
   ];
 
   return (

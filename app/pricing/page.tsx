@@ -94,7 +94,7 @@ export default async function PricingPage() {
             { q: "Is it really free?", a: "Yes. All calculators are completely free with no usage limits, no paywalls, and no sign-up required." },
             { q: "How do you make money?", a: "We display non-intrusive ads within calculator pages. Embeds are ad-free." },
             { q: "Can I embed calculators on my site?", a: "Absolutely. Use the embed button on any calculator to get a copy-paste iframe snippet. Embed is free and ad-free." },
-            { q: "Do you offer an API?", a: "Not yet, but it's on our roadmap. Contact us if you need programmatic access." },
+            { q: "Do you offer an API?", a: "Not yet, but it's on our roadmap." },
           ].map((faq) => (
             <details key={faq.q} className="group mobbin-card">
               <summary className="flex cursor-pointer items-center justify-between text-sm font-medium text-gray-800 dark:text-gray-200">

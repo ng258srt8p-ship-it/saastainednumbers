@@ -17,14 +17,13 @@ This document outlines the comprehensive compliance requirements and processes f
    - Proper character encoding for accent marks (ã, õ, ê, î, ô, ú, ç)
 
 3. **Calculator Count Consistency**
-   - Exactly 87 calculators across all languages and pages
+   - Exactly 86 calculators across all languages and pages
    - Consistent metadata across all localization directories
    - Proper referral in homepage headers and footers
 
 4. **E-E-A-T Compliance**
-   - Professional "About Us" page with actual team member names
-   - Professional "Contact Us" page with distinct email channels
-   - Clear authorship and contact information
+   - Clear site description and purpose on homepage
+   - Contact information available via email
 
 ### Validation Scripts
 
@@ -75,7 +74,7 @@ The compliance validation is integrated into the build process and will fail if 
 - Verify calculator count consistency across all pages
 
 #### Monthly Tasks
-- Update team attribution if team changes
+- Review and update calculator content for accuracy
 - Review and update mathematical formulas for accuracy
 - Check for any broken links or missing content
 
@@ -97,12 +96,11 @@ The compliance validation is integrated into the build process and will fail if 
    - Run localization validation to identify issues
 
 3. **Calculator Count Inconsistency**
-   - Solution: Update metadata across all pages to reference the standard 87 calculators
+   - Solution: Update metadata across all pages to reference the standard 86 calculators
    - Use the metadata validation in the compliance validator
 
-4. **Missing E-E-A-T Elements**
-   - Solution: Create or update "About Us" and "Contact Us" pages with professional content
-   - Ensure pages include team member names and contact information
+4. **Missing Contact Information**
+   - Solution: Ensure email contact is listed on the site
 
 ### Contact and Support
 
@@ -127,9 +125,9 @@ This compliance framework was developed to ensure SaaStainedNumbers.com maintain
 
 ### Changes to Website Structure
 - Calculator pages enhanced with comprehensive static content
-- E-E-A-T compliant "About Us" and "Contact Us" pages created
+- Clear site description and purpose on homepage
 - Portuguese localization fixed with proper translations
-- Consistent calculator count (87) across all languages and pages
+- Consistent calculator count (86) across all languages and pages
 - Icon rendering system fixed to prevent raw name leakage
 
 ## Implementation Timeline
@@ -154,7 +152,7 @@ This compliance framework was developed to ensure SaaStainedNumbers.com maintain
 After implementing this compliance plan:
 - ✅ All calculator pages contain 800+ words of static content
 - ✅ Portuguese localization free of English text leakage
-- ✅ Consistent 87 calculator count across all locales
+- ✅ Consistent 86 calculator count across all locales
 - ✅ Professional E-E-A-T compliant pages created
 - ✅ Icon rendering system fixed
 - ✅ Comprehensive validator and documentation created

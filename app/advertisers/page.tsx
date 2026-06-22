@@ -63,12 +63,8 @@ export default async function AdvertisersPage() {
 
          <h2>Contact</h2>
          <p>
-          For advertising partnerships or to inquire about working with us:
+          For advertising partnerships or to inquire about working with us, email <a href="mailto:hello@saastainednumbers.com" className="text-brand-600 dark:text-brand-400">hello@saastainednumbers.com</a>.
         </p>
-<ul>
-  <li>Email: <a href="mailto:hello@saastainednumbers.com" className="text-brand-600 dark:text-brand-400">hello@saastainednumbers.com</a></li>
-  <li>Business inquiries: <a href="/contact" className="text-brand-600 dark:text-brand-400">Contact form</a></li>
-</ul>
        </div>
 
        <hr className="my-8 border-gray-200 dark:border-gray-700" />

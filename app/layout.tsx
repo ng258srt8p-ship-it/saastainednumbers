@@ -90,7 +90,7 @@ export default async function RootLayout({
           {t("common.skipToContent")}
         </a>
           <ShowWhenNotEmbed>
-            <Nav t={{ pricing: t("nav.pricing"), blog: t("nav.blog"), calculators: t("nav.calculators"), canvas: t("nav.canvas") ?? "Canvas", aboutUs: t("nav.aboutUs") ?? "About Us", contactUs: t("nav.contactUs") ?? "Contact Us" }} locale={locale as Locale} />
+            <Nav t={{ pricing: t("nav.pricing"), blog: t("nav.blog"), calculators: t("nav.calculators"), canvas: t("nav.canvas") ?? "Canvas" }} locale={locale as Locale} />
           </ShowWhenNotEmbed>
           <main id="main-content" className="flex-1 flex flex-col min-h-0">
             <MainContentWrapper>
@@ -111,7 +111,6 @@ export default async function RootLayout({
                       <li><Link href="/" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("common.home")}</Link></li>
                       <li><Link href="/calculators" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("category.all")}</Link></li>
                       <li><Link href="/canvas" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.canvas")}</Link></li>
-                      <li><Link href="/about" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.about")}</Link></li>
                       <li><Link href="/pricing" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.pricing")}</Link></li>
                             </ul>
                   </div>
@@ -152,8 +151,6 @@ export default async function RootLayout({
                     <p className="text-xs text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} {t("footer.copyright")}.</p>
                   </div>
                   <div className="flex gap-4">
-                    <Link href="/about" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("footer.about")}</Link>
-                    <Link href="/contact" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("contact.title")}</Link>
                     <Link href="/blog" className="text-xs text-gray-500 dark:text-gray-400 hover:text-brand-600 transition-colors">{t("nav.blog")}</Link>
                   </div>
                 </div>

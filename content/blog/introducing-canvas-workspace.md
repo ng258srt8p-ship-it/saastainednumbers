@@ -1,5 +1,5 @@
 ---
-title: "Stop Hopping Between Tabs. The Canvas Lets You Run 75 Calculators Side by Side."
+title: "Stop Hopping Between Tabs. The Canvas Lets You Run Dozens of Calculators Side by Side."
 description: "Stack multiple SaaS calculators side by side, compare metrics in real time, and see your whole business in one place. No account required."
 date: "June 20, 2026"
 slug: "introducing-canvas-workspace"
@@ -81,4 +81,4 @@ Load the SaaS Starter Pack, adjust a few sliders, and see your whole business in
 
 ---
 
-*Canvas is part of SaaStainedNumbers. 75 free SaaS calculators with benchmarks, insights, and a multi-calculator workspace. Built for founders who want to understand their numbers.*
+*Canvas is part of SaaStainedNumbers. free SaaS calculators with benchmarks, insights, and a multi-calculator workspace. Built for founders who want to understand their numbers.*

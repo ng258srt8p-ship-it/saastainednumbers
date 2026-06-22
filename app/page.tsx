@@ -319,9 +319,9 @@ export default async function Home() {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.acrossCategories")} <span className="font-numbers">{categories.length}</span> {t("home.categories").toLowerCase()}</p>
             </div>
             <div className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
-              <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">{totalCount * 4}</p>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.calculationBenchmarks")}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.industryStandardData")}</p>
+              <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100">{categories.length}</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("home.categories")}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t("home.acrossCategories")} <span className="font-numbers">{totalCount}</span> {t("home.calculatorsInCatalog")}</p>
             </div>
             <div className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm text-center">
               <p className="font-numbers text-3xl font-bold text-gray-900 dark:text-gray-100"><CurrencyHeroValue locale={locale as Locale} /></p>
