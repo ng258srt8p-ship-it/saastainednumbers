@@ -32,6 +32,11 @@ jobs:
   e2e-tests:
     needs: quality
     runs-on: ubuntu-latest
+    # Official Playwright image: chromium + system deps preinstalled, so the
+    # job never touches apt (ubuntu-latest recently moved to the 26.04 image,
+    # whose mirrors intermittently fail DNS on hosted runners).
+    container:
+      image: mcr.microsoft.com/playwright:v1.65.0-noble
     steps:
       - uses: actions/checkout@v4
       - name: Install Node.js
@@ -48,12 +53,10 @@ jobs:
         run: npm ci --prefer-offline
       - name: Build static export
         run: ./scripts/build-static.sh
-      - name: Install Playwright browsers
-        # Runner DNS is occasionally flaky (transient 'Temporary failure
-        # resolving security.ubuntu.com'); apt's own retry handles it.
-        run: |
-          sudo apt-get update -o Acquire::Retries=5
-          npx playwright install --with-deps chromium
+      - name: Ensure browser matches @playwright/test
+        # Idempotent no-op when the image's bundled chromium matches the
+        # pinned 1.65.0; downloads only if package.json is bumped past the tag.
+        run: npx playwright install chromium
       - name: Start server and run E2E tests
         run: |
           npx serve out -l 3000 &
