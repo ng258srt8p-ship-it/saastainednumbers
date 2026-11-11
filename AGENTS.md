@@ -4,23 +4,23 @@
 - TypeScript: ✅ Passes (0 errors)
 - Lint: ✅ Passes (0 errors, 23 warnings — pre-existing)
 - Build: ✅ Passes (Next.js 16.2.6, Turbopack, static export)
-- Unit Tests: ✅ 355/355 (Vitest, 90 test files)
+- Unit Tests: ✅ 525/525 (Vitest, 93 test files)
 
 ## Project Structure
 ```
 webcalc/
 ├── calculators/
-│   ├── config/            # 76 files: schema + 75 calculator configs
-│   ├── engine/            # 75 pure TS engine functions
+│   ├── config/            # 91 files: schema + _all barrel + 89 calculator configs
+│   ├── engine/            # 87 pure TS engine functions
 │   └── ui/                # 8 shared React components + EmbedModal
 ├── app/
 │   ├── [category]/        # Category listing (SSG, 9 categories)
-│   │   └── [slug]/        # Calc pages + CalculatorClient (75 engines)
+│   │   └── [slug]/        # Calc pages + CalculatorClient (87 engines)
 │   ├── api/og/            # Dynamic OG image generation
 │   ├── blog/              # Blog listing + [slug] routes
-│   ├── dashboard/         # Interconnected SaaS dashboard
+│   ├── canvas/            # Interconnected dashboard (renamed from /dashboard)
 │   ├── embed/             # Embed layout (no nav)
-│   │   └── [slug]/        # Embed route + EmbedClient (75 engines, postMessage)
+│   │   └── [slug]/        # Embed route + EmbedClient (87 engines, postMessage)
 │   ├── pricing/           # Pricing page ($0 forever — all free)
 │   ├── layout.tsx         # Root layout (Nav, skip-to-content)
 │   ├── not-found.tsx      # Styled 404 page
@@ -44,7 +44,7 @@ webcalc/
 │   └── ja/common.json     # Japanese locale
 ├── prisma/schema.prisma   # UserAccount, CalculationRecord, Account, Session, VerificationToken
 ├── tests/
-│   └── calculators/       # 76 test files, 258 tests
+│   └── calculators/       # 90 test files
 ├── components/
 │   ├── EmailCapture.tsx    # Email subscription below calc results
 │   ├── FeedbackWidget.tsx  # User feedback
@@ -61,10 +61,10 @@ webcalc/
 ```
 
 ## Key Stats
-- **75 calculators** across 9 categories (Revenue, Churn, Growth, Unit Economics, AI Cost, Side Hustle, Personal Finance, General Business, SaaS Deepen)
-- **258 unit tests** across 76 test files
+- **87 calculators** across 9 categories (Revenue, Churn, Growth, Unit Economics, AI Cost, Side Hustle, Personal Finance, General Business, SaaS Deepen)
+- **525 unit tests** across 93 test files (vitest run)
 - **107+ pages** generated · **6 languages** (EN, ES, DE, PT, FR, JA)
-- **1326 pages** per full build (221 × 6 locales)
+- **1380 pages** per full build (330 root + 230 × 5 locales)
 
 ## Revenue Model
 - 100% free — no paywalls. Display ads (EthicalAds primary, AdSense fallback).
@@ -74,10 +74,10 @@ webcalc/
 ## Key Conventions
 - Calculator engines are pure TS (no React/framework deps)
 - Use `@/` path aliases for all imports
-- Embed postMessage sends `{source: "webcalc-embed", slug, inputs, results}` to parent
+- Embed postMessage sends `{source: "saastainednumbers-embed", slug, inputs, results}` to parent
 - i18n uses cookie-based locale detection with Accept-Language fallback
 - All calculators: engine (pure TS) + config (`registerCalculator`) + unit tests + E2E smoke tests
-- Barrel import: `calculators/config/_all.ts` imports all 75 configs
+- Barrel import: `calculators/config/_all.ts` imports all 89 configs
 
 ## Env Vars Required
 - `AUTH_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`, `AUTH_RESEND_KEY`

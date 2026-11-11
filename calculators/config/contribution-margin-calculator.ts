@@ -6,7 +6,7 @@ const config = {
   category: "unit-economics",
   meta: {
     title: "Contribution Margin Calculator",
-    description: "Calculate your contribution margin  -  revenue minus variable costs  -  to understand per-unit profitability.",
+    description: "Calculate your contribution margin - revenue minus variable costs - to understand per-unit profitability.",
     keywords: ["contribution margin", "variable costs", "profitability", "unit economics", "saas metrics"],
   },
   inputs: [

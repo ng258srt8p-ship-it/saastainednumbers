@@ -1,6 +1,5 @@
 {
   "nav": {
-    "dashboard": "Dashboard",
     "pricing": "Pricing",
     "blog": "Blog",
     "calculators": "Calculators",
@@ -25,7 +24,7 @@
     "popularSubtitle": "Start with these favorites, the ones founders reach for first.",
     "openCalculator": "Open calculator →",
     "browseByCategory": "Browse by Category",
-    "categoriesSubtitle": "categories, calculators. Pick your path.",
+    "categoriesSubtitle": "{n} categories, {c} calculators. Pick your path.",
     "seeAllCalculators": "See all {n} calculators →",
     "threeSteps": "How It Works",
     "stepPick": "Pick Your Calculator",
@@ -130,7 +129,10 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "cookiePolicy": "Cookie Policy",
-    "copyright": "SaaStainedNumbers. All rights reserved."
+    "copyright": "SaaStainedNumbers. All rights reserved.",
+    "about": "About",
+    "advertise": "Advertise With Us",
+    "contact": "Contact"
   },
   "pricing": {
     "everythingFree": "Everything Free",

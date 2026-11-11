@@ -228,7 +228,17 @@ export default async function Home() {
           <SectionLabel num={2} />
           <h2 className="font-heading mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">{t("home.browseByCategory")}</h2>
           <p className="mt-3 text-gray-500 dark:text-gray-400">
-            {t("home.categoriesSubtitle")}
+            {t("home.categoriesSubtitle")
+              .split(/(\{[nc]\})/g)
+              .map((seg, i) =>
+                seg === "{n}" ? (
+                  <span key={i} className="font-numbers">{categories.length}</span>
+                ) : seg === "{c}" ? (
+                  <span key={i} className="font-numbers">{totalCount}</span>
+                ) : (
+                  seg
+                )
+              )}
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((cat) => {

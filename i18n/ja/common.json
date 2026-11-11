@@ -1,6 +1,5 @@
 {
   "nav": {
-    "dashboard": "ダッシュボード",
     "pricing": "料金",
     "blog": "ブログ",
     "calculators": "計算機",
@@ -25,7 +24,7 @@
     "popularSubtitle": "お気に入りから始めましょう。創業者が最初に使うものです。",
     "openCalculator": "計算機を開く →",
     "browseByCategory": "カテゴリーで検索",
-    "categoriesSubtitle": "カテゴリー、計算機。道を選んでください。",
+    "categoriesSubtitle": "{n}カテゴリ・{c}個の計算ツール。カテゴリを選んでスタート。",
     "seeAllCalculators": "すべての {n} 計算機を表示 →",
     "threeSteps": "使い方",
     "stepPick": "計算機を選ぶ",
@@ -130,7 +129,10 @@
     "privacyPolicy": "プライバシーポリシー",
     "termsOfService": "利用規約",
     "cookiePolicy": "クッキーポリシー",
-    "copyright": "SaaStainedNumbers. 無断転載を禁じます。"
+    "copyright": "SaaStainedNumbers. 無断転載を禁じます。",
+    "about": "概要",
+    "advertise": "広告掲載",
+    "contact": "お問い合わせ"
   },
   "pricing": {
     "everythingFree": "すべて無料",

@@ -1,6 +1,5 @@
 {
   "nav": {
-    "dashboard": "Dashboard",
     "pricing": "Preise",
     "blog": "Blog",
     "calculators": "Rechner",
@@ -25,7 +24,7 @@
     "popularSubtitle": "Starten Sie mit diesen Favoriten, die Gründer zuerst nutzen.",
     "openCalculator": "Rechner öffnen →",
     "browseByCategory": "Nach Kategorie Durchsuchen",
-    "categoriesSubtitle": "Kategorien, Rechner. Wählen Sie Ihren Weg.",
+    "categoriesSubtitle": "{n} Kategorien, {c} Rechner. Wähle deinen Bereich.",
     "seeAllCalculators": "Alle {n} Rechner anzeigen →",
     "threeSteps": "So Funktioniert's",
     "stepPick": "Wählen Sie Ihren Rechner",
@@ -130,7 +129,10 @@
     "privacyPolicy": "Datenschutz",
     "termsOfService": "Nutzungsbedingungen",
     "cookiePolicy": "Cookie-Richtlinie",
-    "copyright": "SaaStainedNumbers. Alle Rechte vorbehalten."
+    "copyright": "SaaStainedNumbers. Alle Rechte vorbehalten.",
+    "about": "Über uns",
+    "advertise": "Werbepartner werden",
+    "contact": "Kontakt"
   },
   "pricing": {
     "everythingFree": "Alles Kostenlos",

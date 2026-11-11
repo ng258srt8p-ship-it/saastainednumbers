@@ -1,6 +1,5 @@
 {
   "nav": {
-    "dashboard": "Tableau de bord",
     "pricing": "Tarifs",
     "blog": "Blog",
     "calculators": "Calculateurs",
@@ -25,7 +24,7 @@
     "popularSubtitle": "Commencez par vos favoris, ce que les fondateurs utilisent en premier.",
     "openCalculator": "Ouvrir le calculateur →",
     "browseByCategory": "Parcourir par catégorie",
-    "categoriesSubtitle": "catégories, calculateurs. Choisissez votre parcours.",
+    "categoriesSubtitle": "{n} catégories, {c} calculateurs. Choisissez votre voie.",
     "seeAllCalculators": "Voir les {n} calculateurs →",
     "threeSteps": "Comment ça marche",
     "stepPick": "Choisissez un calculateur",
@@ -130,7 +129,10 @@
     "privacyPolicy": "Politique de confidentialité",
     "termsOfService": "Conditions d'utilisation",
     "cookiePolicy": "Politique des cookies",
-    "copyright": "SaaStainedNumbers. Tous droits réservés."
+    "copyright": "SaaStainedNumbers. Tous droits réservés.",
+    "about": "À propos",
+    "advertise": "Devenir annonceur",
+    "contact": "Contact"
   },
   "pricing": {
     "everythingFree": "Tout Gratuit",

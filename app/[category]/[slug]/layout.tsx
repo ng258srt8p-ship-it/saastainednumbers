@@ -89,17 +89,6 @@ export default async function CalculatorLayout({
         />
       )}
 
-      <div className="mx-auto max-w-4xl px-4 pb-8">
-        <section className="mt-12">
-          <h1 className="font-heading text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
-            {resolved.meta.title}
-          </h1>
-          <p className="mt-1 sm:mt-2 text-base sm:text-lg text-gray-600 dark:text-gray-400">
-            {resolved.meta.description}
-          </p>
-        </section>
-      </div>
-
       {children}
     </>
   );

@@ -1,17 +1,21 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useCookieConsent, useSetCookieConsent } from "./CookieConsentContext";
 
 export function CookieConsentBanner() {
   const consent = useCookieConsent();
   const setConsent = useSetCookieConsent();
+  // Static export bakes the banner into HTML (no localStorage at build time);
+  // gate on mount so previously-accepted visitors never see it and hydration matches.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const handleAccept = useCallback(() => setConsent("accepted"), [setConsent]);
   const handleReject = useCallback(() => setConsent("rejected"), [setConsent]);
 
-  if (consent !== null) return null;
+  if (!mounted || consent !== null) return null;
 
   return (
     <div
