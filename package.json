@@ -63,19 +63,7 @@
     "shadcn": "^4.8.0",
     "tailwindcss": "^4",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.9"
-  },
-  "optionalDependencies": {
-    "lightningcss-linux-x64-gnu": "1.32.0",
-    "@tailwindcss/oxide-linux-x64-gnu": "4.3.0",
-    "@next/swc-linux-x64-gnu": "16.2.6",
-    "@biomejs/cli-darwin-x64": "2.5.0",
-    "@biomejs/cli-linux-x64": "2.5.0",
-    "@biomejs/cli-linux-x64-musl": "2.5.0",
-    "@biomejs/cli-linux-arm64": "2.5.0",
-    "@biomejs/cli-linux-arm64-musl": "2.5.0",
-    "@biomejs/cli-win32-x64": "2.5.0",
-    "@biomejs/cli-win32-arm64": "2.5.0"
+    "vitest": "4.1.9"
   },
   "engines": {
     "node": ">=20.0.0",
@@ -85,5 +73,9 @@
     ">0.25%",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "overrides": {
+    "vite": "8.0.14",
+    "rolldown": "1.0.2"
+  }
 }
