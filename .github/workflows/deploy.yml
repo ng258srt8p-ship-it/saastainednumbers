@@ -49,8 +49,10 @@ jobs:
       - name: Build static export
         run: ./scripts/build-static.sh
       - name: Install Playwright browsers
+        # Runner DNS is occasionally flaky (transient 'Temporary failure
+        # resolving security.ubuntu.com'); apt's own retry handles it.
         run: |
-          sudo apt-get update
+          sudo apt-get update -o Acquire::Retries=5
           npx playwright install --with-deps chromium
       - name: Start server and run E2E tests
         run: |
