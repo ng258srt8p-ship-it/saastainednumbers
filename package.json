@@ -68,7 +68,14 @@
   "optionalDependencies": {
     "lightningcss-linux-x64-gnu": "1.32.0",
     "@tailwindcss/oxide-linux-x64-gnu": "4.3.0",
-    "@next/swc-linux-x64-gnu": "16.2.6"
+    "@next/swc-linux-x64-gnu": "16.2.6",
+    "@biomejs/cli-darwin-x64": "2.5.0",
+    "@biomejs/cli-linux-x64": "2.5.0",
+    "@biomejs/cli-linux-x64-musl": "2.5.0",
+    "@biomejs/cli-linux-arm64": "2.5.0",
+    "@biomejs/cli-linux-arm64-musl": "2.5.0",
+    "@biomejs/cli-win32-x64": "2.5.0",
+    "@biomejs/cli-win32-arm64": "2.5.0"
   },
   "engines": {
     "node": ">=20.0.0",
