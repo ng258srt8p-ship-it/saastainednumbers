@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
     ".kilo/**",
     "functions/**",
     "tests/**",
+    "scripts/**",
   ]),
   // Downgrade pre-existing strict rules to warnings
   {
