@@ -58,7 +58,7 @@ test.describe("Theme toggle", () => {
   test("theme persists across navigation", async ({ page }) => {
     await page.goto(BASE);
     await toggleDarkMode(page, "dark");
-    await page.click('a[href="/revenue/mrr-calculator"]');
+    await page.click('a[href^="/revenue/mrr-calculator"]');
     await page.waitForLoadState("load");
     const hasDark = await page.evaluate(() =>
       document.documentElement.classList.contains("dark")

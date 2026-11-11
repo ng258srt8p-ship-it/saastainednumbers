@@ -116,6 +116,12 @@ export default async function RootLayout({
         />
       </head>
       <body className="min-h-screen grid grid-rows-[auto_1fr_auto] bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
+        >
+          {t("common.skipToContent")}
+        </a>
         <CurrencyProvider locale={locale as Locale}>
         <CookieConsentProvider>
         <ConsentScripts />
@@ -124,12 +130,6 @@ export default async function RootLayout({
             <Nav t={{ pricing: t("nav.pricing"), blog: t("nav.blog"), calculators: t("nav.calculators"), canvas: t("nav.canvas") ?? "Canvas" }} locale={locale as Locale} />
           </ShowWhenNotEmbed>
           <main id="main-content" className="flex-1 flex flex-col min-h-0">
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
-            >
-              {t("common.skipToContent")}
-            </a>
             <MainContentWrapper>
               <PageTransition>{children}</PageTransition>
             </MainContentWrapper>

@@ -48,7 +48,8 @@ export const DEFAULT_CURRENCY: Record<string, string> = {
 // ─── Locator helpers ──────────────────────────────────────────────────────
 
 export function currencyBtn(page: Page) {
-  return page.locator('button[aria-label="Select currency"]').first();
+  // aria-label carries the current code, e.g. "Select currency ($USD)"
+  return page.locator('button[aria-label*="Select currency"]').first();
 }
 
 export function currencyDropdown(page: Page) {
@@ -68,7 +69,7 @@ export function hamburgerBtn(page: Page) {
 }
 
 export function mobileMenu(page: Page) {
-  return page.locator('div[role="dialog"]');
+  return page.getByRole("navigation", { name: "Mobile navigation" });
 }
 
 export function themeToggle(page: Page) {
@@ -109,7 +110,14 @@ export async function toggleDarkMode(page: Page, targetTheme: "dark" | "light") 
 
 /** Clear all workspace canvas storage */
 export async function clearCanvasStorage(page: Page) {
-  await page.evaluate(() => localStorage.removeItem("canvas-workspace-state"));
+  // addInitScript runs inside the document on every navigation — safe pre-goto
+  await page.addInitScript(() => {
+    try {
+      localStorage.removeItem("canvas-workspace-calculators");
+    } catch {
+      /* storage may be unavailable on about:blank */
+    }
+  });
 }
 
 /** Add a calculator to the canvas workspace by name */
@@ -137,11 +145,11 @@ export function getCurrentLocale(page: Page): string {
 /** Slugs for representative calculators across categories */
 export const CALC_SLUGS = [
   { category: "revenue", slug: "mrr-calculator", name: "MRR Calculator" },
-  { category: "churn", slug: "churn-rate-calculator", name: "Churn Rate Calculator" },
-  { category: "growth", slug: "growth-rate-calculator", name: "Growth Rate Calculator" },
-  { category: "unit-economics", slug: "cac-calculator", name: "CAC Calculator" },
-  { category: "side-hustle", slug: "solo-fund-manager", name: "Solo Fund Manager" },
+  { category: "churn-retention", slug: "churn-calculator", name: "Churn Calculator" },
+  { category: "growth-efficiency", slug: "cac-calculator", name: "CAC Calculator" },
+  { category: "unit-economics", slug: "cac-ltv-ratio-calculator", name: "CAC to LTV Ratio Calculator" },
+  { category: "side-hustle", slug: "freelance-rate-calculator", name: "Freelance Rate Calculator" },
   { category: "personal-finance", slug: "fire-calculator", name: "FIRE Calculator" },
   { category: "general-business", slug: "break-even-calculator", name: "Break Even Calculator" },
-  { category: "ai-cost", slug: "llm-cost-calculator", name: "LLM Cost Calculator" },
+  { category: "ai-cost", slug: "chatgpt-api-cost-calculator", name: "ChatGPT API Cost Calculator" },
 ] as const;

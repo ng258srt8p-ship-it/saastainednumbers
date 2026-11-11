@@ -1,38 +1,49 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCurrency } from "./CurrencyProvider";
 import { SUPPORTED_CURRENCIES, getCurrencySymbolStatic } from "@/lib/currencies";
 
 export function CurrencySwitcher() {
   const { currency, setCurrency } = useCurrency();
   const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
-    const handler = (e: KeyboardEvent) => {
+    const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    // Close on outside click. A CSS backdrop can't work here: the nav's
+    // transform makes it the containing block for position:fixed children.
+    const onPointerDown = (e: PointerEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointerDown, true);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointerDown, true);
+    };
   }, [open]);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={rootRef}>
       <button
         type="button"
         onClick={() => setOpen((p) => !p)}
         className="flex items-center gap-1 rounded-lg px-2 py-1.5 text-xs font-medium text-[rgb(20,20,20)] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Select currency"
+        aria-label={`Select currency ${getCurrencySymbolStatic(currency)}${currency}`}
       >
         <span>{getCurrencySymbolStatic(currency)}{currency}</span>
       </button>
 
       {open && (
         <>
-          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} onKeyDown={(e) => e.key === "Escape" && setOpen(false)} aria-hidden />
           <div
             className="absolute left-0 z-50 mt-1 min-w-[140px] max-h-[300px] overflow-y-auto rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg py-1"
             role="listbox"

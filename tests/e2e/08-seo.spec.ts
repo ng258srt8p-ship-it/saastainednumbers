@@ -6,7 +6,7 @@ test.describe("SEO", () => {
     const response = await request.get(`${BASE}/robots.txt`);
     expect(response.status()).toBe(200);
     const body = await response.text();
-    expect(body).toContain("User-agent");
+    expect(body).toContain("User-Agent");
   });
 
   test("sitemap.xml returns 200 and contains urlset", async ({ request }) => {

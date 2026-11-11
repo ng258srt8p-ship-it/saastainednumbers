@@ -2,26 +2,35 @@ import { test, expect } from "@playwright/test";
 import { BASE, getInsightsBtn } from "./helpers";
 
 test.describe("Share button", () => {
+  // handleCopy awaits navigator.clipboard.writeText — headless denies it by
+  // default and the promise never settles, so grant it.
+  test.use({ permissions: ["clipboard-read", "clipboard-write"] });
   test("share button on mrr-calculator: click shows 'Copied!' then reverts", async ({ page }) => {
     await page.goto(`${BASE}/revenue/mrr-calculator`);
-    const shareBtn = page.getByRole("button", { name: /share/i }).first();
+    // Static export renders the button pre-hydration; wait until the React tree
+    // (Calculation results) exists, otherwise the click hits a handler-less node.
+    await expect(page.locator('[aria-label="Calculation results"]')).toBeVisible();
+    // Track by aria-label state: the name flips Share -> Copied! on click, so a
+    // /share/i role locator would stop resolving mid-assertion.
+    const shareBtn = page.locator('button[aria-label="Share"]').first();
     await expect(shareBtn).toBeVisible();
 
     await shareBtn.click();
     // Should show "Copied!" immediately after click
-    await expect(shareBtn).toContainText("Copied!");
+    await expect(page.locator('button[aria-label="Copied!"]').first()).toBeVisible();
     // Reverts after timeout (2 seconds)
-    await expect(shareBtn).toContainText("Share", { timeout: 5000 });
+    await expect(page.locator('button[aria-label="Share"]').first()).toBeVisible({ timeout: 5000 });
   });
 
   test("share button on cac-calculator: click shows 'Copied!' then reverts", async ({ page }) => {
-    await page.goto(`${BASE}/unit-economics/cac-calculator`);
-    const shareBtn = page.getByRole("button", { name: /share/i }).first();
+    await page.goto(`${BASE}/growth-efficiency/cac-calculator`);
+    await expect(page.locator('[aria-label="Calculation results"]')).toBeVisible();
+    const shareBtn = page.locator('button[aria-label="Share"]').first();
     await expect(shareBtn).toBeVisible();
 
     await shareBtn.click();
-    await expect(shareBtn).toContainText("Copied!");
-    await expect(shareBtn).toContainText("Share", { timeout: 5000 });
+    await expect(page.locator('button[aria-label="Copied!"]')).toBeVisible();
+    await expect(page.locator('button[aria-label="Share"]').first()).toBeVisible({ timeout: 5000 });
   });
 });
 
@@ -50,7 +59,7 @@ test.describe("Feedback widget", () => {
     const helpfulText = page.getByText("Was this helpful?");
     await expect(helpfulText).toBeVisible();
 
-    const noBtn = page.getByRole("button", { name: /no/i }).first();
+    const noBtn = page.getByRole("button", { name: "No", exact: true });
     await noBtn.click();
 
     await expect(page.getByText(/thanks/i).first()).toBeVisible();
@@ -86,27 +95,23 @@ test.describe("Get Insights", () => {
 test.describe("Compare toggle", () => {
   test("clicking compare shows Scenario A/B, toggle back hides Scenario B", async ({ page }) => {
     await page.goto(`${BASE}/revenue/mrr-calculator`);
+    await expect(page.locator('[aria-label="Calculation results"]')).toBeVisible();
 
-    // Initially, single view — no "Scenario B" text
-    await expect(page.getByText("Scenario B")).not.toBeVisible();
+    // Single view shows an "Add Scenario B to compare" button (legit Scenario B
+    // copy) — Scenario A columns only exist in compare mode.
+    await expect(page.getByText("Scenario A")).not.toBeVisible();
 
-    // Click the "Compare Scenarios" button in the CompareToggle
     const compareBtn = page.getByRole("button", { name: /compare scenarios/i });
     await compareBtn.click();
 
-    // Scenario A and B headers should be visible
     await expect(page.getByText("Scenario A").first()).toBeVisible();
     await expect(page.getByText("Scenario B").first()).toBeVisible();
-
-    // Results comparison section should appear
     await expect(page.getByText("Results Comparison")).toBeVisible();
 
     // Toggle back to single view
-    const singleBtn = page.getByRole("button", { name: /^Single$/ });
-    await singleBtn.click();
-
-    // Scenario B should be hidden
-    await expect(page.getByText("Scenario B")).not.toBeVisible();
+    await page.getByRole("button", { name: /^Single$/ }).click();
+    await expect(page.getByText("Scenario A")).not.toBeVisible();
+    await expect(page.getByText("Results Comparison")).not.toBeVisible();
   });
 });
 

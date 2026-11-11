@@ -20,10 +20,10 @@ test.describe("Desktop navigation", () => {
   test("Calculators, Canvas, Pricing, Blog links are visible", async ({ page }) => {
     await page.goto(BASE, { waitUntil: "load" });
     const nav = page.locator("nav");
-    await expect(nav.getByRole("link", { name: /Calculators/i })).toBeVisible();
-    await expect(nav.getByRole("link", { name: /Canvas/i })).toBeVisible();
-    await expect(nav.getByRole("link", { name: /Pricing/i })).toBeVisible();
-    await expect(nav.getByRole("link", { name: /Blog/i })).toBeVisible();
+    await expect(nav.getByRole("link", { name: /Calculators/i }).first()).toBeVisible();
+    await expect(nav.getByRole("link", { name: /Canvas/i }).first()).toBeVisible();
+    await expect(nav.getByRole("link", { name: /Pricing/i }).first()).toBeVisible();
+    await expect(nav.getByRole("link", { name: /Blog/i }).first()).toBeVisible();
   });
 
   test("no About Us or Contact Us links in desktop nav", async ({ page }) => {
@@ -58,8 +58,7 @@ test.describe("Breadcrumbs", () => {
     const breadcrumbNav = page.locator('nav[aria-label="Breadcrumb"]');
     const homeLink = breadcrumbNav.getByRole("link", { name: /Home/i });
     await homeLink.click();
-    await page.waitForLoadState("load");
-    expect(page.url()).toBe(`${BASE}/`);
+    await expect(page).toHaveURL(`${BASE}/`);
   });
 });
 
@@ -85,11 +84,12 @@ test.describe("Footer", () => {
     await expect(footer.getByRole("link", { name: /Terms/i })).toBeVisible();
   });
 
-  test("footer has no About or Contact links", async ({ page }) => {
+  test("footer has About, Advertise and Contact links", async ({ page }) => {
     await page.goto(BASE, { waitUntil: "load" });
     const footer = page.locator("footer");
-    await expect(footer.getByRole("link", { name: /About/i })).toHaveCount(0);
-    await expect(footer.getByRole("link", { name: /Contact/i })).toHaveCount(0);
+    await expect(footer.getByRole("link", { name: /About/i })).toBeVisible();
+    await expect(footer.getByRole("link", { name: /Advertise/i })).toBeVisible();
+    await expect(footer.getByRole("link", { name: /Contact/i })).toBeVisible();
   });
 });
 
@@ -131,10 +131,9 @@ test.describe("Mobile navigation", () => {
     // Click the Calculators link
     const calcLink = mobileMenu(page).getByRole("link", { name: /Calculators/i });
     await calcLink.click();
-    await page.waitForLoadState("load");
 
-    // Should navigate to /calculators
-    expect(page.url()).toContain("/calculators");
+    // Should navigate to /calculators (client-side nav: poll the URL)
+    await expect(page).toHaveURL(/\/calculators/);
 
     // Menu should close after navigation
     await expect(mobileMenu(page)).not.toBeVisible();

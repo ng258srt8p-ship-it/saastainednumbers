@@ -20,7 +20,7 @@ test.describe("All calculators load and produce results", () => {
       await expect(results).toBeVisible();
 
       // No "NaN" text visible on the page
-      const nanText = page.locator("text=NaN");
+      const nanText = page.locator('text="NaN"');
       await expect(nanText).toHaveCount(0);
     });
   }
@@ -31,15 +31,12 @@ test.describe("Calculator interactions", () => {
     await page.goto(`${BASE}/revenue/mrr-calculator`, { waitUntil: "load" });
     // Default: 100 customers * $50 ARPU = $5000 MRR
     const results = page.locator('[aria-label="Calculation results"]');
-    await expect(results).toBeVisible();
-    const text = await results.textContent();
-    expect(text).toBeTruthy();
-    // The results should contain a dollar amount (non-zero)
-    expect(text).toMatch(/\$/);
+    // Poll until the computed value has rendered (not just the section shell)
+    await expect(results).toContainText("$");
   });
 
-  test("churn-rate-calculator default values produce non-zero results", async ({ page }) => {
-    await page.goto(`${BASE}/churn/churn-rate-calculator`, { waitUntil: "load" });
+  test("churn-calculator default values produce non-zero results", async ({ page }) => {
+    await page.goto(`${BASE}/churn-retention/churn-calculator`, { waitUntil: "load" });
     const results = page.locator('[aria-label="Calculation results"]');
     await expect(results).toBeVisible();
     const text = await results.textContent();
@@ -131,8 +128,8 @@ test.describe("Calculator interactions", () => {
     }
   });
 
-  test("stage selector works on churn-rate-calculator", async ({ page }) => {
-    await page.goto(`${BASE}/churn/churn-rate-calculator`, { waitUntil: "load" });
+  test("stage selector works on churn-calculator", async ({ page }) => {
+    await page.goto(`${BASE}/churn-retention/churn-calculator`, { waitUntil: "load" });
 
     // Look for stage selector buttons
     const seriesB = page.locator('button:has-text("Series B")');

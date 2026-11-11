@@ -75,7 +75,7 @@ test.describe("Canvas workspace", () => {
     await saasStarter.click();
     await page.waitForTimeout(500);
     // The workspace should now show multiple calculators
-    const activeText = page.getByText(/\d+ calculator\(s\) active/);
+    const activeText = page.getByText(/\d+ calculators? active/);
     await expect(activeText).toBeVisible();
   });
 

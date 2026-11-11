@@ -37,14 +37,15 @@ test.describe("Blog listing page", () => {
   test("click an article card navigates to the post page", async ({ page }) => {
     await page.goto(`${BASE}/blog`, { waitUntil: "load" });
     // Find first blog post link (not the nav links)
-    const postLink = page.locator("a[href*='/blog/']").first();
+    const postLink = page
+      .locator("a[href^='/blog/']:not([href='/blog/']):not([href='/blog'])")
+      .first();
     await expect(postLink).toBeVisible();
     const href = await postLink.getAttribute("href");
     expect(href).toContain("/blog/");
     await postLink.click();
-    await page.waitForLoadState("load");
-    // Should now be on a blog post page
-    expect(page.url()).toContain("/blog/");
+    // Client-side navigation fires no load event — poll the URL instead.
+    await expect(page).toHaveURL(/\/blog\/[a-z0-9-]+/);
   });
 
   test("post page loads with title, content, and back-to-blog link", async ({ page }) => {
@@ -65,10 +66,8 @@ test.describe("Blog listing page", () => {
     await page.goto(`${BASE}/blog/introducing-canvas-workspace`, { waitUntil: "load" });
     const backLink = page.getByRole("link", { name: /back to blog/i });
     await backLink.click();
-    await page.waitForLoadState("load");
-    expect(page.url()).toContain("/blog");
-    // Should not be on a post page anymore
-    expect(page.url()).not.toContain("/blog/introducing-canvas-workspace");
+    // Poll: exact /blog (or /blog/) — not the post page anymore.
+    await expect(page).toHaveURL(/\/blog\/?$/);
   });
 
   test("blog listing shows post dates", async ({ page }) => {

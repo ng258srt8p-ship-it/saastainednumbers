@@ -26,6 +26,16 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  // Close the mobile menu on Escape
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileMenuOpen]);
+
   const toggleMobileMenu = useCallback(() => {
     setMobileMenuOpen((prev) => !prev);
   }, []);
@@ -158,6 +168,11 @@ export function Nav({ t, locale }: { t: NavLinks; locale: Locale }) {
                 {link.label}
               </Link>
             ))}
+          </div>
+          {/* Currency + locale switching (mobile) */}
+          <div className="flex items-center gap-2 px-4 pb-3">
+            <CurrencySwitcher />
+            <LocaleSwitcher locale={locale} />
           </div>
         </div>
       </nav>

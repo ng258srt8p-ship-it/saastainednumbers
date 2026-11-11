@@ -49,10 +49,11 @@ test.describe("Homepage", () => {
     await page.goto(BASE, { waitUntil: "load" });
     // Desktop nav links are in the hidden md:flex container
     const nav = page.locator("nav");
-    await expect(nav.getByRole("link", { name: /Calculators/i })).toBeVisible();
-    await expect(nav.getByRole("link", { name: /Pricing/i })).toBeVisible();
-    await expect(nav.getByRole("link", { name: /Blog/i })).toBeVisible();
-    await expect(nav.getByRole("link", { name: /Canvas/i })).toBeVisible();
+    // Desktop <nav> + hidden mobile <a> ("All Calculators") both match — desktop is first in DOM.
+    await expect(nav.getByRole("link", { name: /Calculators/i }).first()).toBeVisible();
+    await expect(nav.getByRole("link", { name: /Pricing/i }).first()).toBeVisible();
+    await expect(nav.getByRole("link", { name: /Blog/i }).first()).toBeVisible();
+    await expect(nav.getByRole("link", { name: /Canvas/i }).first()).toBeVisible();
   });
 });
 

@@ -47,7 +47,7 @@ export function CalculatorSearch({ calculators, placeholder = "Search calculator
         placeholder={placeholder}
         aria-label={ariaLabel}
         aria-autocomplete="list"
-        aria-controls="search-results"
+        aria-controls={filtered.length > 0 ? "search-results" : undefined}
         className="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-2.5 pl-10 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-400"
       />
       <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-base leading-none select-none">

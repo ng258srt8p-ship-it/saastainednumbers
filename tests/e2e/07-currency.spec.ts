@@ -80,7 +80,7 @@ test.describe("Currency switcher", () => {
     await hamburgerBtn(page).click();
     await expect(mobileMenu(page)).toBeVisible();
     // Currency button should be inside the mobile menu
-    const mobileCurrencyBtn = mobileMenu(page).locator('button[aria-label="Select currency"]');
+    const mobileCurrencyBtn = mobileMenu(page).locator('button[aria-label*="Select currency"]');
     await expect(mobileCurrencyBtn).toBeVisible();
     await mobileCurrencyBtn.click();
     await expect(currencyDropdown(page)).toBeVisible();
