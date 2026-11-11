@@ -155,17 +155,6 @@
     "readMore": "Ler mais →",
     "backToBlog": "← Voltar ao Blog"
   },
-  "dashboard": {
-    "heading": "Painel",
-    "subtitle": "Acompanhe suas métricas principais em um só lugar.",
-    "share": "Compartilhar",
-    "copied": "Copiado!",
-    "addCalculators": "Adicionar Calculadoras",
-    "noCalculatorsSelected": "Nenhuma calculadora selecionada ainda.",
-    "browseCalculators": "Explorar Calculadoras",
-    "calculatorsActive": "Calculadoras Ativas",
-    "remove": "Remover"
-  },
   "calculators": {
     "browseCollection": "Explore nossa coleção de {n} calculadoras em {m} categorias.",
     "editorial": "Todas as calculadoras utilizam fórmulas financeiras padrão e citam suas fontes. Sem conta necessária, apenas calcule.",

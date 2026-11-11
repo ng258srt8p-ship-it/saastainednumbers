@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      images: ["/api/og?title=All+Calculators&category=home"],
+      images: ["/og-default.png"],
     },
   };
 }

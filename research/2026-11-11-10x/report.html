@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SaaStainedNumbers — 10x Research & Revenue Roadmap (2026-11-11)</title>
+<style>
+  :root { --ink:#1a2332; --muted:#5b6675; --brand:#0f766e; --bg:#faf9f7; --card:#ffffff; --line:#e6e3dd; --warn-bg:#fdf6ec; --warn-line:#e5c99a; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  main { max-width: 62rem; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; line-height:1.2; margin:0 0 .35rem; letter-spacing:-.01em; }
+  .sub { color: var(--muted); margin:0 0 2.25rem; font-size:.95rem; }
+  h2 { font-size: 1.25rem; margin:2.4rem 0 .9rem; padding-bottom:.35rem; border-bottom:2px solid var(--brand); display:inline-block; }
+  h3 { font-size:1.02rem; margin:1.4rem 0 .4rem; }
+  p, li { max-width: 78ch; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:1.1rem 1.3rem; margin:1rem 0; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:.8rem; margin:1.2rem 0; }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:.9rem 1rem; }
+  .kpi b { display:block; font-size:1.35rem; color:var(--brand); }
+  .kpi span { font-size:.82rem; color:var(--muted); }
+  table { border-collapse:collapse; width:100%; font-size:.9rem; background:var(--card); }
+  th,td { border:1px solid var(--line); padding:.5rem .65rem; text-align:left; vertical-align:top; }
+  th { background:#f1efe9; font-weight:600; }
+  .tag { display:inline-block; font-size:.72rem; font-weight:700; padding:.1rem .5rem; border-radius:999px; margin-right:.4rem; vertical-align:middle; }
+  .p0 { background:#0f766e; color:#fff; } .p1 { background:#b45309; color:#fff; } .p2 { background:#355d9e; color:#fff; } .p3 { background:#6b7280; color:#fff; }
+  .conf-h { color:#0f766e; font-weight:700; } .conf-m { color:#b45309; font-weight:700; } .conf-l { color:#9b2c2c; font-weight:700; }
+  .warn { background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:12px; padding:.9rem 1.1rem; }
+  code { background:#efede7; padding:.1rem .35rem; border-radius:5px; font-size:.85em; }
+  a { color: var(--brand); }
+  .src { font-size:.8rem; color:var(--muted); }
+  footer { margin-top:3rem; font-size:.8rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; }
+</style>
+</head>
+<body><main>
+<h1>SaaStainedNumbers — 10x Research &amp; Revenue Roadmap</h1>
+<p class="sub">Deep-research run 2026-11-11 · 6 evidence waves · full ledger in <code>research/2026-11-11-10x/evidence.md</code> · companion <code>report.md</code> + <code>revenue-roadmap.md</code></p>
+
+<div class="kpis">
+  <div class="kpi"><b>87</b><span>calculators, 9 categories</span></div>
+  <div class="kpi"><b>1380</b><span>static pages / 6 locales</span></div>
+  <div class="kpi"><b>$3.34</b><span>finance AdSense RPM (med)</span></div>
+  <div class="kpi"><b>&minus;58%</b><span>CTR at #1 when AI Overview shows (high)</span></div>
+  <div class="kpi"><b>20&ndash;30%</b><span>standard SaaS recurring affiliate (med)</span></div>
+</div>
+
+<h2>Headline findings</h2>
+<div class="card"><p><b>1 · Ads alone won't pay at near-term traffic.</b> Finance RPM &asymp; $3.34 &rarr; 100k pageviews/mo is ~$90&ndash;430. A solo 300-calculator site removed ads entirely ("not life changing"). Omni Calculator's ad model needed <i>20M visits/mo</i>. Treat ads as a topping, not the meal. <span class="src">[1][14][15]</span></p></div>
+<div class="card"><p><b>2 · AI Overviews eat informational clicks — your exact query type.</b> AIO on 48% of queries, &gt;70% of informational SERPs; position-1 CTR &minus;58% when present; non-AIO CTR still &minus;41% YoY. Being #1 is no longer the prize — being the <i>cited, embedded, linked-to tool</i> is. <span class="src">[2][3][4][5]</span></p></div>
+<div class="card"><p><b>3 · The embed loop is your compounding asset — and it was broken.</b> Ungated embeds with a keyword-rich "Powered by" anchor earn DA 15&ndash;65 contextual links. Our copied embed code contained <i>no</i> anchor (attribution lived inside the iframe, invisible to crawlers). <b>Fixed 2026-11-11</b> in <code>lib/embed.ts</code>. <span class="src">[6][7]</span></p></div>
+<div class="card"><p><b>4 · Affiliate is the best margin per visitor today.</b> SaaS tools pay 20&ndash;30% recurring (Baremetrics 20%, ConvertKit 30% lifetime, HubSpot 30%&times;12mo). A user who just computed their churn problem is the hottest lead alive. <span class="src">[9]</span></p></div>
+<div class="card"><p><b>5 · Ad networks are a milestone ladder.</b> JOURNEY by Mediavine: 1,000 tier-1 sessions/30d to enter; Mediavine full: $5,000/yr ad revenue; EthicalAds sells $5.25 tier-1 CPM directly. Roadmap: AdSense &rarr; JOURNEY &rarr; Mediavine. <span class="src">[10][11]</span></p></div>
+<div class="warn"><p><b>6 · Guardrail:</b> Google's scaled-content policy (Aug 2026) demotes mass templated pages &mdash; 40&ndash;60% traffic drops observed. 87 real tools are safe; the FAQ/blog/locale <i>templates</i> need per-page differentiation + annual benchmark refresh. Enforce <code>lib/content-uniqueness.ts</code> per release. <span class="src">[16][7]</span></p></div>
+
+<h2>Ranked backlog</h2>
+<table>
+<tr><th>Priority</th><th>Item</th><th>Why</th><th>Effort</th></tr>
+<tr><td><span class="tag p0">P0</span></td><td>Embed attribution anchor in copied code</td><td>Unlocks backlink flywheel; 100% of embed equity was leaking — DONE this deploy</td><td>30 min</td></tr>
+<tr><td><span class="tag p0">P0</span></td><td>Re-provision analytics (CF token / Web Analytics beacon)</td><td>"Maximize what users use" is impossible blind; GA4 only post-consent</td><td>1 h</td></tr>
+<tr><td><span class="tag p1">P1</span></td><td>Sourced benchmark layer ("median LTV:CAC by stage"), annual refresh</td><td>AIO-era moat: become the cited data source, not the squeezed snippet</td><td>1&ndash;2 wk</td></tr>
+<tr><td><span class="tag p1">P1</span></td><td>Post-result affiliate blocks (5&ndash;8 programs, 20&ndash;30% recurring)</td><td>Highest $/visitor today; $100&ndash;600/mo at 50k pv, compounding</td><td>2&ndash;3 d</td></tr>
+<tr><td><span class="tag p1">P1</span></td><td>Email capture on results + monthly benchmark newsletter</td><td>Finance CPM $35&ndash;75; owned audience immune to AIO</td><td>1 wk</td></tr>
+<tr><td><span class="tag p2">P2</span></td><td>Tool-page SEO pass (tool above fold, visible embed section, FAQ/HowTo schema)</td><td>Converts the 1380 pages already shipped</td><td>1 wk</td></tr>
+<tr><td><span class="tag p2">P2</span></td><td>Quarterly "State of SaaS Metrics" data-PR launch</td><td>Data angle earns DR60+ links; links start month 3&ndash;6</td><td>2 wk/q</td></tr>
+<tr><td><span class="tag p2">P2</span></td><td>Ad ladder: JOURNEY at 1k tier-1 sessions/mo</td><td>+30&ndash;400% RPM uplift at milestones</td><td>1 d</td></tr>
+<tr><td><span class="tag p3">P3</span></td><td>Localized benchmark content (JA/DE/PT/FR/ES)</td><td>6 locales shipped, thin; non-EN less AIO-cannibalized</td><td>ongoing</td></tr>
+<tr><td><span class="tag p3">P3</span></td><td>Embed licensing: free w/ attribution, paid white-label $19&ndash;49/mo</td><td>Monetizes redistribution without touching the free promise</td><td>1 wk</td></tr>
+</table>
+
+<h2>Revenue math (at 50k pageviews/mo, honest ranges)</h2>
+<table>
+<tr><th>Rail</th><th>Monthly est.</th><th>Basis</th></tr>
+<tr><td>AdSense (now)</td><td>$125&ndash;170</td><td>finance RPM $3.34 [1]</td></tr>
+<tr><td>Affiliate (Phase 1)</td><td>$200&ndash;600, compounding</td><td>0.4% CTR × 8% conv × 20&ndash;30% recurring × 6-mo retention [9]</td></tr>
+<tr><td>Newsletter (Phase 1)</td><td>$150&ndash;450 at 2&ndash;3k subs</td><td>finance niche CPM $35&ndash;75 [12]</td></tr>
+<tr><td>Premium ads (Phase 2)</td><td>2&ndash;4× the AdSense line</td><td>JOURNEY/Mediavine ladder [11]</td></tr>
+<tr><td>Embed licensing (Phase 3)</td><td>speculative</td><td>case: 40+ embeds in 90 days [6]</td></tr>
+</table>
+
+<h2>Shipped today (commit 93691f8 + embed fix)</h2>
+<ul>
+<li>Styled 404 page now served (was empty 200-byte-less body on every unknown path)</li>
+<li>Duplicate H1 removed from all 87 calculator pages (single H1 = tool header)</li>
+<li>Cookie banner no longer re-shows after consent (static-export mount-gate)</li>
+<li>Home subtitle numbers fixed ("9 categories, 87 calculators")</li>
+<li>Footer: Advertise/About/Contact linked, stray Blog removed, copyright period fixed, 6 locales</li>
+<li>259 double-spaced hyphen copy artifacts swept (66 files)</li>
+<li>Embed code carries keyword-rich attribution anchors (the P0 flywheel unlock)</li>
+<li>Workspace: stale copies archived, dead branches/stashes cleaned, AGENTS.md refreshed (525 tests)</li>
+</ul>
+
+<h2>Open blocker</h2>
+<p>Cloudflare Analytics token lacked <span class="conf-h">Zone Analytics:Read</span> and the follow-up token was declined &rarr; <b>traffic picture is still unknown</b>. Re-run with a token that has <code>Analytics: Read</code> (zone scope) and Phase 0.2 becomes a 10-minute job.</p>
+
+<footer>Sources: ahrefs.com (fetched) · developers.google.com (fetched) · ethicalads.io (fetched) · mediavine.com (fetched) · outrank.so · digitalapplied.com · omnibound.ai · the20dollaragency.com · outgrow.co · hackceleration · artha.link · r/SaaS · Google for Publishers. Confidence tiers per ledger: <span class="conf-h">high</span> = primary/multi-source · <span class="conf-m">med</span> = single secondary/vendor · <span class="conf-l">low</span> = anecdote.</footer>
+</main></body>
+</html>

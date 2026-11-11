@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to Cloudflare Workers
 
 on:
   push:
@@ -88,10 +88,8 @@ jobs:
         run: npm ci --prefer-offline
       - name: Build static export
         run: ./scripts/build-static.sh
-      - name: Copy Cloudflare Functions into out/
-        run: cp -r functions out/functions
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to Cloudflare Workers (assets-only; wrangler.jsonc)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy out --project-name=saastainednumbers
+          command: deploy

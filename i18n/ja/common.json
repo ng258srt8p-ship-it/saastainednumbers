@@ -155,17 +155,6 @@
     "readMore": "もっと読む →",
     "backToBlog": "← ブログに戻る"
   },
-  "dashboard": {
-    "heading": "ダッシュボード",
-    "subtitle": "主要な指標を一か所で追跡。",
-    "share": "共有",
-    "copied": "コピーしました！",
-    "addCalculators": "計算機を追加",
-    "noCalculatorsSelected": "まだ計算機が選択されていません。",
-    "browseCalculators": "計算機を表示",
-    "calculatorsActive": "アクティブな計算機",
-    "remove": "削除"
-  },
   "calculators": {
     "browseCollection": "{n}個の計算機を{m}カテゴリーで閲覧。",
     "editorial": "すべての計算機は標準的な財務公式を使用し、出典を明記しています。アカウント不要、すぐに計算できます。",

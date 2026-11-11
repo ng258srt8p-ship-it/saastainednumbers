@@ -5,10 +5,9 @@
   "observability": {
     "enabled": true
   },
-  "build": {
-    "command": "./scripts/build-static.sh",
-    "cwd": "."
-  },
+  // Build is run explicitly (scripts/deploy.sh / CI) before `wrangler deploy`.
+  // A build{} hook here makes wrangler set a non-standard NODE_ENV that crashes
+  // Next prerendering of /embed pages.
   "assets": {
     "directory": "out",
     "not_found_handling": "404-page"

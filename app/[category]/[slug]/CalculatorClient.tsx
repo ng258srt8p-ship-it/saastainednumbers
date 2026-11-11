@@ -473,6 +473,7 @@ export function CalculatorClient({ config, relatedCalculators, hideContent, stri
       <EmbedModal
         slug={config.slug}
         title={config.meta.title}
+        category={config.category}
         open={embedOpen}
         onClose={() => setEmbedOpen(false)}
       />

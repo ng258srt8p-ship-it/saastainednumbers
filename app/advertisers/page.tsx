@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
          "Advertising and affiliate disclosure for SaaStainedNumbers. Learn how we monetize and work with advertisers.",
       type: "website",
-      images: ["/api/og?title=Advertisers"],
+      images: ["/og-default.png"],
      },
    };
 }

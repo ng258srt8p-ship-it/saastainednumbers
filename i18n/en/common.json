@@ -155,17 +155,6 @@
     "readMore": "Read more →",
     "backToBlog": "← Back to Blog"
   },
-  "dashboard": {
-    "heading": "Dashboard",
-    "subtitle": "Track your key metrics all in one place.",
-    "share": "Share",
-    "copied": "Copied!",
-    "addCalculators": "Add Calculators",
-    "noCalculatorsSelected": "No calculators selected yet.",
-    "browseCalculators": "Browse Calculators",
-    "calculatorsActive": "Calculators Active",
-    "remove": "Remove"
-  },
   "calculators": {
     "browseCollection": "Browse our collection of {n} calculators across {m} categories.",
     "editorial": "All calculators use standard financial formulas and cite their sources.",

@@ -155,17 +155,6 @@
     "readMore": "Leer más →",
     "backToBlog": "← Volver al Blog"
   },
-  "dashboard": {
-    "heading": "Panel de Control",
-    "subtitle": "Sigue tus métricas clave en un solo lugar.",
-    "share": "Compartir",
-    "copied": "¡Copiado!",
-    "addCalculators": "Añadir Calculadoras",
-    "noCalculatorsSelected": "Aún no hay calculadoras seleccionadas.",
-    "browseCalculators": "Explorar Calculadoras",
-    "calculatorsActive": "Calculadoras Activas",
-    "remove": "Eliminar"
-  },
   "calculators": {
     "browseCollection": "Explora nuestra colección de {n} calculadoras en {m} categorías.",
     "editorial": "Todas las calculadoras utilizan fórmulas financieras estándar y citan sus fuentes. Sin cuenta requerida, solo calcula.",

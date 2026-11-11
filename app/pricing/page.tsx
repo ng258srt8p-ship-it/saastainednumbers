@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: `${t("pricing.everythingFree")} - SaaStainedNumbers`,
       description: t("pricing.allFree"),
       type: "website",
-      images: ["/api/og?title=Pricing&category=home"],
+      images: ["/og-default.png"],
     },
   };
 }

@@ -155,17 +155,6 @@
     "readMore": "Lire la suite →",
     "backToBlog": "← Retour au Blog"
   },
-  "dashboard": {
-    "heading": "Tableau de bord",
-    "subtitle": "Suivez vos indicateurs clés en un seul endroit.",
-    "share": "Partager",
-    "copied": "Copié !",
-    "addCalculators": "Ajouter des calculateurs",
-    "noCalculatorsSelected": "Aucun calculateur sélectionné pour le moment.",
-    "browseCalculators": "Parcourir les calculateurs",
-    "calculatorsActive": "Calculateurs actifs",
-    "remove": "Supprimer"
-  },
   "calculators": {
     "browseCollection": "Parcourez notre collection de {n} calculateurs dans {m} catégories.",
     "editorial": "Tous les calculateurs utilisent des formules financières standard et citent leurs sources. Aucun compte requis, calculez simplement.",

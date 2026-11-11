@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: `${t("legal.title")} - SaaStainedNumbers`,
       description: t("legal.subtitle"),
       type: "website",
-      images: ["/api/og?title=Legal"],
+      images: ["/og-default.png"],
       siteName: "SaaStainedNumbers",
     },
   };

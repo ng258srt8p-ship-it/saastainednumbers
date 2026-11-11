@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "SaaStainedNumbers - Free SaaS & Business Calculators",
       description: "100+ free calculators for SaaS metrics, revenue, churn, unit economics, AI costs, side hustles, and personal finance.",
       type: "website",
-      images: ["/api/og?title=SaaStainedNumbers&description=Free+SaaS+%26+Business+Calculators"],
+      images: ["/og-default.png"],
       siteName: "SaaStainedNumbers",
     },
   };

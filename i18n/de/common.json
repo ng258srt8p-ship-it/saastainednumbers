@@ -155,17 +155,6 @@
     "readMore": "Weiterlesen →",
     "backToBlog": "← Zurück zum Blog"
   },
-  "dashboard": {
-    "heading": "Dashboard",
-    "subtitle": "Verfolgen Sie Ihre wichtigsten Kennzahlen an einem Ort.",
-    "share": "Teilen",
-    "copied": "Kopiert!",
-    "addCalculators": "Rechner Hinzufügen",
-    "noCalculatorsSelected": "Noch keine Rechner ausgewählt.",
-    "browseCalculators": "Rechner Durchsuchen",
-    "calculatorsActive": "Aktive Rechner",
-    "remove": "Entfernen"
-  },
   "calculators": {
     "browseCollection": "Durchstöbern Sie unsere Sammlung von {n} Rechnern in {m} Kategorien.",
     "editorial": "Alle Rechner verwenden Standard-Finanzformeln und geben ihre Quellen an. Kein Konto erforderlich, einfach rechnen.",

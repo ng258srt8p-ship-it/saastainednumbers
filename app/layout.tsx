@@ -52,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       siteName: "SaaStainedNumbers",
-      images: ["/api/og?title=SaaStainedNumbers"],
+      images: ["/og-default.png"],
     },
     robots: {
       index: true,
@@ -167,6 +167,9 @@ export default async function RootLayout({
                     <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-300">{t("footer.resources")}</h3>
                     <ul className="mt-3 space-y-2">
                       <li><Link href="/blog" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("nav.blog")}</Link></li>
+                      <li><Link href="/about" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.about")}</Link></li>
+                      <li><Link href="/advertisers" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.advertise")}</Link></li>
+                      <li><Link href="/contact" className="text-sm text-gray-700 dark:text-gray-300 hover:text-brand-600 transition-colors">{t("footer.contact")}</Link></li>
                     </ul>
                   </div>
                   <div className="w-full sm:w-auto">

@@ -7,18 +7,19 @@ import { analytics } from "@/lib/analytics";
 interface EmbedModalProps {
   slug: string;
   title: string;
+  category?: string;
   open: boolean;
   onClose: () => void;
 }
 
-export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
+export function EmbedModal({ slug, title, category, open, onClose }: EmbedModalProps) {
   const [copied, setCopied] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [height, setHeight] = useState(600);
   const [hideHeader, setHideHeader] = useState(false);
   const [tab, setTab] = useState<"code" | "preview">("code");
 
-  const code = generateEmbedCode({ slug, theme, height, hideHeader });
+  const code = generateEmbedCode({ slug, theme, height, hideHeader, title, category });
   const previewParams = new URLSearchParams();
   if (theme !== "light") previewParams.set("theme", theme);
   if (height !== 600) previewParams.set("height", String(height));
@@ -140,7 +141,7 @@ export function EmbedModal({ slug, title, open, onClose }: EmbedModalProps) {
               <textarea
                 readOnly
                 value={code}
-                rows={5}
+                rows={6}
                 className="w-full rounded-lg bg-gray-50 dark:bg-gray-800 p-3 text-xs font-mono text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 resize-none"
               />
               <button

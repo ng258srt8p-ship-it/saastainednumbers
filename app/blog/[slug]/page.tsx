@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.description,
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
-      images: [`/api/og?title=${encodeURIComponent(post.title)}&category=blog&description=${encodeURIComponent(post.description)}`],
+      images: ["/og-default.png"],
     },
   };
 }

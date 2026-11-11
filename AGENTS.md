@@ -16,7 +16,7 @@ webcalc/
 ├── app/
 │   ├── [category]/        # Category listing (SSG, 9 categories)
 │   │   └── [slug]/        # Calc pages + CalculatorClient (87 engines)
-│   ├── api/og/            # Dynamic OG image generation
+│   ├── api/og/            # Dynamic OG route (NOT served: production is assets-only; og:image uses static /og-default.png — regenerate via `node scripts/gen-og-default.mjs`)
 │   ├── blog/              # Blog listing + [slug] routes
 │   ├── canvas/            # Interconnected dashboard (renamed from /dashboard)
 │   ├── embed/             # Embed layout (no nav)
@@ -85,7 +85,13 @@ webcalc/
 - `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`
 - `NEXT_PUBLIC_ETHICAL_ADS_ID`, `NEXT_PUBLIC_ADSENSE_ID`, `NEXT_PUBLIC_BASE_URL`
 
-## Current State (June 2026)
+## Hosting & Deploy (November 2026)
+- Production = Cloudflare **Workers static-assets Worker** `saastainednumbers` (zone saastainednumbers.com). NOT Pages — the old Pages project and `functions/` dir are gone.
+- No `build{}` hook in wrangler.jsonc (wrangler's NODE_ENV crashes Next prerender of /embed pages). Deploy path: `scripts/deploy.sh` (runs build-static.sh, then `wrangler deploy`) or CI `.github/workflows/deploy.yml` (build step + wrangler-action `command: deploy`, needs Workers:edit token scope).
+- `out/404.html` + `assets.not_found_handling: "404-page"` serve the styled 404.
+- Analytics: GA4 (G-BHDH2PETBK) loads only after cookie consent. Cloudflare Web Analytics token lacks Zone Analytics:Read — re-grant for traffic pulls.
+
+## Current State (November 2026)
 - **12 of 13 page files** call `getTranslations()` (legal excluded)
 - **107 keys × 6 locales** = 642 translated strings across all UI sections
 - Sign-in disabled; all calculators functional without auth

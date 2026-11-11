@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: `${t("privacy.title")} - SaaStainedNumbers`,
       description: t("privacy.subtitle"),
       type: "website",
-      images: ["/api/og?title=Privacy+Policy"],
+      images: ["/og-default.png"],
       siteName: "SaaStainedNumbers",
       },
     };
